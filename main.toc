@@ -1,0 +1,49 @@
+\contentsline {section}{\numberline {1}Preface}{1}{section.1}
+\contentsline {section}{\numberline {2}Introduction}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Why you should be interested in quantum computers}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}What are quantum computers}{3}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Traditional computers shortcomings \& quantum supremacy}{3}{subsection.2.3}
+\contentsline {section}{\numberline {3}Weird Vector things}{3}{section.3}
+\contentsline {subsection}{\numberline {3.1}Quantum Circuits}{3}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Digital logic}{3}{subsubsection.3.1.1}
+\contentsline {section}{\numberline {4}Short term quantum computing}{5}{section.4}
+\contentsline {subsection}{\numberline {4.1}Adiabatic quantum computing \& quantum annealers}{5}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Rigetti-Forest}{5}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Example Codes}{6}{subsubsection.4.2.1}
+\contentsline {subsection}{\numberline {4.3}IBM-ProjectQ}{6}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Example Codes}{6}{subsubsection.4.3.1}
+\contentsline {section}{\numberline {5}Algorithms and applications}{7}{section.5}
+\contentsline {subsection}{\numberline {5.1}Quantum transforms}{7}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}Quantum Fourier transform}{7}{subsubsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.2}Schur transform}{7}{subsubsection.5.1.2}
+\contentsline {subsection}{\numberline {5.2}Number theory algorithms}{7}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Shor's algorithm}{7}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Discrete Logarithm problem}{7}{subsubsection.5.2.2}
+\contentsline {subsection}{\numberline {5.3}Oracular algorithms}{7}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}Grover's algorithm}{7}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}The hidden subgroup problem}{7}{subsubsection.5.3.2}
+\contentsline {subsection}{\numberline {5.4}Approximations \& Simulating quantum systems}{7}{subsection.5.4}
+\contentsline {subsubsection}{\numberline {5.4.1}Approximating Matrix powers}{7}{subsubsection.5.4.1}
+\contentsline {subsubsection}{\numberline {5.4.2}Approximating Partition functions}{8}{subsubsection.5.4.2}
+\contentsline {section}{\numberline {6}Programming a future universal quantum computer}{8}{section.6}
+\contentsline {subsection}{\numberline {6.1}Implementing Shor's algorithm}{8}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}Language 1}{8}{subsubsection.6.1.1}
+\contentsline {subsubsection}{\numberline {6.1.2}Language 2}{8}{subsubsection.6.1.2}
+\contentsline {subsection}{\numberline {6.2}Implementing Grover's algorithm}{8}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Language 1}{8}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Language 2}{8}{subsubsection.6.2.2}
+\contentsline {subsection}{\numberline {6.3}Implementing the matrix power approximation}{8}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Language 1}{8}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.2}Language 2}{8}{subsubsection.6.3.2}
+\contentsline {subsection}{\numberline {6.4}Language features}{8}{subsection.6.4}
+\contentsline {subsubsection}{\numberline {6.4.1}Language 1}{9}{subsubsection.6.4.1}
+\contentsline {subsection}{\numberline {6.5}The universal quantum computer}{9}{subsection.6.5}
+\contentsline {section}{\numberline {7}Implementations}{9}{section.7}
+\contentsline {section}{\numberline {8}Advanced topics}{10}{section.8}
+\contentsline {subsection}{\numberline {8.1}Quantum mechanics: The basics}{10}{subsection.8.1}
+\contentsline {subsubsection}{\numberline {8.1.1}Quantum states \& Dirac notation}{10}{subsubsection.8.1.1}
+\contentsline {subsubsection}{\numberline {8.1.2}Superposition}{10}{subsubsection.8.1.2}
+\contentsline {subsubsection}{\numberline {8.1.3}Entanglement}{10}{subsubsection.8.1.3}
+\contentsline {subsubsection}{\numberline {8.1.4}Errors \& Decoherence}{10}{subsubsection.8.1.4}
+\contentsline {subsection}{\numberline {8.2}Error correcting codes}{10}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}}{11}{subsection.8.3}

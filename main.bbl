@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{sheffer1913set}
+Henry~Maurice Sheffer.
+\newblock A set of five independent postulates for boolean algebras, with
+  application to logical constants.
+\newblock {\em Transactions of the American mathematical society},
+  14(4):481--488, 1913.
+
+\bibitem{nandwiki}
+\url{https://commons.wikimedia.org/wiki/File:NAND_ANSI_Labelled.svg}.
+
+\bibitem{norwiki}
+\url{https://commons.wikimedia.org/wiki/File:NOR_ANSI_Labelled.svg}.
+
+\bibitem{rigetti}
+{https://www.rigetti.com/forest}.
+
+\end{thebibliography}
