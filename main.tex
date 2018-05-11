@@ -1,5 +1,4 @@
 \documentclass[12pt]{article}
-
 %%%%%%%%%%%%%%%%%%%%% Packages
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
@@ -11,26 +10,38 @@
 \usepackage{multicol} 
 \usepackage{hyperref} 
 \usepackage{url}
+\usepackage{epigraph}
+\usepackage{calc}
+
+
+%%%%% Epigraph bullshit
+\newcommand{\mytextformat}{\itshape\epigraphsize}
+\newenvironment{mytext}{\mytextformat}{}
+\newenvironment{mysource}{\scshape\hfill}{}
+\renewcommand{\textflush}{mytext} 
+\renewcommand{\sourceflush}{mysource}
+\let\originalepigraph\epigraph 
+\renewcommand\epigraph[2]%
+   {\setlength{\epigraphwidth}{\widthof{\mytextformat#1}}\originalepigraph{#1}{#2}}
+
+
 %%%%%%%%%%%%% MATHS %%%%%%%%%%%%%%%%%%%%
 \usepackage{amsmath} 
 \usepackage{mathtools}
 \usepackage{physics}
 \usepackage{amssymb}
 \usepackage{array}
-  
 %%%%%%%%% FIGurES %%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{textcomp}
 \usepackage{graphicx}
 \usepackage{caption} 
-\usepackage{subcaption}
 \usepackage{scrextend}
 \usepackage{pgfgantt}
 \usepackage{rotating}
 \usepackage{subcaption}
-\usepackage{scrextend}
 \usepackage{float}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  
+\usepackage{tcolorbox}
+%%%%%%%%%%%%%%%%%% variables
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -55,21 +66,19 @@
     showtabs=false,                  
     tabsize=2
 }
+\lstset{style=mystyle}
+
 \usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    citecolor=blue,
-    linkcolor=black,
-}
+\hypersetup{colorlinks=true,
+            citecolor=green,
+            linkcolor=blue,}
 \renewcommand{\equationautorefname}{Eq.}%
 \renewcommand{\figureautorefname}{Fig.}%
 
-% Crank out those margins
-\newgeometry{left=1.8cm,right=1.8cm,top=2.5cm,bottom=2.5cm} 
 \graphicspath{ {figures/} }
- 
-\lstset{style=mystyle}
+\newgeometry{left=0.8in,right=0.8in,top=1in,bottom=1in} 
 
+%%%%%%%%%%%%%%%%
 \begin{document}
 
 \title{Quantum Meta-Programming for Dummies}
@@ -78,7 +87,6 @@
     \maketitle
 
 %Cohort project
-
 %%%%%%%%%%%%%%%%%%%%%%
 \input{C1_Preface.tex}
 %\newpage
@@ -97,8 +105,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{C2c_CircuitsOli.tex}
-\newpage
-.
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,6 +128,10 @@
 %\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{verbatim}
+https://github.com/ot561/qprogramming/tree/master
+\end{verbatim}
+
 \bibliographystyle{unsrt}
 \bibliography{References}
 
