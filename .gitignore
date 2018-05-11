@@ -1,7 +1,6 @@
 *.log
-*main
+main*
 *.zip
 *.gz
 !.tex
 !.pdf
-
