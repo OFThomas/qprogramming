@@ -1,4 +1,4 @@
-\section{Algorithms and applications}\label{Algorithms and applications}
+\section{Algorithms and applications}\label{Algorithmsandapplications}
 
 We now discuss the three primary types of algorithms that take advantage of a quantum computer.
 
@@ -37,14 +37,13 @@ We are given access to $f: \left\{0,1\right\}^n \rightarrow \left\{0,1\right\}$ 
 
 In circuit diagram form, Grover's algorithm appears like:
 \begin{equation*}
-\Qcircuit @C=1.14em @R=1.25em{
-\lstick{\ket{0}} & \gate{H} & \multigate{5}{U_f} & \multigate{5}{D} & \multigate{5}{U_f} & \ghost{U_f} & \lstick{\dots} & \multigate{5}{D} & \meter \\
+\Qcircuit @C=1.14em @R=1.25em
+{\lstick{\ket{0}} & \gate{H} & \multigate{5}{U_f} & \multigate{5}{D} & \multigate{5}{U_f} & \ghost{U_f} & \lstick{\dots} & \multigate{5}{D} & \meter \\
 \lstick{\ket{0}} & \gate{H} & \ghost{U_f} & \ghost{D} & \ghost{U_f} & \ghost{U_f} &\lstick{\dots} & \ghost{D} & \meter \\ 
 & \dot{} & & & & & & & \dot{} \\
 & \dot{} & & & & & & & \dot{} \\
 & \dot{} & & & & & & & \dot{} \\
-\lstick{\ket{0}} & \gate{H} & \ghost{U_f} & \ghost{D} & \ghost{U_f} & \ghost{U_f} & \lstick{\dots} & \ghost{D} & \meter \\
-}
+\lstick{\ket{0}} & \gate{H} & \ghost{U_f} & \ghost{D} & \ghost{U_f} & \ghost{U_f} & \lstick{\dots} & \ghost{D} & \meter \\}
 \end{equation*}
 
 
@@ -54,15 +53,14 @@ In Grover's algorithm, gates $U_f$ and $D$ are applied on the qubits repeatedly 
 The gate $D$ for $n$-qubits can be implemented in the following manner. This shows that gate $D$ requires $2n+1$ Hadamard ($H$) gates, $2n+1$ Pauli $X$ gates and an n-control Toffoli gate.
 
 \begin{align*}
-\Qcircuit @C=1.14em @R=1.25em{
-\lstick{\ket{x_1}} & \gate{H} & \gate{X} &  \ctrl{1} & \gate{X} & \gate{H} & \qw  \\
+\Qcircuit @C=1.14em @R=1.25em
+{\lstick{\ket{x_1}} & \gate{H} & \gate{X} &  \ctrl{1} & \gate{X} & \gate{H} & \qw  \\
 \lstick{\ket{x_2}} & \gate{H} & \gate{X} &  \ctrl{4} & \gate{X} & \gate{H} & \qw  \\
 \lstick{\dot{}} & \dot{} & \dot{} & & \dot{} & \dot{} & \\
 \lstick{\dot{}} & \dot{} & \dot{} & & \dot{} & \dot{} & \\
 \lstick{\dot{}} & \dot{} & \dot{} & & \dot{} & \dot{} & \\
 \lstick{\ket{x_n}} & \gate{H} & \gate{X} &  \ctrl{1} & \gate{X} & \gate{H} & \qw  \\
-\lstick{\ket{0}} & \gate{x} & \gate{H} &  \targ & \qw & \qw & \qw 
-}
+\lstick{\ket{0}} & \gate{x} & \gate{H} &  \targ & \qw & \qw & \qw }
 \end{align*}
 
 \subsubsection{Construction of gate $U_f$}

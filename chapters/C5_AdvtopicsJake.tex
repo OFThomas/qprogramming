@@ -1,4 +1,4 @@
-\section{Advanced topics}\label{Advanced topics}
+\section{Advanced topics}\label{Advancedtopics}
 1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Quantum mechanics: The basics}
@@ -9,15 +9,15 @@ In this section we cover some supplementary background quantum theory. Although 
 
 In quantum mechanics, we describe the state of a system simply with labels. These labels we assign to the system, such as {`0',`1'}, aim to give some intuition about the state of the system. We could equally have used {`open', `closed'} if we were trying to describe the state of a door. Formally these labels are called quantum numbers and in general are not restricted to be one of two values.\\
 
-For example, imagine the 4 of spades was chosen from a deck of cards, a good choice of label to describe the card would be `4' or `spade'. Equally in a quantum system we would say that the card is in the state `4' or `spade' which we write formally as $\ket{4}$, or $\ket{spade}$. In this scenario the quantum number `4' could have been one of 13 values, therefore the set of states needed to fully describing the system are $\{\ket{A}, \ket{2}, \ket{3},...,\ket{K}\}$ with quantum numbers $\{A,2,3,...K\}$. If the set of quantum numbers are unique and their associated states describe all possible values a properties can take then they are said to form a Hilbert space $\mathcal{H}$ of the system. Formally we say the set of independent and orthonormal states span a Hilbert space:
+For example, imagine the 4 of spades was chosen from a deck of cards, a good choice of label to describe the card would be `4' or `spade'. Equally in a quantum system we would say that the card is in the state `4' or `spade' which we write formally as $\ket{4}$, or $\ket{spade}$. In this scenario the quantum number `4' could have been one of 13 values, therefore the set of states needed to fully describing the system are $\{\ket{A}, \ket{2}, \ket{3},\ldots ,\ket{K}\}$ with quantum numbers $\{A,2,3,\ldots K\}$. If the set of quantum numbers are unique and their associated states describe all possible values a properties can take then they are said to form a Hilbert space $\mathcal{H}$ of the system. Formally we say the set of independent and orthonormal states span a Hilbert space:
 
 \begin{equation}
-\mathcal{H}:=span\{\ket{A}, \ket{2}, \ket{3},...,\ket{K}\}
+\mathcal{H}:=span\{\ket{A}, \ket{2}, \ket{3},\ldots ,\ket{K}\}
 \end{equation}
 
 The Hilbert space should loosely be thought of as a vector space. It's purpose is to mathematically define all the possible states a system can be in. This is a very useful tool when we start to describe the evolution of a system because it has better be the case that our description of a system remains physically possible. For example, it would make no sense to talk about the state $\ket{A}$ evolving to the state $\ket{spade}$. In that sense, the Hilbert space helps define the boundaries of your system.\\
 
-The notation $\ket{...}$ is called a `ket' and for every `ket' there is a `bra' written as $\bra{...}$. The names originates from the first and second halves of the word `braket', which when placed together resemble the most important operation in quantum computation: the inner product. The inner product is a simple function that does the following:\\
+The notation $\ket{\ldots}$ is called a `ket' and for every `ket' there is a `bra' written as $\bra{\ldots}$. The names originates from the first and second halves of the word `braket', which when placed together resemble the most important operation in quantum computation: the inner product. The inner product is a simple function that does the following:\\
 
 \textit{if state $\ket{a}$ is the same as state $\ket{b}$ return 1 else return 0}\\
 
@@ -39,7 +39,7 @@ When a set of state are unique in this way, they are said to be orthonormal. The
 
 \subsubsection{Superposition}
 
-In quantum mechanics, using the states that form the basis of our Hilbert space to describe the system is not enough. Observation of quantum systems tell us that when we prepare a state multiple times and measure it, the outcome will not always be the same. At this point its crucial to point out that the formalism does not try to explain why this is the case, but only provides a way of describing the system. I highlight this fact for the following reason. Typically when confronted with a new phenomena, we turn to the mathematical description to gain some intuition of its causes. With quantum mechanics, the formal description should not be used to find a 'logical' explanation of how superposition works but only to help fully describe the observed physics of the system.\\
+In quantum mechanics, using the states that form the basis of our Hilbert space to describe the system is not enough. Observation of quantum systems tell us that when we prepare a state multiple times and measure it, the outcome will not always be the same. At this point its crucial to point out that the formalism does not try to explain why this is the case, but only provides a way of describing the system. I highlight this fact for the following reason. Typically when confronted with a new phenomena, we turn to the mathematical description to gain some intuition of its causes. With quantum mechanics, the formal description should not be used to find a "logical" explanation of how superposition works but only to help fully describe the observed physics of the system.\\
 
 To understand how we can describe this phenomena formally, lets make our deck of cards a quantum deck of cards that now obeys the laws of quantum mechanics and see how we can reflect our observations within the maths.\\
 
