@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1526985788 "pres.tex" "pres.pdf" "pres" 1526985788
+["pdflatex"] 1526985994 "pres.tex" "pres.pdf" "pres" 1526985994
   "../figures/Comms_Final.png" 1526979230 9632 dcdae6f906c2059b9e948e3920b0c072 ""
   "../figures/IBM.PNG" 1526983859 190178 cb27fcb6796938607d5a53f3a3532508 ""
   "../figures/Learn_Ed_Final.png" 1526979230 9798 d3da986854aa150311aff4fa2abf88e5 ""
@@ -219,15 +219,15 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1503343927 31343 93828589fb0cea665e553ee5a17ad2d4 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1524244056 1863403 f3ff9a4253bcb5fb9a9baaf0c572cb01 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1524244070 3854119 326ac258f9dea0f2dea88dfe62197f99 ""
-  "pres.aux" 1526985782 902 5661e715232a19e5b6e7af1cdbf5e14b ""
-  "pres.nav" 1526985722 786 d2185b2c40b024bddf084d4121ec09d7 ""
-  "pres.out" 1526985782 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "pres.tex" 1526985786 2390 04959e718b9614b6097dbb9b5e81a59c ""
+  "pres.aux" 1526985986 1330 fa8d0894460ab8d98fd48fe5f4ddc444 ""
+  "pres.nav" 1526985963 786 d2185b2c40b024bddf084d4121ec09d7 ""
+  "pres.out" 1526985986 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "pres.tex" 1526985993 2434 660f0d3c670c61264641e5ef04cfe09d ""
   (generated)
-  "pres.aux"
   "pres.snm"
   "pres.log"
-  "pres.toc"
-  "pres.out"
-  "pres.pdf"
+  "pres.aux"
   "pres.nav"
+  "pres.pdf"
+  "pres.out"
+  "pres.toc"
