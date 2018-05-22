@@ -1,0 +1,25 @@
+InfoBegin
+InfoKey: ModDate
+InfoValue: D:20180522083234+00'00'
+InfoBegin
+InfoKey: CreationDate
+InfoValue: D:20180522083234+00'00'
+InfoBegin
+InfoKey: Author
+InfoValue: Jake Biele
+InfoBegin
+InfoKey: Creator
+InfoValue: Microsoft Word
+PdfID0: afa73a7e09f3a545a5da50b20bb13d6b
+PdfID1: afa73a7e09f3a545a5da50b20bb13d6b
+NumberOfPages: 2
+PageMediaBegin
+PageMediaNumber: 1
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.25 842
+PageMediaDimensions: 595.25 842
+PageMediaBegin
+PageMediaNumber: 2
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.25 842
+PageMediaDimensions: 595.25 842

@@ -44,26 +44,15 @@
 
 % slide 1
 \begin{frame}
-\frametitle{Survey results pg 1}
+\frametitle{Survey results}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{pg_0001.pdf}
+	\includegraphics[width=0.5\textwidth]{survey.pdf}
 	\caption{Results from onedrive \url{link}}
 	\label{}
 \end{figure}
 \end{frame}
 
-
-% slide 1
-\begin{frame}
-\frametitle{Survey results pg 2}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\textwidth]{pg_0002.pdf}
-	\caption{Results from onedrive \url{link}}
-	\label{}
-\end{figure}
-\end{frame}
 
 \begin{frame}
 \frametitle{Sections we plan to include}
@@ -73,12 +62,6 @@
 	\caption{Document at \url{https://github.com/ot561/qprogramming/blob/master/main.pdf}}
 	\label{}
 \end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Running code on a physical quantum computer?}
-A few people have run a quantum algorithm on Rigetti and IBMs hardware via the cloud.
-
 \end{frame}
 
 
