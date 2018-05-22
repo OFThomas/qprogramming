@@ -1,4 +1,4 @@
-\section{Introduction}
+\chapter{Introduction}
 
 
 \epigraph{[Quantum computation] does not merely make computer science
@@ -7,14 +7,16 @@ quantum computer \\ -- David Deutsch}}
 
 Quantum mechanics is one of the most well-tested theories in existence [REF?]. It is also one of the most unintuitive, revealing aspects of nature at nanoscopic scales which are entirely incompatible of our own experience of the world. \\
 
-Quantum mechanics has two key facets. The first, from which the field derives its moniker, is the quantisation of properties such as energy\ldots. This property has already changed the world substantially over the course of the last 70 years. Among technologies such as the laser and magnetic resonant imaging (MRI), perhaps the greatest impact has been made through the manipulation of semiconductor technology. Since the invention of the first transistor in 1947 \cite{Bardeen1948}, this semiconductor technology has laid the groundwork for scalable computers, bringing us into the information age. \\
+Quantum mechanics has two key facets. The first, from which the field derives its moniker, is the quantisation of properties such as charge, angular momentum, and energy. This property has already changed the world substantially over the course of the last 70 years. Among technologies such as the laser and magnetic resonant imaging (MRI), perhaps the greatest impact has been made through the manipulation of semiconductor technology. Since the invention of the first transistor in 1947 \cite{Bardeen1948}, this semiconductor technology has laid the groundwork for scalable computers, bringing us into the information age. \\
 
-The development of this technology comes at a critical time in the conventional silicon industry. The famous Moore's law, hypothesised in its current form in 1975, stated that the number of transistors per square inch would double every two years. This law models the exponential scaling of computing power since its conception incredibly well, as we can see in figure \autoref{Moore's_Law_fig}. This was driven partly by the cost and power consumption per transistor going down as feature sizes decreased \cite{MooresLawEconomist}.  However, now increasingly small feature sizes have resulted in energy efficiencies and profitability are starting to plateau, while technical issues continue to increase. These issues are in part due to quantum effects such as tunnelling.  \\
+The development of this technology comes at a critical time in the conventional silicon industry. The famous Moore's law, hypothesised in its current form in 1975, stated that the number of transistors per square inch would double every two years. This law models the exponential scaling of computing power since its conception incredibly well, as we can see in \autoref{fig:Moore's_Law}. This was driven partly by the cost and power consumption per transistor going down as feature sizes decreased \cite{MooresLawEconomist}.  However, now increasingly small feature sizes have resulted in energy efficiencies and profitability are starting to plateau, while technical issues continue to increase. These issues are in part due to quantum effects such as tunnelling.  \\
 
 
-\begin{figure}[h!]\label{Moore's_Law_fig}
-\centering
-\includegraphics[width = \linewidth]{Moores_Law.png}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width = \linewidth]{Moores_Law.png}
+	\caption{Chart showing Moore's law, with a logarithmic increase in transistor 	count on each chip from 1970-2016.}
+	\label{fig:Moore's_Law}
 \end{figure}
 
 This example of tunnelling is related to the so-called `wave-particle duality' which is the second key feature of quantum mechanics. Which is causing these issues may the solution in addition to the problem. The distinction between waves and particles, whose behaviour is well established in classical physics, becomes blurred. \textbf{Every object in the universe, if the correct energy and length scales are chosen, will display both of these aspects to some degree.} \\
@@ -39,19 +41,3 @@ Over the next few years and decades quantum computing is likely to become a real
 Once the engineering of quantum computers have been improved, then a host of more impressive applications can be demonstrated, which are considered in chapter \autoref{Algorithms and applications}. We examine the programming languages that will be able to interface between the algorithms and the quantum computer in chapter \autoref{Programming a future universal quantum computer}, and hardware-specific implementations and architectures in chapter \autoref{Implementations}. \\
 
 A more complete description of quantum mechanics is given in chapter \autoref{Advanced Topics} for any interested party. 
-
-\subsection{Why you should be interested in quantum computers}
-\begin{itemize}
-\item Use laws of QM
-\item 
-\end{itemize}
-
-
-\subsection{What are quantum computers}
-2
-
-\subsection{Traditional computers shortcomings \& quantum supremacy}
-\begin{itemize}
-\item Information that can be stored in qubit vs bit
-\item Definition of quantum supremacy
-\end{itemize}

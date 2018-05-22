@@ -1,25 +1,25 @@
-\section{Algorithms and applications}\label{Algorithmsandapplications}
+\chapter{Algorithms and applications}\label{Algorithmsandapplications}
 
 We now discuss the three primary types of algorithms that take advantage of a quantum computer.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Quantum transforms}
+\section{Quantum transforms}
 1
-\subsubsection{Quantum Fourier transform}
+\subsection{Quantum Fourier transform}
 2
-\subsubsection{Schur transform}
+\subsection{Schur transform}
 3
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Number theory algorithms}
+\section{Number theory algorithms}
 4
-\subsubsection{Shor's algorithm}
+\subsection{Shor's algorithm}
 5
-\subsubsection{Discrete Logarithm problem}
+\subsection{Discrete Logarithm problem}
 6
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Oracular algorithms}
+\section{Oracular algorithms}
 7
-\subsubsection{Grover's algorithm}
+\subsection{Grover's algorithm}
 Grover's algorithm solves the unstructured search problem in $O(\sqrt[]{N})$ queries \cite{Grover1996,Grover1997} compared to average number of $O(N)$ queries required for classical algorithms. Although Grover's algorithm does not allow quantum computers to solve NP-complete problems in polynomial time, it does provide a quadratic speedup over classical algorithms. Grover's algorithm is based on the principle of selective phase-shifting on one state (which satisfies a certain condition) of a quantum system at each iteration. A simple case of Grover's algorithm for $ N = 2^n$ elements with exactly one marked element has been described in the following box:
 \begin{tcolorbox}
 We are given access to $f: \left\{0,1\right\}^n \rightarrow \left\{0,1\right\}$ with the promise that $f(x_0) = 1$ for a unique element $x_0$. We use a quantum circuit on $n$ qubits with initial state $\ket{0}^{\otimes n}$.  Let $H$ denote the Hadamard gate, and let $U_0$ denote the $n$-qubit operation which inverts the phase of $\ket{0^n}$: $U_0\ket{0^n} = -\ket{0^n}$, $U_0\ket{x} = \ket{x}$ for all $x \neq 0^n$.
@@ -72,9 +72,9 @@ Therefore, the underlying hardware of $U_f$ depends upon the function, $f(x)$.
 \subsubsection{The hidden subgroup problem}
 9
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Approximations \& Simulating quantum systems}
+\section{Approximations \& Simulating quantum systems}
 10
-\subsubsection{Approximating Matrix powers}
+\subsection{Approximating Matrix powers}
 11
-\subsubsection{Approximating Partition functions}
+\subsection{Approximating Partition functions}
 12
