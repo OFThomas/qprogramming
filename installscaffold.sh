@@ -11,3 +11,6 @@ echo "-------------------------"
 echo "ARE YOU READY FOR CLANG!?"
 echo "-------------------------"
 make
+
+# Install!
+sudo ln -s $PWD/scaffold.sh /usr/bin/scaffold
