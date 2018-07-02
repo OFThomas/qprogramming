@@ -7,11 +7,7 @@ class OpenToplevels(Frame):
     def __init__(self):
         self.root = Tk()
         self.button_ctr=0
-        """
-        but=Button(self.root, text="Open a Toplevel",
-                      command=self.open_another)
-        but.grid(row=0, column=0)
-        """
+        
         menubut=Button(self.root, text='Work pls', command=self.menus)
         menubut.grid(row=0, column=0)
                 
@@ -34,10 +30,15 @@ class OpenToplevels(Frame):
         #put at the top of the screen
         hi_there.grid(row=0, column=0)
 
+        
+
 
     def begin(self):
         print("hi there, everyone!")
-       
+
+
+
+
     def close_it(self, id):
         id.destroy()
 
