@@ -1,5 +1,9 @@
 gui code for programming guide is currently in longterm folder, using pyinstaller, http://www.pyinstaller.org/ to solve portability issues. Hopefully. 
 
+run,
+pyinstaller --distpath ./portable mess.py
+
+to create the mess executable in portable -> mess -> ./mess
 
 # qprogramming
 Quantum Engineering CDT Quantum programming guide
