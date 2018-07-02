@@ -93,7 +93,7 @@ count = 0
 
 print("\n=======================================")
 print("Welcome to ProjectQ -- the home of ")
-print("innefectual quantum computer simulation")
+print("ineffectual quantum computer simulation")
 print("in python! Here is an implementation of")
 print("Shor's algorithm for factorising an")
 print("integer. We challenge you to find one")
