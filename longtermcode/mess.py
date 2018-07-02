@@ -1,39 +1,26 @@
 from tkinter import *
 from tkinter import messagebox
 
-master = Tk()
+class Application(Frame):
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.pack()
+        self.create_widgets()
 
-e = Entry(master)
-e.pack()
+    def create_widgets(self):
+        self.hi_there = Button(self)
+        self.hi_there["text"] = "Hello World\n(click me)"
+        self.hi_there["command"] = self.say_hi
+        self.hi_there.pack(side="top")
 
-e.focus_set()
+        self.quit = Button(self, text="QUIT", fg="red",
+                              command=root.destroy)
+        self.quit.pack(side="bottom")
 
-def callback():
-    print e.get()
+    def say_hi(self):
+        print("hi there, everyone!")
 
-b = Button(master, text="get", width=10, command=callback)
-b.pack()
+root = Tk()
+app = Application(master=root)
+app.mainloop()
 
-mainloop()
-
-e = Entry(master, width=50)
-e.pack()
-
-text = e.get()
-
-def makeentry(parent, caption, width=None, **options):
-    Label(parent, text=caption).pack(side=LEFT)
-    entry = Entry(parent, **options)
-    if width:
-        entry.config(width=width)
-    entry.pack(side=LEFT)
-    return entry
-
-user = makeentry(parent, "User name:", 10)
-password = makeentry(parent, "Password:", 10, show="*")
-
-content = StringVar()
-entry = Entry(parent, text=caption, textvariable=content)
-
-text = content.get()
-content.set(text)
