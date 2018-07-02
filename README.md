@@ -1,3 +1,6 @@
+gui code for programming guide is currently in longterm folder, using pyinstaller, http://www.pyinstaller.org/ to solve portability issues. Hopefully. 
+
+
 # qprogramming
 Quantum Engineering CDT Quantum programming guide
 
