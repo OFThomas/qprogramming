@@ -31,14 +31,11 @@ class OpenToplevels(Frame):
         #put at the top of the screen
         hi_there.grid(row=0, column=0)
 
-<<<<<<< HEAD
         projectq=Button(id, text="Project Q this way!", command=run_projectq).grid(row=2,column=0)
         pyquil=Button(id, text="Pyquil", command=run_pyquil).grid(row=3,column=0)
         qiskit=Button(id, text="qiskit", command=run_qiskit).grid(row=4,column=0)
         qsharp=Button(id, text="qsharp", command=run_qsharp).grid(row=5,column=0)
 
-=======
->>>>>>> 2f7100be7cd16363e12a85575d0e454952576922
     def begin(self):
         print("hi there, everyone!")
 
