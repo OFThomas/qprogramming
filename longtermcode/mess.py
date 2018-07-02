@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from functools import partial
 from shor_alg import shor
+from tkinter.messagebox import showinfo
 import webbrowser
 
 class OpenToplevels(Frame):
@@ -32,6 +33,7 @@ class OpenToplevels(Frame):
         self.B6=Button(self.root, text="Exit Tkinter", bg="red",
                   command=self.root.quit).grid(row=100, column=0, sticky="we")
         
+        lab=Button(self.root, text='Shors value', command=self.usr_input).grid(row=5,column=5)       
         self.root.mainloop()
         
     def begin(self):
@@ -40,6 +42,22 @@ class OpenToplevels(Frame):
 
     def close_it(self, id):
         id.destroy()
+
+    def usr_input(self):
+        id=Toplevel(self.root)
+        id.title("Enter a number to factorise")
+         
+        l1=Label(id, text="Integer")
+        l1.grid(row=0,column=0)
+        ent=Entry(id, bd=5)
+        ent.grid(row=0,column=1)
+        def reply(name):
+            showinfo(title="Reply", message = "Hello %s!" % name)
+         
+        ent.bind("<Return>", (lambda event: reply(ent.get())))
+        btn = Button(id,text="Submit", command=(lambda: reply(ent.get())))
+        btn.pack(side=LEFT)
+
 
     #def do_it():
         
