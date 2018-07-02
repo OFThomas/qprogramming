@@ -7,14 +7,14 @@ import webbrowser
 class OpenToplevels(Frame):
     #open different windows
     def __init__(self):
-        #self.shor = shor
+        # self.shor = shor
         self.root = Tk()
         self.button_ctr=0
 
         hi_there = Button(self.root, fg="white", bg="blue")
         hi_there["text"] = "Hello World\n Do you want to do some quantum programming? \n(click me)"
         # do stuff
-        hi_there["command"] = self.begin()
+        hi_there["command"] = self.begin
         #put at the top of the screen
         hi_there.grid(row=0, column=0)
         projectq=Button(self.root, text="Project Q this way!", command=run_projectq).grid(row=1,column=0)
@@ -42,7 +42,7 @@ class OpenToplevels(Frame):
         
     def begin(self):
         print("hi there, everyone!")
-        webbrowser.open("https://github.com/ot561/qprogramming/report/main.pdf")
+        webbrowser.open("https://github.com/ot561/qprogramming/blob/master/report/Cohort_Project.pdf")
 
     def close_it(self, id):
         id.destroy()
