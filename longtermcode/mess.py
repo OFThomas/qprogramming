@@ -10,25 +10,28 @@ class OpenToplevels(Frame):
         # self.shor = shor
         self.root = Tk()
         self.button_ctr=0
-
-        hi_there = Button(self.root, fg="white", bg="blue")
-        hi_there["text"] = "Hello World\n Do you want to do some quantum programming? \n(click me)"
-        # do stuff
-        hi_there["command"] = self.begin
-        #put at the top of the screen
-        hi_there.grid(row=0, column=0)
-        projectq=Button(self.root, text="Project Q this way!", command=run_projectq).grid(row=1,column=0)
-        pyquil=Button(self.root, text="Pyquil", command=run_pyquil).grid(row=1,column=1)
-        qiskit=Button(self.root, text="qiskit", command=run_qiskit).grid(row=2,column=0)
-        qsharp=Button(self.root, text="qsharp", command=run_qsharp).grid(row=2,column=1)
-        test=Button(self.root, text="shor", command=lambda:shor(15)).grid(row=3,column=0)
-        
-        Button(self.root, text="Exit Tkinter", bg="red",
-                  command=self.root.quit).grid(row=100, column=0, sticky="we")
+        button = None
+        self.main_menu(button)
         self.root.mainloop()
-    
-    def menus(self):
-        self.button_ctr += 1
+
+    def main_menu(self,button):
+        hi_text="Hello World\n Do you want to do some quantum programming? \n(click me)"
+        hi_there=Button(self.root, fg="white", bg="blue",text=hi_text,
+                        command=self.begin).grid(row=0, column=0)
+        projectq=Button(self.root, text="Project Q this way!",
+                        command=run_projectq).grid(row=1,column=0)
+        pyquil=Button(self.root, text="Pyquil",
+                      command=run_pyquil).grid(row=1,column=1)
+        qiskit=Button(self.root, text="qiskit",
+                      command=run_qiskit).grid(row=2,column=0)
+        button=Button(self.root, text="qsharp",
+                      command=run_qsharp).grid(row=2,column=1)
+        testtest=Button(self.root, text="shor",
+                        command=button.destroy()).grid(row=3,column=0)
+        exit_butt=Button(self.root, text="Exit Tkinter", bg="red",
+                         command=self.root.quit).grid(row=100, column=0, sticky="we")
+
+        
         '''
         id = Toplevel(self.root)
 
@@ -48,7 +51,7 @@ class OpenToplevels(Frame):
         id.destroy()
 
 def run_shor():
-    shor(n)
+    shor(15)
         
 def run_projectq():
     print('Pq')
