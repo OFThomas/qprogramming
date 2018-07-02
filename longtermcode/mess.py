@@ -7,8 +7,11 @@ import webbrowser
 
 class OpenToplevels(Frame):
     #open different windows
+    
+    Frame(bg="black")
     def __init__(self):
         self.root = Tk()
+        frame=Frame(self.root,background="white")
         self.button_ctr=0
         font=('Comic Sans MS', 12)
         self.root.option_add("*Font", font)
@@ -16,7 +19,7 @@ class OpenToplevels(Frame):
         hi_text="Do you want to do some quantum programming? \n(click me)"
         #top
         self.B0=Button(self.root, fg="white", bg="blue",text=hi_text,width=2*txtwdth,
-                  command=self.begin)
+                  relief=RAISED,command=self.begin)
         self.B0.grid(row=0, column=0, columnspan=2)
         
         self.B1=Button(self.root, text="Project Q this way!",width=txtwdth,
