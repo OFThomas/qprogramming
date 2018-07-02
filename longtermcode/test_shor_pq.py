@@ -1,6 +1,7 @@
 import numpy as np
 from math import gcd
 from fractions import Fraction
+from random import randint
 
 import projectq as pq
 from projectq.ops import All, Measure, QFT, BasicMathGate
@@ -36,8 +37,9 @@ def shor(N):
     # FIX THIS IF STATEMENT TO LIST WHAT THE COMPANIES HAVE
     if m + n > 28:   # 28 qubits = 4GB of RAM
         print('Number of qubits required = ' + str(m+n) + ', too large to simulate.')
-        if m + n > 72:
-            print('Google only has 72!')
+        if m + n > 72 : print('Google only has 72! You need to phone DWave')
+        elif m + n > 50 : print('Intel has only managed 50 qubits')
+        elif m + n > 20 : print('Rigetti would have had 20 but one of them broke')
         return 0
 
     engine = pq.MainEngine()
@@ -88,10 +90,16 @@ def shor(N):
 
 
 count = 0
+
+helpful = ("It's not that hard mate",
+           "Shor would be unimpressed",
+           "Do you even know what an integer is?")
+
+print("Try not to make any mistakes")
 while(1==1):
     N_input = input("Input an integer to factorise: ")
     count = count + 1
-    if count > 3 : print("It's not that hard mate.")
+    if count > 3 : print(helpful[randint(0,2)])
     try:
         if int(N_input) > 1:
             break
