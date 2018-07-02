@@ -7,41 +7,26 @@ import webbrowser
 class OpenToplevels(Frame):
     #open different windows
     def __init__(self):
-        # self.shor = shor
         self.root = Tk()
         self.button_ctr=0
-        button = None
-        self.main_menu(button)
-        self.root.mainloop()
 
-    def main_menu(self,button):
         hi_text="Hello World\n Do you want to do some quantum programming? \n(click me)"
-        hi_there=Button(self.root, fg="white", bg="blue",text=hi_text,
-                        command=self.begin).grid(row=0, column=0)
-        projectq=Button(self.root, text="Project Q this way!",
-                        command=run_projectq).grid(row=1,column=0)
-        pyquil=Button(self.root, text="Pyquil",
-                      command=run_pyquil).grid(row=1,column=1)
-        qiskit=Button(self.root, text="qiskit",
-                      command=run_qiskit).grid(row=2,column=0)
-        button=Button(self.root, text="qsharp",
-                      command=run_qsharp).grid(row=2,column=1)
-        testtest=Button(self.root, text="shor",
-                        command=button.destroy()).grid(row=3,column=0)
-        exit_butt=Button(self.root, text="Exit Tkinter", bg="red",
-                         command=self.root.quit).grid(row=100, column=0, sticky="we")
-
+        B0=Button(self.root, fg="white", bg="blue",text=hi_text,
+                  command=self.begin).grid(row=0, column=0)
+        B1=Button(self.root, text="Project Q this way!",
+                  command=run_projectq).grid(row=1,column=0)
+        B2=Button(self.root, text="Pyquil",
+                  command=run_pyquil).grid(row=1,column=1)
+        B3=Button(self.root, text="qiskit",
+                  command=run_qiskit).grid(row=2,column=0)
+        B4=Button(self.root, text="qsharp",
+                  command=run_qsharp).grid(row=2,column=1)
+        B5=Button(self.root, text="shor",
+                  command=self.change_text(B4,"Hi there")).grid(row=3,column=0)
+        B6=Button(self.root, text="Exit Tkinter", bg="red",
+                  command=self.root.quit).grid(row=100, column=0, sticky="we")
         
-        '''
-        id = Toplevel(self.root)
-
-        id.title("Toplevel #%d" % (self.button_ctr))
-
-
-        Button(id, text="Close Toplevel #%d" % (self.button_ctr),
-                  command=partial(self.close_it, id),
-                  bg="orange", width=20).grid(row=100, column=0)
-        '''
+        self.root.mainloop()
         
     def begin(self):
         print("hi there, everyone!")
@@ -49,6 +34,9 @@ class OpenToplevels(Frame):
 
     def close_it(self, id):
         id.destroy()
+
+    def change_text(button,text):
+        button["text"] = text
 
 def run_shor():
     shor(15)
