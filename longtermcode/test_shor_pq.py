@@ -95,18 +95,18 @@ helpful = ("It's not that hard mate",
            "Shor would be unimpressed",
            "Do you even know what an integer is?")
 
-print("Try not to make any mistakes")
 while(1==1):
     N_input = input("Input an integer to factorise: ")
     count = count + 1
-    if count > 3 : print(helpful[randint(0,2)])
     try:
         if int(N_input) > 1:
+            if(count > 3) : print("Finally!")
             break
         else:
             print("Put in a positive number you fool. Try again.")
     except ValueError:
         print("Put in an integer you fool.",N_input,"is not a integer. Try again.")
+    if count > 3 : print(helpful[randint(0,2)])
 shor(int(N_input))
 
 
