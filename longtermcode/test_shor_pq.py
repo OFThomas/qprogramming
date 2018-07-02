@@ -36,7 +36,7 @@ def shor(N):
     # Check we can simulate on our local simulator
     # FIX THIS IF STATEMENT TO LIST WHAT THE COMPANIES HAVE
     if m + n > 28:   # 28 qubits = 4GB of RAM
-        print('Number of qubits required = ' + str(m+n) + ', too large to simulate.')
+        print('Number of qubits required = ' + str(m+n) + '. Did you really think python could simulate that?')
         if m + n > 72 : print('Google only has 72! You need to phone DWave')
         elif m + n > 50 : print('Intel has only managed 50 qubits')
         elif m + n > 20 : print('Rigetti would have had 20 but one of them broke')
@@ -91,10 +91,20 @@ def shor(N):
 
 count = 0
 
-helpful = ("It's not that hard mate",
-           "Shor would be unimpressed",
-           "Do you even know what an integer is?")
+print("\n=======================================")
+print("Welcome to ProjectQ -- the home of ")
+print("innefectual quantum computer simulation")
+print("in python! Here is an implementation of")
+print("Shor's algorithm for factorising an")
+print("integer. We challenge you to find one")
+print("you couldn't have factorised yourself!")
+print("========================================\n")
 
+motivational_messages = ("It's not that hard mate.",
+                         "Shor would be unimpressed.",
+                         "Do you even know what an integer is?",
+                         "Who taught you maths?",
+                         "Maybe come back tomorrow.")
 while(1==1):
     N_input = input("Input an integer to factorise: ")
     count = count + 1
@@ -106,7 +116,7 @@ while(1==1):
             print("Put in a positive number you fool. Try again.")
     except ValueError:
         print("Put in an integer you fool.",N_input,"is not a integer. Try again.")
-    if count > 3 : print(helpful[randint(0,2)])
+    if count > 3 : print(motivational_messages[randint(0,4)])
 shor(int(N_input))
 
 
