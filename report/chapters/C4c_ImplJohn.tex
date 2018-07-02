@@ -1,0 +1,36 @@
+\chapter{Implementations}\label{Implementations}
+
+--- PLAN ---
+
+Focus on implementation of quantum programming languages
+
+Implementing quantum computers:
+\begin{itemize}
+\item Comparison of quantum and classical computer architectures
+Classical computer architectures: ALU, CPU, buses, memory, instructions, etc equivalents for quantum computers? Quantum architectures: gates? Cluster states? Quantum vs. Classical control? What are the analogues of instructions, execution, buses and memory? Are there fundamental limits to architecture design (imposed by eg no cloning. Does memory make sense in the same way as for classical computers? Quantum memory is more like single-use working-registers). How about classical computers with quantum instructions? What about qbranch instructions?   
+\item Different quantum computing platforms 
+Probably just a few -- maybe linear optical quantum computers and iron traps. 
+\item Classical language compilers
+\end{itemize}
+Implementing quantum programming:
+\begin{itemize}
+\item Quantum error correction
+Not entirely analogous to classical computers, (no instruction execution errors). Can error correction be abstracted away from the compiler level? Would error correction take place at the equivalent level of (say) instruction pipe lining in a classical processor?    
+\item Quantum language compilers
+What is the quantum equivalent of object code? Does it contain machine code (instructions to be executed, analogous to classical computers) or does it compile into an arrangement of gates, or some other computation mode (measurements in a cluster state?). The architecture of the quantum computer would probably heavily inform the structure of low level languages. (For example, C has basic structures essentially based on mov, branch, and arithmetic and bit manipulation instructions). Hence the low level languages of gate based quantum computers will be based on structures easily realised using gates (the gates themselves, presumably analogous to bit manipulation; coherent arithmetic, (implemented using gate arrangements lifted from half and full adders); flow control -- presumably classical; and strict mov operations, ie excluding copy). Low level languages targeted at cluster state implementation will have cluster state measurements as primitive operations (equivalent to bit manipulation) in the language, and presumably various other generic operations (like control, branching, etc.) What kind of optimisations does the C compiler do, and what are the equivalents in the quantum cases? 
+\end{itemize}
+--- PLAN ---
+
+\section{Computer architecture and programming languages}
+\subsection{Classical computer architecture}
+\subsection{Low level classical languages}
+\subsection{Compilers and abstraction}
+\section{Quantum computer architectures}
+\subsection{Overview}
+\subsection{What are the qubits?}
+\subsection{What are the operations?}
+\subsection{Putting it all together}
+\section{Comparison of classical and quantum architectures}
+\section{Low level quantum programming languages}
+\section{Quantum compilers and high level languages}
+\section{The future}

@@ -1,0 +1,102 @@
+\chapter{Advanced topics}\label{Advancedtopics}
+
+In this section we cover some supplementary background quantum theory. Although a deeper knowledge of quantum theory would serve to further your understanding of quantum computing, it should not be necessary for sections 1 to 7. You have seen in Section (?) that the state of a system governed by quantum mechanics can be represented by a binary 1 or 0, similar to that of a classical bit. However, in general the state of a bit can now be in a superposition of both 1 and 0, collapsing to one or the other when measured. In this section we will cement this description into a more formal language that will help you to probe deeper into more advanced literature.
+
+\section{Quantum mechanics}
+
+\subsection{Quantum States}
+
+In quantum mechanics, we describe the state of a system simply with labels. These labels we assign to the system, such as {`0',`1'}, aim to give some intuition about the state of the system. We could equally have used {`open', `closed'} if appropriate. Formally these labels are called quantum numbers and in general are not restricted to be one of two values.\\
+
+For example, imagine the 4 of spades was chosen from a deck of cards, a good choice of label to describe the card would be `4' or `spade'. Equally in a quantum system we would say that the card is in the state `4' or `spade' which we write formally as $\ket{4}$, or $\ket{spade}$. In this scenario the quantum number `4' could have been one of 13 values, therefore the set of states needed to fully describing the system (the system here being a randomly chosen card) are $\{\ket{A}, \ket{2}, \ket{3},\ldots ,\ket{K}\}$ with quantum numbers $\{A,2,3,\ldots K\}$. If the set of quantum numbers are unique and their associated states describe all possible values a properties can take then they are said to form a Hilbert space $\mathcal{H}$ of the system. Formally we say the complete set of independent and orthonormal states describing a system span a Hilbert space:
+
+\begin{equation}
+\mathcal{H}:=span\{\ket{A}, \ket{2}, \ket{3},\ldots ,\ket{K}\}
+\end{equation}
+
+The Hilbert space should loosely be thought of as a vector space. It's purpose is to mathematically define all the possible states a system can be in. This is a very useful tool when we start to describe the evolution of a system because it has better be the case that our description of a system remains physically possible, i.e. remains within the Hilbert space. For example, it would make no sense to talk about the state $\ket{A}$ evolving to the state $\ket{spade}$. In that sense, the Hilbert space helps define the boundaries of your system.\\
+
+The notation $\ket{\ldots}$ is called a `ket' and for every `ket' there is a `bra' written as $\bra{\ldots}$. The names originates from the first and second halves of the word `braket', which when placed together resemble the most important operation in quantum computation: the inner product. The inner product is a simple function that does the following:\\
+
+\textit{if state $\ket{a}$ is the same as state $\ket{b}$ return 1 else return 0}\\
+
+In quantum physics notation this operation is performed by turning the ket $\ket{a}$ into a bra, $\bra{a}$ (this process is decribed more formally in section (?) but for now can be thought of as just a bracket swap). The `bra' $\bra{a}$ and `ket' $\ket{b}$ are then used to form the word `braket' and is equal to 1 or 0 depending on whether the state a is equal to the state b.\\
+
+For example, returning to our deck of cards, the inner product of the states $\ket{A}$ with $\ket{5}$ is written as:
+
+\begin{equation}
+\bra{A}\ket{5} = 0
+\end{equation}
+
+Conversely, the inner product of the states $\ket{J}$ with $\ket{J}$ would be:
+
+\begin{equation}
+\bra{J}\ket{J} = 1
+\end{equation}
+
+When a set of state are unique in this way, they are said to be orthonormal. The inner product is important as it allows you to check that all the state that form your Hilbert space are orthonormal (remember this is a key requirement for a set of states to form a Hilbert space) and will become very useful when we introduce superposition in the next section.
+
+\subsection{Superposition}
+
+In quantum mechanics, using the states that form the basis of our Hilbert space to describe the system is not enough. Observation of quantum systems tell us that when we prepare a state multiple times and measure it, the outcome will not always be the same but instead follow some probabilistic statistics. At this point its crucial to point out that the formalism does not try to explain why this is the case, but only provides a way of describing the system. I highlight this fact for the following reason. Typically when confronted with a new phenomena, we turn to the mathematical description to gain some intuition of its causes. With quantum mechanics, the formal description should not be used to find a "logical" explanation of how superposition works but only used to help fully describe the observed physics of the system.\\
+
+To understand how we can describe this phenomena formally, lets make our deck of cards a quantum deck of cards that now obeys the laws of quantum mechanics and see how our observations are captured within the mathematical formalism.\\
+
+The first thing to note is that the act of measuring appears to perform an operation on the system that takes it from its superposition state to a basis state of the Hilbert space. The pre-measurement `superposition state' contains information about which outcomes we will attain and which what probability we will attain these measurements.\\
+
+For example, lets say you are given a face down card that when flipped multiple times is sometimes a queen and sometimes a 4 (strange I know, but totally allowed within quantum mechanics). Before performing the operation of turning it over the state of the card should be thought of as being in a superposition of $\ket{Q}$ and $\ket{4}$. That is to say, the state used to describe the system before I operate a measurement is now not just one state but two containing some probabilities that describing how often we get each outcome. Only under the measurement operation (in this case the act of flipping the card) does the state become one of the two basis states. In general we may not be aware of how likely each outcome is and so to build up a picture of the superposition state we must re-prepare the experiment and repeating the same measurement many times. Since all we have to describe the systems pre-measurement state are the probabilities of getting each state after measurement, this is what is use in the mathematical description.\\
+
+Formally, given a state $\ket{\psi}$ that is said to be in a superposition of the states $\ket{a}$ and $\ket{b}$ where the probability of getting the state $\ket{a}$ is $\abs{\alpha}^{2}$ and the probability of getting the state $\ket{b}$ is $\abs{\beta}^{2}$ then we describe the state as:
+
+\begin{equation}
+\ket{\psi} = \alpha \ket{a} + \beta \ket{b}
+\end{equation}
+
+In general, both $\alpha$ and $\beta$ can take complex values and so to ensure that the probabilities are real we take the absolute value squared. The significance of having complex valued amplitudes will be discussed later on but for now its sufficient to consider them as real.\\
+
+Returning to our example, say we get a queen one third of the time and a four two thirds of the time. We would describe the pre-measurement superposition state as:
+
+\begin{equation}
+\ket{\psi} = \frac{1}{\sqrt{3}} \ket{Q} + \frac{2}{\sqrt{6}}  \ket{4}
+\end{equation}
+
+where
+
+\begin{equation}
+\abs{\frac{1}{\sqrt{3}}}^{2}+ \abs{\frac{2}{\sqrt{6}}}^{2} =1
+\end{equation}
+
+as expected since the probabilities of getting a queen or a four must sum to one. It is true that $\ket{\psi} \in \mathcal{H}$ since any linear combination of the basis states lives within the span of those basis states. 
+
+\newpage
+\subsubsection{Aside: Why do we use complex amplitudes?}
+\hrule
+In general the amplitudes $\alpha$ and $\beta$ are used not only to keep track of the probabilities of possible measurement outcomes, but also to account for a second property known as the phase. The need for a phase originates from our observations of what occurs when two quantum mechanical states combine in a process called interference. From experimental observations we know that quantum mechanical particles (even particles with mass) have some inherent wave like properties. Specifically they have a wavelength that tracks their wave like amplitude change, via a phase, as they travel and can constructively or destructively interfere with each other when measured together at the same point depending on whether they are in or out of phase with one another.\\
+
+This notion is hard to carry across to a discrete system such as a qubit. The question is, what is the fundamental difference between two states with different phases such as: $\ket{\psi_{a}}=\frac{1}{\sqrt{2}}(\ket{0}+i\ket{1})$ and $\ket{\psi_{b}}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})$. Both are superposition's of the state 0 and 1 with equal probabilities yet they are not the same state.
+
+
+\hrule
+\vspace{\baselineskip}
+
+Consider a more general case where the state is in a superposition over all possible state in the Hilbert space. Lets call this state $\ket{\phi}$ and it is given by:
+
+\begin{equation}
+\ket{\phi} = \sum_{i=0}^{n} c_{i}\ket{\phi_{i}}
+\label{equation:bigphi}
+\end{equation}
+
+where $\ket{\phi_{i}}$ are the basis states that form the Hilbert space
+
+\subsection{Operators}
+
+\subsection{Entanglement}
+
+\section{Quantum Information Theory}
+
+\subsection{The Circuit Model}
+
+\subsection{Cluster States}
+
+\subsection{Errors \& Decoherence}
+

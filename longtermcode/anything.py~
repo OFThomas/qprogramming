@@ -1,0 +1,2 @@
+def run_shor():
+    print("Shor")

@@ -1,0 +1,80 @@
+\chapter{Algorithms and applications}\label{Algorithmsandapplications}
+
+We now discuss the three primary types of algorithms that take advantage of a quantum computer.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quantum transforms}
+1
+\subsection{Quantum Fourier transform}
+2
+\subsection{Schur transform}
+3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Number theory algorithms}
+4
+\subsection{Shor's algorithm}
+5
+\subsection{Discrete Logarithm problem}
+6
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Oracular algorithms}
+7
+\subsection{Grover's algorithm}
+Grover's algorithm solves the unstructured search problem in $O(\sqrt[]{N})$ queries \cite{Grover1996,Grover1997} compared to average number of $O(N)$ queries required for classical algorithms. Although Grover's algorithm does not allow quantum computers to solve NP-complete problems in polynomial time, it does provide a quadratic speedup over classical algorithms. Grover's algorithm is based on the principle of selective phase-shifting on one state (which satisfies a certain condition) of a quantum system at each iteration. A simple case of Grover's algorithm for $ N = 2^n$ elements with exactly one marked element has been described in the following box:
+\begin{tcolorbox}
+We are given access to $f: \left\{0,1\right\}^n \rightarrow \left\{0,1\right\}$ with the promise that $f(x_0) = 1$ for a unique element $x_0$. We use a quantum circuit on $n$ qubits with initial state $\ket{0}^{\otimes n}$.  Let $H$ denote the Hadamard gate, and let $U_0$ denote the $n$-qubit operation which inverts the phase of $\ket{0^n}$: $U_0\ket{0^n} = -\ket{0^n}$, $U_0\ket{x} = \ket{x}$ for all $x \neq 0^n$.
+\begin{enumerate}
+\item Apply $H^{\otimes n}$.
+
+\item Repeat the following operations T times, for some T to be determined later:
+\begin{enumerate}
+\item Apply $U_f$, where $U_f\ket{x} = (-1)^{f(x)}\ket{x}$.
+\item Apply $D$, where $D = -H^{\otimes n}U_0H^{\otimes n}$
+\end{enumerate} 
+\item Measure all the qubits and output the result.
+\end{enumerate}
+\end{tcolorbox}
+
+In circuit diagram form, Grover's algorithm appears like:
+\begin{equation*}
+\Qcircuit @C=1.14em @R=1.25em
+{\lstick{\ket{0}} & \gate{H} & \multigate{5}{U_f} & \multigate{5}{D} & \multigate{5}{U_f} & \ghost{U_f} & \lstick{\dots} & \multigate{5}{D} & \meter \\
+\lstick{\ket{0}} & \gate{H} & \ghost{U_f} & \ghost{D} & \ghost{U_f} & \ghost{U_f} &\lstick{\dots} & \ghost{D} & \meter \\ 
+& \dot{} & & & & & & & \dot{} \\
+& \dot{} & & & & & & & \dot{} \\
+& \dot{} & & & & & & & \dot{} \\
+\lstick{\ket{0}} & \gate{H} & \ghost{U_f} & \ghost{D} & \ghost{U_f} & \ghost{U_f} & \lstick{\dots} & \ghost{D} & \meter \\}
+\end{equation*}
+
+
+\subsection*{Circuit complexity}
+In Grover's algorithm, gates $U_f$ and $D$ are applied on the qubits repeatedly until the desired state is found. It is the underlying hardware of these two gates that decide the intrinsic cost of Grover's algorithm per iteration \cite{Matthew2017}. This means that the total time complexity of Grover's algorithm is the number of iterations ($O(\sqrt[]{N})$) multiplied by the ``overhead" provided by the gates $U_f$ and $D$. The hardware construction of gate $U_f$ depends upon the problem being solved by the algorithm while the hardware for gate $D$ is independent of the problem and only depends upon the number of qubits required by the algorithm. 
+\subsubsection{Construction of gate $D$}
+The gate $D$ for $n$-qubits can be implemented in the following manner. This shows that gate $D$ requires $2n+1$ Hadamard ($H$) gates, $2n+1$ Pauli $X$ gates and an n-control Toffoli gate.
+
+\begin{align*}
+\Qcircuit @C=1.14em @R=1.25em
+{\lstick{\ket{x_1}} & \gate{H} & \gate{X} &  \ctrl{1} & \gate{X} & \gate{H} & \qw  \\
+\lstick{\ket{x_2}} & \gate{H} & \gate{X} &  \ctrl{4} & \gate{X} & \gate{H} & \qw  \\
+\lstick{\dot{}} & \dot{} & \dot{} & & \dot{} & \dot{} & \\
+\lstick{\dot{}} & \dot{} & \dot{} & & \dot{} & \dot{} & \\
+\lstick{\dot{}} & \dot{} & \dot{} & & \dot{} & \dot{} & \\
+\lstick{\ket{x_n}} & \gate{H} & \gate{X} &  \ctrl{1} & \gate{X} & \gate{H} & \qw  \\
+\lstick{\ket{0}} & \gate{x} & \gate{H} &  \targ & \qw & \qw & \qw }
+\end{align*}
+
+\subsubsection{Construction of gate $U_f$}
+The action of $U_f$ on qubits is defined as,
+\begin{equation}
+U_f\ket{x} = (-1)^{f(x)}\ket{x}
+\end{equation}
+Therefore, the underlying hardware of $U_f$ depends upon the function, $f(x)$.
+\subsubsection{The hidden subgroup problem}
+9
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Approximations \& Simulating quantum systems}
+10
+\subsection{Approximating Matrix powers}
+11
+\subsection{Approximating Partition functions}
+12
