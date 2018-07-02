@@ -39,7 +39,7 @@ def shor(N):
         print('Number of qubits required = ' + str(m+n) + '. Did you really think python could simulate that?')
         if m + n > 72 : print('Google only has 72! You need to phone DWave')
         elif m + n > 50 : print('Intel has only managed 50 qubits')
-        elif m + n > 20 : print('Rigetti would have had 20 but one of them broke')
+        elif m + n > 20 : print('Rigetti would have had 20 but one of them broke.')
         return 0
 
     engine = pq.MainEngine()
@@ -94,7 +94,7 @@ count = 0
 print("\n=======================================")
 print("Welcome to ProjectQ -- the home of ")
 print("ineffectual quantum computer simulation")
-print("in python! Here is an implementation of")
+print("in Python! Here is an implementation of")
 print("Shor's algorithm for factorising an")
 print("integer. We challenge you to find one")
 print("you couldn't have factorised yourself!")
