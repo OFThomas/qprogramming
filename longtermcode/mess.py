@@ -10,30 +10,41 @@ class OpenToplevels(Frame):
     def __init__(self):
         self.root = Tk()
         self.button_ctr=0
-
-        hi_text="Hello World\n Do you want to do some quantum programming? \n(click me)"
-        self.B0=Button(self.root, fg="white", bg="blue",text=hi_text,
+        font=('Comic Sans MS', 12)
+        self.root.option_add("*Font", font)
+        txtwdth=20
+        hi_text="Do you want to do some quantum programming? \n(click me)"
+        #top
+        self.B0=Button(self.root, fg="white", bg="blue",text=hi_text,width=2*txtwdth,
                   command=self.begin)
-        self.B0.grid(row=0, column=0)
-        self.B1=Button(self.root, text="Project Q this way!",
+        self.B0.grid(row=0, column=0, columnspan=2)
+        
+        self.B1=Button(self.root, text="Project Q this way!",width=txtwdth,
                   command=run_projectq)
         self.B1.grid(row=1,column=0)
-        self.B2=Button(self.root, text="Pyquil",
+        #mid
+        self.B2=Button(self.root, text="Pyquil",width=txtwdth,
                   command=run_pyquil)
         self.B2.grid(row=1,column=1)
-        self.B3=Button(self.root, text="qiskit",
+        
+        self.B3=Button(self.root, text="qiskit",width=txtwdth,
                   command=run_qiskit)
         self.B3.grid(row=2,column=0)
-        self.B4=Button(self.root, text="qsharp",
+        #bot
+        self.B4=Button(self.root, text="qsharp",width=txtwdth,
                       command=run_qsharp)
         self.B4.grid(row=2,column=1)
-        self.B5=Button(self.root, text="shor",
+        
+        self.B5=Button(self.root, text="shor",width=txtwdth,
                        command=lambda:self.change_text(self.B4,"New text"))
         self.B5.grid(row=3,column=0)
-        self.B6=Button(self.root, text="Exit Tkinter", bg="red",
-                  command=self.root.quit).grid(row=100, column=0, sticky="we")
         
-        lab=Button(self.root, text='Shors value', command=self.usr_input).grid(row=5,column=5)       
+        shorenterval=Button(self.root, text='Shors value', width=txtwdth,
+                command=self.usr_input)
+        shorenterval.grid(row=5,column=5)  
+        #exit
+        self.B6=Button(self.root, text="Exit Tkinter", bg="red",
+                  command=self.root.quit).grid(row=100, column=0, columnspan=2, sticky="we")
         self.root.mainloop()
         
     def begin(self):
@@ -53,20 +64,20 @@ class OpenToplevels(Frame):
         ent.grid(row=0,column=1)
         def reply(name):
             showinfo(title="Reply", message = "Hello %s!" % name)
-         
+            print(name)
+            run_shor(int(name))
+
         ent.bind("<Return>", (lambda event: reply(ent.get())))
         btn = Button(id,text="Submit", command=(lambda: reply(ent.get())))
-        btn.pack(side=LEFT)
-
-
-    #def do_it():
+        btn.grid(row=1,column=0)
         
-        
+        return ent.get() 
+
     def change_text(self,button,new_text):
         button.config(text=new_text)
 
-def run_shor():
-    shor(15)
+def run_shor(n):
+    shor(n)
         
 def run_projectq():
     print('Pq')
