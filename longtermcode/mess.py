@@ -10,8 +10,10 @@ class MakeFrame():
     def __init__(self,location,color,width,height,row,col,sticky):
                self.frame = Frame(location, bg=color, width=width, height=height, padx=3, pady=3)
                self.frame.grid(row=row,column=col,sticky=sticky)
-               self.frame.rowconfigure(0, weight=1)
-               self.frame.columnconfigure(1, weight=40)
+               #this needs to update the previous frame that the object is being created on
+               #so location NOT self.frame.frame
+               location.rowconfigure(row, weight=1)
+               location.columnconfigure(col, weight=1)
                
 # An exemplary class
 class MakeButton():
@@ -43,10 +45,13 @@ class OpenToplevels(Frame):
         # make window called self.root
         self.root = Tk()
         print(type(self.root))
+        self.winwidth=640
+        self.winheight=480
+
         self.root.resizable(width=TRUE,height=TRUE)
-        self.root.geometry('{}x{}'.format(640,480))
+        self.root.geometry('{}x{}'.format(self.winwidth,self.winheight))
         self.root.rowconfigure(0, weight=1)
-        self.root.columnconfigure(0, weight=1,uniform=1)
+        self.root.columnconfigure(0, weight=1)
         
         #get that professional font
         font=('Comic Sans MS', 15)
@@ -56,7 +61,7 @@ class OpenToplevels(Frame):
         self.control = MakeFrame(self.root, 'white', 200, 40,1,0,'nsew')  
         self.view = MakeFrame(self.root,'black',100,100,0,0,'nsew')
         self.input = MakeFrame(self.view.frame,'green',100,100,0,0,'nsew')
-        self.output = MakeFrame(self.view.frame,'pink',100,100,0,1,'nsew')
+        self.output = MakeFrame(self.view.frame,'pink',100,100,0,1,'nswe')
 
         self.ctrl_ltop = MakeFrame(self.control.frame,'blue',10,10,0,0,'nsew')
         self.ctrl_lmid = MakeFrame(self.control.frame,'yellow',10,10,1,0,'nsew')
