@@ -13,17 +13,19 @@ class Oracle(BasicMathGate):
 def shor(N):
     # Check if number is even
     if N % 2 == 0:
-        print('Even number. Couldn\'t you have figured that out yourself?')
-        return 2  
-     
+        evenstr='Even number. Couldn\'t you have figured that out yourself?'
+        print(evenstr)
+        return evenstr  
+    
     # Step 1: Chose 1 < a < N uniformly at random
     a = np.random.randint(2,N-1)
     
     # Step 2: Compute b = gcd(a,N). If b > 1, output b and stop
     b = gcd(a,N)
     if b > 1:
-        print('Factor found by guessing: {0:d}'.format(b))
-        return b
+        guessstr='Factor found by guessing: {0:d}'.format(b)
+        print(guessstr)
+        return guessstr
     
     # Step 3: Find the order r of a modulo N for f(x) = a^x mod N
     # Quantum Part: using approximate periodicity to find r
@@ -39,7 +41,7 @@ def shor(N):
         if m + n > 72 : print('Google only has 72! You need to phone DWave')
         elif m + n > 50 : print('Intel has only managed 50 qubits')
         elif m + n > 20 : print('Rigetti would have had 20 but one of them broke.')
-        return 0
+        return 'Too many qubits required'
 
     engine = pq.MainEngine()
     # Initialise reqgisters
@@ -50,7 +52,8 @@ def shor(N):
     QFT | reg_1
 
     # Apply oracle to both registers
-    def f(x,y) : return (x, y^pow(a,x,N)) 
+    def f(x,y):
+        return (x, y^pow(a,x,N)) 
     Oracle(f) | (reg_1, reg_2)
     
     # Measure the second register (last n qubits)
@@ -75,14 +78,17 @@ def shor(N):
 
     # If r is odd the algorithm fails
     if r % 2 == 1:
-        print('Order r found is odd: algorithm failed')
-        return 0
+        orderoddstr='Order r found is odd: algorithm failed'
+        print(orderoddstr)
+        return orderoddstr
     
     # Step 4: Find factor of N
     s = gcd(a**(r//2)-1, N)
     if s == 1 or s == N:
-        print('Factor found is 1 or', N,': algorithm failed')
-        return 0
+        nonefoundstr='Factor found is 1 or %d : algorithm failed' % (N)
+        print(nonefoundstr)
+        return nonefoundstr
     
-    print('Factor found by Shor\'s algorithm is', s, 'using',m+n, 'qubits')
-    return s
+    foundfactstr="Factor found by Shor\'s algorithm is %d using %d qubits" % (s, m+n) 
+    print(foundfactstr)
+    return foundfactstr

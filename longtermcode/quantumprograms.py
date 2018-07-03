@@ -6,7 +6,7 @@ from tkinter.messagebox import showinfo
 import webbrowser
 
 def run_shor(n):
-    shor(n)
+    return shor(n)
         
 def run_projectq():
     s="project q"

@@ -68,20 +68,27 @@ class OpenToplevels(Frame):
         #id=Toplevel(self.root)
         #id.title("Enter a number to factorise")
          
-        l1=Label(self.view.frame, text="Integer")
-        l1.grid(row=10,column=10)
-        ent=Entry(self.view.frame, bd=5)
-        ent.grid(row=10,column=11)
+        l1=Label(self.input.frame, text="Integer")
+        l1.grid(row=0,column=0)
+        ent=Entry(self.input.frame, bd=5)
+        ent.grid(row=0,column=1)
+        
+        shorans=Message(self.output.frame, text="Shor's result:")
+        shorans.grid(row=0,column=0)
+
         def reply(name):
             #showinfo(title="Reply", message = "Hello %s!" % name)
-            print(name)
-            run_shor(int(name))
-
+            x=run_shor(int(name))
+            shorans.config(text="Shor's result: %s" % (x))    
+            
         ent.bind("<Return>", (lambda event: reply(ent.get())))
-        btn = Button(self.view.frame,text="Submit", command=(lambda: reply(ent.get())))
-        btn.grid(row=11,column=10)
+        btn = Button(self.input.frame,text="Submit", command=(lambda: reply(ent.get())))
+        btn.grid(row=1,column=1)
         
         return ent.get() 
+    
+    def printtogui(self):
+        print()
 
     def change_text(self,button,new_text):
         button.config(text=new_text)

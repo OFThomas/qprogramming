@@ -15,7 +15,11 @@ class MakeFrame():
                #so location NOT self.frame.frame
                location.rowconfigure(row, weight=1)
                location.columnconfigure(col, weight=1)
-               
+               #might also need to replace new layer...
+               #self.frame.rowconfigure(row,weight=1)
+               #self.frame.columnconfigure(col,weight=1)
+               # NO don't do it 
+
 # An exemplary class
 ## Damn straight!
 class MakeButton():
