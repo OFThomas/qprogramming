@@ -98,21 +98,21 @@ class OpenToplevels(Frame):
         id.destroy()
 
     def usr_input(self):
-        id=Toplevel(self.root)
-        id.title("Enter a number to factorise")
+        #id=Toplevel(self.root)
+        #id.title("Enter a number to factorise")
          
-        l1=Label(id, text="Integer")
-        l1.grid(row=0,column=0)
-        ent=Entry(id, bd=5)
-        ent.grid(row=0,column=1)
+        l1=Label(self.center, text="Integer")
+        l1.grid(row=10,column=10)
+        ent=Entry(center, bd=5)
+        ent.grid(row=10,column=11)
         def reply(name):
-            showinfo(title="Reply", message = "Hello %s!" % name)
+            #showinfo(title="Reply", message = "Hello %s!" % name)
             print(name)
             run_shor(int(name))
 
         ent.bind("<Return>", (lambda event: reply(ent.get())))
-        btn = Button(id,text="Submit", command=(lambda: reply(ent.get())))
-        btn.grid(row=1,column=0)
+        btn = Button(center,text="Submit", command=(lambda: reply(ent.get())))
+        btn.grid(row=11,column=10)
         
         return ent.get() 
 
