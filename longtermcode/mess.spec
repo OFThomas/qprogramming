@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['mess.py'],
-             pathex=['/home/oliver/Desktop/qprogramming/longtermcode'],
+             pathex=['/home/ot17409/Documents/qprogramming/longtermcode'],
              binaries=[],
              datas=[],
              hiddenimports=[],
