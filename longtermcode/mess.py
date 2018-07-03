@@ -6,8 +6,9 @@ from tkinter.messagebox import showinfo
 import webbrowser
 
 class MakeFrame():
-
-    def __init__(self,location,color,width,height,row,col,sticky):
+#frame is background color object for building buttons and text on
+   
+   def __init__(self,location,color,width,height,row,col,sticky):
                self.frame = Frame(location, bg=color, width=width, height=height, padx=3, pady=3)
                self.frame.grid(row=row,column=col,sticky=sticky)
                #this needs to update the previous frame that the object is being created on
@@ -16,8 +17,9 @@ class MakeFrame():
                location.columnconfigure(col, weight=1)
                
 # An exemplary class
+## Damn straight!
 class MakeButton():
-
+   
     def __init__(self,location,row,col,text,fun):
         self.fun = fun
         self.button = Button(location, fg="blue",
@@ -25,16 +27,16 @@ class MakeButton():
                              width=20,relief=RAISED,
                              command=self.fun)
         self.button.grid(row=row,column=col)
-
+    #function for button
     def set_fun(self,new_fun):
         self.fun = new_fun
-
+    
     def set_text(self,new_text):
         self.button.config(text=new_text)
-
+    #move button
     def set_position(self,row,col,sticky):
         self.button.grid(row=row,column=col,sticky=sticky)
-
+    
     def set_color(self,foreground,background):
         self.button.config(fg=foreground,bg=background)
 
@@ -44,10 +46,10 @@ class OpenToplevels(Frame):
     def __init__(self):
         # make window called self.root
         self.root = Tk()
-        print(type(self.root))
+        #dimensions of window 
         self.winwidth=640
         self.winheight=480
-
+        #geometry 
         self.root.resizable(width=TRUE,height=TRUE)
         self.root.geometry('{}x{}'.format(self.winwidth,self.winheight))
         self.root.rowconfigure(0, weight=1)
@@ -57,12 +59,14 @@ class OpenToplevels(Frame):
         font=('Comic Sans MS', 15)
         self.root.option_add("*Font", font)
         
-        # top_frame = Frame(self.root, bg='cyan', width=450, height=50, pady=3)
-        self.control = MakeFrame(self.root, 'white', 200, 40,1,0,'nsew')  
+        #make frames for backgrounds and splitting the widgits
         self.view = MakeFrame(self.root,'black',100,100,0,0,'nsew')
         self.input = MakeFrame(self.view.frame,'green',100,100,0,0,'nsew')
         self.output = MakeFrame(self.view.frame,'pink',100,100,0,1,'nswe')
-
+        #here be buttons 
+        self.control = MakeFrame(self.root, 'white', 200, 40,1,0,'nsew')  
+        
+        #can automate this 
         self.ctrl_ltop = MakeFrame(self.control.frame,'blue',10,10,0,0,'nsew')
         self.ctrl_lmid = MakeFrame(self.control.frame,'yellow',10,10,1,0,'nsew')
         self.ctrl_lbot = MakeFrame(self.control.frame,'green',10,10,2,0,'nsew')
@@ -70,12 +74,14 @@ class OpenToplevels(Frame):
         self.ctrl_rmid = MakeFrame(self.control.frame,'cyan',10,10,1,1,'nsew')
         self.ctrl_rbot = MakeFrame(self.control.frame,'purple',10,10,2,1,'nsew')
         
-        #top
+        #control buttons 
         self.B1 = MakeButton(self.ctrl_ltop.frame,0,0,"Project Q this way!",run_projectq)
         self.B2 = MakeButton(self.ctrl_rtop.frame,0,0,"Pyquil!",run_pyquil)
         self.B3 = MakeButton(self.ctrl_lmid.frame,0,0,"Qiskit!",run_qiskit)
         self.B4 = MakeButton(self.ctrl_rmid.frame,0,0,"Q#!",run_pyquil)
         self.B5 = MakeButton(self.ctrl_lbot.frame,0,0,"Shor!",self.usr_input)
+        
+        #GENERAL buttons exit
         self.B0 = MakeButton(self.root,90,0,"Quantum Programming Guide",self.begin)
         self.B0.set_position(90,0,"we")
         self.B6 = MakeButton(self.root,100,0,"Exit Tkinter",self.root.quit)
