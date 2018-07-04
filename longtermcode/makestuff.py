@@ -66,7 +66,7 @@ class MakeIO():
 
    # Function which adds a new object (button, etc.) to the
    # list of inputs. It automatically keeps track of where
-   # things should go
+   # things should go by incrementing a row counter
    def add_input(self,input,label):
       self.input[label] = input
       self.input[label].grid(row=self.irow,column=0)
@@ -80,10 +80,7 @@ class MakeIO():
    def make_itextbox(self,text,cmd,label):
       self.add_input(Entry(self.iframe,bd=0),label)
       self.input[label].grid(row=1,column=0)
-      self.itextbox.bind("<Return>", (lambda event:cmd(self.itextbox.get())))
-
-
-   Entry(self.iframe,bd=0),""
+      self.input[label].bind("<Return>", (lambda event:cmd(self.itextbox.get())))
       
    def make_input_box(self,text,cmd):
       self.make_label(text,"input_label")
