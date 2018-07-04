@@ -24,24 +24,72 @@ class MakeFrame():
 ## Damn straight!
 class MakeButton():
    
-    def __init__(self,location,row,col,text,fun):
+   def __init__(self,location,row,col,text,fun):
         self.fun = fun
         self.button = Button(location, fg="blue",
                              bg="white",text=text,
                              width=20,relief=RAISED,
                              command=self.fun)
         self.button.grid(row=row,column=col)
-    #function for button
-    def set_fun(self,new_fun):
-        self.fun = new_fun
+   #function for button
+   def set_fun(self,new_fun):
+      self.fun = new_fun
     
-    def set_text(self,new_text):
-        self.button.config(text=new_text)
-    #move button
-    def set_position(self,row,col,sticky):
-        self.button.grid(row=row,column=col,sticky=sticky)
+   def set_text(self,new_text):
+      self.button.config(text=new_text)
+   #move button
+   def set_position(self,row,col,sticky):
+      self.button.grid(row=row,column=col,sticky=sticky)
     
-    def set_color(self,foreground,background):
-        self.button.config(fg=foreground,bg=background)
+   def set_color(self,foreground,background):
+      self.button.config(fg=foreground,bg=background)
 
+   # Remove the button
+   def destroy(self):
+      self.button.destroy()
+   
+        
+# Class for handling user interactions in the input output area
+# Takes two MakeFrame objects as arguments in the constructor.
+#
+class MakeIO():
+   
+   def __init__(self,input,output):
+      self.iframe = input.frame
+      self.oframe = output.frame
+      self.input = {}
+      self.output = {}
+      self.irow,self.orow = 0,0
+      
+   def add_input(self,input,label):
+      self.input[label] = input
+      self.input[label].grid(row=self.irow,column=0)
+      self.irow = self.irow + 1
+      
+   def make_label(self,text,label):
+      self.add_input(Label(self.iframe, text=text),label)
+      self.input[label].grid(row=self.irow,column=0)
+      self.irow = self.irow + 1
 
+   def make_itextbox(self,)
+      
+   def make_input_box(self,text,cmd):
+      self.make_label(text,"input_label")
+      self.itextbox=Entry(self.iframe, bd=5)
+      self.itextbox.grid(row=1,column=0)
+      self.itextbox.bind("<Return>", (lambda event:cmd(self.itextbox.get())))
+      self.btn = MakeButton(self.iframe,2,0,"Submit",lambda:cmd(self.itextbox.get()))
+      
+   def get_answer(self):
+      return self.itextbox.get()
+      
+   def set_output(self,text):
+      self.olabel = Message(self.oframe, text=text)
+      self.olabel.grid(row=0,column=0)
+
+   def clear_all(self):
+      self.ilabel.destroy()
+      self.ilabel1.destroy()
+      self.itextbox.destroy()
+      self.btn.destroy()
+      self.olabel.destroy()
