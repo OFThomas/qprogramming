@@ -53,31 +53,40 @@ class MakeButton():
 # Takes two MakeFrame objects as arguments in the constructor.
 #
 class MakeIO():
-   
+
+   # Constructor
+   # Create empty dictionaries for storing textboxes, buttons,
+   # labels etc.
    def __init__(self,input,output):
       self.iframe = input.frame
       self.oframe = output.frame
       self.input = {}
       self.output = {}
       self.irow,self.orow = 0,0
-      
+
+   # Function which adds a new object (button, etc.) to the
+   # list of inputs. It automatically keeps track of where
+   # things should go
    def add_input(self,input,label):
       self.input[label] = input
       self.input[label].grid(row=self.irow,column=0)
       self.irow = self.irow + 1
       
    def make_label(self,text,label):
-      self.add_input(Label(self.iframe, text=text),label)
+      self.add_input(Label(self.iframe,text=text),label)
       self.input[label].grid(row=self.irow,column=0)
       self.irow = self.irow + 1
 
-   def make_itextbox(self,text,cmd)
+   def make_itextbox(self,text,cmd,label):
+      self.add_input(Entry(self.iframe,bd=0),label)
+      self.input[label].grid(row=1,column=0)
+      self.itextbox.bind("<Return>", (lambda event:cmd(self.itextbox.get())))
+
+
+   Entry(self.iframe,bd=0),""
       
    def make_input_box(self,text,cmd):
       self.make_label(text,"input_label")
-      self.itextbox=Entry(self.iframe, bd=5)
-      self.itextbox.grid(row=1,column=0)
-      self.itextbox.bind("<Return>", (lambda event:cmd(self.itextbox.get())))
       self.btn = MakeButton(self.iframe,2,0,"Submit",lambda:cmd(self.itextbox.get()))
       
    def get_answer(self):
