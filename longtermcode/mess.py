@@ -31,7 +31,8 @@ class OpenToplevels(Frame):
         self.input = MakeFrame(self.view.frame,'green',100,100,0,0,'nsew')
         self.output = MakeFrame(self.view.frame,'pink',100,100,0,1,'nswe')
         #here be buttons 
-        self.control = MakeFrame(self.root, 'white', 200, 40,1,0,'nsew')  
+        self.control = MakeFrame(self.root, 'white',200, 40,1,0,'nsew')  
+        self.interact = MakeIO(self.input,self.output)
         
         #can automate this 
         self.ctrl_ltop = MakeFrame(self.control.frame,'blue',10,10,0,0,'nsew')
@@ -42,10 +43,10 @@ class OpenToplevels(Frame):
         self.ctrl_rbot = MakeFrame(self.control.frame,'purple',10,10,2,1,'nsew')
         
         #control buttons 
-        self.B1 = MakeButton(self.ctrl_ltop.frame,0,0,"Project Q this way!",run_projectq)
-        self.B2 = MakeButton(self.ctrl_rtop.frame,0,0,"Pyquil!",run_pyquil)
-        self.B3 = MakeButton(self.ctrl_lmid.frame,0,0,"Qiskit!",run_qiskit)
-        self.B4 = MakeButton(self.ctrl_rmid.frame,0,0,"Q#!",run_pyquil)
+        self.B1 = MakeButton(self.ctrl_ltop.frame,0,0,"Project Q this way!",self.clear_io)
+        self.B2 = MakeButton(self.ctrl_rtop.frame,0,0,"Pyquil!",self.clear_io)
+        self.B3 = MakeButton(self.ctrl_lmid.frame,0,0,"Qiskit!",self.clear_io)
+        self.B4 = MakeButton(self.ctrl_rmid.frame,0,0,"Q#!",self.clear_io)
         self.B5 = MakeButton(self.ctrl_lbot.frame,0,0,"Shor!",self.usr_input)
         
         #GENERAL buttons exit
@@ -54,8 +55,7 @@ class OpenToplevels(Frame):
         self.B6 = MakeButton(self.root,100,0,"Exit Tkinter",self.root.quit)
         self.B6.set_position(100,0,"we")
     
-        self.root.mainloop()
-        
+        self.root.mainloop()        
 
     def begin(self):
         print("hi there, everyone!")
@@ -65,34 +65,27 @@ class OpenToplevels(Frame):
         id.destroy()
 
     def usr_input(self):
-        #id=Toplevel(self.root)
-        #id.title("Enter a number to factorise")
-         
-        l1=Label(self.input.frame, text="Integer")
-        l1.grid(row=0,column=0)
-        ent=Entry(self.input.frame, bd=5)
-        ent.grid(row=0,column=1)
-        
-        shorans=Message(self.output.frame, text="Shor's result:")
-        shorans.grid(row=0,column=0)
 
-        def reply(name):
-            #showinfo(title="Reply", message = "Hello %s!" % name)
-            x=run_shor(int(name))
-            shorans.config(text="Shor's result: %s" % (x))    
+        def do_shor(response):
+            x=run_shor(int(response))
+            self.interact.set_output("Shor's result: %s" % (x))
             
-        ent.bind("<Return>", (lambda event: reply(ent.get())))
-        btn = Button(self.input.frame,text="Submit", command=(lambda: reply(ent.get())))
-        btn.grid(row=1,column=1)
-        
-        return ent.get() 
+        self.interact.make_label("Enter a number to factorise:","label1")
+        self.interact.make_input_box("Integer",do_shor)
+        self.interact.set_output("Shor's result:")
+
+        return self.interact.get_answer()
     
     def printtogui(self):
         print()
 
     def change_text(self,button,new_text):
-        button.config(text=new_text)
+        button.button.config(text=new_text)
         showinfo(title="Reply", message = "Broken!" )
+        button.button.destroy()
+
+    def clear_io(self):
+        self.interact.clear_all()
 
 
 ot=OpenToplevels()

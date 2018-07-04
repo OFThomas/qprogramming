@@ -71,7 +71,7 @@ class MakeIO():
       self.input[label].grid(row=self.irow,column=0)
       self.irow = self.irow + 1
 
-   def make_itextbox(self,)
+   def make_itextbox(self,text,cmd)
       
    def make_input_box(self,text,cmd):
       self.make_label(text,"input_label")
