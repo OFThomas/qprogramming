@@ -69,7 +69,7 @@ class MakeIO():
       self.input[label].grid(row=self.irow,column=0)
       self.irow = self.irow + 1
 
-   def make_insert_text(self,label,cmd):
+   def make_text_entry(self,label,cmd):
       self.input[label] = Entry(self.iframe,bd=0)
       self.input[label].grid(row=self.irow,column=0)
       self.input[label].bind("<Return>",cmd)
@@ -82,7 +82,8 @@ class MakeIO():
                                          
    def make_input_box(self,text,cmd):
       self.make_label(text,"input_label")
-      self.make_insert_text("insert_box",lambda:cmd(self.input["insert_box"].get()))
+      ## need to do lambda event: ... for binds
+      self.make_text_entry("insert_box",lambda event:cmd(self.input["insert_box"].get()))
       self.make_button("insert_button",lambda:cmd(self.input["insert_box"].get()))
       
    def get_answer(self):
