@@ -17,10 +17,13 @@ def shor(N):
     guess = 0  # Becomes 1 if guessed by choice of a
     odd_order = 0  # Number of times the order was found to be odd
     trivial = 0  # Number of times trivial factors 1 or N are found
+    too_large = 0  # Becomes 1 if too many qubits to simulate
+    do_loop = 1  # Checks to see if we should do while loop
     
     # Check if number is even
     if N % 2 == 0:
-        return 2, 0  
+        s = 2
+        do_loop = 0
     
     m = int(np.ceil(np.log2(N**2)))   # Size of first register
     M = 2**m   # M is the smallest power of 2 greater than N^2
@@ -28,14 +31,15 @@ def shor(N):
     
     # Check how many qubits need to be simulated
     if m + n > 28:
-        # Also return that there are too many qubits to simulate
-        return 0, 0
+        too_large = 1
+        do_loop = 0
+        s = 0
     
     # Define the oracle function
     def f(x,y) : return (x, y^pow(a,x,N)) 
     
     
-    while count < prime_limit:
+    while (count < prime_limit and do_loop == 1):
         # Step 1: Chose 1 < a < N uniformly at random
         a = np.random.randint(2,N)
         
@@ -101,15 +105,16 @@ def shor(N):
     if count == prime_limit:
         s = N
           
-    return s, count, guess, odd_order, trivial
+    return s, count, guess, odd_order, trivial, too_large
 
 N_input = input("Input an integer to factorise: ")
 
-factor, iterations, guess, odd_order, trivial = shor(int(N_input))
+factor, iterations, guess, odd_order, trivial, too_large = shor(int(N_input))
 print('Factor found =', factor)
 print('Iterations of the algorithm = ',iterations)
 print('Was it guessed = ', guess)
 print('Number of times order r was odd = ', odd_order)
 print('Number of times trivial factor 1 or N was found = ', trivial)
+print('Too large to simulate = ', too_large)
 
 
