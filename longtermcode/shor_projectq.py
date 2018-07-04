@@ -12,6 +12,12 @@ class Oracle(BasicMathGate):
 
 
 def shor(N):
+    count = 1  # Number of tries it took to find a factor
+    prime_limit = 10  # Number of times you would like to run the algorithm before giving up
+    guess = 0  # Becomes 1 if guessed by choice of a
+    odd_order = 0  # Number of times the order was found to be odd
+    trivial = 0  # Number of times trivial factors 1 or N are found
+    
     # Check if number is even
     if N % 2 == 0:
         return 2, 0  
@@ -27,13 +33,6 @@ def shor(N):
     
     # Define the oracle function
     def f(x,y) : return (x, y^pow(a,x,N)) 
-    
-    
-    count = 1  # Number of tries it took to find a factor
-    prime_limit = 10  # Number of times you would like to run the algorithm before giving up
-    guess = 0  # Becomes 1 if guessed by choice of a
-    odd_order = 0  # Number of times the order was found to be odd
-    trivial = 0  # Number of times trivial factors 1 or N are found
     
     
     while count < prime_limit:
