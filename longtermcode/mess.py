@@ -72,7 +72,7 @@ class OpenToplevels(Frame):
             
         self.interact.make_label("Enter a number to factorise:","label1")
         self.interact.make_input_box("Integer",do_shor)
-        self.interact.set_output("Shor's result:")
+        self.interact.set_output("Shor's result:","out_label")
 
         return self.interact.get_answer()
     

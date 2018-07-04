@@ -63,39 +63,39 @@ class MakeIO():
       self.input = {}
       self.output = {}
       self.irow,self.orow = 0,0
-
-   # Function which adds a new object (button, etc.) to the
-   # list of inputs. It automatically keeps track of where
-   # things should go by incrementing a row counter
-   def add_input(self,input,label):
-      self.input[label] = input
-      self.input[label].grid(row=self.irow,column=0)
-      self.irow = self.irow + 1
       
    def make_label(self,text,label):
-      self.add_input(Label(self.iframe,text=text),label)
+      self.input[label] = Label(self.iframe,text=text)
       self.input[label].grid(row=self.irow,column=0)
       self.irow = self.irow + 1
 
-   def make_itextbox(self,text,cmd,label):
-      self.add_input(Entry(self.iframe,bd=0),label)
-      self.input[label].grid(row=1,column=0)
-      self.input[label].bind("<Return>", (lambda event:cmd(self.itextbox.get())))
-      
+   def make_insert_text(self,label,cmd):
+      self.input[label] = Entry(self.iframe,bd=0)
+      self.input[label].grid(row=self.irow,column=0)
+      self.input[label].bind("<Return>",cmd)
+      self.irow = self.irow + 1
+                             
+   def make_button(self,label,cmd):
+      self.input[label] = MakeButton(self.iframe,2,0,"Submit",cmd)
+      self.input[label].button.grid(row=self.irow,column=0)
+      self.irow = self.irow + 1
+                                         
    def make_input_box(self,text,cmd):
       self.make_label(text,"input_label")
-      self.btn = MakeButton(self.iframe,2,0,"Submit",lambda:cmd(self.itextbox.get()))
+      self.make_insert_text("insert_box",lambda:cmd(self.input["insert_box"].get()))
+      self.make_button("insert_button",lambda:cmd(self.input["insert_box"].get()))
       
    def get_answer(self):
-      return self.itextbox.get()
+      return self.input["insert_box"].get()
       
-   def set_output(self,text):
-      self.olabel = Message(self.oframe, text=text)
-      self.olabel.grid(row=0,column=0)
+   def set_output(self,text,label):
+      self.output[label] = Message(self.oframe, text=text)
+      self.output[label].grid(row=0,column=0)
 
    def clear_all(self):
-      self.ilabel.destroy()
-      self.ilabel1.destroy()
-      self.itextbox.destroy()
-      self.btn.destroy()
-      self.olabel.destroy()
+      for key in self.input:
+         self.input[key].destroy()
+      for key in self.output:
+         self.output[key].destroy()
+      
+      
