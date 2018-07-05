@@ -40,9 +40,6 @@ class MakeButton():
       self.button.config(fg=foreground,bg=background)
 
    # Remove the button
-   # Just delete the object and have this as part of
-   # the destructor. Is there a delete keyword in
-   # python?
    def destroy(self):
       self.button.destroy()
    
@@ -103,5 +100,4 @@ class MakeIO():
          
    def run_function(self,fun):
       self.clear_all()
-      print("What I'm about to run:",fun)
-      #fun()
+      fun()

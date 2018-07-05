@@ -2,10 +2,10 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter.messagebox import showinfo
 import webbrowser
-#what the buttons actually do...
-from quantumprograms import *
 #constructors
 from makestuff import *
+#what the buttons actually do...
+from quantumprograms import *
 
 class OpenToplevels(Frame):
     #open different windows
@@ -35,58 +35,22 @@ class OpenToplevels(Frame):
         self.interact = MakeIO(self.input,self.output)
         
         colors=['blue', 'yellow', 'green', 'orange', 'cyan', 'purple']
-        button_atr=[['Project Q',run_projectq], ['PyQuil',run_pyquil],
-                    ['Qiskit',run_qiskit], ['Q#',run_qsharp],
-                    ['Shor',run_qsharp],['something',run_projectq]]
+        buttontext=['Project Q', 'PyQuil', 'Qiskit', 'Q#', 'Shor','']
         halfcols=int(0.5*len(colors))
-        
-        self.ctrl={}#[None]*len(colors)
-        self.B={}#[None]*len(colors)
-        print()
-        print()
-        print(run_projectq)
-        print(run_qsharp)
-        print(run_pyquil)
-        print(run_qiskit)
-        print()
-        print()
-
+        self.ctrl= {}
+        self.B={}
         for j in range(0,2):
             for i in range(0,halfcols):
                 self.ctrl[i+j*halfcols]=MakeFrame(self.control.frame,colors[i+j*halfcols], 
-                                                  10,10, 10+i, 10+j, 'nsew')
-                self.B[i+j*halfcols]=MakeButton(self.ctrl[i+j*halfcols].frame,i,j,
-                                                button_atr[i+j*halfcols][0],
-                                                lambda:self.interact.run_function(button_atr[i+j*halfcols][1]))
-                print("In loop:",button_atr[i+j*halfcols][0], self.B[i+j*halfcols].fun)
-                self.B[i+j*halfcols].fun()
-                if i+j*halfcols > 2 : break
-
-        print()
-        print()
-        print("Out of loop:",button_atr[0][0], self.B[0].fun)
-        self.B[0].fun()
-        print("Out of loop:",button_atr[1][0], self.B[1].fun)
-        self.B[1].fun()
-        print("Out of loop:",button_atr[2][0], self.B[2].fun)
-        self.B[2].fun()
-        print("Out of loop:",button_atr[3][0], self.B[3].fun)
-        self.B[3].fun()
-        print("Out of loop:",button_atr[4][0], self.B[4].fun)
-        self.B[4].fun()
-        print("Out of loop:",button_atr[5][0], self.B[5].fun)
-        self.B[5].fun()
+                                                     10,10, 10+i, 10+j, 'nsew')
+                self.B[i+j*halfcols]=MakeButton(self.ctrl[i+j*halfcols].frame,10+i,10+j, buttontext[i], lambda:self.interact.run_function(run_projectq))
         
-        print("Here is before:",type(button_atr[0][1]))
-        print(button_atr[0][1])
-        print("What type is this:",type(run_projectq))
-        print(run_projectq)
         
         #GENERAL buttons exit
         self.Bdocs = MakeButton(self.root,90,0,"Quantum Programming Guide",self.begin)
         self.Bdocs.set_position(90,0,"we")
-        self.QPrexit = MakeButton(self.root,100,0,"Exit Tkinter",self.root.quit)
-        self.QPrexit.set_position(100,0,"we")
+        self.Bexit = MakeButton(self.root,100,0,"Exit Tkinter",self.root.quit)
+        self.Bexit.set_position(100,0,"we")
     
         self.root.mainloop()        
 
