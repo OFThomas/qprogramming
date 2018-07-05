@@ -1,4 +1,3 @@
-#!/usr/local/bin/python3
 from tkinter import *
 from tkinter import messagebox
 from tkinter.messagebox import showinfo
@@ -45,28 +44,7 @@ class OpenToplevels(Frame):
                 self.ctrl[i+j*halfcols]=MakeFrame(self.control.frame,colors[i+j*halfcols], 
                                                      10,10, 10+i, 10+j, 'nsew')
                 self.B[i+j*halfcols]=MakeButton(self.ctrl[i+j*halfcols].frame,10+i,10+j, buttontext[i], lambda:self.interact.run_function(run_projectq))
-
-        #can automate this 
-        self.ctrl_ltop = MakeFrame(self.control.frame,'blue',10,10,0,0,'nsew')
-        self.ctrl_lmid = MakeFrame(self.control.frame,'yellow',10,10,1,0,'nsew')
-        self.ctrl_lbot = MakeFrame(self.control.frame,'green',10,10,2,0,'nsew')
-        self.ctrl_rtop = MakeFrame(self.control.frame,'orange',10,10,0,1,'nsew')
-        self.ctrl_rmid = MakeFrame(self.control.frame,'cyan',10,10,1,1,'nsew')
-        self.ctrl_rbot = MakeFrame(self.control.frame,'purple',10,10,2,1,'nsew')
-
-       
-
-       #control buttons
-        self.B1 = MakeButton(self.ctrl_ltop.frame,0,0,"Project Q this way!",
-                             lambda:self.interact.run_function(run_projectq))
-        self.B2 = MakeButton(self.ctrl_rtop.frame,0,0,"Pyquil!",
-                             lambda:self.interact.run_function(run_projectq))
-        self.B3 = MakeButton(self.ctrl_lmid.frame,0,0,"Qiskit!",
-                             lambda:self.interact.run_function(run_projectq))
-        self.B4 = MakeButton(self.ctrl_rmid.frame,0,0,"Q#!",
-                             lambda:self.interact.run_function(run_projectq))
-        self.B5 = MakeButton(self.ctrl_lbot.frame,0,0,"Shor!",
-                             lambda:self.interact.run_function(self.usr_input))
+        
         
         #GENERAL buttons exit
         self.Bdocs = MakeButton(self.root,90,0,"Quantum Programming Guide",self.begin)
