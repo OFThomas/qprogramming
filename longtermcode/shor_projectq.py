@@ -36,7 +36,8 @@ def shor(N):
         s = 0
     
     # Define the oracle function
-    def f(x,y) : return (x, y^pow(a,x,N)) 
+    def f(x,y): 
+        return (x, y^pow(a,x,N)) 
     
     
     while (count < prime_limit and do_loop == 1):
