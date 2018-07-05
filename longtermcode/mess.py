@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-#!/usr/bin/env python
-=======
->>>>>>> a0a3b084b95d42f34a0bf47bc84e4aafcae41654
 from tkinter import *
 from tkinter import messagebox
 from tkinter.messagebox import showinfo
