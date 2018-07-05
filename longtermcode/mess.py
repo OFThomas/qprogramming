@@ -41,24 +41,21 @@ class OpenToplevels(Frame):
                     ['Shor',run_qsharp],['something',run_projectq]]
         halfcols=int(0.5*len(colors))
         
-        self.ctrl={}#[None]*len(colors)
-        self.B={}#[None]*len(colors)
-        print()
-        print()
-        print(run_projectq)
+        self.ctrl=[None]*len(colors)
+        self.B=[None]*len(colors)
+        
+        print('\n',run_projectq)
         print(run_qsharp)
         print(run_pyquil)
-        print(run_qiskit)
-        print()
-        print()
+        print(run_qiskit,'\n')
 
         for j in range(0,2):
             for i in range(0,halfcols):
                 self.ctrl[i+j*halfcols]=MakeFrame(self.control.frame,colors[i+j*halfcols], 
-                                                  10,10, 10+i, 10+j, 'nsew')
+                                                  10,10,i,j, 'nsew')
                 self.B[i+j*halfcols]=MakeButton(self.ctrl[i+j*halfcols].frame,i,j,
-                                                button_atr[i+j*halfcols][0],
-                                                lambda:self.interact.run_function(button_atr[i+j*halfcols][1]))
+                                        button_atr[i+j*halfcols][0],
+                                        lambda:self.interact.run_function(button_atr[i+j*halfcols][1]))
                 print("In loop:",button_atr[i+j*halfcols][0], self.B[i+j*halfcols].fun)
                 self.B[i+j*halfcols].fun()
                 if i+j*halfcols > 2 : break
