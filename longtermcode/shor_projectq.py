@@ -108,14 +108,14 @@ def shor(N):
           
     return s, count, guess, odd_order, trivial, too_large
 
-N_input = input("Input an integer to factorise: ")
+#N_input = input("Input an integer to factorise: ")
 
-factor, iterations, guess, odd_order, trivial, too_large = shor(int(N_input))
-print('Factor found =', factor)
-print('Iterations of the algorithm = ',iterations)
-print('Was it guessed = ', guess)
-print('Number of times order r was odd = ', odd_order)
-print('Number of times trivial factor 1 or N was found = ', trivial)
-print('Too large to simulate = ', too_large)
+#factor, iterations, guess, odd_order, trivial, too_large = shor(int(N_input))
+#print('Factor found =', factor)
+#print('Iterations of the algorithm = ',iterations)
+#print('Was it guessed = ', guess)
+#print('Number of times order r was odd = ', odd_order)
+#print('Number of times trivial factor 1 or N was found = ', trivial)
+#print('Too large to simulate = ', too_large)
 
 

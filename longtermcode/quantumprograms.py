@@ -3,7 +3,7 @@ from tkinter.messagebox import showinfo
 from shor_projectq import shor
 
 def run_shor(n):
-    return shor(n)
+    return shor(n)[0]
         
 def run_projectq():
     s="project q"
