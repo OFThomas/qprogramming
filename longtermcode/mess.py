@@ -64,33 +64,31 @@ class OpenToplevels(Frame):
 
         
         print('\n frame ', self.ctrl, '\n')
-        print('type self.ctrl', type(self.ctrl), 'type self.ctrl[0]', type(self.ctrl[0]))
-        for y in range(0,4):
+        print('type self.ctrl', type(self.ctrl), 'type self.ctrl[0]', type(self.ctrl[0]), '\n')
+        for y in range(0,len(colors)):
             text=self.ctrl[y]
             print('type self.ctrl[%d]' % (y), type(self.ctrl[y]) )
             print('button location', text.frame) 
         
         print('\n button', self.B, '\n')
 
-        print()
-        print()
-        print("Out of loop:",button_atr[0][0], self.B[0].fun)
-        self.B[0].fun()
-        print("Out of loop:",button_atr[1][0], self.B[1].fun)
+        print("\n\nOut of loop:",button_atr[0][0], self.B[0].fun)
+        a=self.B[0].fun
+        print(a)
+        print(a())
+        print("\nOut of loop:",button_atr[1][0], self.B[1].fun)
         self.B[1].fun()
-        print("Out of loop:",button_atr[2][0], self.B[2].fun)
+        print("\nOut of loop:",button_atr[2][0], self.B[2].fun)
         self.B[2].fun()
-        print("Out of loop:",button_atr[3][0], self.B[3].fun)
+        print("\nOut of loop:",button_atr[3][0], self.B[3].fun)
         self.B[3].fun()
-        print("Out of loop:",button_atr[4][0], self.B[4].fun)
+        print("\nOut of loop:",button_atr[4][0], self.B[4].fun)
         self.B[4].fun()
-        print("Out of loop:",button_atr[5][0], self.B[5].fun)
+        print("\nOut of loop:",button_atr[5][0], self.B[5].fun)
         self.B[5].fun()
         
-        print("Here is before:",type(button_atr[0][1]))
-        print(button_atr[0][1])
-        print("What type is this:",type(run_projectq))
-        print(run_projectq)
+        print("Here is before:",type(button_atr[0][1]), print(button_atr[0][1]))
+        print("What type is this:",type(run_projectq), print(run_projectq))
         
         #GENERAL buttons exit
         self.Bdocs = MakeButton(self.root,90,0,"Quantum Programming Guide",self.begin)
