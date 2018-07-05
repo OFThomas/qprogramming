@@ -24,11 +24,10 @@ class Background(Frame):
         return 
 
     def makedocs(self):
-         doclabels=[['Quantum programming guide',lambda:None], 
-                ['Riggeti docs',lambda:None],
-                ['Qiskit docs',lambda:None],
-                ['Project Q docs',lambda:None]]
-        #self.b0=MakeButton()
+         self.doclabels=[['Quantum programming guide',partial(print, 'q prog')], 
+                ['Riggeti docs',partial(print,'rigetti docs'],
+                ['Qiskit docs',partial(print, 'qiskit docs'],
+                ['Project Q docs',partial(print, 'projectq']]
 
 
 
