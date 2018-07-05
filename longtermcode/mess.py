@@ -35,14 +35,14 @@ class OpenToplevels(Frame):
         self.control = MakeFrame(self.root, 'white',200, 40,1,0,'nsew')  
         self.interact = MakeIO(self.input,self.output)
         
-        colors=['blue', 'yellow', 'green', 'orange', 'cyan', 'purple']
-        button_atr=[['Project Q',run_projectq], ['PyQuil',run_pyquil],
+        self.colors=['blue', 'yellow', 'green', 'orange', 'cyan', 'purple']
+        self.button_atr=[['Project Q',run_projectq], ['PyQuil',run_pyquil],
                     ['Qiskit',run_qiskit], ['Q#',run_qsharp],
                     ['Shor',run_qsharp],['something',run_projectq]]
-        halfcols=int(0.5*len(colors))
+        self.halfcols=int(0.5*len(self.colors))
         
-        self.ctrl=[None]*len(colors)
-        self.B=[None]*len(colors)
+        self.ctrl=[None]*len(self.colors)
+        self.B=[None]*len(self.colors)
         
         print('\n',run_projectq)
         print(run_qsharp)
@@ -50,44 +50,44 @@ class OpenToplevels(Frame):
         print(run_qiskit,'\n')
 
         for j in range(0,2):
-            for i in range(0,halfcols):
-                self.ctrl[i+j*halfcols]=MakeFrame(self.control.frame, colors[i+j*halfcols], 
+            for i in range(0,self.halfcols):
+                self.ctrl[i+j*self.halfcols]=MakeFrame(self.control.frame, self.colors[i+j*self.halfcols], 
                                                   10,10,i,j, 'nsew')
-                self.B[i+j*halfcols]=MakeButton(self.ctrl[i+j*halfcols].frame, i,j,
-                                        button_atr[i+j*halfcols][0],
-                                        lambda:self.interact.run_function(button_atr[i+j*halfcols][1]))
-                print("In loop:",button_atr[i+j*halfcols][0], self.B[i+j*halfcols].fun)
+                self.B[i+j*self.halfcols]=MakeButton(self.ctrl[i+j*self.halfcols].frame, i,j,
+                                        self.button_atr[i+j*self.halfcols][0],
+                                        lambda:self.run_function(self.button_atr[i+j*self.halfcols][0]))
+                print("In loop:",self.button_atr[i+j*self.halfcols][0], self.B[i+j*self.halfcols].fun)
                 
                 
                 #self.B[i+j*halfcols].fun()
-                #if i+j*halfcols > 2 : break
+                if i+j*self.halfcols > 2 : break
 
         
-        print('\n frame ', self.ctrl, '\n')
-        print('type self.ctrl', type(self.ctrl), 'type self.ctrl[0]', type(self.ctrl[0]), '\n')
-        for y in range(0,len(colors)):
-            text=self.ctrl[y]
-            print('type self.ctrl[%d]' % (y), type(self.ctrl[y]) )
-            print('button location', text.frame) 
+        #print('\n frame ', self.ctrl, '\n')
+        #print('type self.ctrl', type(self.ctrl), 'type self.ctrl[0]', type(self.ctrl[0]), '\n')
+        #for y in range(0,len(colors)):
+        #    text=self.ctrl[y]
+        #    print('type self.ctrl[%d]' % (y), type(self.ctrl[y]) )
+        #    print('button location', text.frame) 
         
-        print('\n button', self.B, '\n')
+        #print('\n button', self.B, '\n')
 
-        print("\n\nOut of loop:",button_atr[0][0], self.B[0].fun)
-        a=self.B[0].fun
-        print(a)
-        print(a())
-        print("\nOut of loop:",button_atr[1][0], self.B[1].fun)
+        print("\n\nOut of loop:",self.button_atr[0][0], self.B[0].fun)
+        self.B[0].fun()
+        #print(a)
+        #print(a())
+        print("Out of loop:",self.button_atr[1][0], self.B[1].fun)
         self.B[1].fun()
-        print("\nOut of loop:",button_atr[2][0], self.B[2].fun)
+        print("Out of loop:",self.button_atr[2][0], self.B[2].fun)
         self.B[2].fun()
-        print("\nOut of loop:",button_atr[3][0], self.B[3].fun)
+        print("Out of loop:",self.button_atr[3][0], self.B[3].fun)
         self.B[3].fun()
-        print("\nOut of loop:",button_atr[4][0], self.B[4].fun)
+        print("Out of loop:",self.button_atr[4][0], self.B[4].fun)
         self.B[4].fun()
-        print("\nOut of loop:",button_atr[5][0], self.B[5].fun)
+        print("Out of loop:",self.button_atr[5][0], self.B[5].fun)
         self.B[5].fun()
         
-        print("Here is before:",type(button_atr[0][1]), print(button_atr[0][1]))
+        print("Here is before:",type(self.button_atr[0][1]), print(self.button_atr[0][1]))
         print("What type is this:",type(run_projectq), print(run_projectq))
         
         #GENERAL buttons exit
@@ -126,6 +126,11 @@ class OpenToplevels(Frame):
 
     def clear_io(self):
         self.interact.clear_all()
+
+    def run_function(self,label):
+        self.interact.clear_all()
+        print("What I'm about to run IN FUN:",self.button_atr(label))
+        #fun()
 
 
 ot=OpenToplevels()

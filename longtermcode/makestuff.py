@@ -103,5 +103,5 @@ class MakeIO():
          
    def run_function(self,fun):
       self.clear_all()
-      print("\nWhat I'm about to run IN FUN:",fun)
+      print("What I'm about to run IN FUN:",fun)
       #fun()
