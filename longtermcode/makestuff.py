@@ -99,4 +99,6 @@ class MakeIO():
       for key in self.output:
          self.output[key].destroy()
       
-      
+   def run_function(self,fun):
+      self.clear_all()
+      fun()

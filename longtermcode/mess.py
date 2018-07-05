@@ -42,12 +42,17 @@ class OpenToplevels(Frame):
         self.ctrl_rmid = MakeFrame(self.control.frame,'cyan',10,10,1,1,'nsew')
         self.ctrl_rbot = MakeFrame(self.control.frame,'purple',10,10,2,1,'nsew')
         
-        #control buttons 
-        self.B1 = MakeButton(self.ctrl_ltop.frame,0,0,"Project Q this way!",self.clear_io)
-        self.B2 = MakeButton(self.ctrl_rtop.frame,0,0,"Pyquil!",self.clear_io)
-        self.B3 = MakeButton(self.ctrl_lmid.frame,0,0,"Qiskit!",self.clear_io)
-        self.B4 = MakeButton(self.ctrl_rmid.frame,0,0,"Q#!",self.clear_io)
-        self.B5 = MakeButton(self.ctrl_lbot.frame,0,0,"Shor!",self.usr_input)
+        #control buttons
+        self.B1 = MakeButton(self.ctrl_ltop.frame,0,0,"Project Q this way!",
+                             lambda:self.interact.run_function(run_projectq))
+        self.B2 = MakeButton(self.ctrl_rtop.frame,0,0,"Pyquil!",
+                             lambda:self.interact.run_function(run_projectq))
+        self.B3 = MakeButton(self.ctrl_lmid.frame,0,0,"Qiskit!",
+                             lambda:self.interact.run_function(run_projectq))
+        self.B4 = MakeButton(self.ctrl_rmid.frame,0,0,"Q#!",
+                             lambda:self.interact.run_function(run_projectq))
+        self.B5 = MakeButton(self.ctrl_lbot.frame,0,0,"Shor!",
+                             lambda:self.interact.run_function(self.usr_input))
         
         #GENERAL buttons exit
         self.B0 = MakeButton(self.root,90,0,"Quantum Programming Guide",self.begin)
@@ -65,13 +70,13 @@ class OpenToplevels(Frame):
         id.destroy()
 
     def usr_input(self):
-
+        self.interact.clear_all()
         def do_shor(response):
             x=run_shor(int(response))
             self.interact.set_output("Shor's result: %s" % (x),"out_label")
             
-        self.interact.make_label("Enter a number to factorise:","label1")
-        self.interact.make_input_box("Integer",do_shor)
+        #self.interact.make_label(,"label1")
+        self.interact.make_input_box("Enter a number to factorise:",do_shor)
         self.interact.set_output("Shor's result:","out_label")
 
         return self.interact.get_answer()
