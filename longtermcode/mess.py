@@ -141,5 +141,8 @@ class OpenToplevels(Frame):
         print("What I'm about to run IN FUN:",self.button_atr(label))
         #fun()
 
+    def pyquildocs(self):
+        webbrowser.open("http://pyquil.readthedocs.io/en/latest/")
+
 
 ot=OpenToplevels()
