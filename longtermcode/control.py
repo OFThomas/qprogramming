@@ -6,7 +6,7 @@ class Control():
         self.frame = frame
         self.buttons = {}
         self.row = 0
-        make_button("test",lambda:print(10))
+        self.make_button("test",lambda:print(10))
         
     def make_button(self,label,cmd):
         self.buttons[label] = MakeButton(self.frame,2,0,"Submit",cmd)
