@@ -43,8 +43,8 @@ class OpenToplevels(Frame):
         for j in range(0,2):
             for i in range(0,halfcols):
                 self.ctrl[i+j*halfcols]=MakeFrame(self.control.frame,colors[i+j*halfcols], 
-                                                     10,10, 10+i, 10+j, 'nsew')
-                self.B[i+j*halfcols]=MakeButton(self.ctrl[i+j*halfcols].frame,10+i,10+j, buttontext[i], lambda:self.interact.run_function(run_projectq))
+                                                     10,10, i, j, 'nsew')
+                self.B[i+j*halfcols]=MakeButton(self.ctrl[i+j*halfcols].frame,i,j, buttontext[i+j*halfcols], lambda:self.interact.run_function(run_projectq))
         
         
         #GENERAL buttons exit
