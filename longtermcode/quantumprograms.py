@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter.messagebox import showinfo
-from shor_alg import shor
+from shor_projectq import shor
 
 def run_shor(n):
     return shor(n)[0]
