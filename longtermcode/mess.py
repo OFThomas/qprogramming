@@ -51,14 +51,26 @@ class OpenToplevels(Frame):
 
         for j in range(0,2):
             for i in range(0,halfcols):
-                self.ctrl[i+j*halfcols]=MakeFrame(self.control.frame,colors[i+j*halfcols], 
+                self.ctrl[i+j*halfcols]=MakeFrame(self.control.frame, colors[i+j*halfcols], 
                                                   10,10,i,j, 'nsew')
-                self.B[i+j*halfcols]=MakeButton(self.ctrl[i+j*halfcols].frame,i,j,
+                self.B[i+j*halfcols]=MakeButton(self.ctrl[i+j*halfcols].frame, i,j,
                                         button_atr[i+j*halfcols][0],
                                         lambda:self.interact.run_function(button_atr[i+j*halfcols][1]))
                 print("In loop:",button_atr[i+j*halfcols][0], self.B[i+j*halfcols].fun)
-                self.B[i+j*halfcols].fun()
-                if i+j*halfcols > 2 : break
+                
+                
+                #self.B[i+j*halfcols].fun()
+                #if i+j*halfcols > 2 : break
+
+        
+        print('\n frame ', self.ctrl, '\n')
+        print('type self.ctrl', type(self.ctrl), 'type self.ctrl[0]', type(self.ctrl[0]))
+        for y in range(0,4):
+            text=self.ctrl[y]
+            print('type self.ctrl[%d]' % (y), type(self.ctrl[y]) )
+            print('button location', text.frame) 
+        
+        print('\n button', self.B, '\n')
 
         print()
         print()
