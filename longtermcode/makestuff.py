@@ -20,11 +20,12 @@ class MakeFrame():
 class MakeButton():
    
    def __init__(self,location,row,col,text,fun):
-        self.fun = fun
+        #self.fun = fun
+        print('fun =', fun)
         self.button = Button(location, fg="blue",
                              bg="white",text=text,
                              width=20,relief=RAISED,
-                             command=self.fun)
+                             command=fun)
         self.button.grid(row=row,column=col)
    #function for button
    def set_fun(self,new_fun):

@@ -9,7 +9,7 @@ from quantumprograms import *
 from makestuff import *
 from background import *
 from control import *
-
+from quantumprograms import *
 
 class Application(Frame):
 

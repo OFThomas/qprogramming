@@ -10,9 +10,7 @@ class Background(Frame):
     #open different windows
     
     def __init__(self,location):
-        #self.setgeometry() 
         self.buildframe(location) 
-        #here be buttons 
         # documentation
         self.control=Control(self.controlframe.frame)
         #self.root.mainloop()        
