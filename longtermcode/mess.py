@@ -34,7 +34,17 @@ class OpenToplevels(Frame):
         #here be buttons 
         self.control = MakeFrame(self.root, 'white',200, 40,1,0,'nsew')  
         self.interact = MakeIO(self.input,self.output)
-        
+        # documentation
+        self.docframe=MakeFrame(self.root, 'lime', 100,100,20,0,'nesw')
+       
+        doclabels=[['Quantum programming guide',lambda:None], 
+                ['Riggeti docs',lambda:None],
+                ['Qiskit docs',lambda:None],
+                ['Project Q docs',lambda:None]]
+
+        #for i in range(0,len(doclabels)):
+        #    self.Bdocs[i]=MakeButton(self.docframe.frame, i,0,)
+
         colors=['blue', 'yellow', 'green', 'orange', 'cyan', 'purple']
         button_atr=[['Project Q',run_projectq], ['PyQuil',run_pyquil],
                     ['Qiskit',run_qiskit], ['Q#',run_qsharp],
@@ -57,7 +67,6 @@ class OpenToplevels(Frame):
                                         button_atr[i+j*halfcols][0],
                                         lambda:self.interact.run_function(button_atr[i+j*halfcols][1]))
                 print("In loop:",button_atr[i+j*halfcols][0], self.B[i+j*halfcols].fun)
-                
                 
                 #self.B[i+j*halfcols].fun()
                 #if i+j*halfcols > 2 : break

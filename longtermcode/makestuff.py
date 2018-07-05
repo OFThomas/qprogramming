@@ -3,9 +3,9 @@ from tkinter import *
 class MakeFrame():
 #frame is background color object for building buttons and text on
    
-   def __init__(self,location,color,width,height,row,col,sticky):
+   def __init__(self,location,color,width,height,row,col,sticky, rowspan=1, columnspan=1):
                self.frame = Frame(location, bg=color, width=width, height=height, padx=3, pady=3)
-               self.frame.grid(row=row,column=col,sticky=sticky)
+               self.frame.grid(row=row,column=col,rowspan=rowspan,columnspan=columnspan,sticky=sticky)
                #this needs to update the previous frame that the object is being created on
                #so location NOT self.frame.frame
                location.rowconfigure(row, weight=1)
