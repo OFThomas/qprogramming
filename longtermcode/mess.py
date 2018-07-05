@@ -74,8 +74,7 @@ class OpenToplevels(Frame):
         def do_shor(response):
             x=run_shor(int(response))
             self.interact.set_output("Shor's result: %s" % (x),"out_label")
-            
-        #self.interact.make_label(,"label1")
+
         self.interact.make_input_box("Enter a number to factorise:",do_shor)
         self.interact.set_output("Shor's result:","out_label")
 
