@@ -90,15 +90,19 @@ class MakeIO():
       return self.input["insert_box"].get()
       
    def set_output(self,text,label):
+      for key in self.output:
+         self.output[key].destroy()
       self.output[label] = Message(self.oframe, text=text)
-      self.output[label].grid(row=0,column=0)
-
+      self.output[label].grid(row=self.orow,column=0)
+      self.orow = self.orow + 1
+      
    def clear_all(self):
       for key in self.input:
          self.input[key].destroy()
       for key in self.output:
          self.output[key].destroy()
-      
+      self.irow,self.orow = 0,0
+         
    def run_function(self,fun):
       self.clear_all()
       fun()
