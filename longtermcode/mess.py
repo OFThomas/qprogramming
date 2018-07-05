@@ -35,6 +35,7 @@ class OpenToplevels(Frame):
         self.interact = MakeIO(self.input,self.output)
         
         colors=['blue', 'yellow', 'green', 'orange', 'cyan', 'purple']
+        buttontext=['Project Q', 'PyQuil', 'Qiskit', 'Q#', 'Shor','']
         halfcols=int(0.5*len(colors))
         self.ctrl= {}
         self.B={}
@@ -42,7 +43,7 @@ class OpenToplevels(Frame):
             for i in range(0,halfcols):
                 self.ctrl[i+j*halfcols]=MakeFrame(self.control.frame,colors[i+j*halfcols], 
                                                      10,10, 10+i, 10+j, 'nsew')
-                self.B[i+j*halfcols]=MakeButton(self.ctrl[i+j*halfcols].frame,10+i,10+j, 'bug', lambda:self.interact.run_function(run_projectq))
+                self.B[i+j*halfcols]=MakeButton(self.ctrl[i+j*halfcols].frame,10+i,10+j, buttontext[i], lambda:self.interact.run_function(run_projectq))
 
         #can automate this 
         self.ctrl_ltop = MakeFrame(self.control.frame,'blue',10,10,0,0,'nsew')
