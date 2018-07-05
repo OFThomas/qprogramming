@@ -34,7 +34,6 @@ class OpenToplevels(Frame):
         #here be buttons 
         self.control = MakeFrame(self.root, 'white',200, 40,1,0,'nsew')  
         self.interact = MakeIO(self.input,self.output)
-<<<<<<< HEAD
         # documentation
         self.docframe=MakeFrame(self.root, 'lime', 100,100,20,0,'nesw')
        
@@ -46,13 +45,8 @@ class OpenToplevels(Frame):
         #for i in range(0,len(doclabels)):
         #    self.Bdocs[i]=MakeButton(self.docframe.frame, i,0,)
 
-        colors=['blue', 'yellow', 'green', 'orange', 'cyan', 'purple']
-        button_atr=[['Project Q',run_projectq], ['PyQuil',run_pyquil],
-=======
-        
         self.colors=['blue', 'yellow', 'green', 'orange', 'cyan', 'purple']
         self.button_atr=[['Project Q',run_projectq], ['PyQuil',run_pyquil],
->>>>>>> cd22168b22eec6160df3bc99e9678487e9cc2ef6
                     ['Qiskit',run_qiskit], ['Q#',run_qsharp],
                     ['Shor',run_qsharp],['something',run_projectq]]
         self.halfcols=int(0.5*len(self.colors))
