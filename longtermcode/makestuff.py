@@ -1,9 +1,4 @@
 from tkinter import *
-from tkinter import messagebox
-from functools import partial
-from shor_alg import shor
-from tkinter.messagebox import showinfo
-import webbrowser
 
 class MakeFrame():
 #frame is background color object for building buttons and text on
