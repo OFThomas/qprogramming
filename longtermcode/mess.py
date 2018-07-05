@@ -37,10 +37,12 @@ class OpenToplevels(Frame):
         colors=['blue', 'yellow', 'green', 'orange', 'cyan', 'purple']
         halfcols=int(0.5*len(colors))
         self.ctrl= {}
+        self.B={}
         for j in range(0,2):
             for i in range(0,halfcols):
                 self.ctrl[i+j*halfcols]=MakeFrame(self.control.frame,colors[i+j*halfcols], 
                                                      10,10, 10+i, 10+j, 'nsew')
+                self.B[i+j*halfcols]=MakeButton(self.ctrl[i+j*halfcols].frame,10+i,10+j, 'bug', lambda:self.interact.run_function(run_projectq))
 
         #can automate this 
         self.ctrl_ltop = MakeFrame(self.control.frame,'blue',10,10,0,0,'nsew')
@@ -65,10 +67,10 @@ class OpenToplevels(Frame):
                              lambda:self.interact.run_function(self.usr_input))
         
         #GENERAL buttons exit
-        self.B0 = MakeButton(self.root,90,0,"Quantum Programming Guide",self.begin)
-        self.B0.set_position(90,0,"we")
-        self.B6 = MakeButton(self.root,100,0,"Exit Tkinter",self.root.quit)
-        self.B6.set_position(100,0,"we")
+        self.Bdocs = MakeButton(self.root,90,0,"Quantum Programming Guide",self.begin)
+        self.Bdocs.set_position(90,0,"we")
+        self.Bexit = MakeButton(self.root,100,0,"Exit Tkinter",self.root.quit)
+        self.Bexit.set_position(100,0,"we")
     
         self.root.mainloop()        
 
