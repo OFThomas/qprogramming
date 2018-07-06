@@ -22,7 +22,7 @@ class Background(Frame):
         #make frames for backgrounds and splitting the widgits
         self.docframe=MakeFrame(location, 'lime', 100,100,0,0,'nesw')
         self.viewframe = MakeFrame(location,'black',100,100,1,0,'nsew')
-        self.controlframe = MakeFrame(location, 'white',200, 100,2,0,'nsew')  
+        self.controlframe = MakeFrame(location, 'white',200, 100,2,0,'nsew')
         self.exitfram=MakeFrame(location, 'cyan', 100,100,3,0,'nsew')
         return 
 
@@ -30,12 +30,23 @@ class Background(Frame):
          self.doclabels=[['Quantum programming guide',partial(print, 'q prog')], 
                 ['Riggeti docs',partial(print,'rigetti docs')],
                 ['Qiskit docs',partial(print, 'qiskit docs')],
-                ['Project Q docs',partial(self.control.make_button, "test",lambda:None)]]
+                ['Project Q docs',partial(print,10)]]
          
          docbutton=[None]*len(self.doclabels)
          for i in range(0,len(self.doclabels)):
             docbutton[i]=MakeButton(self.docframe.frame, i,0, self.doclabels[i][0], self.doclabels[i][1])
-
+            # HELLO OLI
+            #
+            # Use self.control.AddButton("label",lambda:none,key) to add a button
+            # It should return a value about the success but that doesn't seem to
+            # be working yet. Also, the key is to identify the button in case
+            # it needs modifying (which I haven't added yet)
+            #
+            result = self.control.AddButton("Label",lambda:None,0)
+            print(result)
+            result = self.control.AddButton("Label",lambda:None,0)
+            print(result)
+            
     def makeexit(self):
         self.exitlabels=[['Back',partial(print, 'back')],
                         ['Home', partial(print, 'Home')],
