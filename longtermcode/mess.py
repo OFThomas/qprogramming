@@ -2,7 +2,6 @@
 
 # mess.py
 # JS OT Bristol 2018
-
 from tkinter import *
 from tkinter import messagebox
 from tkinter.messagebox import showinfo
@@ -70,9 +69,9 @@ class Application(Frame):
          for j in range(0,1):
              for i in range(0,int(len(self.doclabels))):
                  count=i+2*j
-                 docbutton[count]=MakeButton(self.docframe.frame, j,i,
-                                             self.doclabels[count][0],
-                                             self.doclabels[count][1])
+                 docbutton[count]=MakeButton(self.docframe.frame,
+                         j,i,self.doclabels[count][0],
+                         self.doclabels[count][1])
         
     def makeexit(self):
         self.exitlabels=[['Back',partial(print, 'back')],
