@@ -19,7 +19,7 @@ class Control():
     #   2 = duplicate key
     #
     def AddButton(self,label,cmd,key=0):
-        if id in self.buttons:
+        if key in self.buttons:
             return 2 
         if self.row == 3 and self.column == 0 :
             return 1
