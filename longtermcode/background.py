@@ -13,7 +13,7 @@ class Background(Frame):
     def __init__(self,location):
         self.buildframe(location) 
         # documentation
-        #self.control=Control(self.controlframe.frame)
+        self.control=Control(self.controlframe.frame)
         
         self.makedocs()
         #self.root.mainloop()        
@@ -30,7 +30,7 @@ class Background(Frame):
          self.doclabels=[['Quantum programming guide',partial(print, 'q prog')], 
                 ['Riggeti docs',partial(print,'rigetti docs')],
                 ['Qiskit docs',partial(print, 'qiskit docs')],
-                ['Project Q docs',partial(Control, self.controlframe.frame)]]
+                ['Project Q docs',partial(self.control.make_button, "test",lambda:None)]]
          
          docbutton=[None]*len(self.doclabels)
          for i in range(0,len(self.doclabels)):
