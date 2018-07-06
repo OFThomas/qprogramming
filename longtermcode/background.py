@@ -5,6 +5,7 @@ from tkinter.messagebox import showinfo
 import webbrowser
 from makestuff import *
 from control import *
+from functools import partial 
 
 class Background(Frame):
     #open different windows
@@ -25,9 +26,9 @@ class Background(Frame):
 
     def makedocs(self):
          self.doclabels=[['Quantum programming guide',partial(print, 'q prog')], 
-                ['Riggeti docs',partial(print,'rigetti docs'],
-                ['Qiskit docs',partial(print, 'qiskit docs'],
-                ['Project Q docs',partial(print, 'projectq']]
+                ['Riggeti docs',partial(print,'rigetti docs')],
+                ['Qiskit docs',partial(print, 'qiskit docs')],
+                ['Project Q docs',partial(print, 'projectq')]]
 
 
 
