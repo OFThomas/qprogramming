@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+
+# mess.py
+# JS OT Bristol 2018
+
 from tkinter import *
 from tkinter import messagebox
 from tkinter.messagebox import showinfo
@@ -15,9 +19,16 @@ class Application(Frame):
 
     def __init__ (self):
         #layout window
-        self.setgeometry()     
-        #make background frames on self.root
-        Background(self.root)     
+        self.setgeometry()
+
+        # make bg frames
+        self.background=Background(self.root)
+        
+        # make control buttons
+        self.control=Control(self.background.controlframe.frame)
+        
+        result=self.control.AddButton('txt', partial(print, 'tst'))
+
         #end 
         self.root.mainloop()    
   
@@ -25,8 +36,8 @@ class Application(Frame):
         # make window called self.root
         self.root = Tk()
         #dimensions of window 
-        self.winwidth=640
-        self.winheight=480
+        self.winwidth=1280
+        self.winheight=720
         #geometry 
         self.root.resizable(width=TRUE,height=TRUE)
         self.root.geometry('{}x{}'.format(self.winwidth,self.winheight))
@@ -34,7 +45,7 @@ class Application(Frame):
         self.root.columnconfigure(0, weight=1)
         
         #get that professional font
-        font=('Comic Sans MS', 15)
+        font=('Comic Sans MS', 12)
         self.root.option_add("*Font", font)
-        
+
 app=Application()

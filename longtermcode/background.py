@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+
+# background.py
+# JS OT Bristol 2018
+
 from tkinter import *
 from tkinter import messagebox
 from tkinter.messagebox import showinfo
@@ -8,48 +12,55 @@ from control import *
 from functools import partial 
 
 class Background(Frame):
-    #open different windows
     
     def __init__(self,location):
-        self.buildframe(location) 
-        # documentation
-        self.control=Control(self.controlframe.frame)
         
+        self.root=location
+        # create background frames
+        self.buildframe() 
+        # documentation
         self.makedocs()
-        #self.root.mainloop()        
+        # exit buttons
+        self.makeexit()
 
-    def buildframe(self, location):
+    def buildframe(self):
         #make frames for backgrounds and splitting the widgits
-        self.docframe=MakeFrame(location, 'lime', 100,100,0,0,'nesw')
-        self.viewframe = MakeFrame(location,'black',100,100,1,0,'nsew')
-        self.controlframe = MakeFrame(location, 'white',200, 100,2,0,'nsew')
-        self.exitfram=MakeFrame(location, 'cyan', 100,100,3,0,'nsew')
+        self.docframe=MakeFrame(self.root, 'lime', 100,100,0,0,'nesw')
+        self.viewframe = MakeFrame(self.root,'yellow',100,400,1,0,'nsew')
+        self.controlframe = MakeFrame(self.root, 'white',100,400,2,0,'nsew')
+        self.exitframe=MakeFrame(self.root, 'cyan', 100,100,3,0,'nsew')
         return 
 
     def makedocs(self):
          self.doclabels=[['Quantum programming guide',partial(print, 'q prog')], 
                 ['Riggeti docs',partial(print,'rigetti docs')],
                 ['Qiskit docs',partial(print, 'qiskit docs')],
-                ['Project Q docs',partial(print,10)]]
+                ['Project Q docs',partial(print,'project Q')]]
          
          docbutton=[None]*len(self.doclabels)
-         for i in range(0,len(self.doclabels)):
-            docbutton[i]=MakeButton(self.docframe.frame, i,0, self.doclabels[i][0], self.doclabels[i][1])
-            # HELLO OLI
+         for j in range(0,1):
+             for i in range(0,int(len(self.doclabels))):
+                 count=i+2*j
+                 docbutton[count]=MakeButton(self.docframe.frame, j,i, self.doclabels[count][0], self.doclabels[count][1])
+        
+    def makeexit(self):
+        self.exitlabels=[['Back',partial(print, 'back')],
+                        ['Home', partial(print, 'Home')],
+                        ['Exit', partial(self.root.destroy)]]
+        exitbutton=[None]*len(self.exitlabels)
+        for i in range(0,len(self.exitlabels)):
+            exitbutton[i]=MakeButton(self.exitframe.frame, 0,i, self.exitlabels[i][0], self.exitlabels[i][1])
+
+           # HELLO OLI
             #
             # Use self.control.AddButton("label",lambda:none,key) to add a button
             # It should return a value about the success but that doesn't seem to
             # be working yet. Also, the key is to identify the button in case
             # it needs modifying (which I haven't added yet)
             #
-            result = self.control.AddButton("Label",lambda:None,0)
-            print(result)
-            result = self.control.AddButton("Label",lambda:None,0)
-            print(result)
+        #result = self.control.AddButton("Label",lambda:None,0)
+        #print(result)
+        #result = self.control.AddButton("Label",lambda:None,0)
+        #print(result)
             
-    def makeexit(self):
-        self.exitlabels=[['Back',partial(print, 'back')],
-                        ['Home', partial(print, 'Home')],
-                        ['Exit', partial(print, 'exit')]]
-
 

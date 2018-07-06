@@ -1,6 +1,10 @@
+# control.py
+# JS OT Bristol 2018
+
 from makestuff import *
 from functools import partial 
 from quantumprograms import *
+
 class Control():
 
     def __init__(self,frame):
@@ -14,10 +18,13 @@ class Control():
     #   2 = duplicate key
     #
     def AddButton(self,label,cmd,key=0):
-        if id in self.buttons : return 2 
-        if self.row == 3 and self.column == 0 : return 1
+        if id in self.buttons:
+            return 2 
+        if self.row == 3 and self.column == 0 :
+            return 1
+        
         print('cmd', cmd)
-        self.buttons[key] = MakeButton(self.frame,2,0,"Submit",cmd)
+        self.buttons[key] = MakeButton(self.frame,2,0,label,cmd)
         self.buttons[key].button.grid(row=self.row,column=self.column)
         self.column = self.column + 1 
         if self.column == 2:
