@@ -18,7 +18,6 @@ class Application(Frame):
         self.setgeometry()     
         #make background frames on self.root
         Background(self.root)     
-    
         #end 
         self.root.mainloop()    
   
@@ -38,5 +37,4 @@ class Application(Frame):
         font=('Comic Sans MS', 15)
         self.root.option_add("*Font", font)
         
-
 app=Application()

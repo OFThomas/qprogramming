@@ -42,6 +42,10 @@ class Background(Frame):
             # be working yet. Also, the key is to identify the button in case
             # it needs modifying (which I haven't added yet)
             #
+            result = self.control.AddButton("Label",lambda:None,0)
+            print(result)
+            result = self.control.AddButton("Label",lambda:None,0)
+            print(result)
             
     def makeexit(self):
         self.exitlabels=[['Back',partial(print, 'back')],
