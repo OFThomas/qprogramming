@@ -22,7 +22,7 @@ class Background(Frame):
         #make frames for backgrounds and splitting the widgits
         self.docframe=MakeFrame(location, 'lime', 100,100,0,0,'nesw')
         self.viewframe = MakeFrame(location,'black',100,100,1,0,'nsew')
-        self.controlframe = MakeFrame(location, 'white',200, 100,2,0,'nsew')  
+        self.controlframe = MakeFrame(location, 'white',200, 100,2,0,'nsew')
         self.exitfram=MakeFrame(location, 'cyan', 100,100,3,0,'nsew')
         return 
 
@@ -30,7 +30,7 @@ class Background(Frame):
          self.doclabels=[['Quantum programming guide',partial(print, 'q prog')], 
                 ['Riggeti docs',partial(print,'rigetti docs')],
                 ['Qiskit docs',partial(print, 'qiskit docs')],
-                ['Project Q docs',partial(self.control.make_button, "test",lambda:None)]]
+                ['Project Q docs',partial(print,10)]]
          
          docbutton=[None]*len(self.doclabels)
          for i in range(0,len(self.doclabels)):
