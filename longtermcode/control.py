@@ -9,6 +9,7 @@ class Control():
 
     def __init__(self,frame):
         self.frame = frame
+        self.labels=[] 
         self.buttons = {}
         self.row, self.column = 0,0
 
