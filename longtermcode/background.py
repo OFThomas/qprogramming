@@ -35,7 +35,14 @@ class Background(Frame):
          docbutton=[None]*len(self.doclabels)
          for i in range(0,len(self.doclabels)):
             docbutton[i]=MakeButton(self.docframe.frame, i,0, self.doclabels[i][0], self.doclabels[i][1])
-
+            # HELLO OLI
+            #
+            # Use self.control.AddButton("label",lambda:none,key) to add a button
+            # It should return a value about the success but that doesn't seem to
+            # be working yet. Also, the key is to identify the button in case
+            # it needs modifying (which I haven't added yet)
+            #
+            
     def makeexit(self):
         self.exitlabels=[['Back',partial(print, 'back')],
                         ['Home', partial(print, 'Home')],
