@@ -74,9 +74,7 @@ class Application(Frame):
                          self.doclabels[count][1])
         
     def makeexit(self):
-        self.exitlabels=[['Back',partial(print, 'back')],
-                        ['Home', partial(print, 'Home')],
-                        ['Exit', partial(self.root.destroy)]]
+        self.exitlabels=[['Back',partial(print, 'back')],['Home', partial(print, 'Home')],['Exit', partial(self.root.destroy)]]
         exitbutton=[None]*len(self.exitlabels)
         for i in range(0,len(self.exitlabels)):
             exitbutton[i]=MakeButton(self.exitframe.frame, 0,i,
