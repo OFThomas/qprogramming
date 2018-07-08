@@ -1,23 +1,21 @@
 #!/usr/bin/python3
 
-import webbrowser
 from functools import partial
 from tkinter import *
-# mess.py
-# JS OT Bristol 2018
-from tkinter import messagebox
-from tkinter.messagebox import showinfo
 
 from control import *
 from makestuff import *
 from quantumprograms import *
 from view import *
 
+# mess.py
+# JS OT Bristol 2018
 
-class Application(Frame):
+
+class Application():
     def __init__(self):
 
-        #layout window
+        # layout window
         self.setgeometry()
         # create background frames
         self.buildframe()
@@ -40,7 +38,7 @@ class Application(Frame):
         self.winheight = 480
         self.root.minsize(920, 480)
         # geometry
-        self.root.resizable(width=TRUE, height=TRUE)
+        self.root.resizable(width=True, height=True)
         self.root.geometry('{}x{}'.format(self.winwidth, self.winheight))
         self.root.rowconfigure(0, weight=1)
         self.root.columnconfigure(0, weight=1)
@@ -56,18 +54,17 @@ class Application(Frame):
         self.controlframe = MakeFrame(self.root, 'white', 100, 100, 2, 0,
                                       'nsew')
         self.exitframe = MakeFrame(self.root, 'cyan', 100, 100, 3, 0, 'nsew')
-
         return
 
     def makedocs(self):
         self.doclabels = [[
             'Quantum programming guide',
-            partial(print, 'q prog')
-        ], ['Riggeti docs', partial(print, 'rigetti docs')],
-                          ['Qiskit docs',
-                           partial(print, 'qiskit docs')],
+            partial(run_projectq, 0)
+        ], ['Riggeti docs',
+            partial(run_pyquil, 0)], ['Qiskit docs',
+                                      partial(run_pyquil, 0)],
                           ['Project Q docs',
-                           partial(print, 'project Q')]]
+                           partial(run_pyquil, 0)]]
 
         docbutton = [None] * len(self.doclabels)
 
@@ -90,4 +87,4 @@ class Application(Frame):
                                        self.exitlabels[i][1])
 
 
-App = Application()
+APP = Application()

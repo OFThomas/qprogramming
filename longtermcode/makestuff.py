@@ -22,8 +22,8 @@ class MakeFrame():
             rowspan=rowspan,
             columnspan=columnspan,
             sticky=sticky)
-        # this needs to update the previous frame that the object is being created on
-        # so location NOT self.frame.frame
+        # this needs to update the previous frame that the object is being
+        # created on so location NOT self.frame.frame
         location.rowconfigure(row, weight=1)
         location.columnconfigure(col, weight=1)
         # might also need to replace new layer...

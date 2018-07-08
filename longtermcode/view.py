@@ -38,7 +38,7 @@ class View():
 
     def make_input_box(self, text, cmd):
         self.make_label(text, "input_label")
-        ## need to do lambda event: ... for binds
+        # need to do lambda event: ... for binds
         self.make_text_entry("insert_box",
                              lambda event: cmd(self.input["insert_box"].get()))
         self.make_button("insert_button",
