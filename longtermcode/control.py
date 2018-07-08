@@ -3,9 +3,7 @@
 
 from functools import partial
 
-from makestuff import *
-from quantumprograms import *
-
+from makestuff import MakeButton
 
 class Control():
     def __init__(self, frame):
@@ -19,7 +17,7 @@ class Control():
     #   1 = not enough space for button
     #   2 = duplicate key
     #
-    def AddButton(self, label, cmd, key=0):
+    def addbutton(self, label, cmd, key=0):
         if key in self.buttons:
             return 2
         if self.row == 3 and self.column == 0:

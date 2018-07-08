@@ -1,6 +1,6 @@
 from tkinter import *
 
-from makestuff import *
+from makestuff import MakeFrame, MakeButton
 
 
 # Class for handling user interactions in the input output area
