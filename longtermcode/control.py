@@ -11,7 +11,7 @@ class Control():
         self.labels = []
         self.buttons = {}
         self.row, self.column = 0, 0
-
+        self.addbutton('rest',None)
     # Return values:
     #   0 = success
     #   1 = not enough space for button
