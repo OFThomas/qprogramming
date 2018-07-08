@@ -1,3 +1,4 @@
+import webbrowser
 from tkinter import *
 from tkinter.messagebox import showinfo
 
@@ -11,10 +12,11 @@ def run_shor(n):
 
 def run_projectq(flag):
     if flag == 0:
-        print('Q # DOCS here')
+        print('Project Q DOCS here')
+        webbrowser.open('https://github.com/ProjectQ-Framework/ProjectQ')
     elif flag == 1:
         print('no q# for you')
-        s = "q#"
+        s = ""
         showinfo(title="reply", message="not implemented %s yet!" % (s))
         print(s)
     else:
@@ -27,6 +29,7 @@ def run_projectq(flag):
 def run_qsharp(flag):
     if flag == 0:
         print('Q # DOCS here')
+        webbrowser.open('')
     elif flag == 1:
         print('no q# for you')
         s = "q#"
@@ -34,11 +37,12 @@ def run_qsharp(flag):
         print(s)
     else:
         print('error')
-    
+
 
 def run_qiskit(flag):
     if flag == 0:
         print('Q # DOCS here')
+        webbrowser.open('')
     elif flag == 1:
         print('no q# for you')
         s = "q#"
@@ -54,6 +58,7 @@ def run_qiskit(flag):
 def run_pyquil(flag):
     if flag == 0:
         print('Q # DOCS here')
+        webbrowser.open('')
     elif flag == 1:
         print('no q# for you')
         s = "q#"
