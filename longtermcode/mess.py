@@ -21,7 +21,11 @@ class Application():
 
         # Make view object...
         self.view = View(self.viewframe.frame)
-
+        self.view.make_label("Hello",0)
+        self.view.make_text_entry("Other label",partial(print,1))
+        self.view.set_output("This is the output",2)
+        self.view.set_output("This more output",3)
+        
         # make control object
         self.control = Control(self.controlframe.frame)
 

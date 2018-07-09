@@ -20,15 +20,15 @@ class View():
         self.output = {}
         self.irow, self.orow = 0, 0
 
-    def make_label(self, text, label):
-        self.input[label] = Label(self.iframe, text=text)
-        self.input[label].grid(row=self.irow, column=0)
+    def make_label(self, text, id):
+        self.input[id] = Label(self.iframe, text=text)
+        self.input[id].grid(row=self.irow, column=0)
         self.irow = self.irow + 1
 
-    def make_text_entry(self, label, cmd):
-        self.input[label] = Entry(self.iframe, bd=0)
-        self.input[label].grid(row=self.irow, column=0)
-        self.input[label].bind("<Return>", cmd)
+    def make_text_entry(self, cmd,id):
+        self.input[id] = Entry(self.iframe, bd=0)
+        self.input[id].grid(row=self.irow, column=0)
+        self.input[id].bind("<Return>", cmd)
         self.irow = self.irow + 1
 
     def make_button(self, label, cmd):
