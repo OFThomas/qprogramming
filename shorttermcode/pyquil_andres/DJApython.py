@@ -3,14 +3,22 @@ import numpy as np
 def deutschjosza():
     # Gate Implementation
     H=(1/np.sqrt(2))*np.array([[1,1],[1,-1]]) 
-    U=np.array([[-1,0,0,0],[0,1,0,0],[0,0,-1,0],[0,0,0,1]])
+    # make diagonal matrix 
+    U=np.diag([-1,1,-1,1])
 
     # State initialisation
     state0=np.array([[1],[0],[0],[0]]) 
     state1=np.dot(np.kron(H,H),state0)        
     state2=np.dot(U,state1)
     state3=np.dot(np.kron(H,H),state2)
-
+    
+    state=[None]*4
+    
+    state[0]=np.array([[1],[0],[0],[0]]) 
+    state[1]=np.dot(np.kron(H,H),state0)        
+    state[2]=np.dot(U,state1)
+    state[3]=np.dot(np.kron(H,H),state2)
+    
     # Measurement: defining basis
     ket0=np.array([[1],[0]])
     ket1=np.array([[0],[1]])
