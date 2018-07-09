@@ -2,8 +2,8 @@
 # JS OT Bristol 2018
 
 from functools import partial
-
 from makestuff import MakeButton
+from quantumprograms import *
 
 class Control():
     def __init__(self, frame):
@@ -12,6 +12,7 @@ class Control():
         self.buttons = {}
         self.row, self.column = 0, 0
         self.state = 0
+        self.programs = QPrograms()
 
         # Add a first panel of options
         self.lst = [["PyQuil",partial(self.programs.Pyquil.options)],
