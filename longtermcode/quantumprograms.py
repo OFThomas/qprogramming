@@ -5,21 +5,29 @@ from shor_projectq import shor
 
 class Algorithm():
 
-    def __init__(name):
+    def __init__(name,function,docslink):
         self.name = name
-
-class Shor(Algorithm):
-
-    def run(n):
-        x = shor(n)
-        return x[0]
+        self.function = function
+        self.docslink = docslink
 
     def docs():
-        print('Project Q DOCS here')
-        webbrowser.open('https://github.com/ProjectQ-Framework/ProjectQ')
+        webbrowser.open(docslink)
 
-class ProjectQ(Algorithm):
+class ProjectQ():
 
+    'https://github.com/ProjectQ-Framework/ProjectQ'
+    
+    class self.Shor():
+
+        def run_shor(n):
+            x = shor(n)
+            return x[0]
+
+        def docs():
+            print('Project Q DOCS here')
+            webbrowser.open('https://github.com/ProjectQ-Framework/ProjectQ')
+
+    
         def run():
         if flag == 0:
         elif flag == 1:
@@ -28,7 +36,7 @@ class ProjectQ(Algorithm):
             print(s)
         else:
             print('error')
-        
+
 class QPrograms():
             
     def run_qsharp(flag):
