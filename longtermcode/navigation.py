@@ -14,12 +14,12 @@ class Navigation():
         self.root = root
         self.frame = frame
         # All buttons!
-        self.doclabel = 'Q programming guide'
-        self.url = 'https://www.google.com/'
         self.top()
         self.bottom()
 
     def top(self):
+        self.doclabel = 'Q programming guide'
+        self.url = 'http://lmgtfy.com/?q=quantum+programming+guide'
         guide_doc = MakeButton(self.docs, 0, 0, self.doclabel,
                                partial(webbrowser.open, self.url))
         
