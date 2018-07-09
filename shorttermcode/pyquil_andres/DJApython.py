@@ -1,47 +1,52 @@
 import numpy as np
 
 def deutschjosza():
+
+    def innerprod(a,b):
+        return np.dot(a,np.conj(b).T)
+
+    # list for states
+    ket=[None]*4
+    # list for outcomes
+    prob=[None]*4
+    # projectors
+    Proj=[None]*4
+    
     # Gate Implementation
     H=(1/np.sqrt(2))*np.array([[1,1],[1,-1]]) 
+    # act on two qubits
+    H2=np.kron(H,H)
     # make diagonal matrix 
     U=np.diag([-1,1,-1,1])
 
     # State initialisation
-    state0=np.array([[1],[0],[0],[0]]) 
-    state1=np.dot(np.kron(H,H),state0)        
-    state2=np.dot(U,state1)
-    state3=np.dot(np.kron(H,H),state2)
-    
-    state=[None]*4
-    
-    state[0]=np.array([[1],[0],[0],[0]]) 
-    state[1]=np.dot(np.kron(H,H),state0)        
-    state[2]=np.dot(U,state1)
-    state[3]=np.dot(np.kron(H,H),state2)
-    
+    # column vector
+    state=np.array([1,0,0,0]).reshape(4,1)
+    # do H
+    state=np.dot(H2,state)        
+    # do U
+    state=np.dot(U,state)
+    # do H again
+    # end with H*U*H* initial  
+    state=np.dot(H2,state)
+
     # Measurement: defining basis
     ket0=np.array([[1],[0]])
     ket1=np.array([[0],[1]])
 
-    ket00=np.kron(ket0,ket0)
-    ket01=np.kron(ket0,ket1)
-    ket10=np.kron(ket1,ket0)
-    ket11=np.kron(ket1,ket1)
+    
+    ket[0]=np.kron(ket0,ket0)
+    ket[1]=np.kron(ket0,ket1)
+    ket[2]=np.kron(ket1,ket0)
+    ket[3]=np.kron(ket1,ket1)
 
     # Measurement: defining projectors P00,P01,P10,P11
-    P00=np.dot(ket00,ket00.T)
-    P01=np.dot(ket01,ket01.T)
-    P10=np.dot(ket10,ket10.T)
-    P11=np.dot(ket11,ket11.T)
+   
+    for i in range(0,len(Proj)):
+        Proj[i]=np.dot(ket[i],ket[i].T)
+        prob[i]=np.trace(np.dot(Proj[i],innerprod(state,state)))
 
-    # Probability of obtaining outcomes 00, 01, 10, 11
-    prob00=np.trace(np.dot(P00,np.dot(state3,np.conj(state3).T)))
-    prob01=np.trace(np.dot(P01,np.dot(state3,np.conj(state3).T)))
-    prob10=np.trace(np.dot(P10,np.dot(state3,np.conj(state3).T)))
-    prob11=np.trace(np.dot(P11,np.dot(state3,np.conj(state3).T)))
+    #return outcome probabilities
+    return prob
 
-    print(prob00,prob01,prob10,prob11)
-
-    return (prob00,prob01,prob10,prob11)
-
-deutschjosza()
+print(deutschjosza())

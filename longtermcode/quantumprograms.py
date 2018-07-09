@@ -3,10 +3,8 @@ from tkinter import *
 from tkinter.messagebox import showinfo
 from shor_projectq import shor
 
-# Contains:
-#   Shor
-#   DJ
-#   ...
+
+
 class ProjectQ():
 
     class Shor():
