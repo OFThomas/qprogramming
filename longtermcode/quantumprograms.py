@@ -5,16 +5,26 @@ from shor_projectq import shor
 
 class Algorithm():
 
-    def __init__(name,function,docslink):
+    def __init__(name,docslink):
         self.name = name
         self.function = function
         self.docslink = docslink
 
-    def docs():
+    def docs(self):
         webbrowser.open(docslink)
+
+    def run(self): # virtual function
+
+class Shor()
+
+
+    
 
 class ProjectQ():
 
+    def __init__():
+        self.alg1 = Algorithm("Shor",)
+    
     'https://github.com/ProjectQ-Framework/ProjectQ'
     
     class self.Shor():
