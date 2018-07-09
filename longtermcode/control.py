@@ -12,15 +12,15 @@ class Control():
         self.buttons = {}
         self.row, self.column = 0, 0
         self.state = 0
-        self.programs = QPrograms()
+        #self.programs = QPrograms()
 
         # Add a first panel of options
-        self.lst = [["PyQuil",partial(self.programs.Pyquil.options)],
-                    ["ProjectQ",partial(self.programs.ProjectQ.options)],
-                    ["Q#",partial(Qsharp.options)],
-                    ["Scaffold",partial(Scaffold.options)],
-                    ["Qiskit",partial(Qiskit.options)]]
-        self.control.make_screen(self.lst)
+        #self.lst = [["PyQuil",partial(self.programs.Pyquil.options)],
+        #            ["ProjectQ",partial(self.programs.ProjectQ.options)],
+        #            ["Q#",partial(Qsharp.options)],
+        #            ["Scaffold",partial(Scaffold.options)],
+        #            ["Qiskit",partial(Qiskit.options)]]
+        #self.control.make_screen(self.lst)
         
     # Return values:
     #   0 = success

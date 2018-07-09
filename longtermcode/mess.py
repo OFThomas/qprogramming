@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 
 from tkinter import *
-
 from control import Control
-from docs import Docs
 from navigation import Navigation
 from makestuff import MakeFrame
 from view import View
@@ -21,9 +19,6 @@ class Application():
         # create background frames
         self.buildframes()
 
-        # documentation
-        self.docs = Docs(self.docframe.frame)
-
         # Make view object...
         self.view = View(self.viewframe.frame)
 
@@ -31,7 +26,7 @@ class Application():
         self.control = Control(self.controlframe.frame)
 
         # exit buttons
-        self.navigation = Navigation(self.root, self.exitframe.frame, self.control)
+        self.navigation = Navigation(self.root, self.exitframe.frame,self.docframe.frame, self.control)
 
         # Run it all!
         self.root.mainloop()
@@ -60,4 +55,7 @@ class Application():
         self.controlframe = MakeFrame(self.root, 'white', 100, 100, 2, 0,'nsew')
         self.exitframe = MakeFrame(self.root, 'cyan', 100, 100, 3, 0, 'nsew')
 
+
+
+        
 APP = Application()
