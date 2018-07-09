@@ -8,15 +8,16 @@ from makestuff import MakeButton
 
 
 class Navigation():
-    def __init__(self, root, frame):
+    def __init__(self, root, frame, control):
+        self.control = control
         self.root = root
         self.frame = frame
         # exit buttons
         self.makeexit()
     
     def makeexit(self):
-        self.exitlabels = [['Back', partial(print, 'back')],
-                           ['Home', partial(print, 'Home')],
+        self.exitlabels = [['Back', partial(self.control.go_back)],
+                           ['Home', partial(self.control.go_home)],
                            ['Exit', partial(self.root.destroy)]]
         exitbutton = [None] * len(self.exitlabels)
 

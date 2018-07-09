@@ -30,7 +30,7 @@ class Application():
         self.control = Control(self.controlframe.frame)
 
         # exit buttons
-        self.navigation = Navigation(self.root, self.exitframe.frame)
+        self.navigation = Navigation(self.root, self.exitframe.frame, self.control)
 
         # Run it all!
         self.root.mainloop()

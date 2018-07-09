@@ -32,6 +32,12 @@ class Control():
             self.row = self.row + 1
         return 0
 
+    def go_back(self):
+        print("back")
+
+    def go_home(self):
+        print("home")    
+    
     def clear_all(self):
         for key in self.buttons:
             self.buttons[key].destroy()
