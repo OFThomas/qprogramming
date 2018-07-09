@@ -7,6 +7,7 @@ from docs import Docs
 from navigation import Navigation
 from makestuff import MakeFrame
 from view import View
+from functools import partial
 
 # mess.py
 # JS OT Bristol 2018
@@ -32,6 +33,13 @@ class Application():
         # exit buttons
         self.navigation = Navigation(self.root, self.exitframe.frame, self.control)
 
+        # Add a first panel of options
+        lst = [["Button1",partial(print,"Button1")],
+               ["Button2",partial(print,"Button2")],
+               ["Button3",partial(print,"Button3")],
+               ["Button4",partial(print,"Button4")]]
+        self.control.make_screen(lst)
+
         # Run it all!
         self.root.mainloop()
 
@@ -56,9 +64,7 @@ class Application():
         # make frames for backgrounds and splitting the widgits
         self.docframe = MakeFrame(self.root, 'lime', 100, 100, 0, 0, 'nesw')
         self.viewframe = MakeFrame(self.root, 'yellow', 100, 100, 1, 0, 'nsew')
-        self.controlframe = MakeFrame(self.root, 'white', 100, 100, 2, 0,
-                                      'nsew')
+        self.controlframe = MakeFrame(self.root, 'white', 100, 100, 2, 0,'nsew')
         self.exitframe = MakeFrame(self.root, 'cyan', 100, 100, 3, 0, 'nsew')
-
 
 APP = Application()
