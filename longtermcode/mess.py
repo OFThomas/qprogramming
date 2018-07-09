@@ -4,7 +4,7 @@ from tkinter import *
 
 from control import Control
 from docs import Docs
-from exits import Exits
+from navigation import Navigation
 from makestuff import MakeFrame
 from view import View
 
@@ -30,7 +30,7 @@ class Application():
         self.control = Control(self.controlframe.frame)
 
         # exit buttons
-        self.exit = Exits(self.root, self.exitframe.frame)
+        self.navigation = Navigation(self.root, self.exitframe.frame)
 
         # Run it all!
         self.root.mainloop()
