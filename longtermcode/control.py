@@ -49,7 +49,7 @@ class Control():
         # Get the number of buttons
         N = len(lst)
         for key in range(N):
-            __addbutton(lst[key][0],lst[key][1],key)
+            self.__addbutton(lst[key][0],lst[key][1],key)
     
     def go_back(self):
         print("back")
