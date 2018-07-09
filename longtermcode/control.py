@@ -12,7 +12,7 @@ class Control():
         self.buttons = {}
         self.row, self.column = 0, 0
         self.state = 0
-        #self.programs = QPrograms()
+        self.qlanguages = QLanguages()
 
         # Add a first panel of options
         #self.lst = [["PyQuil",partial(self.programs.Pyquil.options)],
@@ -20,7 +20,7 @@ class Control():
         #            ["Q#",partial(Qsharp.options)],
         #            ["Scaffold",partial(Scaffold.options)],
         #            ["Qiskit",partial(Qiskit.options)]]
-        #self.control.make_screen(self.lst)
+        self.__make_screen(self.programs)
         
     # Return values:
     #   0 = success
@@ -54,7 +54,7 @@ class Control():
     #
     # The function is in the form partial(fun,args)
     #
-    def make_screen(self,lst):
+    def __make_screen(self,lst):
         self.__clear_all()
         # Get the number of buttons
         N = len(lst)
