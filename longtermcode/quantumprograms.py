@@ -4,7 +4,6 @@ from tkinter.messagebox import showinfo
 
 from shor_projectq import shor
 
-
 def run_shor(n):
     x = shor(n)
     return x[0]
@@ -21,7 +20,6 @@ def run_projectq(flag):
     else:
         print('error')
 
-
 def run_qsharp(flag):
     if flag == 0:
         print('Q # DOCS here')
@@ -34,7 +32,6 @@ def run_qsharp(flag):
         print(s)
     else:
         print('error')
-
 
 def run_qiskit(flag):
     if flag == 0:

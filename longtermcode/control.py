@@ -12,6 +12,15 @@ class Control():
         self.buttons = {}
         self.row, self.column = 0, 0
         self.state = 0
+
+        # Add a first panel of options
+        self.lst = [["PyQuil",partial(self.programs.Pyquil.options)],
+                    ["ProjectQ",partial(self.programs.ProjectQ.options)],
+                    ["Q#",partial(Qsharp.options)],
+                    ["Scaffold",partial(Scaffold.options)],
+                    ["Qiskit",partial(Qiskit.options)]]
+        self.control.make_screen(self.lst)
+        
     # Return values:
     #   0 = success
     #   1 = not enough space for button
@@ -22,7 +31,6 @@ class Control():
             return 2
         if self.row == 3 and self.column == 0:
             return 1
-
         print('cmd', cmd)
         self.buttons[key] = MakeButton(self.frame, 2, 0, label, cmd)
         self.buttons[key].button.grid(row=self.row, column=self.column)
@@ -46,6 +54,7 @@ class Control():
     # The function is in the form partial(fun,args)
     #
     def make_screen(self,lst):
+        self.__clear_all()
         # Get the number of buttons
         N = len(lst)
         for key in range(N):
@@ -57,7 +66,7 @@ class Control():
     def go_home(self):
         print("home")    
     
-    def clear_all(self):
+    def __clear_all(self):
         for key in self.buttons:
             self.buttons[key].destroy()
         self.row = 0

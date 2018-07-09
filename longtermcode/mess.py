@@ -33,13 +33,6 @@ class Application():
         # exit buttons
         self.navigation = Navigation(self.root, self.exitframe.frame, self.control)
 
-        # Add a first panel of options
-        lst = [["Button1",partial(print,"Button1")],
-               ["Button2",partial(print,"Button2")],
-               ["Button3",partial(print,"Button3")],
-               ["Button4",partial(print,"Button4")]]
-        self.control.make_screen(lst)
-
         # Run it all!
         self.root.mainloop()
 
