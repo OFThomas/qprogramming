@@ -3,10 +3,8 @@ from tkinter import *
 from tkinter.messagebox import showinfo
 from shor_projectq import shor
 
-# Contains:
-#   Shor
-#   DJ
-#   ...
+
+
 class ProjectQ():
 
     class Shor():
@@ -47,19 +45,20 @@ class Pyquil():
         def docs(n):
             return 0
     
-    class Deutsch():
-
+    
+   class Deutsch():
+        
         def run():
+            return 0
 
-
-    def __init__(self):
+   def __init__(self):
         self.docs = 'https://github.com/ProjectQ-Framework/ProjectQ'
         self.shor = Shor()
 
     ## Other ProjectQ algs here...
 
     ## Global docs
-    def docs(self):
+   def docs(self):
         webbrowser.open(self.docs)
     
 
@@ -78,14 +77,14 @@ class Qiskit():
         def docs(n):
             return 0
         
-    def __init__(self):
+   def __init__(self):
         self.docs = 'https://github.com/ProjectQ-Framework/ProjectQ'
         self.shor = Shor()
 
     ## Other ProjectQ algs here...
 
     ## Global docs
-    def docs(self):
+   def docs(self):
         webbrowser.open(self.docs)
     
 
@@ -104,13 +103,13 @@ class Qsharp():
         def docs(n):
             return 0
         
-    def __init__(self):
+   def __init__(self):
         self.docs = 'https://github.com/ProjectQ-Framework/ProjectQ'
         self.shor = Shor()
 
     ## Other ProjectQ algs here...
 
     ## Global docs
-    def docs(self):
+   def docs(self):
         webbrowser.open(self.docs)
     
