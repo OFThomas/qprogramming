@@ -4,16 +4,17 @@ class MakeFrame():
 #frame is background color object for building buttons and text on
    
    def __init__(self,location,color,width,height,row,col,sticky, rowspan=1, columnspan=1):
-               self.frame = Frame(location, bg=color, width=width, height=height, padx=3, pady=3)
-               self.frame.grid(row=row,column=col,rowspan=rowspan,columnspan=columnspan,sticky=sticky)
-               #this needs to update the previous frame that the object is being created on
-               #so location NOT self.frame.frame
-               location.rowconfigure(row, weight=1)
-               location.columnconfigure(col, weight=1)
-               #might also need to replace new layer...
-               #self.frame.rowconfigure(row,weight=1)
-               #self.frame.columnconfigure(col,weight=1)
-               # NO don't do it 
+       
+       self.frame = Frame(location, bg=color, width=width, height=height, padx=3, pady=3)
+       self.frame.grid(row=row,column=col,rowspan=rowspan,columnspan=columnspan,sticky=sticky)
+       #this needs to update the previous frame that the object is being created on
+       #so location NOT self.frame.frame
+       location.rowconfigure(row, weight=1)
+       location.columnconfigure(col, weight=1)
+       #might also need to replace new layer...
+       #self.frame.rowconfigure(row,weight=1)
+       #self.frame.columnconfigure(col,weight=1)
+       # NO don't do it 
 
 # An exemplary class
 ## Damn straight!
