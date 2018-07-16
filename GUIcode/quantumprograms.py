@@ -1,7 +1,6 @@
 import webbrowser
 from tkinter import *
 from tkinter.messagebox import showinfo
-from shor_projectq import shor
 
 
 

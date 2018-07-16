@@ -12,7 +12,7 @@ class Control():
         self.buttons = {}
         self.row, self.column = 0, 0
         self.state = 0
-        self.qlanguages = QLanguages()
+        #self.qlanguages = QLanguages()
 
         # Add a first panel of options
         #self.lst = [["PyQuil",partial(self.programs.Pyquil.options)],
