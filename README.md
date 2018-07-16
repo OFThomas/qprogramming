@@ -1,3 +1,7 @@
+Try using Binder for notebooks online?
+https://github.com/jupyterhub/binderhub
+
+
 gui code for programming guide is currently in longterm folder, using pyinstaller, http://www.pyinstaller.org/ to solve portability issues. Hopefully. 
 
 run,

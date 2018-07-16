@@ -20,7 +20,7 @@ class Control():
         #            ["Q#",partial(Qsharp.options)],
         #            ["Scaffold",partial(Scaffold.options)],
         #            ["Qiskit",partial(Qiskit.options)]]
-        self.__make_screen(self.programs)
+        #self.__make_screen(self.programs)
         
     # Return values:
     #   0 = success
