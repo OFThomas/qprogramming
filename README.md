@@ -1,6 +1,8 @@
 Try using Binder for notebooks online?
 https://github.com/jupyterhub/binderhub
 
+binder can use requirements.txt to imoort python libraries using pip
+https://mybinder.readthedocs.io/en/latest/sample_repos.html
 
 gui code for programming guide is currently in longterm folder, using pyinstaller, http://www.pyinstaller.org/ to solve portability issues. Hopefully. 
 
