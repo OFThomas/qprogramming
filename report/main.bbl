@@ -1,0 +1,223 @@
+\begin{thebibliography}{10}
+
+\bibitem{WZ2017}
+Will Zeng, Blake Johnson, Robert Smith, Nick Rubin, Matt Reagor, Colm Ryan, and
+  Chad Rigetti.
+\newblock First quantum computers need smart software.
+\newblock {\em Nature}, 549(7671):149--151, sep 2017.
+
+\bibitem{QSmanifesto}
+\url{http://www.qusoft.org/quantum-software-manifesto/}.
+
+\bibitem{nielsen_chuang_2010}
+Michael~A. Nielsen and Isaac~L. Chuang.
+\newblock {\em Quantum Computation and Quantum Information: 10th Anniversary
+  Edition}.
+\newblock Cambridge University Press, 2010.
+
+\bibitem{ioplasers}
+\url{http://www.iop.org/cs/page\_43644.html}.
+
+\bibitem{odaibo2012quantumMRI}
+Stephen~G Odaibo.
+\newblock A quantum mechanical review of magnetic resonance imaging.
+\newblock {\em arXiv preprint arXiv:1210.0946}, 2012.
+
+\bibitem{Bardeen1948}
+John Bardeen and Walter~Hauser Brattain.
+\newblock The transistor, a semi-conductor triode.
+\newblock {\em Physical Review}, 74(2):230, 1948.
+
+\bibitem{MooresLawEconomist}
+Tim Cross.
+\newblock After {M}oore's law.
+\newblock {\em The Economist Technology Quarterly}, 2016.
+
+\bibitem{D-Wave}
+\url{https://www.dwavesys.com/home}.
+
+\bibitem{Globalfoodproduction}
+\url{https://en.wikipedia.org/wiki/Orders_of_magnitude_(mass)}.
+
+\bibitem{Preskill2012}
+John Preskill.
+\newblock Quantum computing and the entanglement frontier, 2012.
+
+\bibitem{Feynman1982simulating}
+Richard~P Feynman.
+\newblock Simulating physics with computers.
+\newblock {\em International journal of theoretical physics}, 21(6-7):467--488,
+  1982.
+
+\bibitem{Georgescu2014Sim}
+IM~Georgescu, Sahel Ashhab, and Franco Nori.
+\newblock Quantum simulation.
+\newblock {\em Reviews of Modern Physics}, 86(1):153, 2014.
+
+\bibitem{Biamonte2017QML}
+Jacob Biamonte, Peter Wittek, Nicola Pancotti, Patrick Rebentrost, Nathan
+  Wiebe, and Seth Lloyd.
+\newblock Quantum machine learning.
+\newblock {\em Nature}, 549(7671):195, 2017.
+
+\bibitem{Schaden2002quantumfinance}
+Martin Schaden.
+\newblock Quantum finance.
+\newblock {\em Physica A: Statistical Mechanics and its Applications},
+  316(1-4):511--538, 2002.
+
+\bibitem{googleqai}
+\url{https://research.google.com/teams/quantumai/}.
+
+\bibitem{bristlecone}
+\url{https://research.googleblog.com/2018/03/a-preview-of-bristlecone-googles-new.html}.
+
+\bibitem{ibmqweb}
+\url{https://www.research.ibm.com/ibm-q/}.
+
+\bibitem{intelqcomp}
+\url{https://newsroom.intel.com/press-kits/quantum-computing/}.
+
+\bibitem{rigettihome}
+\url{https://www.rigetti.com}.
+
+\bibitem{steane1997ionTrap}
+Andrew Steane.
+\newblock The ion trap quantum information processor.
+\newblock {\em Applied Physics B: Lasers and Optics}, 64(6):623--643, 1997.
+
+\bibitem{loss1998quantumdots}
+Daniel Loss and David~P DiVincenzo.
+\newblock Quantum computation with quantum dots.
+\newblock {\em Physical Review A}, 57(1):120, 1998.
+
+\bibitem{intelSCspinqubits}
+\url{https://newsroom.intel.com/news/intel-sees-promise-silicon-spin-qubits-quantum-computing/}.
+
+\bibitem{RudolphSiliconPhotonicsQC}
+Terry Rudolph.
+\newblock Why i am optimistic about the silicon-photonic route to quantum
+  computing.
+\newblock {\em APL Photonics}, 2(3):030901, 2017.
+
+\bibitem{SummitSC}
+\url{https://phys.org/news/2018-06-ornl-summit-supercomputer.html}.
+
+\bibitem{AlamosIBM2018}
+Patrick~J. Coles, Stephan Eidenbenz, Scott Pakin, Adetokunbo Adedoyin, John
+  Ambrosiano, Petr Anisimov, William Casper, Gopinath Chennupati, Carleton
+  Coffrin, Hristo Djidjev, David Gunter, Satish Karra, Nathan Lemons, Shizeng
+  Lin, Andrey Lokhov, Alexander Malyzhenkov, David Mascarenas, Susan
+  Mniszewski, Balu Nadiga, Dan O'Malley, Diane Oyen, Lakshman Prasad, Randy
+  Roberts, Phil Romero, Nandakishore Santhi, Nikolai Sinitsyn, Pieter Swart,
+  Marc Vuffray, Jim Wendelberger, Boram Yoon, Richard Zamora, and Wei Zhu.
+\newblock Quantum algorithm implementations for beginners, 2018.
+
+\bibitem{Xanadu2018}
+Nathan Killoran, Josh Izaac, Nicolás Quesada, Ville Bergholm, Matthew Amy, and
+  Christian Weedbrook.
+\newblock Strawberry fields: A software platform for photonic quantum
+  computing, 2018.
+
+\bibitem{DK2018}
+Dawid Kopczyk.
+\newblock Quantum machine learning for data scientists, 2018.
+
+\bibitem{DKBlog}
+\url{http://dkopczyk.quantee.co.uk/category/quantum_computing/}.
+
+\bibitem{RL2018}
+Ryan LaRose.
+\newblock Quantum machine learning for data scientists, 2018.
+
+\bibitem{JW2018}
+James~R. Wootton.
+\newblock Benchmarking of quantum processors with random circuits, 2018.
+
+\bibitem{hardy2001quantum}
+Lucien Hardy.
+\newblock Quantum theory from five reasonable axioms.
+\newblock {\em arXiv preprint quant-ph/0101012}, 2001.
+
+\bibitem{rigetti}
+\url{https://www.rigetti.com/forest}.
+
+\bibitem{sheffer1913set}
+Henry~Maurice Sheffer.
+\newblock A set of five independent postulates for boolean algebras, with
+  application to logical constants.
+\newblock {\em Transactions of the American mathematical society},
+  14(4):481--488, 1913.
+
+\bibitem{nandwiki}
+\url{https://commons.wikimedia.org/wiki/File:NAND_ANSI_Labelled.svg}.
+
+\bibitem{norwiki}
+\url{https://commons.wikimedia.org/wiki/File:NOR_ANSI_Labelled.svg}.
+
+\bibitem{pyQuilDoc}
+Rigetti Computing.
+\newblock pyquil documentation, 2018.
+\newblock \url{https://media.readthedocs.org/pdf/pyquil/latest/pyquil.pdf}.
+
+\bibitem{Rigetti2016}
+Robert~S Smith, Michael~J Curtis, and William~J Zeng.
+\newblock A practical quantum instruction set architecture, 2016.
+
+\bibitem{coles2018quantum}
+Patrick~J Coles, Stephan Eidenbenz, Scott Pakin, Adetokunbo Adedoyin, John
+  Ambrosiano, Petr Anisimov, William Casper, Gopinath Chennupati, Carleton
+  Coffrin, Hristo Djidjev, et~al.
+\newblock Quantum algorithm implementations for beginners.
+\newblock {\em arXiv preprint arXiv:1804.03719}, 2018.
+
+\bibitem{ibm50}
+\url{https://rebootingcomputing.ieee.org/rebooting-computing-week/industry-summit-2017}.
+
+\bibitem{projectq2018}
+Damian~S. Steiger, Thomas H\"{a}ner, and Matthias Troyer.
+\newblock Projectq: An open source software framework for quantum computing.
+\newblock {\em arXiv:1612.08091}, 2018.
+
+\bibitem{hartreefockmethod}
+\url{http://vergil.chemistry.gatech.edu/notes/hf-intro/hf-intro.pdf}.
+
+\bibitem{grover1996}
+Lov~K. Grover.
+\newblock A fast quantum mechanical algorithm for database search.
+\newblock In {\em Proceedings of the Twenty-eighth Annual ACM Symposium on
+  Theory of Computing}, STOC '96, pages 212--219, New York, NY, USA, 1996. ACM.
+
+\bibitem{beauregard2003ShorImplementation}
+Stephane Beauregard.
+\newblock Circuit for shor's algorithm using 2n+3 qubits.
+\newblock {\em Quantum Info. Comput.}, 3(2):175--185, March 2003.
+
+\bibitem{lekitsch2015blueprint}
+B~Lekitsch, S~Weidt, AG~Fowler, K~M{\o}lmer, SJ~Devitt, C~Wunderlich, and
+  WK~Hensinger.
+\newblock Blueprint for a microwave trapped-ion quantum computer.
+\newblock {\em arXiv preprint arXiv:1508.00420}, 2015.
+
+\bibitem{carolan2015universal}
+Jacques Carolan, Christopher Harrold, Chris Sparrow, Enrique
+  Mart{\'\i}n-L{\'o}pez, Nicholas~J Russell, Joshua~W Silverstone, Peter~J
+  Shadbolt, Nobuyuki Matsuda, Manabu Oguma, Mikitaka Itoh, et~al.
+\newblock Universal linear optics.
+\newblock {\em Science}, 349(6249):711--716, 2015.
+
+\bibitem{microchip2008AsmRef}
+{\em dsPIC30F/33F Programmer’s Reference Manual}, 2008.
+
+\bibitem{draper2000addition}
+Thomas~G Draper.
+\newblock Addition on a quantum computer.
+\newblock {\em arXiv preprint quant-ph/0008033}, 2000.
+
+\bibitem{Busch1996}
+P~Mittelstaed P~Busch, PJ~Lahti.
+\newblock {The Quantum Theory of Measurement}.
+\newblock In {\em The Quantum Theory of Measurement}. Springer Berlin
+  Heidelberg, Berlin, Heidelberg, 1996.
+
+\end{thebibliography}

@@ -1,0 +1,66 @@
+\chapter{Background}
+\label{Background}
+
+\epigraph{\textit{Let's put a nice quote here!}}{Andres}
+
+\section{Weird Vector things}\label{TheBasics}
+
+
+In this section we will attempt to introduce quantum mechanics and its basic unit of information, the qubit, for those with little background in physics. Some knowledge of linear algebra may prove useful but is not necessary.  
+In classical computing and information theory the fundamental unit of information is the familiar bit. Every bit is a binary number 0 or 1 that we use to represent false or true, or combine together to encode any information we wish. We can (for reasons that will become clear) represent 
+a bit as 2-dimensional vector where,
+\begin{equation}
+0 = \begin{pmatrix} 1\\ 0 \end{pmatrix},
+1 = \begin{pmatrix} 0\\ 1 \end{pmatrix}.
+\end{equation}
+We can combine single bits in vector form to represent any register of bits,
+\begin{equation}
+\begin{pmatrix} x_0\\ x_1 \end{pmatrix} \otimes
+\begin{pmatrix} y_0\\ y_1 \end{pmatrix}
+= \begin{pmatrix} x_0 y_0 \\ x_0 y_1 \\ x_1 y_0 \\ x_1 y_1 \end{pmatrix}.
+\end{equation}
+This notation captures the relevant information but appears rather unwieldy compared to the equivalent binary or decimal representations.
+In this form we write the decimal value 6 as,
+\begin{equation}
+6_{10} = 110_2 =  \begin{pmatrix} 0\\ 1 \end{pmatrix} \otimes \begin{pmatrix} 0\\ 1 \end{pmatrix} \otimes \begin{pmatrix} 1\\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0 \end{pmatrix}.
+\end{equation}
+Note that we have a zero in every entry apart from the one corresponding the the decimal 6.
+The fundamental operation we can perform on this register is flipping the value of the nth bit i.e. we perform a logical NOT operation $ X \begin{pmatrix} 1\\ 0 \end{pmatrix}  $ to find $ \begin{pmatrix} 0\\ 1 \end{pmatrix} $. 
+The matrix X has the form,
+\begin{equation}
+\begin{pmatrix}
+ 0 & 1 \\ 1 & 0 
+\end{pmatrix}.
+\end{equation}
+This can be extended to find a matrix that allows us to change any basis state into any other, and therefore we can represent all quantum operations in matrix form. Note also that the not operation is reversible; no information is lost in applying it as many times as we like. This turns out to be a general feature of logical operations in quantum computing.
+
+
+Adding together numbers in either their binary or decimal form is obvious, however this clearly does not correspond to simple addition in their vector representation. 
+\begin{equation}
+    6_{10} + 5_{10} = 110_2 + 101_2 \neq  \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0 \end{pmatrix} + \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0 \\ 0 \end{pmatrix}.
+\end{equation}
+A vector representation of our bits however \textit{should} allow addition and we will now see how to interpret this. Rather than our register being in a definite single \textit{state} corresponding to a single decimal number we can allow superpositions of vectors with each element corresponding to a bit register. For example,
+\begin{equation}
+    \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix} + \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1  \end{pmatrix},
+\end{equation}
+is a valid state (however we are now moving away from classical information). This no longer has a clear and unambiguous representation in binary. Furthermore, we can change the signs between vectors and have,
+\begin{equation}
+    \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix} - \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1  \end{pmatrix}.
+\end{equation}
+What this represents in information terms is no longer obvious and, more importantly, how can we retrieve information stored in this way? Classically the state of an entire computer is in principle represented by a single string of bits and we can determine each one with certainty. Moving beyond classical information the situation becomes more complicated. If we attempt to measure a superposition of our vectors, asking ``\textit{which state is our register in?}'' we will find $\begin{pmatrix}  0 \\ 1 \\ 0 \\ 0 \end{pmatrix}$ with probability $0.5$ and $\begin{pmatrix}  0 \\ 0 \\ 0 \\ 1 \end{pmatrix}$ with probability 0.5. In order to ensure our probabilities sum to 1 we should normalise our even superposition with a factor of $\frac{1}{\sqrt{2}}$ however this will be ignored for clarity. We can even allow superpositions with more elements i.e. three or more possible outcomes from measurement and factors in front of each vector to adjust the probabilities. To further complicate things we can even allow complex factors in front of our basis vectors, and as it turns out this necessary to fulfil the condition that we can continuously transform any vector into another \cite{hardy2001quantum}. That is to say that there exists a matrix like X introduced above that allows us to move between any states or superpositions thereof. 
+
+
+So far we have mainly dealt with vectors more complicated than the simple representations of 0 and 1 we introduced earlier. Returning to these we can now introduce the qubit,
+\begin{equation}
+    \alpha \begin{pmatrix}  1\\ 0 \end{pmatrix} + \beta \begin{pmatrix} 0\\ 1 \end{pmatrix}
+\end{equation}
+where $\alpha$ and $\beta$ are real or complex number such that $|\alpha|^2 + |\beta|^2 = 1$. This is the reasonable requirement that probabilities should always sum to 1, but encapsulates the principle of superpositions that we measure to find outcomes. In more standard notation we represent vectors in quantum mechanics with a `ket' $|\psi\rangle$. Anything inside the ket is simply a label and can be changed for convenience depending on the situation. For example we traditionally use $\psi$ to denote an arbitrary quantum state with basis vectors in binary i.e.,
+\begin{equation}
+    |\psi\rangle = \alpha |0\rangle + \beta |1\rangle ,
+\end{equation}
+is the same state as above in dirac notation. The probability of obtaining the outcome $|1\rangle$ from this state is $|\langle 1|\psi\rangle|^2$ where $\langle 1|$ is known as a `bra,' forming a dirac `bracket' with the state $|\psi\rangle.$ This is nothing more than the inner product of vectors taken to the absolute value squared to ensure we always obtain real and positive probabilities. 
+
+A full model of computation requires more than representations of states and a conceptual method for reading out data. In the next section we will see how to process quantum information in the so-called circuit model. 
+
+
+A complete mathematical description of quantum mechanics is given in \autoref{Advancedtopics}. 

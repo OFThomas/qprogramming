@@ -1,55 +1,81 @@
 \documentclass[12pt]{book}
-%%%%%%%%%%%%%%%%%%%%% Packages
+%%%%%%%%%% Packages language %%%%%%%%%%
 \usepackage[utf8]{inputenc}
-\usepackage{listings}
-\usepackage{color}
-\usepackage{geometry}
-\usepackage{natbib}
-\usepackage{qcircuit}
-\usepackage{verbatim}
-\usepackage{multicol} 
-\usepackage{hyperref} 
-\usepackage{url}
-\usepackage{epigraph}
-\usepackage{calc}
-
-
-%%%%% Epigraph bullshit
-\newcommand{\mytextformat}{\itshape\epigraphsize}
-\newenvironment{mytext}{\mytextformat}{}
-\newenvironment{mysource}{\scshape\hfill}{}
-\renewcommand{\textflush}{mytext} 
-\renewcommand{\sourceflush}{mysource}
-\let\originalepigraph\epigraph 
-\renewcommand\epigraph[2]%
-   {\setlength{\epigraphwidth}{\widthof{\mytextformat#1}}\originalepigraph{#1}{#2}}
-
-
+\usepackage{listings}   % inline code
+\usepackage{natbib}     % bib
+\usepackage{verbatim}   % comments
+\usepackage{url}        % cite url
+\usepackage{epigraph}   % fucks sake
 %%%%%%%%%%%%% MATHS %%%%%%%%%%%%%%%%%%%%
 \usepackage{amsmath} 
 \usepackage{mathtools}
-\usepackage{physics}
-\usepackage{amssymb}
-\usepackage{array}
-%%%%%%%%% FIGurES %%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{textcomp}
-\usepackage{graphicx}
-\usepackage{caption} 
-\usepackage{scrextend}
-\usepackage{pgfgantt}
+\usepackage{physics}    % oh yeah
+\usepackage{amssymb} 
+\usepackage{qcircuit}   % awesome circuits
+\usepackage{gensymb}    % for \degree symbol
+%%%%%%%%% Figures %%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx} 
+\usepackage{caption}    % subfigures
+\usepackage{scrextend} 
+\usepackage{subcaption} % sub figs again
+\usepackage{float}      % images
+\usepackage{hyperref}   % colourful refs
+\usepackage{color}      %???
+\usepackage{geometry}   % margins and spacing
+\usepackage{multicol}   % Andres 
+\usepackage[skins]{tcolorbox} % Andres
+%%%%%%%%%%%% Table stuff %%%%%%%%%%%%%%%
+\usepackage{fourier}    %? ??
+\usepackage{array}      % ????
+\usepackage{makecell} 
+\usepackage[noblocks,affil-it]{authblk} % Andres
+\usepackage{afterpage}
+\usepackage{pdflscape}
 \usepackage{rotating}
-\usepackage{subcaption}
-\usepackage{float}
-\usepackage{tcolorbox}
-%%%%%%%%%%%%%%%%%% variables
+%%%%%%%%%% colours %%%%%%%%%%%%%%%
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 \definecolor{mygray}{gray}{0.95}
 
+%%%%%%%%%% inline code %%%%%%%%%%%%%
+% For inline assembly
+\lstdefinelanguage{asm}
+{
+    morekeywords={BRA,CLR,BTG,BSET,BCLR,BTSC,QBTX,QBTY,CNOT,MOV},
+    morecomment=[l]{;},
+    % space is \ space
+    morestring=[s]{##}{\ },
+    morestring=[s][\color{orange}]{Q}{\ },
+    morestring=[s][\color{orange}]{CNO}{\ }             
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% for C#
+
+\lstdefinelanguage{Csharp}
+{
+    morekeywords={using,namespace,class,static,public,private,void,string,int,double,try,catch,return,var,new,for,foreach,while,continue,if,else,in},
+    morecomment=[l]{//}, % l is for line comment
+    morecomment=[s]{/*}{*/}, % s is for start and end delimiter
+    morestring=[b]" 
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% for Q#
+
+\lstdefinelanguage{Qsharp}
+{
+    morekeywords={namespace,open,operation,body,Qubit,Pauli,Range,Int,Double,String,Result,Bool,let,set,mutable,true,false,One,Zero,PaulI,PauliX,PauliY,PauliZ,H,X,M,Y,Z,I,if,for,in,Controlled,Adjoint,return,adjoint,auto,controlled},
+    morecomment=[l]{//}, % l is for line comment
+    morestring=[b]" 
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
 \lstdefinestyle{mystyle}
-{backgroundcolor=\color{mygray},   
+{
+backgroundcolor=\color{mygray},   
  commentstyle=\color{codegreen},
  keywordstyle=\color{blue},
  numberstyle=\tiny\color{codegray},
@@ -64,75 +90,151 @@
  showspaces=false,                
  showstringspaces=false,
  showtabs=false,                  
- tabsize=2}
+ tabsize=2,
+ xleftmargin=2em, % this line added by Andres
+ framexleftmargin=1.5em % This line added by Andres
+ } 
+%%%%%%%%%%%%%%%%%%%%%%
 \lstset{style=mystyle}
 
-\usepackage{hyperref}
-\hypersetup{colorlinks=true,
-            citecolor=green,
-            linkcolor=blue,}
-\renewcommand{\equationautorefname}{Eq.}%
-\renewcommand{\figureautorefname}{Fig.}%
+%% use this 
+%\lstinputlisting[language=Python, firstline=37, lastline=45]{code/source_filename.py}
+%\lstinputlisting[language=Python, linerange={1-5,6-9}]{code/source_filename.py}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Make the footnote rule extend over the full length of the footnote
+\renewcommand{\footnoterule}{%
+  \kern -3pt
+  \hrule width \textwidth height 1pt
+  \kern 2pt}
+
+%%%%%%%%%%%%% hyperlink %%%%%%%%%%%%%%
+\hypersetup{colorlinks=true,
+            %citecolor=green, % changed by Andres
+            citecolor=purple,
+            linkcolor=blue,}
+\renewcommand{\equationautorefname}{Eq.}
+\renewcommand{\figureautorefname}{Fig.}
+\renewcommand{\chapterautorefname}{Chapter} %C not c
+
+%%%%%%%%%%%%% File paths %%%%%%%%%%%%%%
 \graphicspath{{figures/}}
 \newgeometry{left=0.8in,right=0.8in,top=1in,bottom=1in} 
+%\renewcommand{\familydefault}{\ttdefault}
+
 
 %%%%%%%%%%%%%%%%
 \begin{document}
 
-\title{Quantum Meta-Programming for Dummies}
-    \author{Cohort 4 \\[0.5em] Quantum Engineering CDT \\ University of Bristol}
-    \date{\today}
-    \maketitle
+% Are we gonna add UoB and CDT logos?
 
-%Cohort project
+% Please add here your title proposal
+\title{\bf Quantum Meta-Programming for Dummies with a weak focus on Poisson Bullets, in the style of a book. \\ {\large The Grandest of Cohort Grand Challenges}}
+
+% A concise quantum programming guide for the quantum software enthusiast
+
 %%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C1_Preface.tex}
-%\newpage
+\author[ ]{Jake Biele}
+\author[ ]{Andrés Ducuara}
+\author[ ]{Jonathan Frazer}
+\author[ ]{Huili Hou}
+\author[ ]{Friederike Jöhlinger}
+\author[ ]{Ankur Khurana}
+\author[ ]{Lana Mineh}
+\author[ ]{David Payne}
+\author[ ]{Ben Sayers}
+\author[ ]{John Scott}
+\author[ ]{Dominic Sulway}
+\author[ ]{last but not least, Oliver Thomas}
 
-\tableofcontents
-\newpage
+\affil[ ]{ {\small Quantum Engineering Centre for Doctoral Training \protect \\ H. H. Wills Physics Laboratory and Department of Electrical \& Electronic Engineering, University of Bristol, BS8 1FD, UK}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%
+\begin{comment} % commented out by ______
+\author[ ]{J. Biele}
+\author[ ]{A. Ducuara}
+\author[ ]{J. Frasure}
+\author[ ]{H. Hou}
+\author[ ]{F. Jöhlinger}
+\author[ ]{A. Khurana}
+\author[ ]{L. Mineh}
+\author[ ]{D. Payne}
+\author[ ]{B. Sayers}
+\author[ ]{J. Scott}
+\author[ ]{D. Sulway}
+\author[ ]{O. Thomas}
 
-%\begin{multicols*}{2}
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C2a_IntroDavid.tex}
-%\newpage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C2b_FrazersVectors.tex}
-%\newpage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C2c_CircuitsOli.tex}
-\newpage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C3_ShortTermBenAndresEri.tex}
-\newpage
+\affil[ ]{ {\small Quantum Engineering Technology Labs, H. H. Wills Physics Laboratory and \\ Department of Electrical \& Electronic Engineering, University of Bristol, BS8 1FD, UK}}
+\end{comment}
+%%%%%%%%%%%%%
+%%%%%%%%%%%%%
+\date{\today}
+\maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C4a_AlogrithmsAnkur.tex}
-%\newpage
+\input{chapters/C01_Preface.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/C02_Using_this_guide.tex}
+
+%%%%%%%%%%%%%%%%
+\tableofcontents
+
+%%%%% change linespacing between paragraphs
+\setlength{\parskip}{0.5em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/C1_IntroDavid.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/C2_FrazersVectors.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C4b_LongTermLanaFrikiDom.tex}
-%\newpage
+\input{chapters/C3_CircuitsOli.tex}
 
-%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C4c_ImplJohn.tex}
-%\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/C4_QProgrammingLanguages.tex}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C5_AdvtopicsJake.tex}
-%\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/C5_ShortTermBenAndresEri.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/C6_AlogrithmsAnkur.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/C7_LongTermLanaFrikiDom.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/C8_ImplJohn.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{verbatim}
-https://github.com/ot561/qprogramming/tree/master
-\end{verbatim}
+\input{chapters/C9_LangImpl_JohnOli.tex}  
 
+%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{unsrt}
 \bibliography{References}
 
-%\end{multicols*}
+%%%%%%%%%
+\appendix
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/CA1Jake.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/CA2_Python_minitutorial.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/CA3_Answers.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/CA4_FullCodeExamples.tex}
+
+%%%%%%%%%%%%%%%%
+\begin{comment}
+\begin{verbatim}
+https://github.com/ot561/qprogramming/tree/master
+\end{verbatim}
+\end{comment}
+
 \end{document}

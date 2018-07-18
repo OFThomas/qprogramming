@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: unsrt.bst
+Database file #1: References.bib
+Warning--I didn't find a database entry for "Preskill"
+Warning--I didn't find a database entry for "Watrous"
+Warning--I didn't find a database entry for "PythonCoursera"
+Warning--I didn't find a database entry for "IonQ"
+You've used 48 entries,
+            1791 wiz_defined-function locations,
+            687 strings with 10090 characters,
+and the built_in function-call counts, 7752 in all, are:
+= -- 574
+> -- 397
+< -- 1
++ -- 160
+- -- 112
+* -- 419
+:= -- 1156
+add.period$ -- 103
+call.type$ -- 48
+change.case$ -- 29
+chr.to.int$ -- 0
+cite$ -- 48
+duplicate$ -- 339
+empty$ -- 914
+format.name$ -- 112
+if$ -- 1762
+int.to.chr$ -- 0
+int.to.str$ -- 48
+missing$ -- 23
+newline$ -- 200
+num.names$ -- 30
+pop$ -- 210
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 248
+stack$ -- 0
+substring$ -- 261
+swap$ -- 57
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 52
+width$ -- 50
+write$ -- 397
+(There were 4 warnings)
