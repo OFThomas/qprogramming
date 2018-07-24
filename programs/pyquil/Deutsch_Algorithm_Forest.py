@@ -17,7 +17,7 @@ p.inst(H(0),H(1))
 p.measure(0,0)
 p.measure(1,1) 
 
-prog, quil=compiletoquil(p)
+compiletoquil(p)
 # Running the program
 cr=[] 
 results=qvm.run(p,cr,4) 

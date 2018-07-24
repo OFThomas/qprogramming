@@ -12,6 +12,7 @@ p=Program()
 p.inst(H(0))
 theta=np.pi/2
 p.inst(PHASE(theta,0))
+
 # Measurement
 p.measure(0,0)
 p.measure(1,1)
