@@ -1,0 +1,85 @@
+\contentsline {chapter}{Introduction}{9}{chapter*.8}
+\contentsline {chapter}{\numberline {1}Background}{13}{chapter.1}
+\contentsline {section}{\numberline {1.1}Weird Vector things}{13}{section.1.1}
+\contentsline {section}{\numberline {1.2}The gate model and quantum circuits}{16}{section.1.2}
+\contentsline {subsubsection}{Digital logic}{17}{section*.14}
+\contentsline {chapter}{\numberline {2}Quantum Programming Languages}{19}{chapter.2}
+\contentsline {section}{\numberline {2.1}Rigetti - pyQuil}{20}{section.2.1}
+\contentsline {section}{\numberline {2.2}IBM - QISKit}{23}{section.2.2}
+\contentsline {section}{\numberline {2.3}ProjectQ}{28}{section.2.3}
+\contentsline {section}{\numberline {2.4}Q\#}{30}{section.2.4}
+\contentsline {paragraph}{Basic building blocks}{30}{section*.25}
+\contentsline {section}{\numberline {2.5}Further languages}{33}{section.2.5}
+\contentsline {section}{\numberline {2.6}Comparison Discussion?}{33}{section.2.6}
+\contentsline {section}{\numberline {2.7}Exercises}{34}{section.2.7}
+\contentsline {chapter}{\numberline {3}Short term quantum computing}{35}{chapter.3}
+\contentsline {section}{\numberline {3.1}Adiabatic quantum computing \& quantum annealers}{35}{section.3.1}
+\contentsline {section}{\numberline {3.2}Implementing an Eigensolver's algorithm}{39}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Eigensolver's Algorithm with pyQuil}{39}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Eigensolver Algorithm in QISKit}{40}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Eigensolver's Algorithm with Project Q?}{41}{subsection.3.2.3}
+\contentsline {chapter}{\numberline {4}Quantum Algorithms and Applications}{43}{chapter.4}
+\contentsline {section}{\numberline {4.1}Oracular Algorithms}{43}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Deutsch-Jozsa algorithm}{44}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Grover's algorithm}{44}{subsection.4.1.2}
+\contentsline {subsubsection}{Alternative representation: Dirac notation}{46}{section*.31}
+\contentsline {subsubsection}{General n-qubit case}{48}{section*.33}
+\contentsline {subsubsection}{Construction of gate $D$ and $U_{f}$}{49}{section*.34}
+\contentsline {section}{\numberline {4.2}Quantum fourier transform}{49}{section.4.2}
+\contentsline {section}{\numberline {4.3}Shor's algorithm}{50}{section.4.3}
+\contentsline {chapter}{\numberline {5}Programming a future universal quantum computer}{53}{chapter.5}
+\contentsline {section}{\numberline {5.1}Implementing Deutsch's Algorithm}{54}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Deutsch's Algorithm with pyQuil}{54}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Deutsch's Algorithm in Qasm (IBM Q-experience)}{56}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Deutsch's Algorithm with Project Q}{56}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}Deutsch's Algorithm with Q\#}{56}{subsection.5.1.4}
+\contentsline {subsection}{\numberline {5.1.5}Deutsch's Algorithm Exercises}{57}{subsection.5.1.5}
+\contentsline {section}{\numberline {5.2}Implementing Shor's algorithm}{58}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Shor's algorithm with pyQuil}{58}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Shor's algorithm with QISKit}{60}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Shor's algorithm with ProjectQ}{60}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Shor's algorithm with Q\#}{61}{subsection.5.2.4}
+\contentsline {subsection}{\numberline {5.2.5}Shor's Algorithm Exercise(s)}{67}{subsection.5.2.5}
+\contentsline {section}{\numberline {5.3}The universal quantum computer}{67}{section.5.3}
+\contentsline {chapter}{\numberline {6}Implementations}{69}{chapter.6}
+\contentsline {section}{\numberline {6.1}Not another introduction!}{69}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}The development of classical computers}{70}{subsection.6.1.1}
+\contentsline {section}{\numberline {6.2}Quantum computer hardware architecture}{70}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}What are the qubits?}{71}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}What are the operations?}{71}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Trapped Ions}{71}{subsection.6.2.3}
+\contentsline {subsection}{\numberline {6.2.4}Superconducting qubits}{71}{subsection.6.2.4}
+\contentsline {subsection}{\numberline {6.2.5}Linear optical quantum computing}{71}{subsection.6.2.5}
+\contentsline {subsection}{\numberline {6.2.6}Error Correction}{72}{subsection.6.2.6}
+\contentsline {section}{\numberline {6.3}Quantum software architecture}{72}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Quantum instruction sets}{74}{subsection.6.3.1}
+\contentsline {subsubsection}{Qubit manipulation}{75}{section*.43}
+\contentsline {subsubsection}{Coherent classical operations}{76}{section*.44}
+\contentsline {subsubsection}{Quantum conditionals}{79}{section*.47}
+\contentsline {subsubsection}{Measurement instructions}{80}{section*.49}
+\contentsline {subsubsection}{Classical operations}{80}{section*.50}
+\contentsline {subsubsection}{Quantum types}{81}{section*.51}
+\contentsline {subsubsection}{Quantum operations}{81}{section*.52}
+\contentsline {subsection}{\numberline {6.3.2}Higher level languages}{82}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}High- and low- level quantum languages}{82}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.3.4}Examples of different types of languages}{82}{subsection.6.3.4}
+\contentsline {subsection}{\numberline {6.3.5}Compilers}{83}{subsection.6.3.5}
+\contentsline {subsection}{\numberline {6.3.6}Linkers}{83}{subsection.6.3.6}
+\contentsline {section}{\numberline {6.4}The future}{83}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}QLANG $+-$ \textsuperscript {TM} the Quantum programming language}{83}{subsection.6.4.1}
+\contentsline {chapter}{\numberline {A}A gentle introduction to quantum theory}{89}{appendix.A}
+\contentsline {section}{\numberline {A.1}Quantum mechanics}{89}{section.A.1}
+\contentsline {subsection}{\numberline {A.1.1}Quantum States}{89}{subsection.A.1.1}
+\contentsline {subsection}{\numberline {A.1.2}Superposition}{91}{subsection.A.1.2}
+\contentsline {subsubsection}{Aside: Why do we use complex amplitudes?}{93}{section*.54}
+\contentsline {subsection}{\numberline {A.1.3}Operators}{94}{subsection.A.1.3}
+\contentsline {subsection}{\numberline {A.1.4}Beyond the Single Qubit}{96}{subsection.A.1.4}
+\contentsline {subsection}{\numberline {A.1.5}An Intro to Quantum Information Theory}{97}{subsection.A.1.5}
+\contentsline {section}{\numberline {A.2}Exercises?}{98}{section.A.2}
+\contentsline {chapter}{\numberline {B}A gentle tutorial to Python}{99}{appendix.B}
+\contentsline {section}{\numberline {B.1}Unix install}{99}{section.B.1}
+\contentsline {section}{\numberline {B.2}MacOS install}{99}{section.B.2}
+\contentsline {section}{\numberline {B.3}Windows install}{99}{section.B.3}
+\contentsline {chapter}{\numberline {C}Answers to Exercises}{101}{appendix.C}
+\contentsline {chapter}{\numberline {D}Complete code examples}{103}{appendix.D}
+\contentsline {subsection}{\numberline {D.0.1}Shor in Q\#}{104}{subsection.D.0.1}
