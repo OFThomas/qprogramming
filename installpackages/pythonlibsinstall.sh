@@ -1,6 +1,4 @@
-python3 -m pip install pyquil --user
-python3 -m pip install qiskit --user
-python3 -m pip install projectq --user
+python3 -m pip install pyquil qiskit projectq --user
 
-./installscaffold.sh
-./installrevkit.sh
+#./installscaffold.sh
+#./installrevkit.sh
