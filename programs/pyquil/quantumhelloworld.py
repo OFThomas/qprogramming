@@ -47,7 +47,7 @@ print('string:', string, '\n', 'In binary this is\n', text_to_bits(string))
 # how many measurement samples to perform for each character
 samples = 1
 # show compiler steps :p
-explicitprinting = 0
+explicitprinting = 1
 
 # break into letters with corresponding bytes
 charlist, bytelist = textstring(string)
