@@ -10,7 +10,7 @@ outfile=$outfile'obj.txt'
 
 # print code to file
 echo $'#################################' > $outfile
-echo 'asm program' >> $outfile
+echo $'# asm program' >> $outfile
 cat $infile >> $outfile
 
 #create object file
@@ -18,7 +18,7 @@ as -o program.o $infile
 
 # objectdump disassemble
 echo $'\n\n#################################' >> $outfile
-echo 'objectdump compiled asm' >> $outfile
+echo $'# objectdump assembled asm' >> $outfile
 objdump -Dj .text program.o >> $outfile
 objdump -sj .data program.o >> $outfile
 
@@ -27,7 +27,7 @@ ld -o program program.o
 
 # then disassemble linker file
 echo $'\n\n#################################' >> $outfile
-echo $'objectdump linked asm' >> $outfile
+echo $'# objectdump linked asm' >> $outfile
 objdump -Dj .text program >> $outfile
 objdump -sj .data program >> $outfile
 
