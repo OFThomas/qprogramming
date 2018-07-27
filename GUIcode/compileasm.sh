@@ -1,9 +1,13 @@
 # set output file path
 infile='exitingasm.asm'
-outfile='programobj.txt'
+#outfile='programobj.txt'
 
 infile=$1
-#outfile=$(infile)+'obj.txt'
+
+outfile=${infile::-4}
+outfile=$outfile'obj.txt'
+#echo 'outfile' $outfile
+
 # print code to file
 echo $'#################################' > $outfile
 echo 'asm program' >> $outfile
@@ -15,7 +19,7 @@ as -o program.o $infile
 # objectdump disassemble
 echo $'\n\n#################################' >> $outfile
 echo 'objectdump compiled asm' >> $outfile
-objdump -d program.o >> $outfile
+objdump -dsj .data program.o >> $outfile
 
 # linker
 ld -o program program.o
@@ -23,7 +27,7 @@ ld -o program program.o
 # then disassemble linker file
 echo $'\n\n#################################' >> $outfile
 echo $'objectdump linked asm' >> $outfile
-objdump -d program >> $outfile
+objdump -dsj .data program >> $outfile
 
 # run the program...
 # .. because reasons
