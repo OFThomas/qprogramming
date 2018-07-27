@@ -3,8 +3,8 @@
 
 	# This is a memory section
 	.section .data
-msg:	.ascii "\nHello World\n"
-	.set size, 13
+msg:	.ascii "\nHello Lana\n"
+	.set size, 12 
 
 	.section .text
 	.global _start
