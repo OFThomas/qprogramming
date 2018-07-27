@@ -18,7 +18,7 @@ as -o program.o $infile
 
 # objectdump disassemble
 echo $'\n\n#################################' >> $outfile
-echo 'objectdump compiled asm' >> $outfile
+echo 'objectdump assembled asm' >> $outfile
 objdump -Dj .text program.o >> $outfile
 objdump -sj .data program.o >> $outfile
 
