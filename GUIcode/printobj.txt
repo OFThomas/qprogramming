@@ -5,8 +5,8 @@ asm program
 
 	// This is a memory section
 	.section .data
-msg:	.ascii "Hello World\n"
-	.set size, 5
+msg:	.ascii "\nHello World\n"
+	.set size, 13
 
 	.section .text
 	.global _start
@@ -34,7 +34,7 @@ Disassembly of section .text:
 
 0000000000000000 <_start>:
    0:	b9 00 00 00 00       	mov    $0x0,%ecx
-   5:	ba 05 00 00 00       	mov    $0x5,%edx
+   5:	ba 0d 00 00 00       	mov    $0xd,%edx
    a:	b8 04 00 00 00       	mov    $0x4,%eax
    f:	bb 00 00 00 00       	mov    $0x0,%ebx
   14:	cd 80                	int    $0x80
@@ -45,7 +45,7 @@ Disassembly of section .text:
 program.o:     file format elf64-x86-64
 
 Contents of section .data:
- 0000 48656c6c 6f20576f 726c640a           Hello World.    
+ 0000 0a48656c 6c6f2057 6f726c64 0a        .Hello World.   
 
 
 #################################
@@ -58,7 +58,7 @@ Disassembly of section .text:
 
 00000000004000b0 <_start>:
   4000b0:	b9 d2 00 60 00       	mov    $0x6000d2,%ecx
-  4000b5:	ba 05 00 00 00       	mov    $0x5,%edx
+  4000b5:	ba 0d 00 00 00       	mov    $0xd,%edx
   4000ba:	b8 04 00 00 00       	mov    $0x4,%eax
   4000bf:	bb 00 00 00 00       	mov    $0x0,%ebx
   4000c4:	cd 80                	int    $0x80
@@ -69,4 +69,4 @@ Disassembly of section .text:
 program:     file format elf64-x86-64
 
 Contents of section .data:
- 6000d2 48656c6c 6f20576f 726c640a           Hello World.    
+ 6000d2 0a48656c 6c6f2057 6f726c64 0a        .Hello World.   

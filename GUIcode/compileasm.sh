@@ -34,7 +34,7 @@ objdump -sj .data program >> $outfile
 # run the program...
 # .. because reasons
 ./program
-# let's see what this did 
-echo $?
+# let's see what this did
+echo 'Program return value: '$?
 
-vim $outfile 
+#vim $outfile 
