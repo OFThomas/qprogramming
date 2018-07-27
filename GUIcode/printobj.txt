@@ -1,0 +1,72 @@
+#################################
+asm program
+	// -- Printing to the console --	
+	//
+
+	// This is a memory section
+	.section .data
+msg:	.ascii "Hello World\n"
+	.set size, 5
+
+	.section .text
+	.global _start
+_start:
+	// print msg
+	movl $msg, %ecx
+	movl $size, %edx
+	movl $4, %eax
+	movl $0, %ebx
+	int $0x80
+	
+	// quit with exit code 0
+	movl $1, %eax
+	movl $0, %ebx
+	int $0x80
+
+
+#################################
+objectdump compiled asm
+
+program.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <_start>:
+   0:	b9 00 00 00 00       	mov    $0x0,%ecx
+   5:	ba 05 00 00 00       	mov    $0x5,%edx
+   a:	b8 04 00 00 00       	mov    $0x4,%eax
+   f:	bb 00 00 00 00       	mov    $0x0,%ebx
+  14:	cd 80                	int    $0x80
+  16:	b8 01 00 00 00       	mov    $0x1,%eax
+  1b:	bb 00 00 00 00       	mov    $0x0,%ebx
+  20:	cd 80                	int    $0x80
+
+program.o:     file format elf64-x86-64
+
+Contents of section .data:
+ 0000 48656c6c 6f20576f 726c640a           Hello World.    
+
+
+#################################
+objectdump linked asm
+
+program:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+00000000004000b0 <_start>:
+  4000b0:	b9 d2 00 60 00       	mov    $0x6000d2,%ecx
+  4000b5:	ba 05 00 00 00       	mov    $0x5,%edx
+  4000ba:	b8 04 00 00 00       	mov    $0x4,%eax
+  4000bf:	bb 00 00 00 00       	mov    $0x0,%ebx
+  4000c4:	cd 80                	int    $0x80
+  4000c6:	b8 01 00 00 00       	mov    $0x1,%eax
+  4000cb:	bb 00 00 00 00       	mov    $0x0,%ebx
+  4000d0:	cd 80                	int    $0x80
+
+program:     file format elf64-x86-64
+
+Contents of section .data:
+ 6000d2 48656c6c 6f20576f 726c640a           Hello World.    

@@ -19,7 +19,8 @@ as -o program.o $infile
 # objectdump disassemble
 echo $'\n\n#################################' >> $outfile
 echo 'objectdump compiled asm' >> $outfile
-objdump -dsj .data program.o >> $outfile
+objdump -Dj .text program.o >> $outfile
+objdump -sj .data program.o >> $outfile
 
 # linker
 ld -o program program.o
@@ -27,7 +28,8 @@ ld -o program program.o
 # then disassemble linker file
 echo $'\n\n#################################' >> $outfile
 echo $'objectdump linked asm' >> $outfile
-objdump -dsj .data program >> $outfile
+objdump -Dj .text program >> $outfile
+objdump -sj .data program >> $outfile
 
 # run the program...
 # .. because reasons
@@ -35,4 +37,4 @@ objdump -dsj .data program >> $outfile
 # let's see what this did 
 echo $?
 
-vim programobj.txt
+vim $outfile 
