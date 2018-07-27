@@ -3,6 +3,7 @@ infile='exitingasm.asm'
 outfile='programobj.txt'
 
 infile=$1
+#outfile=$(infile)+'obj.txt'
 # print code to file
 echo $'#################################' > $outfile
 echo 'asm program' >> $outfile

@@ -1,0 +1,42 @@
+#################################
+asm program
+# -- AS syntax --
+	# Function: do nothing and exit
+	# Compile and run:
+	#   as -o program.o exiting.asm && objdump -d program.o && ld -o program program.o && ./program; echo $?
+	#
+	.section .text
+	.global _start
+_start:
+	# Store code number for system call (on interrupt 0x80)
+	movl $1, %eax	# 1 in %eax corresponds to request for program to exit
+	movl $2, %ebx	# %ebx specifies the return value
+	int $0x80	# OS syscall software interrupt
+
+
+#################################
+objectdump compiled asm
+
+program.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <_start>:
+   0:	b8 01 00 00 00       	mov    $0x1,%eax
+   5:	bb 02 00 00 00       	mov    $0x2,%ebx
+   a:	cd 80                	int    $0x80
+
+
+#################################
+objectdump linked asm
+
+program:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000400078 <_start>:
+  400078:	b8 01 00 00 00       	mov    $0x1,%eax
+  40007d:	bb 02 00 00 00       	mov    $0x2,%ebx
+  400082:	cd 80                	int    $0x80
