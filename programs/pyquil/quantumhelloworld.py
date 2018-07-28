@@ -22,7 +22,6 @@ def textstring(text):
     charlist = []
     for letter in string:
         charlist.append(letter)
-
     # get binary of chars in bytes
     binarylets = []
     for i in range(0, len(charlist)):
@@ -30,6 +29,7 @@ def textstring(text):
     return charlist, binarylets
 
 
+# split a string of 8 bits into 8 strings of 1 bits
 def get_binary_from_byte(byte):
     bits = []
     for char in byte:
@@ -37,7 +37,33 @@ def get_binary_from_byte(byte):
     return bits
 
 
-string = "Hello World!"
+def quantumcomp(bytelist, explicitprinting=0, samples=1):
+    # empty list for results for each letter
+    res = []
+    # 8 bits in 1 byte
+    bit = [None] * 8
+    for j in range(0, len(bytelist)):
+        # Do quantum stuff now we have our bit string
+        qvm = QVMConnection()
+        prog = Program()
+        # make 8 individual bits for the 8 qubits
+        bit = get_binary_from_byte(bytelist[j])
+        # don't what this is for...
+        cr = []
+        for i in range(0, len(bit)):
+            # do x rotation to get 1
+            if bit[i] == 1:
+                prog.inst(X(i))
+            # measure the i-th qubit
+            prog.measure(i, i)
+        # store measurement outcomes, can change number of shots
+        results = (qvm.run(prog, cr, samples))
+        # use list for results for each char
+        res.append(results[0])
+        if explicitprinting == 1:
+            print(compiletoquil(prog))
+    return res
+
 
 string = str(input('Enter a message to be printed by a quantum computer: \n'))
 
@@ -52,36 +78,13 @@ explicitprinting = 1
 # break into letters with corresponding bytes
 charlist, bytelist = textstring(string)
 
-# get bits from each byte
-
-# empty list for results for each letter
-res = []
-
-# 8 bits in 1 byte
-bit = [None] * 8
-for j in range(0, len(charlist)):
-    # Do quantum stuff now we have our bit string
-    qvm = QVMConnection()
-    prog = Program()
-    # make 8 individual bits for the 8 qubits
-    bit = get_binary_from_byte(bytelist[j])
-    # don't what this is for...
-    cr = []
-    for i in range(0, len(bit)):
-        # do x rotation to get 1
-        if bit[i] == 1:
-            prog.inst(X(i))
-        # measure the i-th qubit
-        prog.measure(i, i)
-    # store measurement outcomes, can change number of shots
-    results = (qvm.run(prog, cr, samples))
-    # use list for results for each char
-    res.append(results[0])
-    if explicitprinting == 1:
-        print(compiletoquil(prog))
+# do quantum computation passing in the bitstring
+# returns a byte for each computation which is each char
+res = quantumcomp(bytelist)
 
 # write quantum measurements to a bitstring
 outputbitstring = [''] * stringsize
+# stick all of the chars bytes back into one bitstring
 for i in range(0, len(res)):
     for element in res[i]:
         # concatenate the bits
