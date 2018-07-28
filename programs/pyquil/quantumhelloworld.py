@@ -37,7 +37,7 @@ def get_binary_from_byte(byte):
     return bits
 
 
-def quantumcomp(bytelist, explicitprinting=0, samples=1):
+def quantumcomp(charlist, bytelist, explicitprinting=0, samples=1):
     # empty list for results for each letter
     res = []
     # 8 bits in 1 byte
@@ -48,6 +48,9 @@ def quantumcomp(bytelist, explicitprinting=0, samples=1):
         prog = Program()
         # make 8 individual bits for the 8 qubits
         bit = get_binary_from_byte(bytelist[j])
+        print('\n#--------------------------------------------------------#')
+        print('# Character= %s Bitstring = %s' % (charlist[j], bit))
+        print('#--------------------------------------------------------#')
         # don't what this is for...
         cr = []
         for i in range(0, len(bit)):
@@ -56,12 +59,16 @@ def quantumcomp(bytelist, explicitprinting=0, samples=1):
                 prog.inst(X(i))
             # measure the i-th qubit
             prog.measure(i, i)
+
         # store measurement outcomes, can change number of shots
         results = (qvm.run(prog, cr, samples))
         # use list for results for each char
         res.append(results[0])
         if explicitprinting == 1:
             print(compiletoquil(prog))
+        print('\n#--------------------------------------------------------#')
+        print('# Result =', results[0])
+        print('#--------------------------------------------------------#')
     return res
 
 
@@ -73,14 +80,15 @@ print('string:', string, '\n', 'In binary this is\n', text_to_bits(string))
 # how many measurement samples to perform for each character
 samples = 1
 # show compiler steps :p
-explicitprinting = 1
+exprint = 1
 
 # break into letters with corresponding bytes
 charlist, bytelist = textstring(string)
 
 # do quantum computation passing in the bitstring
 # returns a byte for each computation which is each char
-res = quantumcomp(bytelist)
+res = quantumcomp(
+    charlist, bytelist, explicitprinting=exprint, samples=samples)
 
 # write quantum measurements to a bitstring
 outputbitstring = [''] * stringsize

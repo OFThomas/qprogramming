@@ -1,0 +1,646 @@
+Enter a message to be printed by a quantum computer: 
+Hello World!
+string: Hello World! 
+ In binary this is
+ 010010000110010101101100011011000110111100100000010101110110111101110010011011000110010000100001
+
+#--------------------------------------------------------#
+# Character= H Bitstring = [0, 1, 0, 0, 1, 0, 0, 0]
+#--------------------------------------------------------#
+
+# Original pyQuil program,
+
+ MEASURE 0 [0]
+X 1
+MEASURE 1 [1]
+MEASURE 2 [2]
+MEASURE 3 [3]
+X 4
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+
+
+# Compiled quil code,
+
+ PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+RX(-pi) 1
+RX(-pi) 4
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+MEASURE 0 [0]
+MEASURE 1 [1]
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+
+# gate volume 2
+# gate depth 1
+# topological swaps 0
+# program fidelity 1.0
+# multiqubit gate depth 0
+
+# End of compiling info
+
+(<pyquil.quil.Program object at 0x7f5545adfc18>, <pyquil.quil.Program object at 0x7f5544fef5f8>)
+
+#--------------------------------------------------------#
+# Result = [0, 1, 0, 0, 1, 0, 0, 0]
+#--------------------------------------------------------#
+
+#--------------------------------------------------------#
+# Character= e Bitstring = [0, 1, 1, 0, 0, 1, 0, 1]
+#--------------------------------------------------------#
+
+# Original pyQuil program,
+
+ MEASURE 0 [0]
+X 1
+MEASURE 1 [1]
+X 2
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+X 5
+MEASURE 5 [5]
+MEASURE 6 [6]
+X 7
+MEASURE 7 [7]
+
+job nCVwYpfehEQPiXVg is currently compiling
+
+# Compiled quil code,
+
+ PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+RX(-pi) 1
+RX(-pi) 2
+RX(-pi) 5
+RX(-pi) 7
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+MEASURE 0 [0]
+MEASURE 1 [1]
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+
+# gate volume 4
+# gate depth 1
+# topological swaps 0
+# program fidelity 1.0
+# multiqubit gate depth 0
+
+# End of compiling info
+
+(<pyquil.quil.Program object at 0x7f5546266c88>, <pyquil.quil.Program object at 0x7f55450548d0>)
+
+#--------------------------------------------------------#
+# Result = [0, 1, 1, 0, 0, 1, 0, 1]
+#--------------------------------------------------------#
+
+#--------------------------------------------------------#
+# Character= l Bitstring = [0, 1, 1, 0, 1, 1, 0, 0]
+#--------------------------------------------------------#
+
+# Original pyQuil program,
+
+ MEASURE 0 [0]
+X 1
+MEASURE 1 [1]
+X 2
+MEASURE 2 [2]
+MEASURE 3 [3]
+X 4
+MEASURE 4 [4]
+X 5
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+
+job kBhRqgiNbxAhCjHu is currently compiling
+
+# Compiled quil code,
+
+ PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+RX(-pi) 1
+RX(-pi) 2
+RX(-pi) 4
+RX(-pi) 5
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+MEASURE 0 [0]
+MEASURE 1 [1]
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+
+# gate volume 4
+# gate depth 1
+# topological swaps 0
+# program fidelity 1.0
+# multiqubit gate depth 0
+
+# End of compiling info
+
+(<pyquil.quil.Program object at 0x7f5544fbe4a8>, <pyquil.quil.Program object at 0x7f55450d4908>)
+
+#--------------------------------------------------------#
+# Result = [0, 1, 1, 0, 1, 1, 0, 0]
+#--------------------------------------------------------#
+
+#--------------------------------------------------------#
+# Character= l Bitstring = [0, 1, 1, 0, 1, 1, 0, 0]
+#--------------------------------------------------------#
+
+# Original pyQuil program,
+
+ MEASURE 0 [0]
+X 1
+MEASURE 1 [1]
+X 2
+MEASURE 2 [2]
+MEASURE 3 [3]
+X 4
+MEASURE 4 [4]
+X 5
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+
+
+# Compiled quil code,
+
+ PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+RX(-pi) 1
+RX(-pi) 2
+RX(-pi) 4
+RX(-pi) 5
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+MEASURE 0 [0]
+MEASURE 1 [1]
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+
+# gate volume 4
+# gate depth 1
+# topological swaps 0
+# program fidelity 1.0
+# multiqubit gate depth 0
+
+# End of compiling info
+
+(<pyquil.quil.Program object at 0x7f5559c05630>, <pyquil.quil.Program object at 0x7f5545214940>)
+
+#--------------------------------------------------------#
+# Result = [0, 1, 1, 0, 1, 1, 0, 0]
+#--------------------------------------------------------#
+
+#--------------------------------------------------------#
+# Character= o Bitstring = [0, 1, 1, 0, 1, 1, 1, 1]
+#--------------------------------------------------------#
+
+# Original pyQuil program,
+
+ MEASURE 0 [0]
+X 1
+MEASURE 1 [1]
+X 2
+MEASURE 2 [2]
+MEASURE 3 [3]
+X 4
+MEASURE 4 [4]
+X 5
+MEASURE 5 [5]
+X 6
+MEASURE 6 [6]
+X 7
+MEASURE 7 [7]
+
+
+# Compiled quil code,
+
+ PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+RX(-pi) 1
+RX(-pi) 2
+RX(-pi) 4
+RX(-pi) 5
+RX(-pi) 6
+RX(-pi) 7
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+MEASURE 0 [0]
+MEASURE 1 [1]
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+
+# gate volume 6
+# gate depth 1
+# topological swaps 0
+# program fidelity 1.0
+# multiqubit gate depth 0
+
+# End of compiling info
+
+(<pyquil.quil.Program object at 0x7f5546ee1c18>, <pyquil.quil.Program object at 0x7f55451470b8>)
+
+#--------------------------------------------------------#
+# Result = [0, 1, 1, 0, 1, 1, 1, 1]
+#--------------------------------------------------------#
+
+#--------------------------------------------------------#
+# Character=   Bitstring = [0, 0, 1, 0, 0, 0, 0, 0]
+#--------------------------------------------------------#
+
+# Original pyQuil program,
+
+ MEASURE 0 [0]
+MEASURE 1 [1]
+X 2
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+
+
+# Compiled quil code,
+
+ PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+RX(-pi) 2
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+MEASURE 0 [0]
+MEASURE 1 [1]
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+
+# gate volume 1
+# gate depth 1
+# topological swaps 0
+# program fidelity 1.0
+# multiqubit gate depth 0
+
+# End of compiling info
+
+(<pyquil.quil.Program object at 0x7f5544fbe0f0>, <pyquil.quil.Program object at 0x7f5545224710>)
+
+#--------------------------------------------------------#
+# Result = [0, 0, 1, 0, 0, 0, 0, 0]
+#--------------------------------------------------------#
+
+#--------------------------------------------------------#
+# Character= W Bitstring = [0, 1, 0, 1, 0, 1, 1, 1]
+#--------------------------------------------------------#
+
+# Original pyQuil program,
+
+ MEASURE 0 [0]
+X 1
+MEASURE 1 [1]
+MEASURE 2 [2]
+X 3
+MEASURE 3 [3]
+MEASURE 4 [4]
+X 5
+MEASURE 5 [5]
+X 6
+MEASURE 6 [6]
+X 7
+MEASURE 7 [7]
+
+
+# Compiled quil code,
+
+ PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+RX(-pi) 1
+RX(-pi) 3
+RX(-pi) 5
+RX(-pi) 6
+RX(-pi) 7
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+MEASURE 0 [0]
+MEASURE 1 [1]
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+
+# gate volume 5
+# gate depth 1
+# topological swaps 0
+# program fidelity 1.0
+# multiqubit gate depth 0
+
+# End of compiling info
+
+(<pyquil.quil.Program object at 0x7f5544fe7e48>, <pyquil.quil.Program object at 0x7f5545178588>)
+
+#--------------------------------------------------------#
+# Result = [0, 1, 0, 1, 0, 1, 1, 1]
+#--------------------------------------------------------#
+
+#--------------------------------------------------------#
+# Character= o Bitstring = [0, 1, 1, 0, 1, 1, 1, 1]
+#--------------------------------------------------------#
+
+# Original pyQuil program,
+
+ MEASURE 0 [0]
+X 1
+MEASURE 1 [1]
+X 2
+MEASURE 2 [2]
+MEASURE 3 [3]
+X 4
+MEASURE 4 [4]
+X 5
+MEASURE 5 [5]
+X 6
+MEASURE 6 [6]
+X 7
+MEASURE 7 [7]
+
+
+# Compiled quil code,
+
+ PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+RX(-pi) 1
+RX(-pi) 2
+RX(-pi) 4
+RX(-pi) 5
+RX(-pi) 6
+RX(-pi) 7
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+MEASURE 0 [0]
+MEASURE 1 [1]
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+
+# gate volume 6
+# gate depth 1
+# topological swaps 0
+# program fidelity 1.0
+# multiqubit gate depth 0
+
+# End of compiling info
+
+(<pyquil.quil.Program object at 0x7f554513db00>, <pyquil.quil.Program object at 0x7f554521f160>)
+
+#--------------------------------------------------------#
+# Result = [0, 1, 1, 0, 1, 1, 1, 1]
+#--------------------------------------------------------#
+
+#--------------------------------------------------------#
+# Character= r Bitstring = [0, 1, 1, 1, 0, 0, 1, 0]
+#--------------------------------------------------------#
+
+# Original pyQuil program,
+
+ MEASURE 0 [0]
+X 1
+MEASURE 1 [1]
+X 2
+MEASURE 2 [2]
+X 3
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+X 6
+MEASURE 6 [6]
+MEASURE 7 [7]
+
+job BxAZrQZQjfSOGfWN is currently compiling
+
+# Compiled quil code,
+
+ PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+RX(-pi) 1
+RX(-pi) 2
+RX(-pi) 3
+RX(-pi) 6
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+MEASURE 0 [0]
+MEASURE 1 [1]
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+
+# gate volume 4
+# gate depth 1
+# topological swaps 0
+# program fidelity 1.0
+# multiqubit gate depth 0
+
+# End of compiling info
+
+(<pyquil.quil.Program object at 0x7f5545afd470>, <pyquil.quil.Program object at 0x7f5545041a58>)
+
+#--------------------------------------------------------#
+# Result = [0, 1, 1, 1, 0, 0, 1, 0]
+#--------------------------------------------------------#
+
+#--------------------------------------------------------#
+# Character= l Bitstring = [0, 1, 1, 0, 1, 1, 0, 0]
+#--------------------------------------------------------#
+
+# Original pyQuil program,
+
+ MEASURE 0 [0]
+X 1
+MEASURE 1 [1]
+X 2
+MEASURE 2 [2]
+MEASURE 3 [3]
+X 4
+MEASURE 4 [4]
+X 5
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+
+job lBrgZJjDWbVBAGJi is currently compiling
+
+# Compiled quil code,
+
+ PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+RX(-pi) 1
+RX(-pi) 2
+RX(-pi) 4
+RX(-pi) 5
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+MEASURE 0 [0]
+MEASURE 1 [1]
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+
+# gate volume 4
+# gate depth 1
+# topological swaps 0
+# program fidelity 1.0
+# multiqubit gate depth 0
+
+# End of compiling info
+
+(<pyquil.quil.Program object at 0x7f5544fd3d30>, <pyquil.quil.Program object at 0x7f5545141a90>)
+
+#--------------------------------------------------------#
+# Result = [0, 1, 1, 0, 1, 1, 0, 0]
+#--------------------------------------------------------#
+
+#--------------------------------------------------------#
+# Character= d Bitstring = [0, 1, 1, 0, 0, 1, 0, 0]
+#--------------------------------------------------------#
+
+# Original pyQuil program,
+
+ MEASURE 0 [0]
+X 1
+MEASURE 1 [1]
+X 2
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+X 5
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+
+job UTCRNCqBVeyXZjdb is currently compiling
+
+# Compiled quil code,
+
+ PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+RX(-pi) 1
+RX(-pi) 2
+RX(-pi) 5
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+MEASURE 0 [0]
+MEASURE 1 [1]
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+
+# gate volume 3
+# gate depth 1
+# topological swaps 0
+# program fidelity 1.0
+# multiqubit gate depth 0
+
+# End of compiling info
+
+(<pyquil.quil.Program object at 0x7f5544fd7898>, <pyquil.quil.Program object at 0x7f5545205f28>)
+
+#--------------------------------------------------------#
+# Result = [0, 1, 1, 0, 0, 1, 0, 0]
+#--------------------------------------------------------#
+
+#--------------------------------------------------------#
+# Character= ! Bitstring = [0, 0, 1, 0, 0, 0, 0, 1]
+#--------------------------------------------------------#
+
+# Original pyQuil program,
+
+ MEASURE 0 [0]
+MEASURE 1 [1]
+X 2
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+X 7
+MEASURE 7 [7]
+
+
+# Compiled quil code,
+
+ PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+RX(-pi) 2
+RX(-pi) 7
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+MEASURE 0 [0]
+MEASURE 1 [1]
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+
+# gate volume 2
+# gate depth 1
+# topological swaps 0
+# program fidelity 1.0
+# multiqubit gate depth 0
+
+# End of compiling info
+
+(<pyquil.quil.Program object at 0x7f5545adfe80>, <pyquil.quil.Program object at 0x7f5545080400>)
+
+#--------------------------------------------------------#
+# Result = [0, 0, 1, 0, 0, 0, 0, 1]
+#--------------------------------------------------------#
+
+Measurement results, 1 samples for each char
+ ['01001000', '01100101', '01101100', '01101100', '01101111', '00100000', '01010111', '01101111', '01110010', '01101100', '01100100', '00100001']
+
+This is your quantum computer (simulator), your message was:
+ Hello World!
