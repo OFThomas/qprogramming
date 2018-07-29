@@ -1,11 +1,14 @@
 # RUN WITH PYTHON 3.5!
 # Import the Qiskit SDK
-from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister, QuantumProgram
 from qiskit import available_backends, execute
 from qiskit.tools.visualization import circuit_drawer
 
+qp = QuantumProgram()
+
 # Create a Quantum Register with 2 qubits.
-q = QuantumRegister(8)
+q = :q
+QuantumRegister(8)
 # Create a Classical Register with 2 bits.
 c = ClassicalRegister(8)
 # Create a Quantum Circuit
@@ -18,7 +21,8 @@ qc = QuantumCircuit(q, c)
 # the qubits in a Bell state.
 #qc.cx(q[0], q[1])
 # Add a Measure gate to see the state.
-for i in range(3) : qc.measure(q[1], c[i])
+for i in range(3):
+    qc.measure(q[1], c[i])
 
 # See a list of available local simulators
 print("Local backends: ", available_backends({'local': True}))
@@ -33,5 +37,9 @@ print(sim_result.get_counts(qc))
 
 # Draw the circuit
 #circuit_drawer(qc, filename='./test_circuit.png')
-diagram = circuit_drawer(qc)
-diagram.show()
+#diagram = circuit_drawer(qc)
+#diagram.show()
+
+# print QASM
+
+print(qp.get_asm())
