@@ -1,6 +1,5 @@
 from pyquil.api import CompilerConnection, get_devices
 from pyquil.quil import Pragma, Program
-from pyquil.gates import CNOT, H, X
 
 
 def compiletoquil(myprogram):
@@ -8,7 +7,6 @@ def compiletoquil(myprogram):
     agave = devices['8Q-Agave']
     compiler = CompilerConnection(agave)
 
-    #myprogram=Program(H(0), CNOT(0,1), CNOT(1,2), X(1), H(1))
     print('\n# Original pyQuil program,\n\n', myprogram)
 
     job_id = compiler.compile_async(myprogram)
@@ -22,7 +20,6 @@ def compiletoquil(myprogram):
     print('# multiqubit gate depth', job.multiqubit_gate_depth())
     print('\n# End of compiling info\n')
 
-    return myprogram, job.compiled_quil()
+    return #myprogram, job.compiled_quil()
 
 
-# compiletoquil(Program(X(0)))

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from pyquil.quil import Program
 from pyquil.api import QVMConnection
 from pyquil.gates import X

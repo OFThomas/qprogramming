@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Program written using QISKit to demonstrate the way in which to create an equal weighted
 # superposition of states in the computational basis, and then simulate the measurement
 # on IBM's Q QASM simulator
