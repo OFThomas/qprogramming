@@ -12,7 +12,7 @@ qvm = QVMConnection()
 qprog = Program()
 
 # do X on q1, q3, q7
-# remember H Z H is X
+# recall H Z H is X
 qprog.inst(H(1), Z(1), H(1))
 qprog.inst(X(3))
 qprog.inst(X(7))
