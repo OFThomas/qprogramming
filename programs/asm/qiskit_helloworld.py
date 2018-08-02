@@ -12,13 +12,17 @@ q = QuantumRegister(8)
 c = ClassicalRegister(8)
 qprog = QuantumCircuit(q, c)
 
-qprog.x(q[1])
+qprog.h(q[1])
+qprog.z(q[1])
+qprog.h(q[1])
+
 qprog.x(q[3])
 qprog.x(q[7])
 
 # Measure the superposition
 qprog.measure(q, c)
 
+print(qprog.qasm())
 # Submit the job to the Q QASM Simulator (Up to 32 Qubits)
 job_sim = execute(qprog, "local_qasm_simulator")
 # Fetch result
@@ -28,4 +32,3 @@ sim_result = job_sim.result()
 print("simulation: ", sim_result)
 print(sim_result.get_counts(qprog))
 
-print(qprog.qasm())
