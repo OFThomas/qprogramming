@@ -3,7 +3,7 @@
 
 	# This is a memory section
 	.section .data
-msg:	.ascii "\nHello Lana\n"
+msg:	.ascii "Hello World!\n"
 	.set size, 12 
 
 	.section .text
