@@ -20,21 +20,22 @@ as -o program.o $infile
 echo $'\n\n#################################' >> $outfile
 echo $'# objectdump assembled asm' >> $outfile
 objdump -Dj .text program.o >> $outfile
-objdump -sj .data program.o >> $outfile
+objdump -sj .rodata program.o >> $outfile
 
 # linker
-ld -o program program.o
+ld program.o -o program
+#gcc -s program.o -o program 
 
 # then disassemble linker file
 echo $'\n\n#################################' >> $outfile
 echo $'# objectdump linked asm' >> $outfile
 objdump -Dj .text program >> $outfile
-objdump -sj .data program >> $outfile
+objdump -sj .rodata program >> $outfile
 
 # run the program...
 # .. because reasons
-./program
+#./program
 # let's see what this did
-echo 'Program return value: '$?
+#echo 'Program return value: '$?
 
-#vim $outfile 
+vim $outfile 
