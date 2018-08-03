@@ -10,8 +10,6 @@ fortran_helloworld: fortran_helloworld.f90 fortran_helloworld.asm
 
 fortran_helloworld.asm: fortran_helloworld.f90
 	$(FF) -S fortran_helloworld.f90 -o fortran_helloworld.$(ARCH).asm
-
-opt_fortran_helloworld.asm: fortran_helloworld.f90
 	$(FF) -S -O3 fortran_helloworld.f90 -o opt_fortran_helloworld.$(ARCH).asm
 
 c_helloworld: c_helloworld.c c_helloworld.asm 
@@ -19,8 +17,6 @@ c_helloworld: c_helloworld.c c_helloworld.asm
 
 c_helloworld.asm: c_helloworld.c
 	$(CC) -S c_helloworld.c -o c_helloworld.$(ARCH).asm
-
-opt_c_helloworld.asm: c_helloworld.c
 	$(CC) -S -O3 c_helloworld.c -o opt_c_helloworld.$(ARCH).asm
 
 cpp_helloworld: cpp_helloworld.cpp cpp_helloworld.asm 
@@ -28,8 +24,6 @@ cpp_helloworld: cpp_helloworld.cpp cpp_helloworld.asm
 
 cpp_helloworld.asm: cpp_helloworld.cpp
 	$(PP) -S cpp_helloworld.cpp -o cpp_helloworld.$(ARCH).asm
-
-opt_cpp_helloworld.asm: cpp_helloworld.cpp
 	$(PP) -S -O3 cpp_helloworld.cpp -o opt_cpp_helloworld.$(ARCH).asm
 
 clean:
