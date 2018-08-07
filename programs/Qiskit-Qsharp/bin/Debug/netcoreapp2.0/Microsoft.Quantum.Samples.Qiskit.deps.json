@@ -1,0 +1,128 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": "40715f47f16e53652caf07bdb434e6780e2082e6"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "Microsoft.Quantum.Samples.Qiskit/1.0.0": {
+        "dependencies": {
+          "Measurement": "1.0.0",
+          "Microsoft.Quantum.Canon": "1.0.0",
+          "Microsoft.Quantum.Development.Kit": "0.2.1806.3001-preview",
+          "Microsoft.Quantum.Samples.OpenQasm": "1.0.0"
+        },
+        "runtime": {
+          "Microsoft.Quantum.Samples.Qiskit.dll": {}
+        }
+      },
+      "Microsoft.Quantum.Development.Kit/0.2.1806.3001-preview": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Quantum.MetaData.dll": {
+            "assemblyVersion": "0.2.1806.3001",
+            "fileVersion": "0.0.0.0"
+          },
+          "lib/netstandard2.0/Microsoft.Quantum.Primitives.dll": {
+            "assemblyVersion": "0.2.1806.3001",
+            "fileVersion": "0.0.0.0"
+          },
+          "lib/netstandard2.0/Microsoft.Quantum.Simulation.Common.dll": {
+            "assemblyVersion": "0.2.1806.3001",
+            "fileVersion": "0.0.0.0"
+          },
+          "lib/netstandard2.0/Microsoft.Quantum.Simulation.Core.dll": {
+            "assemblyVersion": "0.2.1806.3001",
+            "fileVersion": "0.0.0.0"
+          },
+          "lib/netstandard2.0/Microsoft.Quantum.Simulation.QCTraceSimulatorRuntime.dll": {
+            "assemblyVersion": "0.2.1806.3001",
+            "fileVersion": "0.0.0.0"
+          },
+          "lib/netstandard2.0/Microsoft.Quantum.Simulation.Simulators.dll": {
+            "assemblyVersion": "0.2.1806.3001",
+            "fileVersion": "0.0.0.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/Microsoft.Quantum.Simulator.Runtime.dll": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/Microsoft.Quantum.Simulator.Runtime.dll": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/Microsoft.Quantum.Simulator.Runtime.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/vcomp140.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Measurement/1.0.0": {
+        "dependencies": {
+          "Microsoft.Quantum.Canon": "1.0.0",
+          "Microsoft.Quantum.Development.Kit": "0.2.1806.3001-preview"
+        },
+        "runtime": {
+          "Measurement.dll": {}
+        }
+      },
+      "Microsoft.Quantum.Canon/1.0.0": {
+        "dependencies": {
+          "Microsoft.Quantum.Development.Kit": "0.2.1806.3001-preview"
+        },
+        "runtime": {
+          "Microsoft.Quantum.Canon.dll": {}
+        }
+      },
+      "Microsoft.Quantum.Samples.OpenQasm/1.0.0": {
+        "dependencies": {
+          "Measurement": "1.0.0",
+          "Microsoft.Quantum.Canon": "1.0.0",
+          "Microsoft.Quantum.Development.Kit": "0.2.1806.3001-preview"
+        },
+        "runtime": {
+          "Microsoft.Quantum.Samples.OpenQasm.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Microsoft.Quantum.Samples.Qiskit/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Quantum.Development.Kit/0.2.1806.3001-preview": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UJUR5Ji3QBUZRNLKLDWihKrM1vG4R5IWN85+pZec1rQhf/F9ZnfPO+q65VLjfHA6/FIucmCBFPOMwVwscfamtQ==",
+      "path": "microsoft.quantum.development.kit/0.2.1806.3001-preview",
+      "hashPath": "microsoft.quantum.development.kit.0.2.1806.3001-preview.nupkg.sha512"
+    },
+    "Measurement/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Quantum.Canon/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Quantum.Samples.OpenQasm/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
