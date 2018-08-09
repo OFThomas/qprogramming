@@ -11,9 +11,6 @@ qp = QuantumProgram()
 qbyte = qp.create_quantum_register('q1', 8)
 cbyte = qp.create_classical_register('c1', 8)
 
-:q
-:q
-:wq
 # Create a Quantum Circuit
 qc = qp.create_circuit('helloworld', [qbyte], [cbyte])
 
