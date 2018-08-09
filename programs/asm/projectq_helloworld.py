@@ -8,7 +8,7 @@ from projectq.ops import All, H, Measure, Rx, Ry, Rz, CNOT
 
 # set restricted gate-set
 restricted_list = restrictedgateset.get_engine_list(
-    one_qubit_gates=(Rz, Ry), two_qubit_gates=(CNOT), other_gates=())
+    one_qubit_gates=(Rz, Ry), two_qubit_gates=(CNOT,), other_gates=())
 
 # set engine
 restricted_compiler = MainEngine(

@@ -1,0 +1,6 @@
+/home/js17712/Documents/phd/cohort-project/qprogramming/programs/Qiskit-Qsharp/obj/Debug/netcoreapp2.0/Qiskit.csprojAssemblyReference.cache
+/home/js17712/Documents/phd/cohort-project/qprogramming/programs/Qiskit-Qsharp/obj/Debug/netcoreapp2.0/Qiskit.csproj.CoreCompileInputs.cache
+/home/js17712/Documents/phd/cohort-project/qprogramming/programs/Qiskit-Qsharp/obj/Debug/netcoreapp2.0/Qiskit.AssemblyInfoInputs.cache
+/home/js17712/Documents/phd/cohort-project/qprogramming/programs/Qiskit-Qsharp/obj/Debug/netcoreapp2.0/Qiskit.AssemblyInfo.cs
+/home/js17712/Documents/phd/cohort-project/qprogramming/programs/Qiskit-Qsharp/obj/Debug/netcoreapp2.0/Microsoft.Quantum.Samples.Qiskit.dll
+/home/js17712/Documents/phd/cohort-project/qprogramming/programs/Qiskit-Qsharp/obj/Debug/netcoreapp2.0/Microsoft.Quantum.Samples.Qiskit.pdb

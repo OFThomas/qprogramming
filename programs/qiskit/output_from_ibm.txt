@@ -1,0 +1,59 @@
+Got this from running some dotnet Csharp Microsoft thing (John, 7th August)
+
+js17712@it057415:~/Documents/phd/cohort-project/Quantum/Samples/Qiskit$ dotnet run
+Hadamard on IBMQx4
+
+QASM file
+include "qelib1.inc";
+qreg q[5];
+creg c[5];
+h q[0];
+measure q[0] -> c[0];
+
+Usage: python3 QiskitInterface.py <Key> <Backend> <Shots>
+Qiskit API Interface
+QASM FILE READ
+include "qelib1.inc";
+qreg q[5];
+creg c[5];
+h q[0];
+measure q[0] -> c[0];
+
+SENDING TO IBM Quantum Experience
+ IBMQ AT IBM Quantum Experience:
+{'qasms': [{'qasm': 'include "qelib1.inc";\nqreg q[5];\ncreg c[5];\nh q[0];\nmeasure q[0] -> c[0];\n', 
+'status': 'WORKING_IN_PROGRESS', 'executionId': '5b699c5a527dec003e4c9ea2'}], 'shots': 1, 'backend': {'
+id': '5ae875670f020500393162b3', 'name': 'ibmqx4'}, 'status': 'RUNNING', 'maxCredits': 3, 'usedCredits'
+: 3, 'creationDate': '2018-08-07T13:19:22.435Z', 'id': '5b699c5a527dec003e4c9ea1', 'userId': '5b699ae0f
+898a1003ae6c36b', 'infoQueue': {'status': 'PENDING_IN_QUEUE', 'position': 25}}                        
+ JobID: 5b699c5a527dec003e4c9ea1
+ Position in Queue 25
+ Position in queue: 25
+ Expected time (minutes) in queue left: 25.0
+ Position in Queue 24
+ Position in queue: 24
+ Expected time (minutes) in queue left: 24.0
+ Position in Queue 24
+ Position in queue: 24
+ Expected time (minutes) in queue left: 24.0
+ Position in Queue 24
+ Position in queue: 24
+ Expected time (minutes) in queue left: 24.0
+ Position in Queue 24
+ Position in queue: 24
+ Expected time (minutes) in queue left: 24.0
+ Position in Queue 24
+ Position in queue: 24
+ Expected time (minutes) in queue left: 24.0
+ Result later than timeout. Going to failover.
+ SIMULATOR AT IBM:
+DONE
+{'status': 'DONE', 'idExecution': '5b699c9de09a8f003b0efa2a', 'idCode': '5b699c9ce09a8f003b0efa29', 're
+sult': {'extraInfo': {'seed': 355244336}, 'measure': {'qubits': [0], 'labels': ['00001'], 'values': [1]
+}}}                                                                                                   
+
+
+Processed
+Result=00001
+Result of Hadamard is One
+Press Enter to continue...

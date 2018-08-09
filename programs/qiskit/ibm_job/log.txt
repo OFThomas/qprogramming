@@ -1,0 +1,546 @@
+Usage: python3 QiskitInterface.py <Key> <Backend> <Shots>
+Usage: python3 QiskitInterface.py <Key> <Backend> <Shots>
+Qiskit API Interface
+QASM FILE READ
+include "qelib1.inc";
+qreg q[5];
+creg c[5];
+h q[0];
+measure q[0] -> c[0];
+
+SENDING TO IBM Quantum Experience
+ IBMQ AT IBM Quantum Experience:
+{'qasms': [{'qasm': 'include "qelib1.inc";\nqreg q[5];\ncreg c[5];\nh q[0];\nmeasure q[0] -> c[0];\n', 'status': 'WORKING_IN_PROGRESS', 'executionId': '5b69a43c1d4b000045d03778'}], 'shots': 5, 'backend': {'id': '5ae875670f020500393162b3', 'name': 'ibmqx4'}, 'status': 'RUNNING', 'maxCredits': 3, 'usedCredits': 3, 'creationDate': '2018-08-07T13:53:00.446Z', 'id': '5b69a43c1d4b000045d03777', 'userId': '5b699ae0f898a1003ae6c36b', 'infoQueue': {'status': 'PENDING_IN_QUEUE', 'position': 30}}
+ JobID: 5b69a43c1d4b000045d03777
+ Position in Queue 30
+ Position in queue: 30
+ Expected time (minutes) in queue left: 30.0
+ Position in Queue 30
+ Position in queue: 30
+ Expected time (minutes) in queue left: 30.0
+ Position in Queue 30
+ Position in queue: 30
+ Expected time (minutes) in queue left: 30.0
+ Position in Queue 30
+ Position in queue: 30
+ Expected time (minutes) in queue left: 30.0
+ Position in Queue 30
+ Position in queue: 30
+ Expected time (minutes) in queue left: 30.0
+ Position in Queue 29
+ Position in queue: 29
+ Expected time (minutes) in queue left: 29.0
+ Position in Queue 29
+ Position in queue: 29
+ Expected time (minutes) in queue left: 29.0
+ Position in Queue 29
+ Position in queue: 29
+ Expected time (minutes) in queue left: 29.0
+ Position in Queue 29
+ Position in queue: 29
+ Expected time (minutes) in queue left: 29.0
+ Position in Queue 29
+ Position in queue: 29
+ Expected time (minutes) in queue left: 29.0
+ Position in Queue 29
+ Position in queue: 29
+ Expected time (minutes) in queue left: 29.0
+ Position in Queue 28
+ Position in queue: 28
+ Expected time (minutes) in queue left: 28.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 27
+ Position in queue: 27
+ Expected time (minutes) in queue left: 27.0
+ Position in Queue 26
+ Position in queue: 26
+ Expected time (minutes) in queue left: 26.0
+ Position in Queue 25
+ Position in queue: 25
+ Expected time (minutes) in queue left: 25.0
+ Position in Queue 25
+ Position in queue: 25
+ Expected time (minutes) in queue left: 25.0
+ Position in Queue 25
+ Position in queue: 25
+ Expected time (minutes) in queue left: 25.0
+ Position in Queue 25
+ Position in queue: 25
+ Expected time (minutes) in queue left: 25.0
+ Position in Queue 25
+ Position in queue: 25
+ Expected time (minutes) in queue left: 25.0
+ Position in Queue 25
+ Position in queue: 25
+ Expected time (minutes) in queue left: 25.0
+ Position in Queue 25
+ Position in queue: 25
+ Expected time (minutes) in queue left: 25.0
+ Position in Queue 24
+ Position in queue: 24
+ Expected time (minutes) in queue left: 24.0
+ Position in Queue 22
+ Position in queue: 22
+ Expected time (minutes) in queue left: 22.0
+ Position in Queue 23
+ Position in queue: 23
+ Expected time (minutes) in queue left: 23.0
+ Position in Queue 23
+ Position in queue: 23
+ Expected time (minutes) in queue left: 23.0
+ Position in Queue 23
+ Position in queue: 23
+ Expected time (minutes) in queue left: 23.0
+ Position in Queue 23
+ Position in queue: 23
+ Expected time (minutes) in queue left: 23.0
+ Position in Queue 23
+ Position in queue: 23
+ Expected time (minutes) in queue left: 23.0
+ Position in Queue 22
+ Position in queue: 22
+ Expected time (minutes) in queue left: 22.0
+ Position in Queue 22
+ Position in queue: 22
+ Expected time (minutes) in queue left: 22.0
+ Position in Queue 22
+ Position in queue: 22
+ Expected time (minutes) in queue left: 22.0
+ Position in Queue 22
+ Position in queue: 22
+ Expected time (minutes) in queue left: 22.0
+ Position in Queue 22
+ Position in queue: 22
+ Expected time (minutes) in queue left: 22.0
+ Position in Queue 22
+ Position in queue: 22
+ Expected time (minutes) in queue left: 22.0
+ Position in Queue 22
+ Position in queue: 22
+ Expected time (minutes) in queue left: 22.0
+ Position in Queue 22
+ Position in queue: 22
+ Expected time (minutes) in queue left: 22.0
+ Position in Queue 22
+ Position in queue: 22
+ Expected time (minutes) in queue left: 22.0
+ Position in Queue 22
+ Position in queue: 22
+ Expected time (minutes) in queue left: 22.0
+ Position in Queue 22
+ Position in queue: 22
+ Expected time (minutes) in queue left: 22.0
+ Position in Queue 22
+ Position in queue: 22
+ Expected time (minutes) in queue left: 22.0
+ Position in Queue 21
+ Position in queue: 21
+ Expected time (minutes) in queue left: 21.0
+ Position in Queue 21
+ Position in queue: 21
+ Expected time (minutes) in queue left: 21.0
+ Position in Queue 20
+ Position in queue: 20
+ Expected time (minutes) in queue left: 20.0
+ Position in Queue 20
+ Position in queue: 20
+ Expected time (minutes) in queue left: 20.0
+ Position in Queue 20
+ Position in queue: 20
+ Expected time (minutes) in queue left: 20.0
+ Position in Queue 20
+ Position in queue: 20
+ Expected time (minutes) in queue left: 20.0
+ Position in Queue 20
+ Position in queue: 20
+ Expected time (minutes) in queue left: 20.0
+ Position in Queue 20
+ Position in queue: 20
+ Expected time (minutes) in queue left: 20.0
+ Position in Queue 19
+ Position in queue: 19
+ Expected time (minutes) in queue left: 19.0
+ Position in Queue 19
+ Position in queue: 19
+ Expected time (minutes) in queue left: 19.0
+ Position in Queue 18
+ Position in queue: 18
+ Expected time (minutes) in queue left: 18.0
+ Position in Queue 18
+ Position in queue: 18
+ Expected time (minutes) in queue left: 18.0
+ Position in Queue 18
+ Position in queue: 18
+ Expected time (minutes) in queue left: 18.0
+ Position in Queue 18
+ Position in queue: 18
+ Expected time (minutes) in queue left: 18.0
+ Position in Queue 18
+ Position in queue: 18
+ Expected time (minutes) in queue left: 18.0
+ Position in Queue 18
+ Position in queue: 18
+ Expected time (minutes) in queue left: 18.0
+ Position in Queue 17
+ Position in queue: 17
+ Expected time (minutes) in queue left: 17.0
+ Position in Queue 17
+ Position in queue: 17
+ Expected time (minutes) in queue left: 17.0
+ Position in Queue 17
+ Position in queue: 17
+ Expected time (minutes) in queue left: 17.0
+ Position in Queue 17
+ Position in queue: 17
+ Expected time (minutes) in queue left: 17.0
+ Position in Queue 17
+ Position in queue: 17
+ Expected time (minutes) in queue left: 17.0
+ Position in Queue 17
+ Position in queue: 17
+ Expected time (minutes) in queue left: 17.0
+ Position in Queue 16
+ Position in queue: 16
+ Expected time (minutes) in queue left: 16.0
+ Position in Queue 16
+ Position in queue: 16
+ Expected time (minutes) in queue left: 16.0
+ Position in Queue 16
+ Position in queue: 16
+ Expected time (minutes) in queue left: 16.0
+ Position in Queue 16
+ Position in queue: 16
+ Expected time (minutes) in queue left: 16.0
+ Position in Queue 16
+ Position in queue: 16
+ Expected time (minutes) in queue left: 16.0
+ Position in Queue 16
+ Position in queue: 16
+ Expected time (minutes) in queue left: 16.0
+ Position in Queue 15
+ Position in queue: 15
+ Expected time (minutes) in queue left: 15.0
+ Position in Queue 15
+ Position in queue: 15
+ Expected time (minutes) in queue left: 15.0
+ Position in Queue 15
+ Position in queue: 15
+ Expected time (minutes) in queue left: 15.0
+ Position in Queue 15
+ Position in queue: 15
+ Expected time (minutes) in queue left: 15.0
+ Position in Queue 15
+ Position in queue: 15
+ Expected time (minutes) in queue left: 15.0
+ Position in Queue 15
+ Position in queue: 15
+ Expected time (minutes) in queue left: 15.0
+ Position in Queue 15
+ Position in queue: 15
+ Expected time (minutes) in queue left: 15.0
+ Position in Queue 14
+ Position in queue: 14
+ Expected time (minutes) in queue left: 14.0
+ Position in Queue 13
+ Position in queue: 13
+ Expected time (minutes) in queue left: 13.0
+ Position in Queue 13
+ Position in queue: 13
+ Expected time (minutes) in queue left: 13.0
+ Position in Queue 13
+ Position in queue: 13
+ Expected time (minutes) in queue left: 13.0
+ Position in Queue 13
+ Position in queue: 13
+ Expected time (minutes) in queue left: 13.0
+ Position in Queue 13
+ Position in queue: 13
+ Expected time (minutes) in queue left: 13.0
+ Position in Queue 13
+ Position in queue: 13
+ Expected time (minutes) in queue left: 13.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 11
+ Position in queue: 11
+ Expected time (minutes) in queue left: 11.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 12
+ Position in queue: 12
+ Expected time (minutes) in queue left: 12.0
+ Position in Queue 11
+ Position in queue: 11
+ Expected time (minutes) in queue left: 11.0
+ Position in Queue 11
+ Position in queue: 11
+ Expected time (minutes) in queue left: 11.0
+ Position in Queue 11
+ Position in queue: 11
+ Expected time (minutes) in queue left: 11.0
+ Position in Queue 11
+ Position in queue: 11
+ Expected time (minutes) in queue left: 11.0
+ Position in Queue 11
+ Position in queue: 11
+ Expected time (minutes) in queue left: 11.0
+ Position in Queue 11
+ Position in queue: 11
+ Expected time (minutes) in queue left: 11.0
+ Position in Queue 10
+ Position in queue: 10
+ Expected time (minutes) in queue left: 10.0
+ Position in Queue 10
+ Position in queue: 10
+ Expected time (minutes) in queue left: 10.0
+ Position in Queue 9
+ Position in queue: 9
+ Expected time (minutes) in queue left: 9.0
+ Position in Queue 9
+ Position in queue: 9
+ Expected time (minutes) in queue left: 9.0
+ Position in Queue 9
+ Position in queue: 9
+ Expected time (minutes) in queue left: 9.0
+ Position in Queue 9
+ Position in queue: 9
+ Expected time (minutes) in queue left: 9.0
+ Position in Queue 9
+ Position in queue: 9
+ Expected time (minutes) in queue left: 9.0
+ Position in Queue 9
+ Position in queue: 9
+ Expected time (minutes) in queue left: 9.0
+ Position in Queue 8
+ Position in queue: 8
+ Expected time (minutes) in queue left: 8.0
+ Position in Queue 8
+ Position in queue: 8
+ Expected time (minutes) in queue left: 8.0
+ Position in Queue 8
+ Position in queue: 8
+ Expected time (minutes) in queue left: 8.0
+ Position in Queue 8
+ Position in queue: 8
+ Expected time (minutes) in queue left: 8.0
+ Position in Queue 8
+ Position in queue: 8
+ Expected time (minutes) in queue left: 8.0
+ Position in Queue 8
+ Position in queue: 8
+ Expected time (minutes) in queue left: 8.0
+ Position in Queue 7
+ Position in queue: 7
+ Expected time (minutes) in queue left: 7.0
+ Position in Queue 7
+ Position in queue: 7
+ Expected time (minutes) in queue left: 7.0
+ Position in Queue 7
+ Position in queue: 7
+ Expected time (minutes) in queue left: 7.0
+ Position in Queue 7
+ Position in queue: 7
+ Expected time (minutes) in queue left: 7.0
+ Position in Queue 7
+ Position in queue: 7
+ Expected time (minutes) in queue left: 7.0
+ Position in Queue 7
+ Position in queue: 7
+ Expected time (minutes) in queue left: 7.0
+ Position in Queue 7
+ Position in queue: 7
+ Expected time (minutes) in queue left: 7.0
+ Position in Queue 6
+ Position in queue: 6
+ Expected time (minutes) in queue left: 6.0
+ Position in Queue 6
+ Position in queue: 6
+ Expected time (minutes) in queue left: 6.0
+ Position in Queue 6
+ Position in queue: 6
+ Expected time (minutes) in queue left: 6.0
+ Position in Queue 6
+ Position in queue: 6
+ Expected time (minutes) in queue left: 6.0
+ Position in Queue 6
+ Position in queue: 6
+ Expected time (minutes) in queue left: 6.0
+ Position in Queue 6
+ Position in queue: 6
+ Expected time (minutes) in queue left: 6.0
+ Position in Queue 5
+ Position in queue: 5
+ Expected time (minutes) in queue left: 5.0
+ Position in Queue 5
+ Position in queue: 5
+ Expected time (minutes) in queue left: 5.0
+ Position in Queue 5
+ Position in queue: 5
+ Expected time (minutes) in queue left: 5.0
+ Position in Queue 5
+ Position in queue: 5
+ Expected time (minutes) in queue left: 5.0
+ Position in Queue 5
+ Position in queue: 5
+ Expected time (minutes) in queue left: 5.0
+ Position in Queue 5
+ Position in queue: 5
+ Expected time (minutes) in queue left: 5.0
+ Position in Queue 4
+ Position in queue: 4
+ Expected time (minutes) in queue left: 4.0
+ Position in Queue 3
+ Position in queue: 3
+ Expected time (minutes) in queue left: 3.0
+ Position in Queue 3
+ Position in queue: 3
+ Expected time (minutes) in queue left: 3.0
+ Position in Queue 3
+ Position in queue: 3
+ Expected time (minutes) in queue left: 3.0
+ Position in Queue 3
+ Position in queue: 3
+ Expected time (minutes) in queue left: 3.0
+ Position in Queue 3
+ Position in queue: 3
+ Expected time (minutes) in queue left: 3.0
+ Position in Queue 3
+ Position in queue: 3
+ Expected time (minutes) in queue left: 3.0
+ Position in Queue 2
+ Position in queue: 2
+ Expected time (minutes) in queue left: 2.0
+ Position in Queue 2
+ Position in queue: 2
+ Expected time (minutes) in queue left: 2.0
+ Position in Queue 2
+ Position in queue: 2
+ Expected time (minutes) in queue left: 2.0
+ Position in Queue 2
+ Position in queue: 2
+ Expected time (minutes) in queue left: 2.0
+ Position in Queue 2
+ Position in queue: 2
+ Expected time (minutes) in queue left: 2.0
+ Position in Queue 2
+ Position in queue: 2
+ Expected time (minutes) in queue left: 2.0
+ Position in Queue 1
+ Position in queue: 1
+ Expected time (minutes) in queue left: 1.0
+ Position in Queue 1
+ Position in queue: 1
+ Expected time (minutes) in queue left: 1.0
+ Position in Queue 1
+ Position in queue: 1
+ Expected time (minutes) in queue left: 1.0
+ Position in Queue 1
+ Position in queue: 1
+ Expected time (minutes) in queue left: 1.0
+ Position in Queue 1
+ Position in queue: 1
+ Expected time (minutes) in queue left: 1.0
+ Position in Queue 1
+ Position in queue: 1
+ Expected time (minutes) in queue left: 1.0
+{'measure': {'labels': ['00000', '00001'], 'values': [0.4, 0.6]}, 'calibration': {'lastUpdateDate': '2018-08-07T09:58:25.000Z', 'fridgeParameters': {'cooldownDate': '2017-09-07', 'Temperature': {'date': '-', 'value': [], 'unit': '-'}}, 'qubits': [{'name': 'Q0', 'buffer': {'date': '2018-08-07T09:58:25Z', 'value': 10, 'unit': 'ns'}, 'gateTime': {'date': '2018-08-07T09:58:25Z', 'value': 60, 'unit': 'ns'}, 'T2': {'date': '2018-08-07T09:58:25Z', 'value': 43.2, 'unit': 'µs'}, 'T1': {'date': '2018-08-07T09:58:25Z', 'value': 45, 'unit': 'µs'}, 'frequency': {'date': '2018-08-07T09:58:25Z', 'value': 5.24988, 'unit': 'GHz'}, 'gateError': {'date': '2018-08-07T09:58:25Z', 'value': 0.0011160854878761173}, 'readoutError': {'date': '2018-08-07T09:58:25Z', 'value': 0.066}}, {'name': 'Q1', 'buffer': {'date': '2018-08-07T09:58:25Z', 'value': 10, 'unit': 'ns'}, 'gateTime': {'date': '2018-08-07T09:58:25Z', 'value': 60, 'unit': 'ns'}, 'T2': {'date': '2018-08-07T09:58:25Z', 'value': 15.2, 'unit': 'µs'}, 'T1': {'date': '2018-08-07T09:58:25Z', 'value': 35.9, 'unit': 'µs'}, 'frequency': {'date': '2018-08-07T09:58:25Z', 'value': 5.29575, 'unit': 'GHz'}, 'gateError': {'date': '2018-08-07T09:58:25Z', 'value': 0.0024043886349084387}, 'readoutError': {'date': '2018-08-07T09:58:25Z', 'value': 0.067}}, {'name': 'Q2', 'buffer': {'date': '2018-08-07T09:58:25Z', 'value': 10, 'unit': 'ns'}, 'gateTime': {'date': '2018-08-07T09:58:25Z', 'value': 60, 'unit': 'ns'}, 'T2': {'date': '2018-08-07T09:58:25Z', 'value': 40.4, 'unit': 'µs'}, 'T1': {'date': '2018-08-07T09:58:25Z', 'value': 43.2, 'unit': 'µs'}, 'frequency': {'date': '2018-08-07T09:58:25Z', 'value': 5.35321, 'unit': 'GHz'}, 'gateError': {'date': '2018-08-07T09:58:25Z', 'value': 0.0012019552727863259}, 'readoutError': {'date': '2018-08-07T09:58:25Z', 'value': 0.026}}, {'name': 'Q3', 'buffer': {'date': '2018-08-07T09:58:25Z', 'value': 10, 'unit': 'ns'}, 'gateTime': {'date': '2018-08-07T09:58:25Z', 'value': 60, 'unit': 'ns'}, 'T2': {'date': '2018-08-07T09:58:25Z', 'value': 19.4, 'unit': 'µs'}, 'T1': {'date': '2018-08-07T09:58:25Z', 'value': 55.8, 'unit': 'µs'}, 'frequency': {'date': '2018-08-07T09:58:25Z', 'value': 5.43499, 'unit': 'GHz'}, 'gateError': {'date': '2018-08-07T09:58:25Z', 'value': 0.001631340796924452}, 'readoutError': {'date': '2018-08-07T09:58:25Z', 'value': 0.02}}, {'name': 'Q4', 'buffer': {'date': '2018-08-07T09:58:25Z', 'value': 10, 'unit': 'ns'}, 'gateTime': {'date': '2018-08-07T09:58:25Z', 'value': 60, 'unit': 'ns'}, 'T2': {'date': '2018-08-07T09:58:25Z', 'value': 8.5, 'unit': 'µs'}, 'T1': {'date': '2018-08-07T09:58:25Z', 'value': 51.9, 'unit': 'µs'}, 'frequency': {'date': '2018-08-07T09:58:25Z', 'value': 5.17585, 'unit': 'GHz'}, 'gateError': {'date': '2018-08-07T09:58:25Z', 'value': 0.001631340796924452}, 'readoutError': {'date': '2018-08-07T09:58:25Z', 'value': 0.063}}], 'multiQubitGates': [{'qubits': [1, 0], 'type': 'CX', 'gateError': {'date': '2018-08-07T09:58:25Z', 'value': 0.0432977105493699}, 'name': 'CX1_0'}, {'qubits': [2, 0], 'type': 'CX', 'gateError': {'date': '2018-08-07T09:58:25Z', 'value': 0.028336019663893347}, 'name': 'CX2_0'}, {'qubits': [2, 1], 'type': 'CX', 'gateError': {'date': '2018-08-07T09:58:25Z', 'value': 0.05190881431734928}, 'name': 'CX2_1'}, {'qubits': [3, 2], 'type': 'CX', 'gateError': {'date': '2018-08-07T09:58:25Z', 'value': 0.06866304698255793}, 'name': 'CX3_2'}, {'qubits': [3, 4], 'type': 'CX', 'gateError': {'date': '2018-08-07T09:58:25Z', 'value': 0.04474069696423133}, 'name': 'CX3_4'}, {'qubits': [4, 2], 'type': 'CX', 'gateError': {'date': '2018-08-07T09:58:25Z', 'value': 0.05828065309875452}, 'name': 'CX4_2'}], 'version': '3.0'}, 'time_taken': 10.56204605102539}
