@@ -2,11 +2,21 @@
 
 from projectq import MainEngine
 from projectq.ops import X, Z, H, All, Measure
-from projectq.backends import CommandPrinter
-from projectq.backends import Simulator
+from projectq.backends import CommandPrinter, Simulator
+from projectq.setups import restrictedgateset
+from projectq.ops import All, H, Measure, Rx, Ry, Rz, CNOT
 
-# specify compiler
+# set restricted gate-set
+restricted_list = restrictedgateset.get_engine_list(
+    one_qubit_gates=(Rz, Ry), two_qubit_gates=(CNOT), other_gates=())
+
+# set engine
+restricted_compiler = MainEngine(
+    backend=CommandPrinter(accept_input=False), engine_list=restricted_list)
+
+#  compiler
 compiler = MainEngine(backend=CommandPrinter(accept_input=False))
+
 # specify simulate locally
 simulate = MainEngine(backend=Simulator())
 
@@ -43,5 +53,8 @@ def qprogram(eng):
 
 # run for the compiler to see what the program does
 qprogram(compiler)
+# run for restricted gate-set
+qprogram(restricted_compiler)
+
 # then simulate
 qprogram(simulate)
