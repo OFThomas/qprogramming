@@ -237,50 +237,6 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
-      },
-      "Measurement/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v2.0",
-        "dependencies": {
-          "Microsoft.NETCore.App": "2.0.0",
-          "Microsoft.Quantum.Canon": "1.0.0",
-          "Microsoft.Quantum.Development.Kit": "0.2.1806.3001-preview"
-        },
-        "compile": {
-          "bin/placeholder/Measurement.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Measurement.dll": {}
-        }
-      },
-      "Microsoft.Quantum.Canon/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Microsoft.Quantum.Development.Kit": "0.2.1806.3001-preview"
-        },
-        "compile": {
-          "bin/placeholder/Microsoft.Quantum.Canon.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Microsoft.Quantum.Canon.dll": {}
-        }
-      },
-      "Microsoft.Quantum.Samples.OpenQasm/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v2.0",
-        "dependencies": {
-          "Measurement": "1.0.0",
-          "Microsoft.NETCore.App": "2.0.0",
-          "Microsoft.Quantum.Canon": "1.0.0",
-          "Microsoft.Quantum.Development.Kit": "0.2.1806.3001-preview"
-        },
-        "compile": {
-          "bin/placeholder/Microsoft.Quantum.Samples.OpenQasm.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Microsoft.Quantum.Samples.OpenQasm.dll": {}
-        }
       }
     }
   },
@@ -799,30 +755,12 @@
         "netstandard.library.2.0.0.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
-    },
-    "Measurement/1.0.0": {
-      "type": "project",
-      "path": "../Measurement/Measurement.csproj",
-      "msbuildProject": "../Measurement/Measurement.csproj"
-    },
-    "Microsoft.Quantum.Canon/1.0.0": {
-      "type": "project",
-      "path": "../../Microsoft.Quantum.Canon/Microsoft.Quantum.Canon.csproj",
-      "msbuildProject": "../../Microsoft.Quantum.Canon/Microsoft.Quantum.Canon.csproj"
-    },
-    "Microsoft.Quantum.Samples.OpenQasm/1.0.0": {
-      "type": "project",
-      "path": "../OpenQasm/OpenQasm.csproj",
-      "msbuildProject": "../OpenQasm/OpenQasm.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
-      "Measurement >= 1.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
-      "Microsoft.Quantum.Canon >= 1.0.0",
-      "Microsoft.Quantum.Development.Kit >= 0.2.1806.3001-preview",
-      "Microsoft.Quantum.Samples.OpenQasm >= 1.0.0"
+      "Microsoft.Quantum.Development.Kit >= 0.2.1806.3001-preview"
     ]
   },
   "packageFolders": {
@@ -832,11 +770,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/js17712/Documents/phd/cohort-project/Quantum/Samples/Qiskit/Qiskit.csproj",
+      "projectUniqueName": "/home/js17712/Documents/phd/cohort-project/qprogramming/programs/Qiskit-Qsharp/Qiskit.csproj",
       "projectName": "Microsoft.Quantum.Samples.Qiskit",
-      "projectPath": "/home/js17712/Documents/phd/cohort-project/Quantum/Samples/Qiskit/Qiskit.csproj",
+      "projectPath": "/home/js17712/Documents/phd/cohort-project/qprogramming/programs/Qiskit-Qsharp/Qiskit.csproj",
       "packagesPath": "/home/js17712/.nuget/packages/",
-      "outputPath": "/home/js17712/Documents/phd/cohort-project/Quantum/Samples/Qiskit/obj/",
+      "outputPath": "/home/js17712/Documents/phd/cohort-project/qprogramming/programs/Qiskit-Qsharp/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -852,17 +790,7 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {
-            "/home/js17712/Documents/phd/cohort-project/Quantum/Microsoft.Quantum.Canon/Microsoft.Quantum.Canon.csproj": {
-              "projectPath": "/home/js17712/Documents/phd/cohort-project/Quantum/Microsoft.Quantum.Canon/Microsoft.Quantum.Canon.csproj"
-            },
-            "/home/js17712/Documents/phd/cohort-project/Quantum/Samples/Measurement/Measurement.csproj": {
-              "projectPath": "/home/js17712/Documents/phd/cohort-project/Quantum/Samples/Measurement/Measurement.csproj"
-            },
-            "/home/js17712/Documents/phd/cohort-project/Quantum/Samples/OpenQasm/OpenQasm.csproj": {
-              "projectPath": "/home/js17712/Documents/phd/cohort-project/Quantum/Samples/OpenQasm/OpenQasm.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

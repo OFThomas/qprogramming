@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit
-from qiskit import available_backends, execute
+from qiskit import available_backends, execute, compile
+#from qiskit.wrapper._wrapper import *
+from IBMQuantumExperience import IBMQuantumExperience
+from qiskit import backends
 
 # Q in binary
 bitstring = '01010001'
@@ -21,6 +24,10 @@ qprog.x(q[7])
 
 # Measure
 qprog.measure(q, c)
+
+gates = "x,h"
+cp = compile(qprog,"local_qasm_simulator",basis_gates=gates)
+print(cp['circuits'][0]['compiled_circuit_qasm'])
 
 # print quantum assembly code
 print(qprog.qasm())
