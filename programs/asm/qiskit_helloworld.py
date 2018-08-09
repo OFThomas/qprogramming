@@ -27,9 +27,11 @@ qprog.measure(q, c)
 
 gates = "x,h"
 cp = compile(qprog,"local_qasm_simulator",basis_gates=gates)
+print("This is when you only allow h and x gates --------------")
 print(cp['circuits'][0]['compiled_circuit_qasm'])
 
 # print quantum assembly code
+print("This is QASM --------------")
 print(qprog.qasm())
 
 # Submit the job to the Q QASM Simulator
