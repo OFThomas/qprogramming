@@ -1,0 +1,55 @@
+* Editing/formatting todo list
+** TODO 1) Read the entire document and comment 
+** TODO 2) Fill in the blank sections
+** TODO 3) Rearrange content (globally) 
+to avoid direct repetition and inconsistency. This is the stage where everyone's additions need to be finalised and included.
+** TODO 4) Fix content locally
+so that each chapter makes sense on its own. Not grammar etc, just content -- so that after this step the document is in its final state content-wise, and everything is in the right place. I guess we might go back and forth between this and step 3.
+** TODO 5) Pick a style and make every chapter conform
+We'll need to make sure every chapter reads in the same way -- which also means that intro lengths are consistent, section labels and depths are consistent, etc. 
+** TODO 6) Check grammar and spelling
+if we've done everything else right, hopefully it should be just a case of correcting things that are wrong.
+
+** TODO 7) Formatting stuff
+
+* Comments -- individual chapters
+This section is for comments specific to individual chapter. Problems might be solved by other chapters, but that can be figured out later.
+** Chapter 4 - Algorithms and applications
+*** Todo lists
+**** TODO Intro section
+The first section needs to be an explicit introduction, i.e. appearing in the contents page, with a section number. Otherwise the first section in the chapter is the `oracle operation', which is not numbered. Also I think we should probably give a brief overview about what is in the chapter.
+**** TODO Oracles
+I think we need to make this section very clear, because it seems to be a bit heavy for right at the start of the chapter. Made it should be promoted to a proper section and given a bit more intro (and maybe explain about the whole `parallel operations' stuff). It might be just a case of moving the section heading one paragraph higher and making it a proper section.
+*** Other comments
+**** Nice and concise sections
+The sections seem pretty concise and they're also quite short which is nice.
+** Chapter 5 - NISQ Algs
+*** Todo list
+**** TODO Intro stuff 
+There should be some kind of description/brief summary in the introduction about what will be discussed in the chapter. 
+**** TODO Alg descriptions
+What is the vertex colouring problem? Needs some kind of introduction. Especially the details need more explanation before getting straight into the code. This applies to all the examples I think. Even if the algorithm itself is described in another chapter, maybe there's a way to include more specific implementation discussion about how the code was made/practical aspects of the algorithm that could be included.
+**** TODO Code stuff
+We should try to avoid code repetition. Are we going to have code snippets or one code block? I favour one block of code per example. I think it would be clearer to have the same code block for both the DWAVE and 1QBIT examples, and implement the quantum specific bits in functions.     
+**** TODO Summary
+We need to write a summary/conclusion/discussion/outlook section at the end. It ought to really pair with a similar style intro section at the start, so that the reader feels they've read some kind of self contained block and so that they also know what they're supposed to get out of the section. It would be interesting to compare specifics of the examples -- can any of them be actually run on real devices? If so how? (Relevant for near term applications.) Comments about how all the examples use libraries -- how to go about implementing from scratch? (I don't think we can just leave it as an exercise with no explanation.)
+*** Other comments
+**** Good VQE section 
+Page 72 with the VQE example is very good -- we should follow this sort of model for all the other examples I think
+**** For implementation section
+It would be interesting to decompose a VQE example into gates in the implementation section and see what it does.
+**** Good description to code ration
+I think section 5.2.2 is better -- it contains more detail and description rather than big blocks of code, which makes it easier to read.
+     
+
+* Comments -- whole document
+Comments about the structure of the whole document go here. Things like repetition between chapters, etc.
+
+* General style comments
+** Prefer short sentences and simple words.
+Break up sentences where possible. Avoid jargon and terminology if there are easy alternatives.
+** Each sentence should contain one main idea or several related ones. 
+Assume the reader can only take away one important piece of information per sentence. 
+** Use concise/succinct sentences.
+Avoid repetition, avoid over-complicated phrases, delete sentences/clauses without content, delete redundant/unimportant sentences 
+ 
