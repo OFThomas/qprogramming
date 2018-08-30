@@ -1,0 +1,58 @@
+import networkx as nx 
+import matplotlib.pyplot as plt 
+from qdk.binary_polynomial import * 
+from qdk.common_solver_interface import * 
+
+# Set the graph configuration by setting nodes and neighbours 
+nodes = [0,1,2,3,4] 
+neighbours = [(0,4),(1,2),(1,3),(1,4)] 
+
+# Draw the graph configuration 
+g = nx.Graph() 
+g.add_nodes_from(nodes) 
+g.add_edges_from(neighbours) 
+pos = nx.spring_layout(g) 
+nx.draw(g, pos=pos, with_labels=True, node_color='w', node_size=1000) 
+plt.show() 
+
+# Turn the two dimension index to one dimension
+def d2tod1(n, k, K):  
+    return n * K + k  
+
+# Function to color the final configuration
+pallete = {0: 'r', 1: 'c', 2:'m', 3:'y'} 
+def get_color(n, sol, K): 
+    z = d2tod1(n, 0, K) 
+    color = 0 
+    for k in range(K): 
+        if sol[z + k]: 
+        break 
+     return pallete[k] 
+ 
+# Construct the quadratic equation (2)
+builder = QuadraticBinaryPolynomialBuilder() 
+qubo = builder.build_polynomial() 
+N = 5 
+K = 4
+for n in range(N):
+    builder.add_constant_term(1)
+    for k in range(K):
+        builder.add_term(-1, d2tod1(n,k,K))
+    builder.power(2)
+    t = builder.build_polynomial()
+    qubo.sum(t)
+    builder.reset()
+
+for (u,v) in g.edges():
+    for k in range(K): 
+        builder.add_term(1, d2tod1(u,k,K), d2tod1(v,k,K))
+        qubo.sum(builder.build_polynomial())
+print (qubo) 
+solver = DWaveSolver() 
+solver.solver.num_reads = 300 
+sol = solver.minimize(qubo).peek_minimum_energy_solution().configuration 
+
+# Draw the final configuration with color applied
+nx.draw(g, pos=pos, with_labels=True, nodelist=g.nodes(),  
+node_color=[get_color(n, sol, K) for n in g.nodes()],node_size=1000) 
+plt.show() 

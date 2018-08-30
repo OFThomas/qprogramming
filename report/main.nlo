@@ -1,0 +1,20 @@
+\nomenclatureentry{01Q\textsuperscript{TM}@[{Q\textsuperscript{TM}}]\begingroup Quantum\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{B,01QVM@[{QVM}]\begingroup Quantum Virtual Machine\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{B,02QPU@[{QPU}]\begingroup Quantum Processing Unit\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{B,03CPU@[{CPU}]\begingroup (Classical) Central Processing Unit\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{B,04API@[{API}]\begingroup Application Programming Interface\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{B,05QUIL@[{QUIL}]\begingroup Quantum Instruction Language\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{B,06QDK@[{QDK}]\begingroup Quantum Development Kit\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{B,07QISKit@[{QISKit}]\begingroup Quantum Information Science Kit\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{B,08QASM@[{QASM}]\begingroup Quantum Assembly Language\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{C,01QFT@[{QFT}]\begingroup Quantum Fourier Transform\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{D,06NISQ@[{NISQ}]\begingroup Noisy Intermediate-Scale Quantum\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{D,07FTLSQ@[{FTLSQ}]\begingroup Fault-Tolerant Large-Scale Quantum\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{D,08QUBO@[{QUBO}]\begingroup Quadratic Unconstrained Binary Optimisation\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{D,09QAOA@[{QAOA}]\begingroup Quantum Approximate Optimisation Algorithm\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{D,10VQE@[{VQE}]\begingroup Variational Quantum Eigensolver\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{D,11QSDP@[{QSDP}]\begingroup Quantum Semidefinite Programming\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{F,01SC@[{SC}]\begingroup Superconducting\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{F,02LOQC@[{LOQC}]\begingroup Linear Optical Quantum Computing\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{F,03CV@[{CV}]\begingroup Continuous Variables\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{G,01QLANG\textsuperscript{TM}@[{QLANG\textsuperscript{TM}}]\begingroup Quantum CLANG\nomeqref {1.0}|nompageref}{9}

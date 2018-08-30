@@ -1,33 +1,30 @@
 %\chapter{Advanced topics}
 \chapter{A gentle introduction to quantum theory}
-\label{Advancedtopics}
+\label{chpt:advancedtopics}
 
-\epigraph{\textit{No fair! You changed the outcome by measuring it!}}{Hubert Farnsworth}
+In this chapter we cover some supplementary background quantum theory. Although a deeper knowledge of quantum theory would serve to further your understanding of quantum computing, everything you need to know for this guide is covered in \autoref{chpt:background}. The following textbook is referenced throughout this Appendix which we recommend to interested readers: \textit{"Quantum Computation and Quantum Information"} by M. A. Nielsen and I. L. Chuang \cite{nielsen_chuang_2010}. You have seen in Section \autoref{chpt:background} that the state of a system governed by quantum mechanics can be represented by a sum of basis states that each correspond to binary representations of information. In this section we will give a more detailed introduction to Dirac notation and cement the description given in Section \autoref{chpt:background} into a more formal language that will allow you to describe more complex systems and will allow you to probe deeper into more advanced literature.
 
-In this section we cover some supplementary background quantum theory. Although a deeper knowledge of quantum theory would serve to further your understanding of quantum computing, it should not be necessary for sections 1 to (?). The following textbook is referenced throughout this Appendix which we recommend to interested readers: \textit{Quantum Computation and Quantum Information} by M. A. Nielsen and I. L. Chuang \cite{nielsen_chuang_2010}. You have seen in Section \ref{TheBasics} that the state of a system governed by quantum mechanics can be represented by a sum of basis vectors that correspond to binary representations of information. Typically, quantum mechanics is captured by a slightly different notation called Dirac notation, invented by one of the four-fathers of Quantum physics, Paul Dirac. In this section we will introduce Dirac notation and cement the description given in Section \ref{TheBasics} into a more formal language that will help you to probe deeper into more advanced literature.
 
-\section{Quantum mechanics}
+\section{Quantum States}
 
-\subsection{Quantum States}
+In quantum mechanics, we describe the state of a system simply with labels. These labels we assign to the system, such as {`0',`1'}, aim to give some intuition about the state of the system. We could equally have used {`open', `closed'} if appropriate. This labelling should be viewed as assigning information to a state. For example, if a state is labelled '110' then in binary representation, the state carry's the information '6'. Formally these labels are called quantum numbers and in general can be anything you like.\\
 
-In quantum mechanics, we describe the state of a system simply with labels. These labels we assign to the system, such as {`0',`1'}, aim to give some intuition about the state of the system. We could equally have used {`open', `closed'} if appropriate. Equally this should be viewed as assigning information to a state. For example, if a state is labelled '110' then in binary representation, the state carry's the information '6'. Formally these labels are called quantum numbers and in general are not restricted to be one of two values.\\
-
-For example, imagine the 4 of spades was chosen from a deck of cards, a good choice of label to describe the card would be `4' or `$\spadesuit$'. Equally in a quantum system we would say that the card is in the state `4' or `$\spadesuit$' which we write formally as $\ket{4}$, or $\ket{\spadesuit}$. In this scenario the quantum number `4' could have been one of 13 values, therefore the set of states needed to fully describing the system (the system here being a randomly chosen card) are $\{\ket{A}, \ket{2}, \ket{3},\ldots ,\ket{K}\}$ with quantum numbers $\{A,2,3,\ldots K\}$. If the set of quantum numbers are unique and their associated states describe all possible values a properties can take then they are said to form a Hilbert space $\mathcal{H}$ of the system \cite{nielsen_chuang_2010} \textit{p66}. Formally we say the \textit{complete} set of \textit{independent} and \textit{orthonormal} states describing a system span a Hilbert space:
+For example, imagine the 4 of spades was chosen from a deck of cards, a good choice of label to describe the card would be `4' or `$\spadesuit$'. Equally in a quantum system we would say that the card is in the state `4' or `$\spadesuit$' which we write formally as $\ket{4}$, or $\ket{\spadesuit}$. In this scenario the quantum number `4' of the chosen card could have been one of 13 possible values, therefore the set of states needed to fully describing the system (the system here being a randomly chosen card from a single deck of cards) are $\{\ket{A}, \ket{2}, \ket{3},\ldots ,\ket{K}\}$ with quantum numbers $\{A,2,3,\ldots K\}$. If the set of quantum numbers are unique and their associated states describe all possible values a properties can take then they are said to form a Hilbert space $\mathcal{H}$ of the system \cite{nielsen_chuang_2010} \textit{p66}. Formally we say the complete set of independent and orthonormal states describing a system span a Hilbert space of that system:
 
 \begin{equation}
 \mathcal{H}:=span\{\ket{A}, \ket{2}, \ket{3},\ldots ,\ket{K}\}
 \end{equation}
 
-The Hilbert space should loosely be thought of as a vector space. It's purpose is to mathematically define all the possible states a system can occupy. This is a very useful tool when we start to describe the evolution of a system because it had better be the case that our description of a system remains physically possible, i.e. remains within the Hilbert space. For example, it would make no sense to talk about the state $\ket{A}$ evolving to the state $\ket{\spadesuit}$. In that sense, the Hilbert space helps define the boundaries of a system.\\
+A Hilbert space is a vector space with a defined inner product. Its purpose is to mathematically define all the possible states a system can occupy. This is a very useful tool when we start to describe the evolution of a system because it had better be the case that our description of a system remains physically possible, i.e. remains within the Hilbert space. For example, it would make no sense to talk about the state $\ket{A}$ evolving to the state $\ket{18}$ as there are now cards valued that high in the deck. In that sense, the Hilbert space helps define the boundaries of a system.\\
 
-In Dirac notation, $\ket{\ldots}$, used to describe a state, is called a `ket' and for every `ket' there is a `bra' conversely written as $\bra{\ldots}$. The names originates from the first and second halves of the word `bra(c)ket', which when placed together resemble the most important operation in quantum computation: the inner product. For a formal introduction to Dirac notation \textit{see p13} of \cite{nielsen_chuang_2010}. The inner product is a simple function that does the following on basis states in the Hilbert space:\\
+As described in \autoref{chpt:background}, $\ket{\ldots}$, used to describe a state, is called a `ket'. For every `ket' there is a `bra' conversely written as $\bra{\ldots}$. The names originates from the first and second halves of the word `bra(c)ket', which when placed together resemble the most important operation in quantum computation: the inner product. For a formal introduction to Dirac notation \textit{see p13} of \cite{nielsen_chuang_2010}. The inner product is a simple function that does the following on \textit{basis} states in the Hilbert space:\\
 
 \textit{if (state $\ket{a}$ is the same as state $\ket{b}$)\\ 
     return 1 \\
 else \\
     return 0}\\ 
 
-In Dirac notation this operation is performed by turning the ket $\ket{a}$ into a bra, $\bra{a}$ (this process is described more formally in section (?) but for now can be thought of as just a bracket swap). The `bra' $\bra{a}$ and `ket' $\ket{b}$ are then used to form the word `bra(c)ket' and is equal to 1 or 0 depending on whether the state a is equal to the state b.\\
+In Dirac notation this operation is performed by finding the associated bra of the state, $\bra{a}$ (this process is described more formally in Section \autoref{superposition} but for now can be thought of as just a bracket swap). The `bra' $\bra{a}$ and `ket' $\ket{b}$ are then used to form the word `bra(c)ket' and is equal to 1 or 0 depending on whether the state a is equal to the state b.\\
 
 For example, returning to our deck of cards, the inner product of the states $\ket{A}$ with $\ket{5}$ is written as:
 
@@ -43,21 +40,17 @@ Conversely, the inner product of the states $\ket{J}$ with $\ket{J}$ would be:
 
 When a set of states are unique in this way, they are said to be orthonormal. The inner product is important as it allows you to check that all the states that form your Hilbert space are orthonormal (remember this is a key requirement for a set of states to form a Hilbert space) and will become very useful when we introduce superposition in the next section.\\
 
-To draw a parallel with Section \ref{TheBasics}, the state $\ket{5}$ (or $\ket{101}$ as we are free to choose the label) can be mathematically represented by the vector $\begin{pmatrix}0\\0\\0\\0\\1\\0\\0\\0\end{pmatrix}$ in which each element corresponds to a binary number. In this case, taking the inner product simply involves performing the dot product between two vector representations.\\
+It should be noted that the dimension of a Hilbert space is equal to the number of basis states that span it. In the case of our deck of cards, the Hilbert space of card values has dimension 13. Binary representation of information only increase in dimension size by powers of 2 meaning the full Hilbert space would have dimension size that is also a power of two. Typically in quantum computing we only deal with qubits which on there own have 2 dimensional Hilbert spaces spanned by $\ket{0}$ and $\ket{1}$. As a result, when two qubits are combined, their joint Hilbert space has $2^2$ basis states spanned by ${\ket{00}, \ket{01}, \ket{10}, \ket{11}}$. In this way, it will always be possible to capture the Hilbert space of $n$ qubits with a binary representation of $2^n$ labels. Composite systems of Hilbert Spaces will be discussed further in the following Section.
 
-It should be noted that the dimension of a Hilbert space is equal to the number of basis states that span it. In the case of our deck of cards, the Hilbert space of card values has dimension 13, however, our mathematical representation only allows for values 0 (000) to 7 (111) and so cannot fully capture the Hilbert space. This is a reflection of the fact that binary representation of information only increase in dimension size by powers of 2. This means that strictly speaking, the full Hilbert space cannot be represented in this way unless a power of two.\\
+\section{Superposition}
 
-You may be wondering why we bother with such a representation if in general it cannot always fully capture the system, and the answer is because typically in quantum computing we only deal with qubits which on there own have 2 dimensional Hilbert spaces spanned by $\ket{0}$ and $\ket{1}$. As a result, when two qubits are combined, their joint Hilbert space has $2^2$ basis states spanned by ${\ket{00}, \ket{01}, \ket{10}, \ket{11}}$. In this way, it will always be possible to capture the Hilbert space of n qubits with a binary representation of $2^n$ labels. Composite systems of Hilbert Spaces will be discussed further in Section (?).
-
-\subsection{Superposition}
-
-In quantum mechanics, using the states that form the basis of our Hilbert space to describe the system is not enough. Observation of quantum systems tell us that when we prepare a state multiple times and measure it, the outcome will not always be the same but instead follow some probabilistic statistics. At this point its crucial to point out that the formalism does not try to explain why this is the case, but only provides a way of describing the system. I highlight this fact for the following reason. Typically when confronted with a new phenomena, we turn to the mathematical description to gain some intuition of its causes. With quantum mechanics, the formal description should not be used to find a "logical" explanation of how superposition works but only used to help fully describe the observed physics of the system.\\
+Using the states that form the basis of our Hilbert space to describe the system is not sufficient. Observation of quantum systems tell us that when we prepare a state multiple times and measure it, the outcome will not always be the same but instead follow some probabilistic statistics. At this point its crucial to point out that the formalism does not try to explain why this is the case, but only provides a way of describing the system. We highlight this fact for the following reason. Typically when confronted with a new phenomena, we turn to the mathematical description to gain some intuition of its causes. With quantum mechanics, the formal description should not be used to find a "logical" explanation of how superposition works but only used to help fully describe the observed physics of the system.\\
 
 To understand how we can describe this phenomena formally, lets make our deck of cards a quantum deck of cards that now obeys the laws of quantum mechanics and see how our observations are captured within the mathematical formalism.\\
 
 The first thing to note is that the act of measuring appears to perform an operation on the system that takes it from its superposition state to a basis state of the Hilbert space. The pre-measurement `superposition state' contains information about which outcomes we will attain and with what probability we will attain each measurement outcome.\\
 
-For example, lets say you are given a face down card that when flipped multiple times is sometimes a queen and sometimes a 4 (strange I know, but totally allowed within quantum mechanics). Before performing the operation of turning it over the state of the card should be thought of as being in a superposition of $\ket{Q}$ and $\ket{4}$. That is to say, the state used to describe the system before the measurement operation is not just one basis state but two, containing some probabilities that describe how often we get each outcome. Only under the measurement operation (in this case the act of flipping the card) does the state become one of the two basis states. In general we may not be aware of how likely each outcome is and so to build up a picture of the superposition state we must re-prepare the experiment and repeating the same measurement many times. Since all we have to describe the systems pre-measurement state is the probabilities of getting each state after measurement, this is what's use in the mathematical description.\\
+For example, lets say you are given a face down card that when flipped multiple times is sometimes a queen and sometimes a 4 (strange, but totally allowed within quantum mechanics). Before performing the operation of turning it over the state of the card should be thought of as being in a superposition of $\ket{Q}$ and $\ket{4}$. That is to say, the state used to describe the system before the measurement operation is not just one basis state but two, containing some probabilities that describe how often we get each outcome. Only under the measurement operation (in this case the act of flipping the card) does the state become one of the two basis states. In general we may not be aware of how likely each outcome is and so to build up a picture of the superposition state we must re-prepare the experiment and repeating the same measurement many times. Since all we have to describe the systems pre-measurement state is the probabilities of getting each state after measurement, this is what's use in the mathematical description.\\
 
 Formally, given a state $\ket{\psi}$ that is said to be in a superposition of the states $\ket{a}$ and $\ket{b}$ where the probability of getting the state $\ket{a}$ is $\abs{\alpha}^{2}$ and the probability of getting the state $\ket{b}$ is $\abs{\beta}^{2}$ then we describe the state as:
 
@@ -65,7 +58,7 @@ Formally, given a state $\ket{\psi}$ that is said to be in a superposition of th
 \ket{\psi} = \alpha \ket{a} + \beta \ket{b}
 \end{equation}
 
-In general, both $\alpha$ and $\beta$ can take complex values and so to ensure that the probabilities are real we take the absolute value squared \cite{nielsen_chuang_2010} \textit{p80}. The significance of having complex valued amplitudes will be discussed on the next page but for now its sufficient to consider them as real.\\
+In general, both $\alpha$ and $\beta$ can take complex values and so to ensure that the probabilities are real we take the absolute value squared (see \cite{nielsen_chuang_2010} \textit{p80} for an example of how to take the absolute value). The significance of having complex valued amplitudes will be discussed on the next page but for now it's sufficient to consider them as real.\\
 
 Returning to our example, say we get a queen one third of the time and a four two thirds of the time. We would describe the pre-measurement superposition state as:
 
@@ -113,7 +106,7 @@ For example, using $\ket{\psi_{a}}$ and $\ket{\psi_{b}}$ given above, the inner 
 
 We can see above that due to the minus phase on the basis state $\ket{1}$ in the superposition state $\ket{\psi_a}$ the inner product is 0, or in other words, when combined the overlap of the two superposition states destructively interfere giving a zero inner product i.e. the two states are orthogonal to each other. Had the phase been different, the inner product could have taken a non-zero complex value signifying some constructive interference between them. For a more in-depth discussion of superposition see \cite{nielsen_chuang_2010} \textit{p13}.
 
-\subsection{Operators}
+\section{Operators}
 
 So far we have discussed how to formally describe the state of a quantum mechanical system and how to calculate the probability of a measurement outcome on a superposition state. We also introduced the notion of a measurement being a type of operation that maps superposition states to basis states. In general, all measurements are represented by \textit{Hermitian} operators that have some specific properties. General quantum mechanical measurement is beyond the scope of this guide and instead we will restrict our discussion to the computational basis state $\{\ket{0}, \ket{1}\}$ used in quantum computation to describe qubits (see \cite{Busch1996} for a more general discussion of measurement in quantum mechanics). In this restricted case, a measurement determines the value of the qubit (0 or 1) with some probability determined by the state it's in. \\
 
@@ -147,7 +140,7 @@ To see that the operator acts as we expect, let's act it upon the state $\ket{\p
 \end{split}
 \end{equation}
 
-The resulting state is as we would expect with the basis states 0 and 1 flipped. This is just one example of an important operator in quantum computation. From point two above, we know that every operator must have an adjoint form, just like the states of a system. The origin of adjoint operators follows from standard linear algebra and will not be discussed in this guide. For a more detailed explanation of the form operators and their adjoints, see (REF). \\
+The resulting state is as we would expect with the basis states 0 and 1 flipped. This is just one example of an important operator in quantum computation. From point two above, we know that every operator must have an adjoint form, just like the states of a system. The origin of adjoint operators follows from standard linear algebra and will not be discussed in this guide. For a more detailed explanation of the form operators and their adjoints, see \cite{nielsen_chuang_2010}. \\
 
 An operator can also be expressed in matrix form whereby each column maps a basis state to a new combination. For example, take the Hadamard operator H that maps each basis sate $\ket{0}$ and $\ket{1}$ to each superposition with opposite relative phase. This is a key operator is quantum computation because it allows functions to be applied to both basis states at the same time since there are both basis states present in the superposition. To represent H in matrix notation we write:
 
@@ -164,46 +157,18 @@ The first column maps $\ket{0}$ to the state $\frac{1}{\sqrt{2}}(\ket{0}+\ket{1}
 
 Single qubit operators are useful for state manipulation and are used frequently in lager systems of qubits. In general, any operation on a system of qubits can be decomposed into single and two qubit operators (or gates). It should be noted that the mapping of a large unitary operation to a sequence of single and two qubit gates in nontrivial and typically theoretical descriptions of quantum algorithms are presented as larger operators, often acting on the entire Hilbert space, with the assumption that there exists a decomposition  that can be physically applied. To understand the formalism behind this we must generalise our description to beyond the single qubit.
 
-\subsection{Beyond the Single Qubit}
+We have already mentioned that a system of $n$ qubits has a Hilbert space of dimension $2^n$ and the process of finding the basis states of the combined system is described in \autoref{chpt:background}. The tensor product of two qubits that live in $\mathcal{H}_1$ and $\mathcal{H}_2$ respectively, denoted $\mathbb{C}_1^2 \otimes \mathbb{C}_2^2$, gives s combined qubit space $\mathcal{H_{1+2}} = \mathcal{H}_1\otimes \mathcal{H}_2$.
 
-We have already mentioned that a system of n qubits has a Hilbert space of dimension $2^n$, but how do we go about finding what form the basis states take. Formally we combine two or more closed systems via the tensor product of their Hilbert spaces. We introduce the tensor product of two qubits that live in $\mathcal{H}_1$ and $\mathcal{H}_2$ respectively, denoted $\mathbb{C}_1^2 \otimes \mathbb{C}_2^2$, by taking the tensor of each combination of basis states where the first state in the tensor is from $\mathcal{H}_1$ and similarly for the second. This process enables us to build the basis states of the combined Hilbert space one at a time:
-
-\begin{equation}
-\begin{split}
-    \ket{0}\otimes\ket{0} \equiv\ket{00}\\
-    \ket{0}\otimes\ket{1} \equiv\ket{01}\\
-    \ket{1}\otimes\ket{0} \equiv\ket{10}\\
-    \ket{1}\otimes\ket{1} \equiv\ket{11}
-\end{split}
-\end{equation}\\
 \begin{equation}
     \mathcal{H}_{1+2}:=span\{\ket{00}, \ket{01}, \ket{10}, \ket{11}\}
 \end{equation}
 
-We have conveniently chosen to labelled the four basis states of the joint Hilbert space with quantum numbers that give us information about the basis states that form them. We could then assign 00 to 0, 01 to 1, 10 to 2 and 11 to 3 in a binary encoding of the integers 0-3. Note that sometimes in the literature, authors will write $\ket{0}\ket{1}$ instead of $\ket{01}$, however they are equivalent.
 
-Thus an arbitrary superposition state living in $\mathcal{H}$ can now take the form:
+\section{An Intro to Quantum Information Theory}
 
-\begin{equation}
-    \ket{\psi}=a_{00}\ket{00}+a_{01}\ket{01}+a_{10}\ket{10}+a_{11}\ket{11} = \sum_{i,j=0}^{1}a_{ij}\ket{ij}
-\end{equation}
+In this section we will used what we have learnt in Section \autoref{chpt:background} \& \autoref{chpt:advancedtopics} to examine a basic example of a quantum algorithm.\\
 
-In general, if two qubits are in the state $\ket{\psi}_1 = \ket{+}$ and $\ket{\psi}_2 = \ket{-}$ respectively, then there joint state is described by:
-
-\begin{equation}
-    \begin{split}
-        \ket{\psi}_1 \otimes \ket{\psi}_2 &= \big(\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})\big)_1 \otimes \big(\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})\big)_2\\
-        &= \frac{1}{2}(\ket{00}-\ket{01}+\ket{10}-\ket{11})
-    \end{split}
-\end{equation}
-
-The tensor product generalises to any number of qubits and the number of basis states scale by $O(2^n)$. To perform operations on some or all of the qubits in a system, the dimension of your operator must match that of the Hilbert space that it operates on. For example, say we have a system of 4 qubits and we want to act with $\hat{H}$ on qubit 2 and $\hat{X}$ on qubit 4. The total operator we act on the state will be given by: $\hat{I}\otimes\hat{H}\otimes\hat{I}\otimes\hat{X}$ where  the identity acts on qubit 1 and 3. We can depict this operation by a circuit model diagram as described in Section (?).\\
-
-\subsection{An Intro to Quantum Information Theory}
-
-In this section we will used what we have learnt in Section \ref{Advancedtopics} to examine a basic example of a quantum algorithm.
-
-The first thing to note is that the size of you Hilbert space (ie the number of qubits you have) ultimately determines the domain over which a computation can be performed. This is intuitive because each (orthogonal) basis state provides an opportunity to attach a label that is unique to all others in the system. For example we could provide a database entry to each basis state that can then be fed into a computation. When dealing with a large number of qubits, its often easier to bunch them together into registers with each register having a specific role. Due to the inability to copy states and the need for each operation to be reversible, it is often necessary to introduce 'redundant' groups of qubits into your system to help perform computations. These extra qubits are known as ancilla qubits. To help demonstrate one of the needs for ancilla qubits, lets examine how to perform a simple AND (which in general is not reversible operation) between two qubits.\\
+The first thing to note is that the size of you Hilbert space (i.e. the number of qubits you have) ultimately determines the domain over which a computation can be performed. This is intuitive because each (orthogonal) basis state provides an opportunity to attach a label that is unique to all others in the system. For example we could provide a database entry to each basis state that can then be fed into a computation. Due to the inability to copy states and the need for each operation to be reversible, it is often necessary to introduce 'redundant' registers of qubits into your system to help perform computations. These extra qubits are known as ancilla qubits. To help demonstrate one of the needs for ancilla qubits, lets examine how to perform a simple AND (which in general is not  a reversible operation) between two qubits.\\
 
 Given two qubits $\ket{x_1}$ and $\ket{x_2}$ where $x_1, x_2\in {0,1}$, the AND operation should have the following truth table:
 
@@ -231,7 +196,7 @@ Since the outcome 0 is degenerate, the operation cannot be reversed. Instead, th
 \end{array}
 \end{equation}
 
-To check that this process is reversible, let's perform the same operation where z is now the the output of the first AND above. This should map back to the original \textcolour{blue}{0} states.:
+To check that this process is reversible, let's perform the same operation where z is now the the output of the first AND above. This should map back to the original \textcolor{blue}{0} states:
 
 \begin{equation}
 \begin{array}{c|c}
@@ -247,4 +212,4 @@ To check that this process is reversible, let's perform the same operation where
 To obtain universal deterministic classical computation, it is sufficient to be able to implement the NOT and AND gates. For quantum computation, it's sufficient to be able to perform arbitrary single qubit control, i.e. the ability to map either basis state to any superposition, and the CNOT two qubit gate which performs a controlled not on the second qubit based on the value of the first.
 
 %%%%%%%%%%%%%%%%%%%%
-\section{Exercises?} 
+%\section{Exercises?} 

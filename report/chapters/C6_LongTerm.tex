@@ -1,0 +1,168 @@
+\chapter{Programming a future universal quantum computer}
+%\chapter{Fault-Tolerant Large-Scale Quantum Algorithms?}
+% to make contrast with
+% Noisy Intermediate-scale Quantum Algorithms?
+\label{chpt:programming}
+
+%\epigraph{\textit{Don't believe everything you read on the Internet}}{Abraham Lincoln}
+\epigraph{There's plenty of room at the bottom...}{Richard Feynman}
+
+At present, the current power of quantum devices is fundamentally limited by the number of qubits we can engineer in the same physical system. To date, the most qubits achieved on a physical chip is 72 by Google's Bristlecone architecture. However, for a true quantum advantage, most theorise (taking into account the number of qubits required for error correction) that at least one million qubits are required for useful, universal quantum computation. 
+
+From the previous chapter, we learned about useful short-term applications of quantum enhanced computation. These applications, VQE's, adiabatic quantum annealers, will become ever more useful with an increase in resource size, most notably not just simulating the ground states of larger and larger molecules, but also interactions between molecules for catalyst, superconducting material, and drug discovery research.
+
+Aside from increasing resource size for NISQ applications, in the long term increasing the number of error-corrected qubits in a system will allow us to preform much more complex calculations, such as the NP-hard problem of integer factorisation utilising Shor's algorithm, or more efficient unstructured search algorithms via Grover's algorithm. Any problem that can be mapped to these algorithms can benefit from a quantum computational speed-up. 
+
+It is for this reason, that in this section we will be concentrating on the implementation of Shor's and Grover's algorithms (where currently possible) on a multitude of different quantum software platforms. Here we hope to deliver an intuition as to how to program truly useful algorithms on quantum processors in the future.
+
+
+%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%
+\begin{comment}
+Four (five?) languages will be covered here: 
+\begin{itemize}
+    \item Quil
+    \item QISKit 
+    \item Project Q
+    \item Q\# (same QDK)
+    \item Cirq? anyone?
+\end{itemize}
+
+Algorithms to implement:
+\begin{itemize}
+    \item Grover's algorithm (as example) (Ankur and David have already organised this one, so it'd be nice :3)
+    \item Shor's algorithm (as example)
+    \item Deutsch's algorithm (as exercise)
+\end{itemize}
+\end{comment}
+%%%%%%%%%%%%%%
+
+\input{chapters/C6a_long_Grover.tex}
+\input{chapters/C6a_long_QFT.tex}
+
+\input{chapters/C6a_long_Shor.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{\color{red} Summary of algorithms covered in this chapter?}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{TODO Summary and Outlook}
+
+Won't someone write me?
+
+Comparing the implementations of these algorithms with the Q software available?
+
+comments? comparison?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%
+%\subsection{Grover's algorithm}
+
+%%%%%%%%%%%%%%%%
+\begin{tcolorbox}[standard jigsaw,
+    opacityback=0, boxrule=0.5pt]
+    {\bf Exercise 1: Experimenting with the number of iterations}
+    \tcbline
+    For a number of qubits and marked string of your choice, experiment with how changing the number of iterations $T$ changes how likely the algorithm is to succeed.
+    
+    Plot a graph of $T$ versus the probability of success by running Grover's 100 times for each $T$.
+\end{tcolorbox}
+
+%%%%%%%%%%%%%%%%
+\begin{tcolorbox}[standard jigsaw,
+    opacityback=0, boxrule=0.5pt]
+    {\bf Exercise 2: Grover's algorithm for multiple marked elements}
+    \tcbline
+    Grover's algorithm can be generalised to multiple marked elements. Now instead of flipping the phase of one state, the phase of all the marked states must be flipped - this is done by applying the phase oracle $U_f$ for each marked element. Another difference is that the optimal number of iterations is 
+    \begin{equation*}
+        T \approx \frac{\pi}{4} \sqrt{\frac{N}{M}} - \frac{1}{2}
+    \end{equation*}
+    where $M$ is the number of marked elements. \\
+    Code this algorithm in a language of your choice.
+\end{tcolorbox}
+
+%%%%%%%%%%%%%%%%%%
+\begin{tcolorbox}[standard jigsaw, opacityback=0, boxrule=0.5pt]
+    {\bf Exercise 3: Deutsch-Josza Algorithm}
+    \tcbline
+    The Deutsch-Josza algorithm distinguishes between a constant and a balanced function, as explained in \autoref{Deutsch-Jozsa}. This exercise will walk you through implementing it in a language of your choice. \\
+    
+    a) \textbf{Constructing }$\bm{U_f}$ $U_f$ is a representation of the function $f(x)$. For example for two qubits if $f(00) = 1$, $U_f$ takes $\ket{00}$ to $-\ket{00}$ and if $f(00) = 0$ we do nothing. Flipping the phase is done in the same way as in Grover's algorithm. \\
+    Construct $U_f$ to flip the phase on the associated states $\ket{x}$ when $f(x) = 1$. \\
+    
+    b) Now code the rest of the algorithm as described in \autoref{Deutsch-Jozsa} using the $U_f$ constructed above.
+\end{tcolorbox}
+
+%%%%%%%%%%%%%%
+%\subsection{Shor's algorithm}
+%Is there anything we can do here?
+
+%%%%%%%%%%%%%5
+%\subsection{Implementing Deutsch's algorithm}
+
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+\begin{comment}
+Implement the following algorithms in the language of your choice:
+%%%%%%%%%%%%%%%%
+\begin{tcolorbox}[standard jigsaw,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+    boxrule=0.5pt]
+    {\bf Exercise 1: Bernstein-Vazirani Algorithm}
+    \tcbline
+    As in DJ with $n=3$, and given a function $f$ that is a parity function. Checking that the code indeed identifies the parity function
+\end{tcolorbox}
+%%%%%%%%%%%%%%%%
+\begin{tcolorbox}[standard jigsaw,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+    boxrule=0.5pt]
+    {\bf Exercise 2: Grover's Algorithm $n=4$ and 1 marked element, so $T=1$}
+    \tcbline
+    Description.
+\end{tcolorbox}
+%%%%%%%%%%%%%%%%
+\begin{tcolorbox}[standard jigsaw,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+    boxrule=0.5pt]
+    {\bf Exercise 3: Grover's Algorithm for Multiple marked elements}
+    \tcbline
+    Description.
+\end{tcolorbox}
+%%%%%%%%%%%%%%%%
+\begin{tcolorbox}[standard jigsaw,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+    boxrule=0.5pt]
+    {\bf Exercise 4: Shor's Algorithm exercise}
+    \tcbline
+    Description.
+\end{tcolorbox}
+\end{comment}
+
+%%%%%%%%%%%%%%%
+\begin{comment}
+%%%%%%%%%%%%%%%%%
+\begin{tcolorbox}[standard jigsaw,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+    boxrule=0.5pt]
+    {\bf Exercise 1: Deutsch's Algorithm}
+    \tcbline
+    Given a function $f:\{0,1\}^2\rightarrow \{0,1\}$ promised to be either balanced or constant. We initialise the system in the state $\ket{00}$, we need to implement the gates $H^{\otimes 2}$ and then $U_f$ and then $H^{\otimes 2}$ and then perform a measurement in the computational basis.
+\end{tcolorbox}
+%%%%%%%%%%%%%%%
+\begin{tcolorbox}[standard jigsaw,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+    boxrule=0.5pt]
+    {\bf Exercise 2: Deutsch-Josza Algorithm}
+    \tcbline
+    As in Deutsch algorithm but with $n>2$.
+\end{tcolorbox}
+%%%%%%%%%%%%%%%%
+\end{comment}
+%%%%%%%%%%%%%
+
+
+
+

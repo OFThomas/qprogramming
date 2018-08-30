@@ -1,10 +1,134 @@
 \chapter{Answers to Exercises}
-\label{Answers}
+\label{chpt:answers}
 
 Not a priority right now, but to keep it in mind! :3
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Answers for Chapter 2}
+\section{Answers for Chapter 2}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Answers for Chapter 4}
+\subsection{Exercise 1:}
+\subsection{Exercise 2:}
+\subsection{Exercise 3:}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Answers for Chapter 4}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Answers for Chapter 5}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Implementing Deutsch's Algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Exercise 1: Bernstein-Vazirani algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%
+\begin{tcolorbox}[standard jigsaw,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+    boxrule=0.5pt]
+    {\bf Deutsch's Algorithm}
+    \tcbline
+    Given a function $f:\{0,1\}^2\rightarrow \{0,1\}$ promised to be either balanced or constant. We initialise the system in the state $\ket{00}$, we need to implement the gates $H^{\otimes 2}$ and then $U_f$ and then $H^{\otimes 2}$ and then perform a measurement in the computational basis.
+\end{tcolorbox}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[language=Python,caption={Deutsch's algorithm implemented in Python only},label={lst:DApython},frame=single] 
+import numpy as np
+# State initialisation
+state0=np.array([[1],[0],[0],[0]]) 
+# Gate Implementation
+H=(1/np.sqrt(2))*np.array([[1,1],[1,-1]]) 
+state1=np.dot(np.kron(H,H),state0)        
+U=np.array([[-1,0,0,0],
+            [0,1,0,0],
+            [0,0,-1,0],
+            [0,0,0,1]])
+state2=np.dot(U,state1)
+state3=np.dot(np.kron(H,H),state2)
+# Measurement: defining basis
+ket0=np.array([[1],[0]])
+ket1=np.array([[0],[1]])
+ket00=np.kron(ket0,ket0)
+ket01=np.kron(ket0,ket1)
+ket10=np.kron(ket1,ket0)
+ket11=np.kron(ket1,ket1)
+# Measurement: projectors P00,P01,P10,P11
+P00=np.dot(ket00,ket00.T)
+P01=np.dot(ket01,ket01.T)
+P10=np.dot(ket10,ket10.T)
+P11=np.dot(ket11,ket11.T)
+# Probability of obtaining: 00,01,10,11
+prob00=np.trace(np.dot(P00,np.dot(state3,np.conj(state3).T)))
+prob01=np.trace(np.dot(P01,np.dot(state3,np.conj(state3).T)))
+prob10=np.trace(np.dot(P10,np.dot(state3,np.conj(state3).T)))
+prob11=np.trace(np.dot(P11,np.dot(state3,np.conj(state3).T)))
+print(prob00,prob01,prob10,prob11)
+\end{lstlisting}
+%%%%%%%%%%%%%%%%
+%\columnbreak
+
+Now implementing this with pyQuil. We first need to learn how to add our own gates.
+
+%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[language=Python]
+# Defining our own gates
+Ufma=np.array([[-1,0,0,0],
+               [0,1,0,0],
+               [0,0,-1,0],
+               [0,0,0,1]]); 
+p.defgate("Uf",Ufma); 
+p.inst(("Uf",0,1)); 
+\end{lstlisting}
+%%%%%%%%%%%%%%%%
+
+In \autoref{lst:DAqvm}
+
+%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[language=Python,caption={Deutsch's algorithm with pyQuil},label={lst:DAqvm},frame=single]
+import numpy as np
+from pyquil.quil import Program
+from pyquil.api import QVMConnection 
+from pyquil.gates import X,Z,Y,H,I 
+# Invoking and renaming
+qvm=QVMConnection()
+p=Program() 
+# Gate implementation
+p.inst(H(0),H(1)) 
+# Assuming the given function gives
+Ufma=np.array([[-1,0,0,0],
+               [0,1,0,0],
+               [0,0,-1,0],
+               [0,0,0,1]]);
+# Adding matrix as a gate               
+p.defgate("Uf",Ufma); 
+# Applying new gate and Hadamards
+p.inst(("Uf",0,1)); 
+p.inst(H(0),H(1))
+# Measurements
+p.measure(0,0)
+p.measure(1,1) 
+# Running the program
+cr=[] 
+results=qvm.run(p,cr,4) 
+print(results)
+\end{lstlisting}
+%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Deutsch's Algorithm in Qasm (IBM Q-experience)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The Deutsch-Jozsa algorithm can be coded on this language as well. We begin by setting the bits in the register 
+\begin{lstlisting}[language=Python,float=h]
+
+
+\end{lstlisting}
+
+\subsection{Exercise 2:}
+\subsection{Exercise 3:}

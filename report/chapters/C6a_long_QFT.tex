@@ -1,0 +1,54 @@
+
+\begin{comment}
+% Is fully commented out!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quantum Fourier Transform}
+
+The Quantum Fourier transform (QFT) is a quantum analogue of the discrete Fourier transform. It thus converts periodic functions to their conjugate domain (for example, time $\rightarrow$ frequency, position $\rightarrow$ momentum etc). Crucially it acts on quantum states. For example the QFT acting on two qubits is given by the transformation matrix 
+
+\begin{align}
+    QFT = 
+    \frac{1}{2}
+    \begin{pmatrix}
+        \omega_N^{0} & \omega_N^{0} & \omega_N^0 &\omega_N^0 \\
+        \omega_N^0 & \omega_N^1 & \omega_N^2 & \omega_N^3 \\
+        \omega_N^0 & \omega_N^2 & \omega_N^4 & \omega_N^6 \\
+        \omega_N^0 & \omega_N^3 & \omega_N^6 & \omega_N^9 \\
+    \end{pmatrix}
+    =
+    \frac{1}{2}
+    \begin{pmatrix}
+        1 & 1 & 1 & 1 \\
+        1 & i & -1 & -i \\
+        1 & -1 & 1 & -1 \\
+        1 & i & -1 & i \\
+    \end{pmatrix}
+\end{align}
+
+This can be generalised to $n$ qubits, which requires a $2^n$ dimensional matrix with elements given by 
+
+\begin{align}
+    QFT_{jk} \equiv \omega_N^{jk} = \exp^{2\pi ijk / N} 
+\end{align}
+
+where we the columns and rows of the matrix are indexed from 0. The Quantum Fourier Transform can be constructed out of more fundamental quantum gates, a Hadamard gate and a controlled phase gate. 
+
+ \begin{align}
+    H = 
+    \begin{pmatrix}
+    1 & 1 \\
+    1 & -1 \\
+    \end{pmatrix},
+    \quad
+    R_n = 
+    \begin{pmatrix}
+    1 & 0\\
+    0 & \omega_{2^n}\\
+    \end{pmatrix}
+ \end{align}
+ 
+ This requires $n(n-1)/2$ controlled phase gates in total and $n$ Hadamard gates. 
+
+The QFT is not an algorithm \textit{per se} but is crucial in many algorithms, such as Shor's algorithm as described in \ref{Shor's algorithm}.
+\end{comment}

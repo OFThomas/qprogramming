@@ -22,6 +22,54 @@
 }
 
 
+
+% superconducting qubits pic
+@misc{supercondpic,
+howpublished={\url{http://web.physics.ucsb.edu/~martinisgroup/}},
+}
+
+@misc{qiskitstart,
+howpublished= {\url{https://nbviewer.jupyter.org/github/QISKit/qiskit-tutorial/blob/master/index.ipynb}},
+}
+
+% IBM cricuit linker look-ahead scheme
+@inproceedings{zulehner2018efficient,
+  title={Efficient mapping of quantum circuits to the IBM QX architectures},
+  author={Zulehner, Alwin and Paler, Alexandru and Wille, Robert},
+  booktitle={Design, Automation \& Test in Europe Conference \& Exhibition (DATE), 2018},
+  pages={1135--1138},
+  year={2018},
+  organization={IEEE}
+}
+
+
+
+@article{galiautdinov2012resonator,
+  title={Resonator--zero-qubit architecture for superconducting qubits},
+  author={Galiautdinov, Andrei and Korotkov, Alexander N and Martinis, John M},
+  journal={Physical Review A},
+  volume={85},
+  number={4},
+  pages={042321},
+  year={2012},
+  publisher={APS}
+}
+
+@article{Harty2016,
+  title = {High-Fidelity Trapped-Ion Quantum Logic Using Near-Field Microwaves},
+  author = {Harty, T. P. and Sepiol, M. A. and Allcock, D. T. C. and Ballance, C. J. and Tarlton, J. E. and Lucas, D. M.},
+  journal = {Phys. Rev. Lett.},
+  volume = {117},
+  issue = {14},
+  pages = {140501},
+  numpages = {6},
+  year = {2016},
+  month = {Sep},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevLett.117.140501},
+  url = {https://link.aps.org/doi/10.1103/PhysRevLett.117.140501}
+}
+
 @article{carolan2015universal,
   title={Universal linear optics},
   author={Carolan, Jacques and Harrold, Christopher and Sparrow, Chris and Mart{\'\i}n-L{\'o}pez, Enrique and Russell, Nicholas J and Silverstone, Joshua W and Shadbolt, Peter J and Matsuda, Nobuyuki and Oguma, Manabu and Itoh, Mikitaka and others},
@@ -59,8 +107,9 @@ year = {1996}
   year={2015}
 }
 
-
-
+@misc{Strawberryfieldsteleportation,
+howpublished={\url{https://strawberryfields.readthedocs.io/en/latest/algorithms/teleportation.html},
+}
     
 @inproceedings{Grover1996,
  author = {Grover, Lov K.},
@@ -208,6 +257,15 @@ year = {1996}
     howpublished = {\url{https://newsroom.intel.com/news/intel-sees-promise-silicon-spin-qubits-quantum-computing/}}
 }
 
+@misc{Javadi2012,
+    howpublished = {\url{https://www.cs.princeton.edu/research/techreps/TR-934-12}}
+}
+
+@misc{IonQ,
+    howpublished = {\url{https://ionq.co/}}
+}
+
+
 @article{RudolphSiliconPhotonicsQC,
   title={Why I am optimistic about the silicon-photonic route to quantum computing},
   author={Rudolph, Terry},
@@ -314,15 +372,72 @@ note = {\url{https://media.readthedocs.org/pdf/pyquil/latest/pyquil.pdf}}
   howpublished= { \url{https://github.com/markf94/os_quantum_software}},
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Q Supremacy References %
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Q Supremacy/short References %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%
+@article {Deutsch1985,
+	author = {Deutsch, D.},
+	title = {Quantum Theory, the Church-Turing Principle and the Universal Quantum Computer},
+	volume = {\textbf{400}},
+	number = {1818},
+	pages = {97--117},
+	year = {1985},
+	doi = {10.1098/rspa.1985.0070},
+	publisher = {The Royal Society},
+	issn = {0080-4630},
+	URL = {http://rspa.royalsocietypublishing.org/content/400/1818/97},
+	journal = {Proceedings of the Royal Society of London A: Mathematical, Physical and Engineering Sciences}
+} %eprint = {http://rspa.royalsocietypublishing.org/content/400/1818/97.full.pdf},
+
+%%%%%%%%%%%%%%%
+@Article{AM2016,
+author={Montanaro, Ashley},
+title={Quantum algorithms: an overview},
+journal={Npj Quantum Information},
+year={2016},
+month={Jan},
+day={12},
+publisher={The Author(s) SN  -},
+volume={2},
+pages={15023 EP  -},
+note={Review Article},
+url={http://dx.doi.org/10.1038/npjqi.2015.23}
+}
+
+%%%%%%%%%%%%%%%%%%%
+@Article{JLOqc2010,
+author={Ladd, T. D.
+and Jelezko, F.
+and Laflamme, R.
+and Nakamura, Y.
+and Monroe, C.
+and O'Brien, J. L.},
+title={Quantum computers},
+journal={Nature},
+year={2010},
+month={Mar},
+day={04},
+publisher={Macmillan Publishers Limited. All rights reserved SN  -},
+volume={464},
+pages={45 EP  -},
+note={Review Article},
+url={http://dx.doi.org/10.1038/nature08812}
+}
 
 @misc{Preskill2012,
 Author = {John Preskill},
 Title = {Quantum computing and the entanglement frontier},
 Year = {2012},
 Eprint = {arXiv:1203.5813},
+}
+
+@misc{Preskill2018,
+Author = {John Preskill},
+Title = {Quantum Computing in the NISQ era and beyond},
+Year = {2018},
+Eprint = {arXiv:1801.00862},
 }
 
 @misc{Harrow2018,
@@ -338,6 +453,319 @@ Title = {Quantum Kitchen Sinks: An algorithm for machine learning on near-term q
 Year = {2018},
 Eprint = {arXiv:1806.08321},
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Eigensolver References %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Shadbolt2014
+@Article{ES1, 
+author={Peruzzo, Alberto
+and McClean, Jarrod
+and Shadbolt, Peter
+and Yung, Man-Hong
+and Zhou, Xiao-Qi
+and Love, Peter J.
+and Aspuru-Guzik, Al{\'a}n
+and O'Brien, Jeremy L.},
+title={A variational eigenvalue solver on a photonic quantum processor},
+journal={Nature Communications},
+year={2014},
+month={Jul},
+day={23},
+publisher={The Author(s) SN  -},
+volume={5},
+pages={4213 EP  -},
+note={Article},
+url={http://dx.doi.org/10.1038/ncomms5213}
+}
+
+% AspuruGuzik2016
+@article{ES2, 
+  author={Jarrod R McClean and Jonathan Romero and Ryan Babbush and Alán Aspuru-Guzik},
+  title={The theory of variational hybrid quantum-classical algorithms},
+  journal={New Journal of Physics},
+  volume={18},
+  number={2},
+  pages={023023},
+  url={http://stacks.iop.org/1367-2630/18/i=2/a=023023},
+  year={2016}
+}
+
+% Malley2017	
+@article{ES3, 
+  title = {Scalable Quantum Simulation of Molecular Energies},
+  author = {O'Malley, P. J. J. and Babbush, R. and Kivlichan, I. D. and Romero, J. and McClean, J. R. and Barends, R. and Kelly, J. and Roushan, P. and Tranter, A. and Ding, N. and Campbell, B. and Chen, Y. and Chen, Z. and Chiaro, B. and Dunsworth, A. and Fowler, A. G. and Jeffrey, E. and Lucero, E. and Megrant, A. and Mutus, J. Y. and Neeley, M. and Neill, C. and Quintana, C. and Sank, D. and Vainsencher, A. and Wenner, J. and White, T. C. and Coveney, P. V. and Love, P. J. and Neven, H. and Aspuru-Guzik, A. and Martinis, J. M.},
+  journal = {Phys. Rev. X},
+  volume = {6},
+  issue = {3},
+  pages = {031007},
+  numpages = {13},
+  year = {2016},
+  month = {Jul},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevX.6.031007},
+  url = {https://link.aps.org/doi/10.1103/PhysRevX.6.031007}
+}
+
+%Bauer2016
+@article{ES4, 
+  title = {Hybrid Quantum-Classical Approach to Correlated Materials},
+  author = {Bauer, Bela and Wecker, Dave and Millis, Andrew J. and Hastings, Matthew B. and Troyer, Matthias},
+  journal = {Phys. Rev. X},
+  volume = {6},
+  issue = {3},
+  pages = {031045},
+  numpages = {11},
+  year = {2016},
+  month = {Sep},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevX.6.031045},
+  url = {https://link.aps.org/doi/10.1103/PhysRevX.6.031045}
+}
+
+% Eigensolver arxiv 
+% Sawaya2016
+@misc{ES5, 
+Author = {Nicolas P. D. Sawaya and Mikhail Smelyanskiy and Jarrod R. McClean and Alán Aspuru-Guzik},
+Title = {Error Sensitivity to Environmental Noise in Quantum Circuits for Chemical State Preparation},
+Year = {2016},
+Eprint = {arXiv:1602.01857},
+}
+
+% Eigensolver arxiv
+% Rubin2016
+@misc{ES6, 
+Author = {Nicholas C. Rubin},
+Title = {A Hybrid Classical/Quantum Approach for Large-Scale Studies of Quantum Systems with Density Matrix Embedding Theory},
+Year = {2016},
+Eprint = {arXiv:1610.06910},
+}
+
+% McClean2017
+@article{ES7, 
+  title = {Hybrid quantum-classical hierarchy for mitigation of decoherence and determination of excited states},
+  author = {McClean, Jarrod R. and Kimchi-Schwartz, Mollie E. and Carter, Jonathan and de Jong, Wibe A.},
+  journal = {Phys. Rev. A},
+  volume = {95},
+  issue = {4},
+  pages = {042308},
+  numpages = {10},
+  year = {2017},
+  month = {Apr},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevA.95.042308},
+  url = {https://link.aps.org/doi/10.1103/PhysRevA.95.042308}
+}
+
+% QAOA References
+
+@misc{QAOA1,
+Author = {Edward Farhi and Jeffrey Goldstone and Sam Gutmann},
+Title = {A Quantum Approximate Optimization Algorithm},
+Year = {2014},
+Eprint = {arXiv:1411.4028},
+}
+
+@misc{QAOA2,
+Author = {Edward Farhi and Aram W Harrow},
+Title = {Quantum Supremacy through the Quantum Approximate Optimization Algorithm},
+Year = {2016},
+Eprint = {arXiv:1602.07674},
+}
+
+@article{QAOA3,
+ author = {Goemans, Michel X. and Williamson, David P.},
+ title = {Improved Approximation Algorithms for Maximum Cut and Satisfiability Problems Using Semidefinite Programming},
+ journal = {J. ACM},
+ issue_date = {Nov. 1995},
+ volume = {42},
+ number = {6},
+ month = nov,
+ year = {1995},
+ issn = {0004-5411},
+ pages = {1115--1145},
+ numpages = {31},
+ url = {http://doi.acm.org/10.1145/227683.227684},
+ doi = {10.1145/227683.227684},
+ acmid = {227684},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {Approximation algorithms, convex optimization, randomized algorithms, satisfiability},
+} 
+
+@article{AQC,
+  title = {Adiabatic quantum computation},
+  author = {Albash, Tameem and Lidar, Daniel A.},
+  journal = {Rev. Mod. Phys.},
+  volume = {90},
+  issue = {1},
+  pages = {015002},
+  numpages = {64},
+  year = {2018},
+  month = {Jan},
+  publisher = {American Physical Society},
+  doi = {10.1103/RevModPhys.90.015002},
+  url = {https://link.aps.org/doi/10.1103/RevModPhys.90.015002}
+}
+
+% Other short-term references
+
+@Article{QML1,
+author={Biamonte, Jacob
+and Wittek, Peter
+and Pancotti, Nicola
+and Rebentrost, Patrick
+and Wiebe, Nathan
+and Lloyd, Seth},
+title={Quantum machine learning},
+journal={Nature},
+year={2017},
+month={Sep},
+day={13},
+publisher={Macmillan Publishers Limited, part of Springer Nature. All rights reserved. SN  -},
+volume={549},
+pages={195 EP  -},
+url={http://dx.doi.org/10.1038/nature23474}
+}
+
+@misc{QML2,
+Author = {Jeremy Adcock and Euan Allen and Matthew Day and Stefan Frick and Janna Hinchliff and Mack Johnson and Sam Morley-Short and Sam Pallister and Alasdair Price and Stasja Stanisic},
+Title = {Advances in quantum machine learning},
+Year = {2015},
+Eprint = {arXiv:1512.02900},
+}
+
+@article{QMatrixInversion,
+  title = {Quantum Algorithm for Linear Systems of Equations},
+  author = {Harrow, Aram W. and Hassidim, Avinatan and Lloyd, Seth},
+  journal = {Phys. Rev. Lett.},
+  volume = {103},
+  issue = {15},
+  pages = {150502},
+  numpages = {4},
+  year = {2009},
+  month = {Oct},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevLett.103.150502},
+  url = {https://link.aps.org/doi/10.1103/PhysRevLett.103.150502}
+}
+
+@misc{QRecommendation,
+Author = {Iordanis Kerenidis and Anupam Prakash},
+Title = {Quantum Recommendation Systems},
+Year = {2016},
+Eprint = {arXiv:1603.08675},
+}
+
+@misc{QSDP1,
+Author = {Fernando G. S. L. Brandao and Krysta Svore},
+Title = {Quantum Speed-ups for Semidefinite Programming},
+Year = {2016},
+Eprint = {arXiv:1609.05537},
+}
+
+@misc{QSDP2,
+Author = {Fernando G. S. L. Brandão and Amir Kalev and Tongyang Li and Cedric Yen-Yu Lin and Krysta M. Svore and Xiaodi Wu},
+Title = {Quantum SDP Solvers: Large Speed-ups, Optimality, and Applications to Quantum Learning},
+Year = {2017},
+Eprint = {arXiv:1710.02581},
+}
+
+@misc{QS1,
+Author = {Jonathan Olson and Yudong Cao and Jonathan Romero and Peter Johnson and Pierre-Luc Dallaire-Demers and Nicolas Sawaya and Prineha Narang and Ian Kivlichan and Michael Wasielewski and Alán Aspuru-Guzik},
+Title = {Quantum Information and Computation for Chemistry},
+Year = {2017},
+Eprint = {arXiv:1706.05413},
+}
+
+@Article{QAdvantage,
+author={Neville, Alex
+and Sparrow, Chris
+and Clifford, Rapha{\"e}l
+and Johnston, Eric
+and Birchall, Patrick M.
+and Montanaro, Ashley
+and Laing, Anthony},
+title={Classical boson sampling algorithms with superior performance to near-term experiments},
+journal={Nature Physics},
+year={2017},
+month={Oct},
+day={02},
+publisher={Nature Publishing Group SN  -},
+volume={13},
+pages={1153 EP  -},
+url={http://dx.doi.org/10.1038/nphys4270}
+}
+
+@misc{NISQ,
+howpublished= {\url{https://ai.googleblog.com/2018/03/a-preview-of-bristlecone-googles-new.html}},
+}
+
+@Article{HarrowMontanaro2017,
+author={Harrow, Aram W.
+and Montanaro, Ashley},
+title={Quantum computational supremacy},
+journal={Nature},
+year={2017},
+month={Sep},
+day={13},
+publisher={Macmillan Publishers Limited, part of Springer Nature. All rights reserved. SN  -},
+volume={549},
+pages={203 EP  -},
+url={http://dx.doi.org/10.1038/nature23458}
+}
+
+@misc{Cirqbristlecone,
+howpublished={\url{https://www.computerworld.com.au/article/644051/google-launches-quantum-framework-cirq-plans-bristlecone-cloud-move/}}
+}
+
+@misc{Cirq,
+howpublished = {\url{https://github.com/quantumlib/Cirq}}
+}
+@misc{Quipper,
+howpublished = {\url{https://www.mathstat.dal.ca//~selinger/quipper/}}
+}
+@misc{Quirk,
+howpublished = {\url{https://algassert.com/quirk}}
+}
+
+@misc{QISKitAqua,
+howpublished={\url{https://qiskit.org/aqua}}
+}
+
+@inproceedings{Qiang2018,
+author = {X. Qiang and X. Zhou and J. Wang and C. Wilkes and T. Loke and S. O'Gara and L. Kling and G. Marshall and R. Santagati and J. B. Wang and J. L. O'Brien and M. G. Thompson and J. C. F. Matthews},
+booktitle = {Conference on Lasers and Electro-Optics},
+journal = {Conference on Lasers and Electro-Optics},
+keywords = {Four wave mixing; Integrated optical devices; Quantum computing; Quantum information; Quantum information processing; Quantum process tomography},
+pages = {FM1G.1},
+publisher = {Optical Society of America},
+title = {A universal two-qubit photonic quantum processor},
+year = {2018},
+url = {http://www.osapublishing.org/abstract.cfm?URI=CLEO_QELS-2018-FM1G.1},
+doi = {10.1364/CLEO_QELS.2018.FM1G.1},
+abstract = {We report a universal two-qubit silicon photonic quantum processor, able to initialise, operate and analyze arbitrary two-qubit states and processes applications in quantum information processing.},
+}
+
+@misc{Road2017,
+Author = {Cristian S. Calude and Elena Calude},
+Title = {The Road to Quantum Computational Supremacy},
+Year = {2017},
+Eprint = {arXiv:1712.01356},
+}
+
+@misc{Road42017,
+howpublished= {\url{http://dabacon.org/pontiff/?p=11863}},
+}
+
+@misc{Road52107,
+Author = {K. Wiesner},
+Title = {The careless use of language in quantum information},
+Year = {2017},
+Eprint = {arXiv:1705.06768},
+}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -383,8 +811,9 @@ Eprint = {arXiv:1806.08321},
 
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%% websites
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% websites
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 @misc{ibm50,
   howpublished= { \url{https://rebootingcomputing.ieee.org/rebooting-computing-week/industry-summit-2017}},
 }
@@ -436,14 +865,22 @@ howpublished= {\url{https://nbviewer.jupyter.org/github/QISKit/qiskit-tutorial/b
     howpublished = {\url{https://www.dwavesys.com/home}}
 }
 
+@misc{Xanadu,
+    howpublished = {\url{https://www.xanadu.ai/}}
+}
+
 @misc{Globalfoodproduction,
     howpublished = {\url{https://en.wikipedia.org/wiki/Orders_of_magnitude_(mass)}}
 }
 
-
 @misc{ioplasers,
     howpublished = {\url{http://www.iop.org/cs/page\_43644.html}},
 }
+
+@misc{zoo,
+    howpublished = {\url{https://math.nist.gov/quantum/zoo/}},
+}
+
 
 @article{draper2000addition,
   title={Addition on a quantum computer},
@@ -456,4 +893,68 @@ howpublished= {\url{https://nbviewer.jupyter.org/github/QISKit/qiskit-tutorial/b
   author={Hardy, Lucien},
   journal={arXiv preprint quant-ph/0101012},
   year={2001}
+}
+
+@article{kilby1976invention,
+  title={Invention of the integrated circuit},
+  author={Kilby, Jack S},
+  journal={IEEE Trans. on Electoron Devices},
+  volume={23},
+  number={7},
+  pages={651--652},
+  year={1976}
+}
+
+@article{vonneumann1993first,
+  title={First Draft of a Report on the EDVAC},
+  author={Von Neumann, John},
+  journal={IEEE Annals of the History of Computing},
+  number={4},
+  pages={27--75},
+  year={1993},
+  publisher={IEEE}
+}
+
+@misc{ibm360record,
+  author = {Guniness World Records},
+  title = {First computer to use integrated circuits},
+  howpublished = "\url{http://www.guinnessworldrecords.com/world-records/first-computer-to-use-integrated-circuits}",
+  year = {2018}
+}
+
+@misc{1qbit, 
+  howpublished={\url{http://qdk.1qbit.com/#}},
+}
+
+@misc{dwave,
+  howpublished={\url{https://www.dwavesys.com/tutorials/background-reading-series/quantum-computing-primer}},
+}
+
+@article{lucas_2014, title={Ising formulations of many NP problems}, volume={2}, DOI={10.3389/fphy.2014.00005}, journal={Frontiers in Physics}, author={Lucas, Andrew}, year={2014}
+}
+
+@article{ogorman_2015, title={Bayesian network structure learning using quantum annealing}, volume={224}, DOI={10.1140/epjst/e2015-02349-9}, number={1}, journal={The European Physical Journal Special Topics}, author={O’Gorman, B. and Babbush, R. and Perdomo-Ortiz, A. and Aspuru-Guzik, A. and Smelyanskiy, V.}, year={2015}, pages={163–188}
+}
+
+@article{adachi_henderson, title={Application of Quantum Annealing to Training of Deep Neural Networks}, author={Adachi, Steveni H. and Henderson, Maxwell P.}, year={2015},Eprint={arXiv:1510.06356}
+}
+
+@article{deutsch1992,
+  title={Rapid solution of problems by quantum computation},
+  author={Deutsch, David and Jozsa, Richard},
+  journal={Proc. R. Soc. Lond. A},
+  volume={439},
+  number={1907},
+  pages={553--558},
+  year={1992},
+  publisher={The Royal Society}
+}
+
+@inproceedings{shor1994,
+  title={Algorithms for quantum computation: Discrete logarithms and factoring},
+  author={Shor, Peter W},
+  booktitle={Foundations of Computer Science, 1994 Proceedings., 35th Annual Symposium on},
+  pages={124--134},
+  year={1994},
+  organization={Ieee}
 }

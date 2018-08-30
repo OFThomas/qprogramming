@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+
+from projectq import MainEngine
+from projectq.backends import CommandPrinter, Simulator
+from projectq.setups import restrictedgateset
+from projectq.ops import X, Z, H, Ry, Rz, CNOT, All, Measure
+
+# set restricted gate-set
+restricted_list = restrictedgateset.get_engine_list(
+    one_qubit_gates=(Rz, Ry), two_qubit_gates=(CNOT, ), other_gates=())
+# set engine
+restricted_compiler = MainEngine(
+    backend=CommandPrinter(accept_input=False), engine_list=restricted_list)
+
+#  print qasm
+printqasm = MainEngine(backend=CommandPrinter(accept_input=False))
+# specify simulate locally
+simulate = MainEngine(backend=Simulator())
+
+
+def qprogram(eng):
+    q = eng.allocate_qureg(8)
+
+    # Q in binary
+    # bitstring = '01010001'
+
+    # recall H Z H is X
+    H | q[1]
+    Z | q[1]
+    H | q[1]
+
+    X | q[3]
+    X | q[7]
+
+    # measure all the qubits
+    All(Measure) | q
+    # execute the quantum program
+    eng.flush()
+    return q
+
+
+# run for the compiler to see what the program does
+qprogram(printqasm)
+# run for restricted gate-set
+qprogram(restricted_compiler)
+# then simulate
+q = qprogram(simulate)
+
+# Then print results
+results = []
+# the values of qubits is stored as the integer value of the object
+for element in q:
+    results.append(int(q[int(element)]))
+print(results)

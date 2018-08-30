@@ -3,49 +3,55 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: unsrt.bst
 Database file #1: References.bib
+I was expecting a `,' or a `}'---line 114 of file References.bib
+ : 
+ : @inproceedings{Grover1996,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "Preskill"
 Warning--I didn't find a database entry for "Watrous"
-Warning--I didn't find a database entry for "PythonCoursera"
-Warning--I didn't find a database entry for "IonQ"
-You've used 48 entries,
+Warning--I didn't find a database entry for "PythonCourse"
+Warning--empty journal in adachi_henderson
+Warning--there's a number but no volume in vonneumann1993first
+You've used 85 entries,
             1791 wiz_defined-function locations,
-            687 strings with 10090 characters,
-and the built_in function-call counts, 7752 in all, are:
-= -- 574
-> -- 397
-< -- 1
-+ -- 160
-- -- 112
-* -- 419
-:= -- 1156
-add.period$ -- 103
-call.type$ -- 48
-change.case$ -- 29
+            888 strings with 16145 characters,
+and the built_in function-call counts, 15740 in all, are:
+= -- 1179
+> -- 878
+< -- 4
++ -- 337
+- -- 252
+* -- 954
+:= -- 2376
+add.period$ -- 195
+call.type$ -- 85
+change.case$ -- 60
 chr.to.int$ -- 0
-cite$ -- 48
-duplicate$ -- 339
-empty$ -- 914
-format.name$ -- 112
-if$ -- 1762
+cite$ -- 87
+duplicate$ -- 635
+empty$ -- 1738
+format.name$ -- 252
+if$ -- 3556
 int.to.chr$ -- 0
-int.to.str$ -- 48
-missing$ -- 23
-newline$ -- 200
-num.names$ -- 30
-pop$ -- 210
+int.to.str$ -- 85
+missing$ -- 40
+newline$ -- 363
+num.names$ -- 61
+pop$ -- 372
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 248
+skip$ -- 456
 stack$ -- 0
-substring$ -- 261
-swap$ -- 57
-text.length$ -- 1
+substring$ -- 705
+swap$ -- 129
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 52
-width$ -- 50
-write$ -- 397
-(There were 4 warnings)
+warning$ -- 2
+while$ -- 109
+width$ -- 87
+write$ -- 738
+(There was 1 error message)

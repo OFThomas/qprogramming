@@ -1,0 +1,284 @@
+\begin{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Shor's algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\label{Shor's algorithm}
+
+Shor's algorithm is a procedure to factor a large number. However, most of the steps in Shor's algorithm are in fact classical, and phrase the problem to be solved as one of finding the periodicity of a function. It uses a result from Euler that states that the The algorithm is given in box 
+
+\begin{tcolorbox}[standard jigsaw,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+    boxrule=0.5pt,label={Shor's algorithm box}]
+    {\bf Shor's algorithm}
+    \tcbline
+    \begin{enumerate}
+    \item Pick a number $a<N$
+    \item Calculate the greatest common divisor of this number $a$ and $N$, gcd($a,N$). If we obtain a number other than 1, then we have found a factor of $N$, so output gcd$(a,n)$ as our factor for $N$.
+    \item Otherwise, find the period of the function $f(x) = a^x \mod N$. Label this period $r$
+    \item Since  $a^0 \mod N = a^r \mod N = 1$, then $a^r - 1 \mod N = 0$. Factoring, $a^r-1 \mod N = (a^{r/2} - 1)(a^{r/2} + 1) \mod N = 0$. Thus $(a^{r/2} - 1)(a^{r/2} + 1) = lN$ for some integer $l$. If we found $r$ to be odd then this method has failed: return to 1. 
+    \item Output either gcd($a^{r/2}-1$) or gcd($a^{r/2}+1$) as the factors of $N$.
+    \end{enumerate}
+\end{tcolorbox}
+
+
+Currently no efficient classical algorithm is known to solve step 3. We can however use a quantum algorithm to provide a polynomial speed-up over the inefficient classical algorithm. We shall now explain the machinery behind this process, aimed more at developing an intuition for the quantum effects rather than the fine detail of the process. The diagram demonstrates the processes which occur. 
+
+
+[DIAGRAM OF AMPLITUDES AND PHASES GO HERE, FOLLOWED BY EXPLANATION]
+
+
+
+The circuit shown below implements Shor's algorithm. The $1^{st}$ register is acted upon by Hadamard gates to put the qubits in a uniform superposiiton. The second step uses an Oracle operation $U_f$ for a periodic function $f=a^x \mod N$ which has the following effect on the first and second registers:
+
+\begin{align}
+\begin{split}
+    U_f\ket{x}\ket{0} &= \ket{x}\ket{f(x)}\\
+    \end{split}
+    & & \textit{therefore}
+    \begin{split}
+    U_{a^x \mod N}\ket{x}\ket{0} &= \ket{x}\ket{a^x \mod N}\\
+\end{split}
+\end{align}
+
+
+measuring the second register then collapses it to a single $f_0 = f(x_0)$, where $f(x_0) = f(x_0 + r) = f(x_0 + 2r) = ...$ for the periodicity $r$ of the function. Thus the first register, through entanglement, is now in the a superposition of the states $\ket{x_0+jr}$ for all integers $j$ allowed for $x_0+jr$ to be within the register. Therefore we have a periodic superposition of states, generating peaks in the probability distribution of measurement outcomes that correspond to the values $x_0$, $x_0+r$, $x_0+2r$... as can be seen in [REF TO DIAGRAM TO BE ADDED]. This is a problem that can be solved by the QFT - we have states that are periodic with period $r$ in one Hilbert space, and applying the inverse QFT will obtain a single strong peak at $r$.
+
+\begin{figure}
+\begin{align*}
+\Qcircuit @C=2.14em @R=1.8em
+{
+& & & \lstick{\ket{0}} & \gate{H} & \multigate{7}{U_f} & \qw & \multigate{4}{QFT} & \meter \\
+& & &\lstick{\vdots} & \vdots &                         &              &         & \lstick{\vdots}  \\
+& \push{\mathrm{1^{st}\,register}} & &\lstick{\ket{0}} & \gate{H} &           \ghost{U_f} & \qw &\ghost{QFT} & \meter \\
+&   &&\lstick{\ket{0}} & \gate{H} &           \ghost{U_f} & \qw &\ghost{QFT} & \meter \\
+&                   &&\lstick{\ket{0}} & \gate{H} &           \ghost{U_f} & \qw &\ghost{QFT} & \meter \\
+&                   &&\lstick{\ket{0}} & \qw &               \ghost{O_f} &  \meter \\
+& \push{\mathrm{2^{nd}\,register}}              & &\lstick{\vdots} &       &                   &\lstick{\vdots} \\
+&                   &&\lstick{\ket{0}} & \qw &       \ghost{U_f} & \meter  \gategroup{1}{3}{5}{3}{1.7em}{\{}
+\gategroup{6}{3}{8}{3}{1.7em}{\{}}
+\end{align*}
+\caption{This circuit implements Shor's algorithm.}
+\label{fig:apprPerAlgAlternative}
+\end{figure}
+
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Implementing Shor's algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Shor's algorithm one of the most well-known quantum algorithms, due to it's implications for the safety of the commonly used RSA encryption scheme. It is also interesting, as it demonstrates the way classical and quantum computing can be used together. A large part of the algorithm is classical, but an essential part uses the quantum computer for significant speed up. We have not always implemented the most efficient version of Shor's algorithm, but tried to do the version that is most easily understood. The algorithm is discussed in more detail in \autoref{Shor's algorithm}.
+
+This section will go into detail how the quantum parts of the algorithm are written in the different languages, with the full code being provided in the Appendix/Github.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Shor's algorithm with pyQuil}
+
+The first thing to do is import the libraries required, Python has libraries which help with calculating the greatest common divisors and the continued fraction expansion convergents. From pyQuil, we need to import the functions that allow us create and run the program as discussed in \autoref{Quantum Programs with pyQuil}. We can also take advantage of an implementation of the Quantum Fourier Transform (QFT) in Grove. 
+
+\inputminted[lastline=7]{python}{code/pyQuil/shor_pyquil_guide.txt}
+
+The first step is to randomly select an integer $1 < a < N$ and if the greatest common divisor of $a$ and $N$ is not $1$, then we have found a factor. Otherwise, we continue onto the quantum part of the algorithm to find the order of $f(x) = a^x \text{ mod } N$. 
+
+\inputminted[firstnumber=31, firstline=31, lastline=38]{python}{code/pyQuil/shor_pyquil_guide.txt}
+
+First, the size of the registers need to be defined.
+
+\inputminted[firstnumber=43, firstline=43, lastline=45]{python}{code/pyQuil/shor_pyquil_guide.txt}
+
+Next we can set up the connection to the QVM and initialise the program structure. pyQuil only labels qubits in one large register and since it is more helpful for us to have two registers, we can specify which qubits we wish to use for each register.
+
+\inputminted[firstnumber=47, firstline=47, lastline=53]{python}{code/pyQuil/shor_pyquil_guide.txt}
+
+Following the circuit diagram in \autoref{fig:ShorCircuit}, we apply Hadamards to all the qubits in the first register - this is equivalent to applying the QFT to the all zero state but more computationally efficient.
+
+\inputminted[firstnumber=55, firstline=55, lastline=57]{python}{code/pyQuil/shor_pyquil_guide.txt}
+
+A more difficult task is creating the bit oracle $O_f\ket{x}\ket{y} = \ket{x}\ket{y \oplus f(x)}$ where $\ket{x} $ is the first register and $\ket{y}$ the second register. pyQuil does not have a function that allows you to construct arbitrary mathematical operations between registers, so the bit oracle must be constructed as a matrix. The function below constructs this matrix. 
+
+\inputminted[firstnumber=11, firstline=11, lastline=22]{python}{code/pyQuil/shor_pyquil_guide.txt}
+
+It is important here to get the indexing of the matrix correct. pyQuil does not allow you to create separate qubit registers - we have artificially created two registers by labelling which qubits we have in each of the registers. Since pyQuil enumerates bitstrings such that qubit 0 represents the least significant bit, the first register is the least significant and converting between binary and decimal is done as normal. However, to access the decimal values of the second register, we must multiply by $2^m$. This is why the rows and columns have been labelled in this way. 
+
+A new gate using this unitary matrix can be defined using the function \texttt{defgate}, and applied to both registers.
+
+\inputminted[firstnumber=59, firstline=59, lastline=62]{python}{code/pyQuil/shor_pyquil_guide.txt}
+
+The next step in the algorithm calls for measuring the second register. pyQuil does not allow you to measure more than one qubit at a time, so the measurement is done inside a loop and a classical address to store the measurement result at must be specified. The code below measures qubit $i$ and stores it in classical address $i$.
+
+\inputminted[firstnumber=64, firstline=64, lastline=66]{python}{code/pyQuil/shor_pyquil_guide.txt}
+
+Applying the QFT to the first register is now simple - we can use the one coded in Grove.
+
+\inputminted[firstnumber=68, firstline=68, lastline=69]{python}{code/pyQuil/shor_pyquil_guide.txt}
+
+Once the QFT has been applied to the first register and that register measured, the program to find the approximate periodicity of $f(x)$ is complete and can now be run on the QVM. The classical addresses to store the results in and the number of trials must be specified.
+
+\inputminted[firstnumber=75, firstline=75, lastline=77]{python}{code/pyQuil/shor_pyquil_guide.txt}
+
+Converting the output $y$ of the approximate periodicity part of the algorithm from binary into an integer is done using the code below. It is important to keep in mind that qubit 0 gives the least significant bit.
+
+\inputminted[firstnumber=79, firstline=79, lastline=82]{python}{code/pyQuil/shor_pyquil_guide.txt}
+
+The next steps of the algorithm - determining the order $r$ from the output $y$ and testing for failure cases - are classical and there are useful Python functions that help us to do this.
+
+\inputminted[firstnumber=84, firstline=84, lastline=99]{python}{code/pyQuil/shor_pyquil_guide.txt}
+
+The smallest number that we can run Shor's algorithm with is $N = 15$, this requires 12 qubits which is well within the 26 that can be simulated by Rigett's QVM. Although we can view the Quil code (the gates we apply), this code does not actually run. We get a time-out error connecting to Rigetti's server. This is most likely due to the construction of the oracle as a matrix using \texttt{defgate}, for 12 qubits it is a 4096 x 4096 matrix. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Shor's algorithm with QISKit}
+
+The structure of QISKit prevents directly constructing an operator that performs the period finding algorithm in the same format that we programmed Grover's search algorithm. At the time of writing QISKit lacks the functionality to decompose a given unitary operation into a sequence of allowed operations. The problem of finding an efficient circuit in terms of a set of logic gates (e.g. Hadamard, Phase and CNOT) that implements a given unitary is an active area of interest. This is known as gate synthesis. The best known circuit for Shor's algorithm requires $2n+3$ qubits and $O (n^3 \log (n))$ logical operations to factor an $n$ bit number\cite{beauregard2003ShorImplementation}. Implementing this from first principles in beyond the scope of this guide, although we encourage the dedicated reader to try it for themselves. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Shor's algorithm with ProjectQ}
+
+We can follow the same steps as for pyQuil since they are both Python based. The code for the classical part of the algorithm stays the same and so does the size of the registers. This time the functions that need to be imported from ProjectQ are,
+
+\inputminted[firstnumber=5, firstline=5, lastline=6]{python}{code/ProjectQ/shor_projectq_guide.txt}
+
+After checking that we can simulate the number of qubits required, we can load the simulator by calling \texttt{MainEngine} and allocate the two registers.
+
+\inputminted[firstnumber=36, firstline=36, lastline=39]{python}{code/ProjectQ/shor_projectq_guide.txt}
+
+We can apply Hadamards to all the qubits in the first register using the function \texttt{All}. 
+
+\inputminted[firstnumber=41, firstline=41, lastline=42]{python}{code/ProjectQ/shor_projectq_guide.txt}
+
+Next, we have to define and apply the oracle. This is fairly straightforward in ProjectQ since there is a class \texttt{BasicMathGate} which allows you to define an arbitrary mathematical operation on a number of registers. The oracle can be defined as a function acting on two registers and this function can be passed to \texttt{BasicMathGate}.
+
+\inputminted[firstnumber=44, firstline=44, lastline=47]{python}{code/ProjectQ/shor_projectq_guide.txt}
+
+The following step, to measure the second register can be done in one line as the function \texttt{All} allows you to do the same operation on multiple qubits at once.
+
+\inputminted[firstnumber=49, firstline=49, lastline=50]{python}{code/ProjectQ/shor_projectq_guide.txt}
+
+Now the QFT needs to be applied to the first register. ProjectQ has an inbuilt function for this called \texttt{QFT}, but we need to be careful using it since it does not do the final Swap gates required for the QFT circuit as shown in \autoref{fig:qft}.
+
+\inputminted[firstnumber=52, firstline=52, lastline=55]{python}{code/ProjectQ/shor_projectq_guide.txt}
+
+After measuring the first register, to execute the algorithm all the instructions need to be sent to the simulator using the \texttt{flush} command and the output determined.
+
+\inputminted[firstnumber=63, firstline=63, lastline=66]{python}{code/ProjectQ/shor_projectq_guide.txt}
+
+This completes the quantum part of Shor's algorithm in ProjectQ and we can now test it. This code runs fairly fast considering the number of qubits it has to simulate, for example two digit numbers can be factored in less than 30 seconds. Of course this does not take into account the times that the algorithm will fail, so often the code has to be run a number of times. Below is an example of one of the largest numbers that can be factorised using this code, this took around 20 minutes to run.
+
+\begin{minted}{text}
+Input an integer to factorise: 405
+Factor found by Shor's algorithm is 27 using 27 qubits
+\end{minted}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Shor's algorithm with Q\#}
+%When programming in Q\#, the quantum computer is considered to be a coprocessor, a so-called QPU. Programs written in Q\# control the QPU and need to be called by a driver program written in another language. The only requirement for this driver language is that it supports the .NET Framework. For the examples in this document C\# is used, however other languages such as F\# could be used instead without a problem. 
+
+There are three main operators required for Shor's algorithm: the Hadamard ($H$), the Quantum Fourier Transform ($QFT$) and the operation $U_f$. The first, $H$ is a primitive gate in Q\# and for the second, the $QFT$, one can use an operation from the library which can be applied to multiple qubits at once. The third operation however, is a bit more complicated, as there is no straightforward way to implement it in Q\#. In this example we have used an implementation which is given in \cite{beauregard2003ShorImplementation}. In figure \ref{fig:apprPerAlgAlternative} the corresponding circuit can be seen. Now, instead of an operation mapping $\ket{x} \rightarrow \ket{(a^x)mod N}$ we only need an operation mapping $\ket{x} \rightarrow \ket{(ax)mod N}$. This is easier to do, especially in Q\#, as the standard library already contains such an operation.
+
+\begin{figure}[H] 
+\centering
+\begin{align*}
+\Qcircuit @C=2.0em @R=1.8em{
+&\lstick{\ket{0}} & \gate{H} & \qw & \qw  & \qw & \qw & \lstick{\dots} & \ctrl{5} & \qw & \multigate{4}{QFT^{-1}} & \meter \\
+%
+&\lstick{\vdots} & \vdots & & & & & & & & & \lstick{\vdots}  \\
+%
+&\lstick{\ket{0}} & \gate{H} & \qw & \qw  & \ctrl{3} & \qw & \lstick{\dots} & \qw & \qw & \ghost{QFT^{-1}} & \meter \\
+%
+&\lstick{\ket{0}} & \gate{H} & \qw & \ctrl{2} & \qw & \qw & \lstick{\dots} & \qw & \qw & \ghost{QFT^{-1}} & \meter \\
+%
+&\lstick{\ket{0}} & \gate{H} & \ctrl{1} & \qw  & \qw & \qw & \lstick{\dots} & \qw & \qw & \ghost{QFT^{-1}} & \meter \\
+%
+&\lstick{\ket{0}} & \qw & \multigate{2}{U_{a^{2^0}}} & \multigate{2}{U_{a^{2^1}}} &  \multigate{2}{U_{a^{2^2}}} & \qw & \lstick{\dots} & \multigate{2}{U_{a^{2^{2n-1}}}} & \meter & & \\
+%
+&\lstick{\vdots} & & & & & & & & \lstick{\vdots} & & \\
+%
+&\lstick{\ket{0}} & \qw & \ghost{U_{a^{2^0}}} & \ghost{U_{a^{2^1}}} & \ghost{U_{a^{2^2}}} & \qw & \lstick{\dots} &  \ghost{U_{a^{2^{2n-1}}}} & \meter & & \gategroup{1}{1}{5}{1}{1.7em}{\{} \gategroup{6}{1}{8}{1}{1.7em}{\{} \gategroup{1}{4}{8}{9}{1.7em}{--}}
+\end{align*}
+\caption{Circuit for approximate periodicity finding in Shor's algorithm. The operation $U_i$ is given by the map $\ket{x} \rightarrow \ket{(xi)mod N}$. Together, the operations in the dashed box implement the bit oracle $U_f$ with $f(x) = (a^x)mod N$. Adapted from \cite{beauregard2003ShorImplementation}.}
+\label{fig:apprPerAlgAlternative}
+\end{figure}
+
+In the case of Shor's algorithm it is interesting to see which part is best done by the CPU and which best by the QPU. CPUs are most likely much more optimised for many calculations, as they've have been around for much longer. Therefore, it makes sense to only use the QPU for the elements that quantum algorithms can speed up drastically. For Shor's algorithm this means that only the third step of the algorithm needs the QPU and the rest can be written in, e.g., C\#. 
+
+To start we specify the quantum namespaces we will be using and create the namespace we will be working in, \texttt{Quantum.Shor}. Then we define a new class, \texttt{Shor}, and inside it a method in which we will implement Shor's algorithm, \texttt{Factor}. 
+
+\lstinputlisting[language=Csharp, linerange={1-2,6-8,12-13, 41-41,100-100, 184-184, 195}]{code/Qsharp/Shor/Driver.txt}
+
+Next we will implement Shor's algorithm in the \texttt{Factor} method step by step, leaving the implementation of the quantum algorithm part until last. Given $N$ we need to check if it is even (i.e. 2 would be a factor), and otherwise find a random integer $a$ coprime to $N$, smaller than $N$, but larger than 1. The method \texttt{GDC}, calculating the greatest common divisor of two integers, has to be implemented, too, but is omitted here. It can be found in the complete code for this implementation given in the  \autoref{chpt:fullcodeexamples}.
+
+\lstinputlisting[language=Csharp, firstnumber=41, linerange={41-56}]{code/Qsharp/Shor/Driver.txt}
+
+The next step uses the quantum algorithm, but we will only write the call for now and implement the Q\# code later. The quantum algorithm does not find the order of $a$ modulus $N$, but it finds the approximate periodicity of $f(x) = (a^x)mod N$, which can then be used to find the order in the classical part of the code. We let \texttt{ApproximatePeriodicity} be the quantum operation, which takes the values for $a$ and $N$ as input. As always, we must also pass the simulator to the operation together with the arguments of \texttt{ApproximatePeriodicity} using the method \texttt{Run}. Finally we retrieve the \texttt{Result} property, which is the outcome of the quantum operation. In the next line we cast this outcome to \texttt{int}.
+
+\lstinputlisting[language=Csharp, firstnumber=58, linerange={58-63}]{code/Qsharp/Shor/Driver.txt}
+
+Now that we have the approximate periodicity, we need to find the order, which we do by finding the convergents of the continued fraction expansion of the fraction $z = \frac{y}{M}$, where $y$ is the approximate periodicity and $M$ is the smallest power of 2 bigger than $N^2$. The method \texttt{FindConvergents} must again be implemented separately and example code can be found in the appendix.
+
+\lstinputlisting[language=Csharp, firstnumber=67, linerange={67-72}]{code/Qsharp/Shor/Driver.txt}
+
+In the last step we go through the convergents and check for the cases that the denominator of the convergent is smaller than $N$, even and the convergent is within $1/(2N^2)$ of z. These convergents are then used to factor N using the \texttt{GCD} method. If the outcome of this is $N$ or 1, the algorithm has failed. Otherwise we have found a factor of $N$.
+
+\lstinputlisting[language=Csharp, firstnumber=74, linerange={74-96}]{code/Qsharp/Shor/Driver.txt}
+
+Now we have a chance that the method ends without returning a factor of $N$. As a method must return a valid return value at every possible end point in the code, we must let a program using this method know that the algorithm failed by throwing an exception, if we reach this point in the program. To show that this failure of the algorithm is caused by the non-deterministic nature of the quantum algorithm, we can create our own type of exception:
+
+\lstinputlisting[language=Csharp, firstnumber=189, linerange={189-193}]{code/Qsharp/Shor/Driver.txt}
+
+We can then throw this exception if we reach the end of the method without finding a factor.
+
+\lstinputlisting[language=Csharp, firstnumber=98, linerange={98-99}]{code/Qsharp/Shor/Driver.txt}
+
+Now that the classical programming section of the factoring method is done, we can write the Q\# code.
+Starting again with the essentials of the code we have the definition of the namespace we are working in, \texttt{Quantum.Shor}, the namespaces we are using and the bare skeleton of the function.
+
+\lstinputlisting[language=Qsharp, linerange={1-7, 35-37, 83-84, 111-111}]{code/Qsharp/Shor/Shor.txt}
+
+Inside the \texttt{body} we can now implement the approximate periodicity algorithm. First we need to determine how many qubits we will need. The algorithm needs to have space for the value $N = 2^n$ and for a value of maximum size $M = 2^m$. Before we allocate the qubits, we need to create the mutable variable \texttt{otucome1}, which will hold the value that our operation returns. 
+
+\lstinputlisting[language=Qsharp, firstnumber=38, linerange={38-41}]{code/Qsharp/Shor/Shor.txt}
+
+Next, we create the two registers. First all the qubits get allocated together and then they are separated into two registers. 
+
+\lstinputlisting[language=Qsharp, firstnumber=44, linerange={44-57}]{code/Qsharp/Shor/Shor.txt}
+
+The next steps are implementing the gates that can be seen in the quantum circuit diagram in figure \ref{fig:apprPerAlgAlternative}. To implement the $U_i$ operation, we use the operation \texttt{ModularMultiplyByConstantLE} from the Q\# library. However, this is not quite the operation we want, yet. We can now write our own operation \texttt{ModularQubitMultiplyByExp} which will be exact the $U_f$ operation. 
+
+One of the main things we have to be careful with, when using a multi-qubit operation is the endianness which is assumed by the operation. %Endianness is concerned with which (qu)bit is the most significant: e.g. if \texttt{01} means $0\times2^0+1\times2^1 = 2$ or $0\times2^1+1\times2^0 = 1$. In the first case the first (qu)bit represents the smallest value, which is also denoted "little-endian". The second case gives the largest, i.e. most significant value, first, so it is also called "big-endian".
+In Q\# some operations assume one endianness while others use the other and many are defined for both and the library documentation generally tells you what endianness is used. The library operation we are going to use, uses the register in the little-endian ordering. This is denoted in the arguments in the operation of the type \texttt{LittleEndian}, which is derived from \texttt{Qubit[]} and therefore lets us cast directly to this type. The casting syntax in Q\# is different than in C\#: Assuming we have a variable \texttt{register} of type \texttt{Qubit[]}, we can cast to \texttt{LittleEndian} using the syntax \texttt{LittleEndian(register)}.
+
+Now, we can define our new operation \texttt{ModularQubitMultiplyByExp}, which takes a qubit register of \texttt{LittleEndian} type, a base value and a power value for the exponential, and the modulus value. Using one of the maths functions from the library we can calculate the exponent and then use \texttt{ModularMultiplyByConstantLE} to create the wanted operation. %However, with just defining the body of the operation we are not yet done. As this operation does not contain any measuring operations, it can be easily inverted, creating the so-called "adjoint" operation. This can be done simply with the statement \texttt{adjoint auto}. Similarly, we can create a controlled version of the operation and even the controlled inverted equivalent. This allows the operation to be used in four different ways with writing just one implementation. 
+
+\lstinputlisting[language=Qsharp, firstnumber=100, linerange={100-110}]{code/Qsharp/Shor/Shor.txt}
+
+Going back to the main operation \texttt{ApproximatePeriodicity} we can now easily implement the algorithm, as we have all the building blocks. First we apply Hadamard gates to all qubits in the first register. To apply a one-qubit operation to all qubits in a register we can use the library operation \texttt{ApplyToEach} and pass both the operation we want to apply and the qubits to it. 
+
+\lstinputlisting[language=Qsharp, firstnumber=60, linerange={60-60}]{code/Qsharp/Shor/Shor.txt}
+
+Now, we can apply our \texttt{ModularQubitMultiplyByExp} to the first register. As you could see in the circuit these operations are controlled on qubits in the first register. Using a loop we can easily implement this, as we ensured that we created a controlled version of this operation. %Using the syntax \texttt{(Controlled Operation)([ctrl], (arg1, arg2, ...))} one can ensure that operation \texttt{Operation} is controlled by \texttt{Qubit ctrl} and receives the required arguments \texttt{arg1}, etc. 
+
+\lstinputlisting[language=Qsharp, firstnumber=63, linerange={63-66}]{code/Qsharp/Shor/Shor.txt}
+
+Next, we measure the second register, where we use the library method \texttt{MeasureInteger}, which takes a register, measures each qubit and returns the equivalent integer value to all the outcomes in little-endian ordering.
+
+\lstinputlisting[language=Qsharp, firstnumber=69, linerange={69-69}]{code/Qsharp/Shor/Shor.txt}
+
+Now we have to apply the inverse Quantum Fourier Transform. The Q\# library contains a Quantum Fourier Transform operation, where we have to select the one with the right endianness. In this case we need the one with big endian ordering, \texttt{QFT}. We can use the \texttt{Adjoint} keyword to get the inverse operation. 
+
+\lstinputlisting[language=Qsharp, firstnumber=72, linerange={72-72}]{code/Qsharp/Shor/Shor.txt}
+
+Now we can measure the first register to get value we want. As \texttt{outcome1} is a mutable variable, we have to use the \texttt{set} keyword to assign the value to it, instead of the \texttt{let} keyword.
+
+\lstinputlisting[language=Qsharp, firstnumber=75, linerange={75-75}]{code/Qsharp/Shor/Shor.txt}
+
+The last step is "cleaning" the qubits, i.e. resetting them to the $\ket{0}$ state before releasing them when exiting the \texttt{using} block.
+
+\lstinputlisting[language=Qsharp, firstnumber=78, linerange={78-79}]{code/Qsharp/Shor/Shor.txt}
+
+Now we can return our measured integer to the classical program.
+
+\lstinputlisting[language=Qsharp, firstnumber=82, linerange={82-83}]{code/Qsharp/Shor/Shor.txt}

@@ -1,0 +1,295 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\chapter{Short term quantum computing}
+\chapter{Noisy Intermediate-Scale Quantum (NISQ) Algorithms} % algorithms or computing?
+% I like algorithms, it's more specific.
+\label{chpt:shortqcomp}
+
+% \epigraph{\textit{Let's put the short term section last}}{Andres}
+
+
+
+\epigraph{\vspace{-1.5cm}\textit{Attaining quantum supremacy and exploring its consequences will be among the great challenges facing 21st century science, and our imaginations are poorly equipped to envision the scientific rewards of manipulating highly entangled quantum states, or the potential benefits of advanced quantum technologies.}}{John Preskill \cite{Preskill2012}} % As we rise to the call of the entanglement frontier, we should expect the unexpected.
+
+% In this section we aim to give a comprehensive overview of quantum computing platforms which are currently available (only superconducting qubits) and discuss the near-term advantages that these platforms can bring.
+
+% Intro NISQ algorithms chapter
+% Q algorithms
+% FTLSQ & NISQ
+% Implementation in hardware
+% Q supremacy
+% nisq algorithms
+% In this chapter...
+
+\addcontentsline{toc}{section}{4.0 \hspace{0.3cm}Introduction}
+
+% q algorithms
+Quantum algorithms were first devised by David Deutsch in 1985 with the proposal of what nowadays is known as Deutsch's algorithm \cite{Deutsch1985}. The development of quantum algorithms exploded during the nineties with the proposal of several other quantum algorithms \cite{AM2016, zoo} as the famous Shor's and Grover's algorithms. Althought the problems addressed by quantum algorithms can be \emph{simulated} by classical computers, they cannot be \emph{efficiently simulated}, as in classical computers would require ridiculously long periods of time to do so. The appealing feature of quantum algorithms is that for particular types of problems, they offer speedups in comparison with their classical counterparts. 
+
+% Many of these problems are specific abstract problems with interest from science, but there are some that will have a huge impact on society like Shor's and simulating chemistry for the development of drugs. Active area of research to find new algorithms, or to adapt existing ones to solve useful problems.
+
+% FTLSQ, connecting with hardware, NISQ description
+The great majority of quantum algorithms (if not all) were initially developed to be of a practical use when implemented in a Fault-Tolerant Large-Scale Quantum (FTLSQ) computer. A \emph{fault-tolerant} quantum device refers to a device having low enough noise such that is able to implement an algorithm with a decent \textcolor{blue}{(number?)} circuit depth. A \emph{large-scale} quantum device refers to a device being able to control a number of $\sim 10^6$ physical qubits \textcolor{blue}{(how many logical?)}. Even though the construction of FTLSQ devices is a long-term goal which is believed to be at least several decades away \cite{JLOqc2010}, it has recently entered to the so-called era of: Noisy Intermediate-Scale Quantum (NISQ) devices. A quantum device is considered \emph{noisy} when is able to implement quantum algorithms with a circuit depth of less than $1000$ gates. A \emph{intermediate-scale} quantum device refers to a device controlling a number of $\sim 50-100$ physical qubits \cite{Preskill2018}. Smaller devices $< 20$ have also been called \emph{quantum processors} \cite{Qiang2018}. % and therefore only small instances of the algorithms have been implemented in these small devices
+
+% Implementation of algorithms in real hardware
+Quantum algorithms are expected to outperform their classical counterparts when implemented in FTLSQ computers and they are not expected (in principle) to do so when implemented in quantum processors or NISQ devices. In fact, even though several of these quantum algorithms have already been implemented in quantum processors and NISQ devices, \emph{all} of these instances can be simulated by classical computers. In order to achieve the breaking point of having quantum devices that can efficiently run an algorithm which cannot efficiently be classically simulated, we need to keep further scaling up current quantum hardware and particularly, keep developing algorithms suitable to be run on NISQ devices. This breaking point has been coined as \emph{quantum supremacy}\footnote{In regards of the use of the term "Quantum Supremacy", we would like to quote Ref \cite{Road2017}:\\ \emph{The use of the word “supremacy”—which denotes “the state or condition of being superior to all others in authority”—was criticised in \cite{Road52107} because the syntagm ‘white supremacy’ is associated with the racial segregation and discrimination of the apartheid regime of South Africa. Proposals like “quantum advantage” or “quantum superiority” have been discussed \cite{Road42017}, but to date none has gained ground.}}. 
+% with two characteristics in mind useful for the short-term and/or milestone. 
+
+% The first quantum algorithm implemented was Shor's algorithm \cite{MatthewsShor}, the first quantum walk in IQP \cite{MatthewsWalks, Qiang2016}, the first Fermionic simulation in IQP \cite{MatthewsFermionic}, general mixed one-qubit states and violation of Bell inequalities \cite{Shadbolt2011a}, simulating quantum chemistry \cite{Peruzzo2014}, quantum complexity \cite{Carolan2014}, delayed choice experiment \cite{Shadbolt2014} and very recently Deutsch's and Gedik's algorithms \cite{Qiang2018}.
+
+% \footnote{issue about supremacy (and ancilla) Weisner}
+
+% q supremacy
+Quantum supremacy refers to the implementation of a quantum algorithm that cannot be efficiently implemented in a classical computer. Achieving quantum supremacy is a milestone for quantum computing which has not been reached yet, and it is a very active area of research. The term was first introduced by Preskill in \cite{Preskill2012} and further formalised later by Harrow and Montanaro \cite{HarrowMontanaro2017}. Quantum supremacy through Boson sampling seems rather further away from what was expected \cite{QAdvantage} and theoretical works predict a minimum amount of $~90$ qubits in order to achieve it \cite{Harrow2018}. In \autoref{fig:NISQ} we have the research direction taken by Google in terms of quantum computing, specifying: NISQ era, FTLSQ era and the breaking point of quantum supremacy. It is fair to say that this is the general trend that most companies working on quantum computing are currently following.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.6]{figures/NISQ.png}
+    \caption{Google quantum computing research direction. Quantum devices with $~50$ or less qubits can be simulated with classical computers. NISQ devices are being considered as those with $50-100$ qubits. Near-term devices are those containing from $50$ to a few thousands qubits. FTLSQ devices will contain $10^5$ qubits. Quantum supremacy refers to an implementation that cannot be classically simulated. Image taken from \cite{NISQ}.}
+    \label{fig:NISQ}
+\end{figure}
+
+% Algorithms for nisq devices (whether useful now or for supremacy)
+There are several candidates algorithms in the race for quantum supremacy and a not comprehensive list includes the following: Quantum optimisers such as the Quantum Approximate Optimisation Algorithm (QAOA) \cite{QAOA1,QAOA2,QAOA3} particularly the Variational Quantum Eigensolver (VQE) \cite{ES1,ES2}, adiabatic quantum computing such as quantum annealing \cite{AQC}, quantum deep and machine learning \cite{QML1,QML2}, quantum matrix inversion \cite{QMatrixInversion}, quantum recommendation systems \cite{QRecommendation}, quantum semidefinite programming (QSDP) \cite{QSDP1,QSDP2}, quantum simulation \cite{QS1}, quantum games \cite{JW2018}, and quantum kitchen sinks \cite{QKitchenSinks2018}. In this chapter we are going to address some basic examples for quantum annealing and the variational quantum eigensolver (VQE).  % Q annealing reasons? there's alot of controversy but could be useful. VQE Reasons? VQE cool for chemists, perhaps a good candidate for Q supremacy or Q advantage? and caviate here is we are addressing these algorithms as for the near-term but they all can achieve full potential in long term.
+
+% QAOA is  (max cut)
+
+% to give a taste of both cases useful and possibly useful for QS.
+
+% In Chapter 1 qm background where we addressed the fundamentals, chapter 2 into to different Q software available, chapter 3 analytical description of algorithms. Now In chapter 4 we address two particular examples of the algorithms that are very likely to be implemented in the short-term, namely dwave stuff and quantum variational eigensolver (QVE).
+
+% Quantum computing was first devised in the early eighties by Richard Feynman when considering the possibility of simulating complex quantum physical systems using another quantum physical system \cite{Feynman1982}, 
+
+% A machine capable of implementing these quantum algorithms has been coined an \emph{universal quantum computer} \cite{JLOqc2010} (or general purpose), and its construction has become one of the main goals (if not the holy grail) of this ongoing second quantum revolution.
+
+%%%%%%%%%%%%%%
+\begin{comment}
+Paragraph on short term
+\begin{itemize}
+    \item Q Supremacy first time defined \cite{Preskill2012}
+    \item NISQ era defined \cite{Preskill2018}
+    \item Q advantage/supremacy \cite{QAdvantage}
+    \item theoretical work on the amount of qubits needed for it \cite{Harrow2018}, 
+    \item the article suggesting supremacy with Boson sampling is far away \cite{QAdvantage}.
+\end{itemize}
+\end{comment}
+%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%
+\begin{comment}
+(one-ref each). JP classification.
+\begin{itemize}
+\item 
+    \begin{itemize}
+        \item eigensolver \cite{ES1,ES2,ES3,ES4,ES5,ES6,ES7}
+        \item 
+    \end{itemize}
+\item Q annealing \cite{AQC}
+\item Q deep (machine) learning \cite{QML1,QML2}
+\item Q matrix invertion \cite{QMatrixInversion}
+\item Q recommendation systems \cite{QRecommendation}
+\item Q SDP \cite{QSDP1,QSDP2}
+\item Q simulation (digital and analogue) \cite{QS1} %anthony laing stuff?
+\item Q games \cite{JW2018} %JP doesnt cite Wooton but we are gonna do it
+\end{itemize}
+    
+Other Q algorithms/tasks not covered by JP
+\begin{itemize}   
+\item Boson sampling? inside simulation? Reference stating that it;s gonna take quite a bit for supremacy \cite{QAdvantage}.
+\item kitchen sinks \cite{QKitchenSinks2018}
+\item anything else? 
+\end{itemize}
+\end{comment}
+%%%%%%%%%%%%%
+
+
+% Jake
+%Im not sure yet if this is the only section on quantum annealers but if it is maybe we want to add more of a discussion after the examples of my this is a short term limited technology? (If it is, I do remember someone saying to me that it could be universal but Im not sure I agree with that)
+
+%%%%%%%%%%%%%%%%
+\input{chapters/C5a_Short_Dwave.tex}
+
+\input{chapters/C5a_Short_VQEterm.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{TODO Summary and Outlook}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{TODO Exercises}
+
+\textbf{Exercise 1 with QISKIT Aqua VQE}
+\\
+Try and modify the coefficients $\alpha_{1,2,3}$ in the VQE code and change their corresponding operators to the following: $Z\otimes I$, $I \otimes X$ and $X \otimes I$. How does this affect the output from the code? How much does each answer vary from the mean output value if you run the code multiple times? You can simplify the arithmetic by automating the process in your code if you'd like.
+\\
+\\
+\textbf{Exercise 2 with QISKIT Aqua VQE}
+\\
+Can we simulate a molecule in QISKit? We can compose a simulation of the ground-state energy of the Helium hydride molecular ion (HeH$^{+}$) in the VQE by using the approximations described in . We can use the supplementary information of that publication to add the additional operators and their matching coefficients. After running the new code, you should find that your value(s) is twice the value computed in the publication. Why could this be?  
+
+%%%%%%%%%%%%% Old Deusch algm
+\begin{comment}
+\begin{multicols}{2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Deutsch's Algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%
+\begin{tcolorbox}[standard jigsaw,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+    boxrule=0.5pt]
+    {\bf Deutsch's Algorithm}
+    \tcbline
+    Given a function $f:\{0,1\}^2\rightarrow \{0,1\}$ promised to be either balanced or constant. We initialise the system in the state $\ket{00}$, we need to implement the gates $H^{\otimes 2}$ and then $U_f$ and then $H^{\otimes 2}$ and then perform a measurement in the computational basis.
+\end{tcolorbox}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[language=Python,caption={Deutsch's algorithm implemented in Python only},label={lst:DApython},frame=single] 
+import numpy as np
+# State initialisation
+state0=np.array([[1],[0],[0],[0]]) 
+# Gate Implementation
+H=(1/np.sqrt(2))*np.array([[1,1],[1,-1]]) 
+state1=np.dot(np.kron(H,H),state0)        
+U=np.array([[-1,0,0,0],
+            [0,1,0,0],
+            [0,0,-1,0],
+            [0,0,0,1]])
+state2=np.dot(U,state1)
+state3=np.dot(np.kron(H,H),state2)
+# Measurement: defining basis
+ket0=np.array([[1],[0]])
+ket1=np.array([[0],[1]])
+ket00=np.kron(ket0,ket0)
+ket01=np.kron(ket0,ket1)
+ket10=np.kron(ket1,ket0)
+ket11=np.kron(ket1,ket1)
+# Measurement: projectors P00,P01,P10,P11
+P00=np.dot(ket00,ket00.T)
+P01=np.dot(ket01,ket01.T)
+P10=np.dot(ket10,ket10.T)
+P11=np.dot(ket11,ket11.T)
+# Probability of obtaining: 00,01,10,11
+prob00=np.trace(np.dot(P00,np.dot(state3,np.conj(state3).T)))
+prob01=np.trace(np.dot(P01,np.dot(state3,np.conj(state3).T)))
+prob10=np.trace(np.dot(P10,np.dot(state3,np.conj(state3).T)))
+prob11=np.trace(np.dot(P11,np.dot(state3,np.conj(state3).T)))
+print(prob00,prob01,prob10,prob11)
+\end{lstlisting}
+%%%%%%%%%%%%%%%%
+\columnbreak
+
+Now implementing this with pyQuil. We first need to learn how to add our own gates.
+
+%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[language=Python]
+# Defining our own gates
+Ufma=np.array([[-1,0,0,0],
+               [0,1,0,0],
+               [0,0,-1,0],
+               [0,0,0,1]]); 
+p.defgate("Uf",Ufma); 
+p.inst(("Uf",0,1)); 
+\end{lstlisting}
+%%%%%%%%%%%%%%%%
+
+In \autoref{lst:DAqvm}
+
+%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[language=Python,caption={Deutsch's algorithm with pyQuil},label={lst:DAqvm},frame=single]
+import numpy as np
+from pyquil.quil import Program
+from pyquil.api import QVMConnection 
+from pyquil.gates import X,Z,Y,H,I 
+# Invoking and renaming
+qvm=QVMConnection()
+p=Program() 
+# Gate implementation
+p.inst(H(0),H(1)) 
+# Assuming the given function gives
+Ufma=np.array([[-1,0,0,0],
+               [0,1,0,0],
+               [0,0,-1,0],
+               [0,0,0,1]]);
+# Adding matrix as a gate               
+p.defgate("Uf",Ufma); 
+# Applying new gate and Hadamards
+p.inst(("Uf",0,1)); 
+p.inst(H(0),H(1))
+# Measurements
+p.measure(0,0)
+p.measure(1,1) 
+# Running the program
+cr=[] 
+results=qvm.run(p,cr,4) 
+print(results)
+\end{lstlisting}
+%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%
+\begin{tcolorbox}[standard jigsaw,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+    boxrule=0.5pt]
+    {\bf Exercise 2: Bernstein-Vazirani Algorithm}
+    \tcbline
+    As in DJ with $n=3$, and given a function $f$ that is a parity function. Checking that the code indeed identifies the parity function
+\end{tcolorbox}
+
+\end{multicols}
+\end{comment}
+%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%% Old Rigetti code added by Ben
+\begin{comment}
+Rigetti has created an environment called Forest, amongst its contributions is a python library called PyQuil. With PyQuil one can simulate up to 26 qubits on the Quantum Virtual Machine (QVM). An example code from \cite{rigetti} is detailed below with comments to assist the reader:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[language=Python,float=h]
+from pyquil.quil import Program
+from pyquil.gates import H, CNOT
+from pyquil.api import SyncConnection
+# construct a Bell State program
+p = Program()
+p.inst(H(0))
+p.inst(CNOT(0, 1))
+# run the program on a QVM
+qvm = SyncConnection()
+result = qvm.wavefunction(p) 
+# produces the output wavefunction of the Bell state
+\end{lstlisting}
+Rigetti also offers access to a 19 qubit processor they call 19Q. This API 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[language=Python,float=h]
+import numpy as np
+ 
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+ 
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1) 
+ 
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+ 
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)
+ 
+                VT = np.zeros((n*m,1), int)
+ 
+    return M
+\end{lstlisting}
+\end{comment}
+%%%%%%%%%%%%%

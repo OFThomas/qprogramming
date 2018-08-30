@@ -1,0 +1,103 @@
+import numpy as np
+from fractions import Fraction, gcd
+
+from pyquil.quil import Program
+from pyquil.api import QVMConnection
+from pyquil.gates import H
+from grove.qft.fourier import qft
+
+
+
+# Define matrix for bit oracle O|x>|y> = |x>|y+f(x)>
+def bit_oracle(a, N, m, n):
+    mat_size = 2**(m+n)    # There are m + n qubits
+    oracle_matrix = np.zeros([mat_size,mat_size])
+    for x in range(2**m):
+        f = pow(a,x,N)   #a**x % N
+        for y in range(2**n):
+            row = x + (2**m)*y
+            col = x + (2**m)*(y^f)
+            oracle_matrix[row][col] = 1
+    # Return the matrix        
+    return oracle_matrix
+
+
+def shor(N):
+    # Check if number is even
+    if N % 2 == 0:
+        print('Even number.')
+        return 2 
+
+    # Step 1: Chose 1 < a < N uniformly at random
+    a = np.random.randint(2,N-1)
+    a = 2
+    # Step 2: Compute b = gcd(a,N). If b > 1, output b and stop
+    b = gcd(a,N)
+    if b > 1:
+        print('Factor found by guessing:', b)
+        return b
+    
+    # Step 3: Find the order r of a modulo N for f(x) = a^x mod N
+    # Quantum Part: using approximate periodicity to find r
+    
+    m = int(np.ceil(np.log2(N**2)))   # Size of first register
+    M = 2**m   # M is the smallest power of 2 greater than N^2
+    n = int(np.ceil(np.log2(N-1)))   # Size of second register - need to represent 0 to N-1
+    
+    # Set up connection and program
+    qvm = QVMConnection() 
+    p = Program()
+    # Labels for register 1 and 2
+    reg_1 = range(m)   # First m qubits
+    reg_2 = range(m,m+n)   # Last n qubits
+    reg_all = range(m+n)   # Label for both registers
+    
+    # Apply QFT to first register
+    for i in reg_1:
+        p.inst(H(i))
+    
+    # Apply the oracle to both registers - need superposition of |x>|f(x)>
+    oracle_matrix = bit_oracle(a, N, m, n)
+    p.defgate("oracle", oracle_matrix)
+    p.inst(("oracle",) + tuple(reg_all))
+    
+    # Measure the second register 
+    for i in reg_2:
+        p.measure(i,i)
+        
+    # Apply the qft to the first register
+    p.inst(qft(reg_1))
+    
+    # Measure the first register
+    for i in reg_1:
+        p.measure(i,i)
+    
+    # Run the approximate peridicity algorithm
+    classical_addresses = list(reg_all)
+    results = qvm.run(p, classical_addresses, trials = 1)
+    
+    # Determine output y of algorithm
+    y = 0
+    for i in reg_1:
+        y = y + 2**i*results[0][i]
+    
+    # Use continued fraction expansion of z = y/M to find r
+    r = Fraction(y,M).limit_denominator(N).denominator
+    
+    # If r is odd the algorithm fails
+    if r % 2 == 1:
+        print('Order r found is odd: algorithm failed')
+        return 0
+    
+    # Step 4: Find factor of N
+    s = gcd(a**(r/2)-1, N)
+    if s == 1 or s == N:
+        print('Factor found is 1 or', N,': algorithm failed')
+        return N
+    
+    print('Factor found by Shor\'s algorithm is', s, 'using', m+n, 'qubits')
+    return s
+    
+N_input = input("Input an integer to factorise: ")
+shor(int(N_input))
+

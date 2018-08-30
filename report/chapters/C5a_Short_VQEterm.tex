@@ -1,0 +1,255 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Implementation of the Variational Quantum Eigensolver (VQE) Algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this section we are going to implement a simple example of the VQE algorithm, using the libraries provided by pyQuil and QISKit. This algorithm can also be implemented in Project Q and Q\# but it needs to be done from scratch, so it is left as an exercise to the interested reader.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{VQE Algorithm in pyQuil}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this subsection we are going to use the VQE algorithm from Grove's library to address the following simple VQE problem.
+
+%%%%%%%%%%%% title= Example 1
+\begin{tcolorbox}[standard jigsaw,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+    boxrule=0.5pt,label={example0000001}]
+    {\bf Example: A simple VQE algorithm in pyQuil}
+    \tcbline
+    Consider the one-qubit Hamiltonian $H=\sigma_z$  and an ansatz given by:
+    $\ket{\psi\left(\theta\right)}=\cos{\theta/2}\ket{0}-i\sin{\theta/2}\ket{1}={\rm RX}(\theta)\ket{0}$.
+    \begin{comment}
+    \begin{align*}
+    H=\sigma_z,
+    \end{align*}
+    and an ansatz given by:
+    \begin{align*}
+    \ket{\psi\left(\theta\right)}=\cos{\theta/2}\ket{0}-i\sin{\theta/2}\ket{1}={\rm RX}(\theta)\ket{0}.
+    \end{align*}
+    \end{comment}
+    Find the ground state energy of the system.
+\end{tcolorbox}
+%%%%%%%%%%%%%%%
+
+Spoiler alert, this Hamiltonian has eigenvalues $+1,-1$, so the ground state energy is $-1$ which corresponds to the eigenvector $\ket{\psi(\theta=\pi)}=i\ket{1}$. However, we now want a quantum computer to do this by sampling different Ansatzes. This is interesting because for huge matrices, this VQE does better than classical methods at finding the ground eigenvalue.
+
+\begin{minted}{python}
+# 1. Calling Libraries
+from pyquil.quil   import Program
+from pyquil.api    import QVMConnection
+from pyquil.gates  import RX
+from pyquil.paulis import sZ,PauliSum,PauliTerm
+
+# Calling Grove Library and optimiser
+from grove.pyvqe.vqe import VQE 
+import numpy as np
+from scipy.optimize  import minimize
+
+# 2. Initialising
+qp = Program()
+qvm = QVMConnection()
+vqe = VQE(minimizer=minimize, minimizer_kwargs={'method': 'nelder-mead'})
+
+# 3. Defining ansatz
+def ansatzv(theta): # input vectors. 
+    qp1 = Program()
+    qp1.inst(RX(theta[0],0))
+    return qp1
+    
+# 4. Defining Hamiltonian
+hamiltonian = sZ(0) 
+
+# 5. Running the VQE
+initial_angle = [0.0]
+result = vqe.vqe_run(ansatzv, hamiltonian, initial_angle, None, qvm=qvm) 
+print(result)
+\end{minted}
+
+\begin{enumerate}
+    \item \textbf{Calling libraries} - We start by stating the libraries that we are going to use, quil, api, gates and now we also need paulis. We also need to call the vqe from grove and minimize from scipy.
+    \item \textbf{Initialising} - We initialise an object program, the connection to the QVM and a vqe object, setting the classical optimiser as being the Nelder Mead.
+    \item \textbf{Defining the Ansatz} - In pyQuil we are allowed to address the Ansatz. In this case we are directly implementing the required Ansatz as program in terms of an input angle.
+    \item \textbf{Defining Hamiltonian} - The Hamiltonian should be input as in terms of the pauli matrices and the paulis dictionary.
+    \item \textbf{Running the VQE} - We run the VQE with inputs being the ansatz program, a vector with initial the initial angle and the Hamiltonian of interest.
+\end{enumerate}
+
+Printing results we first obtain the value of the parameter for which the minimum has been achieved, followed by the minimum.
+\begin{minted}{python}
+{'x': array([3.1415625]), 'fun': -0.9999999995453805}
+\end{minted}
+We are obtaining the expected answer as ground energy of $-1$ with ground state $\ket{\psi\left(\theta\right)}=\cos{\theta}\ket{0}-i\sin{\theta/2}\ket{1}={\rm RX}(\theta/2)\ket{0}$, with $\theta=\pi$.
+
+%%%%%%%%%%%%%
+%%%%%%%%%%%%%
+\begin{comment}
+%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[language=Python,caption={Example VQE algorithm implemented with pyQuil (Grove).},label={lst:ExampleQVM},frame=single]
+# Python Libraries
+import numpy as np
+from scipy.optimize  import minimize
+# Calling pyQuil modules
+from pyquil.quil   import Program
+from pyquil.api    import QVMConnection
+from pyquil.gates  import I,X,Y,Z,H,RX,RY,CNOT
+from pyquil.paulis import sZ,PauliSum,PauliTerm
+# Calling Grove Library
+from grove.pyvqe.vqe import VQE 
+# Defining Program object and renaming
+qp=Program()
+qvm=QVMConnection()
+vqe=VQE(minimizer=minimize,minimizer_kwargs={'method': 'nelder-mead'})
+# Defining ansatz
+def ansatzv(theta): # input vectors. 
+    qp1=Program()
+    qp1.inst(RX(theta[0],0))
+    return qp1
+# Defining Hamiltonian
+hamiltonian = sZ(0) 
+initial_angle = [0.0]
+# Running the VQE
+result = vqe.vqe_run(ansatzv, hamiltonian, initial_angle, None, qvm=qvm) # VQE
+print(result)
+\end{lstlisting}
+\end{comment}
+%%%%%%%%%%%%%
+%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Step by step description}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Here I'm supposed to fully explain each step, in progress.
+
+Calling Libraries and defining objects:
+\begin{lstlisting}[language=Python,label={lst:ExampleQVM},frame=single]
+# Python Libraries
+import numpy as np
+from scipy.optimize  import minimize
+# Calling pyQuil modules
+from pyquil.quil   import Program
+from pyquil.api    import QVMConnection
+from pyquil.gates  import I,X,Y,Z,H,RX,RY,CNOT
+from pyquil.paulis import sZ,PauliSum,PauliTerm
+# Calling Grove Library
+from grove.pyvqe.vqe import VQE 
+# Defining Program object and renaming
+qp=Program()
+qvm=QVMConnection()
+vqe=VQE(minimizer=minimize,minimizer_kwargs={'method': 'nelder-mead'})
+\end{lstlisting}
+
+Defining our ansatz:
+\begin{lstlisting}[language=Python,label={lst:ExampleQVM},frame=single]
+# Defining ansatz
+def ansatzv(theta): # input vectors. 
+    qp1=Program()
+    qp1.inst(RX(theta[0],0))
+    return qp1
+\end{lstlisting}    
+
+Defining Hamiltonian.
+\begin{lstlisting}[language=Python,label={lst:ExampleQVM},frame=single]
+hamiltonian = sZ(0) 
+\end{lstlisting}
+
+Three levels:
+
+{\bf 1.} Calculating the expectationv alue directly (this is cheating, but nice to make comparisons)
+\begin{lstlisting}[language=Python,label={lst:ExampleQVM},frame=single]
+result1=vqe.expectation(ansatz(theta1), hamiltonian, None, qvm)  # no sampling
+print(result1)
+\end{lstlisting}
+
+{\bf 2.} Doing sampling
+\begin{lstlisting}[language=Python,label={lst:ExampleQVM},frame=single]
+result2=vqe.expectation(ansatz(theta1), hamiltonian, 10000, qvm) # sampling
+print(result2)
+\end{lstlisting}
+
+{\bf 3.} Finally, the actual eigensolver
+\begin{lstlisting}[language=Python,label={lst:ExampleQVM},frame=single]
+result3=vqe.vqe_run(ansatzv, hamiltonian, initial_angle, None, qvm=qvm) # VQE
+print(result3)
+\end{lstlisting}
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{VQE algorithm in QISKit} % \color{blue}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Applications that can run on ibmqx4 include simulation of quantum state evolution and solving for the lowest energy of the system using a VQE. QISKit Aqua provides tools that can be used to make an eigensolver for the ground state energy of simple systems.
+
+The first example we will explore is the case of finding the lowest eigenvalue for the $Z$ Pauli matrix. By inspection, we know that the value is $-1$. We can confirm that QISKit can also figure this out using the code seen in \autoref{aqua1}. The backend is specified as the local qasm simulator, which means this is being run on the local CPU. This initial step allows us to define our operator matrix in terms of the Paulis. The coefficients specify multipliers of these matrices. The next part details how we will run this code, and where it will be run (the backend). \texttt{algo\_input} represents the input of the code that is described by the operator made of Paulis in the pauli dictionary. The algorithm input is then further specified as the instance of the energy of the system, labelled as EnergyInput in the QISKit nomenclature. 
+
+\begin{listing}[H]
+\begin{minted}{python}
+from qiskit_aqua import Operator, run_algorithm
+from qiskit_aqua.input import get_input_instance
+# Defines the dictionary of pauli operations
+pauli_dict = {"paulis": [
+    { "coeff": { "imag": 0.0, "real": 1.0 }, "label": "Z"}]}
+algo_input = get_input_instance("EnergyInput")
+algo_input.qubit_op = Operator.load_from_dict(pauli_dict)
+params = {
+  "algorithm": { "name": "VQE" },
+  "optimizer": { "name": "SPSA" },
+  "variational_form": { "name": "RY", "depth": 5 },
+  "backend": { "name": "local_qasm_simulator" }}
+# Runs a local simulation to produce the energy result
+result = run_algorithm(params, algo_input)
+print(result["energy"])
+\end{minted}
+\caption{The example code that uses the VQE to find the lowest eigenvalue of the $Z$ pauli operator. Code modified from the one that can be found at \cite{QISKitAqua}}
+\label{aqua1}
+\end{listing}
+
+After a few minutes of running, this code produces the result of $-1.0$. This is exactly what we would expect to see.
+
+The next example provided on the IBM QISKit Aqua site details a basic working code that displays the energy result of an operator that we can define in terms of tensor products of the Pauli matrices $X$ and $Z$, as seen in \autoref{eq:VQEIBM}. These matrices and their corresponding alpha coefficients specify an operator from which we can extract energy eigenvalues. This is labelled by the pauli dictionary in the code \autoref{aqua2}. Once again, the calculation is done on the local simulator. 
+
+\begin{equation}
+    O = \alpha_{1} \left(Z \otimes X\right) + \alpha_{2} \left(Z \otimes Z\right) + \alpha_{3} \left(X \otimes Z\right)
+    \label{eq:VQEIBM}
+\end{equation}
+
+\begin{listing}[H]
+\begin{minted}{python}
+from qiskit_aqua import Operator, run_algorithm
+from qiskit_aqua.input import get_input_instance
+# Defines the dictionary of tensor products of pauli operations and the alpha coefficients we described in the operator equation
+pauli_dict = {"paulis": [
+    { "coeff": { "imag": 0.0, "real": 0.5 }, "label": "ZX" },
+    { "coeff": { "imag": 0.0, "real": -1.0 }, "label": "ZZ" },
+    { "coeff": { "imag": 0.0, "real": 0.5 }, "label": "XZ" }]}
+algo_input = get_input_instance("EnergyInput")
+algo_input.qubit_op = Operator.load_from_dict(pauli_dict)
+# Defines the algorithm input in terms of the pauli dict and that we want the energy value
+params = {
+  "algorithm": { "name": "VQE" },
+  "optimizer": { "name": "SPSA" },
+  "variational_form": { "name": "RY", "depth": 5 },
+  "backend": { "name": "local_qasm_simulator" }}
+# Runs a local simulation in qasm to produce the energy result
+result = run_algorithm(params, algo_input)
+# Prints the final result of the energy of the system
+print(result["energy"])
+\end{minted}
+\caption{The example code that utilises the VQE as presented in the QISKit Aqua documentation that prints the result of the energy of the system defined in it. Modified code originally found at \cite{QISKitAqua}.}
+\label{aqua2}
+\end{listing}
+
+The result function is imported at the start from qiskit aqua and takes the parameters (params) dictionary that specifies the algorithm being run, the python optimizer (of which there are several) used and the backend used to run the code plus the two-qubit system defined by the pauli dict list as arguments. The results printed in the first three runs (and a few minutes of patiently waiting) of this code were: -1.4560546875, -1.4287109375 and -1.3896484375. All the decimal points have been kept to illustrate the slight changes that occur between iterations. This method is sensitive to the changes in the coefficients applied to the matrices used to define the operator. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{\color{red}TODO VQE algorithm in Project Q?}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This would be quite nice, because According to Ryan LaRose's Guide, Microsoft does not have a function for this, so it'd be cool if our guide provides this, but of course Friki, only if there's enough time :3

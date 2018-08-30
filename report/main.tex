@@ -2,17 +2,24 @@
 %%%%%%%%%% Packages language %%%%%%%%%%
 \usepackage[utf8]{inputenc}
 \usepackage{listings}   % inline code
-\usepackage{natbib}     % bib
+\usepackage[sort&compress]{natbib}     % bib
 \usepackage{verbatim}   % comments
 \usepackage{url}        % cite url
 \usepackage{epigraph}   % fucks sake
 %%%%%%%%%%%%% MATHS %%%%%%%%%%%%%%%%%%%%
 \usepackage{amsmath} 
 \usepackage{mathtools}
+\usepackage{bm}
 \usepackage{physics}    % oh yeah
+\usepackage{dsfont}
 \usepackage{amssymb} 
+\usepackage{blkarray}   % Array labelling
 \usepackage{qcircuit}   % awesome circuits
 \usepackage{gensymb}    % for \degree symbol
+\usepackage{amsmath}
+
+\usepackage{amsmath,tikz}
+\usetikzlibrary{tikzmark}
 %%%%%%%%% Figures %%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx} 
 \usepackage{caption}    % subfigures
@@ -23,7 +30,20 @@
 \usepackage{color}      %???
 \usepackage{geometry}   % margins and spacing
 \usepackage{multicol}   % Andres 
+\usepackage{multirow}   % Andres
+\usepackage{wrapfig}    % Oli
 \usepackage[skins]{tcolorbox} % Andres
+\usepackage{xcolor}     % for Jakes textcolor
+\usepackage{tabulary}   % I neeeeeeeeeeed it.
+\usepackage[chapter]{minted}     % lslisting is not working for asm.
+                        % Agnus dei qui tollis pecata mundi, miserere mei.
+                        % Agnus dei qui tollis pecata mundi, miserere mei.
+                        % Agnus dei qui tollis pecata mundi, miserere mei.
+                        % (Lamb of God who takes away the sins of the world,
+                        % have mercy on me)
+
+\newenvironment{code}{\captionsetup{type=listing}}{}    % use code listing for captions & page breaks
+%\SetupFloatingEnvironment{listing}{name=Source Code}
 %%%%%%%%%%%% Table stuff %%%%%%%%%%%%%%%
 \usepackage{fourier}    %? ??
 \usepackage{array}      % ????
@@ -32,75 +52,169 @@
 \usepackage{afterpage}
 \usepackage{pdflscape}
 \usepackage{rotating}
+\usepackage{siunitx}
+%%%%%%%%%% Abbreviations Packages %%%%%%%
+\usepackage{nomencl} % Andres
+\makenomenclature % Andres
+
+%%%%%%%%%%%%%% I'll delete this in due time
+\begin{comment}
+%% This code creates the groups
+% -----------------------------------------
+\usepackage{etoolbox}
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{A}{Background}{%
+  \ifstrequal{#1}{B}{Quantum Software}{%
+  \ifstrequal{#1}{C}{NISQ}{}}}%
+]}
+\renewcommand{\nomname}{Abbreviations}
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\renewcommand{\boxed}[1]{\text{\fboxsep=.2em\fbox{\m@th$\displaystyle#1$}}}
+\makeatother
+%%%%%%%%%%%%
+%\begin{comment}
+%% This code creates the groups
+% -----------------------------------------
+\usepackage{etoolbox}
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{A}{Chapter 1: Background}{%
+  \ifstrequal{#1}{B}{Chapter 2: Quantum Software}{%
+  \ifstrequal{#1}{C}{Chapter 3: Algorithms}{%
+  \ifstrequal{#1}{D}{Chapter 4: NISQ Algorithms}{%
+  \ifstrequal{#1}{E}{Chapter 5: FTLSQ Algorithms}{%
+  \ifstrequal{#1}{F}{Chapter 6: Implementations}{%
+  \ifstrequal{#1}{G}{Chapter 7: Architecture}{}}}}}}}%
+]}
+\renewcommand{\nomname}{Abbreviations}
+%\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%%%%%%% colours %%%%%%%%%%%%%%%
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 \definecolor{mygray}{gray}{0.95}
+\definecolor{lightgreen}{RGB}{237, 255, 224}
+
+\definecolor{bg}{rgb}{0.92,0.92,0.92}
+\definecolor{bgdark}{HTML}{282828} % from https://github.com/kevinsawicki/monokai
 
 %%%%%%%%%% inline code %%%%%%%%%%%%%
-% For inline assembly
-\lstdefinelanguage{asm}
-{
-    morekeywords={BRA,CLR,BTG,BSET,BCLR,BTSC,QBTX,QBTY,CNOT,MOV},
-    morecomment=[l]{;},
-    % space is \ space
-    morestring=[s]{##}{\ },
-    morestring=[s][\color{orange}]{Q}{\ },
-    morestring=[s][\color{orange}]{CNO}{\ }             
+% for BETTER INLINE CODE
+% run
+% pygmentize -L styles 
+% for a list of styles
+% https://www.overleaf.com/articles/programming-languages-and-styles-supported-by-the-minted-package/ffpgyjcnsrdb.pdf
+%\usemintedstyle{autumn}
+\setminted{ 
+    fontsize=\footnotesize,
+    bgcolor=bg,
+    breaklines,
+    %mathescape,
+    linenos,
+    numbersep=5pt,
+    xleftmargin=0pt,
 }
+\providecommand*{\listingautorefname}{Listing}
 
-%%%%%%%%%%%%%%%%%%%%%%%
-% for C#
-
-\lstdefinelanguage{Csharp}
-{
-    morekeywords={using,namespace,class,static,public,private,void,string,int,double,try,catch,return,var,new,for,foreach,while,continue,if,else,in},
-    morecomment=[l]{//}, % l is for line comment
-    morecomment=[s]{/*}{*/}, % s is for start and end delimiter
-    morestring=[b]" 
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%
-% for Q#
-
-\lstdefinelanguage{Qsharp}
-{
-    morekeywords={namespace,open,operation,body,Qubit,Pauli,Range,Int,Double,String,Result,Bool,let,set,mutable,true,false,One,Zero,PaulI,PauliX,PauliY,PauliZ,H,X,M,Y,Z,I,if,for,in,Controlled,Adjoint,return,adjoint,auto,controlled},
-    morecomment=[l]{//}, % l is for line comment
-    morestring=[b]" 
-}
-
+%\usemintedstyle{mystyle}
 %%%%%%%%%%%%%%%%%%%%%%%%
-\lstdefinestyle{mystyle}
-{
-backgroundcolor=\color{mygray},   
- commentstyle=\color{codegreen},
- keywordstyle=\color{blue},
- numberstyle=\tiny\color{codegray},
- stringstyle=\color{codepurple},
- basicstyle=\footnotesize,
- breakatwhitespace=false,         
- breaklines=true,                 
- captionpos=b,                    
- keepspaces=true,                 
- numbers=left,                    
- numbersep=5pt,                  
- showspaces=false,                
- showstringspaces=false,
- showtabs=false,                  
- tabsize=2,
- xleftmargin=2em, % this line added by Andres
- framexleftmargin=1.5em % This line added by Andres
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{bg},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    xleftmargin=2em, % this line added by Andres
+    framexleftmargin=1.5em % This line added by Andres
  } 
 %%%%%%%%%%%%%%%%%%%%%%
 \lstset{style=mystyle}
 
+% For inline assembly 
+\lstdefinelanguage{Asm}
+{
+    morekeywords={BRA,CLR,BTG,BSET,BCLR,BTSC,QBTX,QBTY,CNOT,MOV},
+    % l is for line comment
+    morecomment=[l]{;},
+    % space is \ space
+    % s is for start and end delimiter
+    morestring=[s]{\#}{\ },
+    morestring=[s][\color{orange}]{Q}{\ },
+    morestring=[s][\color{orange}]{CNOT}{\ }             
+}
+
+% For inline assembly 
+\lstdefinelanguage{AsmGas}
+{
+    morekeywords={pushq, movq, movl, call, popq, ret, push, pop, mov, retq, callq, xor, and, hlt},
+    % l is for line comment
+    morecomment=[l]{;},
+    % space is \ space
+    % s is for start and end delimiter
+    morestring=[s][\color{purple}]{.}{\ },
+    morestring=[l][\color{cyan}]{\%}
+}
+
+% For inline assembly 
+\lstdefinelanguage{Asmx86}
+{
+    morekeywords={BRA,CLR,BTG,BSET,BCLR,BTSC,QBTX,QBTY,CNOT,mov,movl,int},
+    % l is for line comment
+    morecomment=[l][\color{purple}]{\#},
+    % space is \ space
+    % s is for start and end delimiter
+    %morestring=[s]{\#}{\ },
+    morestring=[s][\color{green}]{\$}{\,},
+    morestring=[s][\color{green}]{\$0x8}{0},
+    morestring=[s][\color{red}]{\%}{x},
+    morestring=[s][\color{orange}]{Q}{\ },
+    morestring=[s][\color{orange}]{CNOT}{\ }             
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% for C#
+\lstdefinelanguage{Csharp}
+{
+    morekeywords={using,namespace,class,static,public,private,void,string,int,double,try,catch,return,var,new,for,foreach,while,continue,if,else,in},
+    morecomment=[l]{//}, 
+    % l is for line comment
+    morecomment=[s]{/*}{*/}, 
+    % s is for start and end delimiter
+    morestring=[b]{"} 
+}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\mylexer{mintedQsharp.py:QSharpLexer -x}
+
+% for Q#
+\lstdefinelanguage{Qsharp}
+{
+    morekeywords={namespace,open,operation,body,Qubit,Pauli,Range,Int,Double,String,Result,Bool,let,set,mutable,true,false,One,Zero,PaulI,PauliX,PauliY,PauliZ,H,X,M,Y,Z,I,if,for,in,Controlled,Adjoint,return,adjoint,auto,controlled},
+    morecomment=[l]{//},
+    % l is for line comment
+    morestring=[b]{"} 
+}
+
 %% use this 
 %\lstinputlisting[language=Python, firstline=37, lastline=45]{code/source_filename.py}
 %\lstinputlisting[language=Python, linerange={1-5,6-9}]{code/source_filename.py}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Make the footnote rule extend over the full length of the footnote
@@ -111,18 +225,18 @@ backgroundcolor=\color{mygray},
 
 %%%%%%%%%%%%% hyperlink %%%%%%%%%%%%%%
 \hypersetup{colorlinks=true,
-            %citecolor=green, % changed by Andres
-            citecolor=purple,
+            citecolor=green, 
+            %citecolor=purple, % changed by Andres
+            %citecolor=purple,
             linkcolor=blue,}
 \renewcommand{\equationautorefname}{Eq.}
 \renewcommand{\figureautorefname}{Fig.}
 \renewcommand{\chapterautorefname}{Chapter} %C not c
-
+\renewcommand{\lstautorefname}{Code}
+\renewcommand{\lstautorefname}{code}
 %%%%%%%%%%%%% File paths %%%%%%%%%%%%%%
 \graphicspath{{figures/}}
 \newgeometry{left=0.8in,right=0.8in,top=1in,bottom=1in} 
-%\renewcommand{\familydefault}{\ttdefault}
-
 
 %%%%%%%%%%%%%%%%
 \begin{document}
@@ -130,7 +244,7 @@ backgroundcolor=\color{mygray},
 % Are we gonna add UoB and CDT logos?
 
 % Please add here your title proposal
-\title{\bf Quantum Meta-Programming for Dummies with a weak focus on Poisson Bullets, in the style of a book. \\ {\large The Grandest of Cohort Grand Challenges}}
+\title{\bf Quantum Meta-Programming with templates, by Dummies, for Dummies, with a weak focus on Poisson Bullets, loosely in the style of a book (Deprecated since August 2018). \\ {\large The {\LARGE GRANDEST} of Cohort Grand Challenges}}
 
 % A concise quantum programming guide for the quantum software enthusiast
 
@@ -146,12 +260,11 @@ backgroundcolor=\color{mygray},
 \author[ ]{Ben Sayers}
 \author[ ]{John Scott}
 \author[ ]{Dominic Sulway}
-\author[ ]{last but not least, Oliver Thomas}
+\author[ ]{Oliver Thomas}
 
 \affil[ ]{ {\small Quantum Engineering Centre for Doctoral Training \protect \\ H. H. Wills Physics Laboratory and Department of Electrical \& Electronic Engineering, University of Bristol, BS8 1FD, UK}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%
-\begin{comment} % commented out by ______
+\begin{comment} % commented out by _
 \author[ ]{J. Biele}
 \author[ ]{A. Ducuara}
 \author[ ]{J. Frasure}
@@ -168,18 +281,22 @@ backgroundcolor=\color{mygray},
 \affil[ ]{ {\small Quantum Engineering Technology Labs, H. H. Wills Physics Laboratory and \\ Department of Electrical \& Electronic Engineering, University of Bristol, BS8 1FD, UK}}
 \end{comment}
 %%%%%%%%%%%%%
-%%%%%%%%%%%%%
 \date{\today}
 \maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+% temp commenting out to speed up document compilation.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \input{chapters/C01_Preface.tex}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/C02_Using_this_guide.tex}
 
-%%%%%%%%%%%%%%%%
-\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/C03_Abbreviations.tex}
+\printnomenclature
 
 %%%%% change linespacing between paragraphs
 \setlength{\parskip}{0.5em}
@@ -188,53 +305,76 @@ backgroundcolor=\color{mygray},
 \input{chapters/C1_IntroDavid.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C2_FrazersVectors.tex}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C3_CircuitsOli.tex}
+\input{chapters/C2_quantumbackground.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C4_QProgrammingLanguages.tex}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C5_ShortTermBenAndresEri.tex}
+\input{chapters/C3_QProgrammingLanguages.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C6_AlogrithmsAnkur.tex}
+\input{chapters/C4_Algorithms.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C7_LongTermLanaFrikiDom.tex}
+\input{chapters/C5_ShortTerm.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/C6_LongTerm.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C8_ImplJohn.tex}
+\input{chapters/C8_ImplJOlly.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/C9_LangImpl_JohnOli.tex}  
+%\input{chapters/C9_LangImpl_JohnOli.tex}  
+
+%figures https://docs.google.com/presentation/d/1SAYwmZ2yAanG0IhbPK4y2j_JfoOjs_K9bXPlLtm7Q0w/edit?usp=sharing
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage 
+\begin{verbatim}
+%% TODO IN A LATER VERSION. :(
+
+%%%%%%%%%%%%%%%%%%%%%%% RIP FORTRAN YOU MAGNIFICENT BASTARD %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% HELLO Q-FORTRAN THE QUANTUM FORMULA TRANSLATOR %%%%%%%%%%%%%%%%%%
+
+
+                                                                                  %%
+ %%%%%%%%     %%%%%%   %%%%%     %%%%%%   %%%%%%%   %%%%%%        %%%      %%     %%
+%        %    %       %     %    %     %     %      %     %      %  %%     % %    %%
+%  %%    %    %%%%%   %     %    %%%%%%      %      %%%%%%      %%%%%%%    %  %   %%
+%    %%  %    %       %     %    %    %%     %      %    %%    %      %%   %    % %%
+ %%%%  %%     %        %%%%%     %     %%    %      %     %%  %        %%  %     %%%
+         %%%                                 %                             %
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                             
+                                             
+                                             
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% this took longer than you'd think
+\end{verbatim}
+%
+\appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/CA1Jake.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{unsrt}
 \bibliography{References}
 
-%%%%%%%%%
-\appendix
+%%%%%%%%% It seems that we don't want his :(
+%\input{chapters/CA2_Python_minitutorial.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/CA1Jake.tex}
+%\input{chapters/CA3_Answers.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/CA2_Python_minitutorial.tex}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/CA3_Answers.tex}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/CA4_FullCodeExamples.tex}
+% commenting out helps the document compile quicker
+%\input{chapters/CA4_FullCodeExamples.tex}
 
 %%%%%%%%%%%%%%%%
-\begin{comment}
-\begin{verbatim}
-https://github.com/ot561/qprogramming/tree/master
-\end{verbatim}
-\end{comment}
+\url{https://github.com/ot561/qprogramming/tree/master}
 
 \end{document}

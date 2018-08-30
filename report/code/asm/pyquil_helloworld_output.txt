@@ -1,0 +1,35 @@
+# Original pyQuil program,
+
+ H 1
+Z 1
+H 1
+X 3
+X 7
+MEASURE 0 [0]
+MEASURE 1 [1]
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+
+# Compiled quil code,
+
+ PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+RX(-pi) 1
+RX(-pi) 3
+RX(-pi) 7
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+PRAGMA EXPECTED_REWIRING "#(0 1 2 3 4 5 6 7)"
+MEASURE 0 [0]
+MEASURE 1 [1]
+MEASURE 2 [2]
+MEASURE 3 [3]
+MEASURE 4 [4]
+MEASURE 5 [5]
+MEASURE 6 [6]
+MEASURE 7 [7]
+PRAGMA CURRENT_REWIRING "#(0 1 2 3 4 5 6 7)"
+
+# Result = [0, 1, 0, 1, 0, 0, 0, 1]

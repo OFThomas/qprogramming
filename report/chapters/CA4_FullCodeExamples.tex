@@ -1,13 +1,243 @@
-\chapter{Complete code examples}
-\label{FullCode}
+%\chapter{Complete code examples}
+\chapter{Complete Codes}
+\label{chpt:fullcodeexamples}
 
+\lstlistoflistings
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{On the need for quantum software}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Shor}
+Starting with the one-qubit state $\ket{0}$, we can generate the superposition with a Hadamard gate, and we then can add the desired phase with a gate of the form $here$. Finally, we consider projective measurements. We remark here however, that these steps can be implemented in any programming language that handles linear algebra.  We can do it in python with the Python library Numpy in the following way \autoref{lst:ExamplePython}.
+
+%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[language=Python,caption={Example with python only},label={lst:ExamplePython},frame=single] 
+import numpy as np
+# State initialisation
+state0=np.array([[1],[0]])
+# State manipulation
+H=(1/np.sqrt(2))*np.array([[1,1],[1,-1]])
+state1=np.dot(H,state0)
+phi=np.pi/2
+PHASE=np.array([[1,0],[0,np.exp(1j*phi)]])
+state2=np.dot(PHASE,state1)
+# Measurement: defining projectors P0,P1
+ket0=np.array([[1],[0]])
+ket1=np.array([[0],[1]])
+P0=np.dot(ket0,ket0.T)
+P1=np.dot(ket1,ket1.T)
+# Probability of obtaining outcome 0
+prob0=np.trace(np.dot(P0,np.dot(state2,np.conj(state2).T)))
+# Probability of obtaining outcome 1
+prob1=np.trace(np.dot(P1,np.dot(state2,np.conj(state2).T)))
+\end{lstlisting}
+%%%%%%%%%%%%%%%%
+However, this is local, and we are running this computation in our standard computers and therefore is a classical simulation of a quantum computation.
 
 \newpage
-\subsection{Shor in Q\#}
-\lstinputlisting[language=C]{code/Q#/Driver.cs}
-\lstinputlisting[language=C]{code/Q#/Shor.qs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Super User-Friendly Deutsch's Algorithm ($n=2$)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%
+\begin{tcolorbox}[standard jigsaw,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+    boxrule=0.5pt]
+    {\bf Deutsch's Algorithm}
+    \tcbline
+    Given a function $f:\{0,1\}^2\rightarrow \{0,1\}$ promised to be either balanced or constant. We initialise the system in the state $\ket{00}$, we need to implement the gates $H^{\otimes 2}$ and then $U_f$ and then $H^{\otimes 2}$ and then perform a measurement in the computational basis.
+\end{tcolorbox}
+%%%%%%%%%%%%%%%
+
+Now implementing this with pyQuil. We first need to learn how to add our own gates.
+
+%%%%%%%%%%%%%%%%%
+\begin{lstlisting}[language=Python]
+# Defining our own gates
+Ufma=np.diag([-1,1,-1,1])
+p.defgate("Uf",Ufma); 
+p.inst(("Uf",0,1)); 
+\end{lstlisting}
+%%%%%%%%%%%%%%%%
+
+In \autoref{lst:DAqvm}
+
+\begin{lstlisting}[language=Python,caption={Deutsch's algorithm with pyQuil ($n=2$)},label={lst:DAqvm},frame=single]
+from pyquil.quil  import Program
+from pyquil.api   import QVMConnection 
+from pyquil.gates import X,Z,Y,H,I 
+import numpy as np
+# Invoking and renaming
+qvm=QVMConnection()
+p=Program() 
+# Gate implementation
+p.inst(H(0),H(1)) 
+# Assuming that given function gives the matrix
+Ufma=np.diag([-1,1,-1,1])
+# Adding matrix as gate
+p.defgate("Uf",Ufma); 
+# Applying gate
+p.inst(("Uf",0,1)); 
+p.inst(H(0),H(1))
+# Measurements
+p.measure(0,0)
+p.measure(1,1) 
+# Running the program
+results=qvm.run(p,[],4) 
+print(results)
+\end{lstlisting}
+%%%%%%%%%%%%%%%%
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Super User-Friendly Grover's Algorithm $n=3$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Example for single-marked strings and $n=3$}
+
+\begin{lstlisting}[language=Python,caption={Grover's algorithm with pyQuil ($n=3$)},label={lst:DAqvm},frame=single]
+from pyquil.api   import QVMConnection
+from pyquil.quil  import Program
+from pyquil.gates import H
+import numpy as np
+
+qvm=QVMConnection()
+p=Program()
+# Applying first round of Hadamards
+p.inst(H(0),H(1),H(2))
+# Defining Oracles matrices
+Ufma=np.diag([1,-1,1,1,1,1,1,1]) # string 001
+U0ma=(-1)*np.diag([-1,1,1,1,1,1,1,1])
+# Defining Oracle gates
+p.defgate("Uf",Ufma);
+p.defgate("U0",U0ma)
+# Calculating T for the loop
+T=((np.pi/4)*(1/np.arcsin(1/np.sqrt(8))))-0.5 # N=2**n=8
+T=np.rint(T)
+T=int(T)
+# Applying loop T times
+for i in range(1,T+1,1): 
+    p.inst(("Uf",0,1,2)) 
+    p.inst(H(0),H(1),H(2))
+    p.inst(("U0",0,1,2))
+    p.inst(H(0),H(1),H(2))
+# Measurement stage
+p.measure(0,0)
+p.measure(1,1)
+p.measure(2,2)
+# Running the program
+results=qvm.run(p,[],5)
+print(results)
+\end{lstlisting}
+
+
+\subsection{Grovers for general n complete code}
+
+% Complete code
+\begin{lstlisting}[language=Python,caption={Grover's algorithm with pyQuil single-marked (general $n$)},label={lst:DAqvm},frame=single]
+from pyquil.api   import QVMConnection
+from pyquil.quil  import Program
+from pyquil.gates import H
+import numpy as np
+
+n = int(input('Please enter the value n:'))
+f=input("Please input a marked bit-string of n bits:") 
+nf=int(f, base=2) # changing bit string to decimal
+#f=Gintro(n) # lisitng the single marked strings in that dimension
+input("Now Grover's algorithm will try to find that string, and will output a guess.")
+# Invoking and renaming Program and Connection
+qvm=QVMConnection()
+p=Program()
+# Applying first round of Hadamards
+for ii in range(0, n, 1):
+    p.inst(H(ii))
+# Defining Oracle matrices: U0 and Uf
+vec0=np.ones((2**n,), dtype=np.int)
+vecf=np.ones((2**n,), dtype=np.int)
+vec0[0]=vec0[0]*(-1)
+vecf[nf]=vecf[nf]*(-1)
+U0ma=(-1)*np.diag(vec0) 
+Ufma=np.diag(vecf) 
+# Defining Oracle gates
+p.defgate("U0",U0ma)
+p.defgate("Uf",Ufma)
+# Calculating T for the loop
+T=((np.pi/4)*(1/np.arcsin(1/np.sqrt(2**n))))-0.5 # N=2**n
+T=np.rint(T)
+T=int(T)
+# Applying Oracle loop T times
+for i in range(1,T+1,1):
+    p.inst(("Uf",)+tuple(range(n)))
+    for ii in range(0, n, 1):
+        p.inst(H(ii))
+    p.inst(("U0",)+tuple(range(n)))
+    for ii in range(0, n, 1):
+        p.inst(H(ii))
+# Measurement stage
+for ii in range(0, n, 1):
+    p.measure(ii,ii)
+# Running the program
+results=qvm.run(p,[],5)
+guess=results[0]
+print("""Grover's algorithm is guessing that the marked string is""",guess)
+\end{lstlisting}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Even more user-friendly Deutsch's Algorithm (for the User Interface)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstinputlisting[language=Python]{code/pyQuil/DJnew.py}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Shor's Algorithm Complete Codes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Shor's Algorithm in Q\#}
+\lstinputlisting[language=C]{code/Qsharp/Driver.txt} % This contains an important part of the algorithm and allows users to run it directly.
+\lstinputlisting[language=C]{code/Qsharp/Shor.txt}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Implementation Chapter Codes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ASM x86
+\subsection{Whole code exit successfully using system interrupt}
+\lstinputlisting[language=Asmx86]{code/asm/programobj.txt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Hello world program}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstinputlisting[language=Asmx86]{code/asm/printobj.txt}
+
+\subsection{FORTRAN 95}
+
+% Fortran listing
+\begin{figure}[H] 
+\centering
+% left figures
+\begin{subfigure}[t]{0.45\textwidth}
+\lstinputlisting[language=Fortran, caption={FORTRAN 95 code for Hello World!}]{code/asm/fortran_helloworld.txt}
+\end{subfigure}\hfill
+\hfill
+%\hfill
+% right figures
+\begin{subfigure}[t]{0.45\textwidth}
+% asm code
+\lstinputlisting[language=Asm]{code/asm/fortran_helloworld.x86_64.asm}
+% compiled code
+% none so far...
+\end{subfigure}
+% global caption
+\caption{Digital and quantum logic circuits for implementing an arbitrary operation on bits $A, B$ returning value $Q$}
+\label{fig:basicoperation}
+\end{figure}
+\

@@ -1,0 +1,140 @@
+
+%%%%%%%%%%%%%
+%%%%%%%%%%%%%
+%%%%%%%%%%%%%
+%%%%%%%%%%%%%
+\begin{comment}
+
+\section{Deutsch-Jozsa algorithm}\label{Deutsch-Jozsa}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Deutsch-Jozsa algorithm is one of the first algorithms to demonstrate ``quantum parallelism''. In very simple terms, quantum parallelism is a feature of a quantum computer which allows it to evaluate a function $f(x)$ simultaneously for many different values of $x$. Deutsch-Jozsa algorithm doesn't have many practical applications but it does provide insight into how quantum computing can trump classical computation. Suppose there is a function $f(x): \{0,1\}^{n} \rightarrow \{0,1\}$ which is either constant or balanced for all values of $x$, the problem is to find with certainty the nature of $f(x)$. A classical solver would need at least $N=2^{n}/2+1$ queries to determine with certainty whether the function is balanced or constant while the quantum algorithm can solve the problem in just one query. The box below describes how the Deutsch-Jozsa algorithm features the property of quantum parallelism for a 2-qubit case $(N=2^{2}=4)$. It should be noted that there is an additional qubit required for the oracle as well.
+
+\begin{tcolorbox}[standard jigsaw,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+    boxrule=0.5pt,label={Deutsch's algorithm box}]
+    {\bf Deutsch-Jozsa Algorithm}
+    \tcbline
+    \begin{enumerate}
+    \item Start with the state $\ket{00}$.
+    \item Apply Hadamard gate to all the qubits which leads to the state: $\ket{\Psi}=\dfrac{1}{2}\big(\ket{0}+\ket{1}\big)\big(\ket{0}+\ket{1}\big)$.
+    \item Apply the oracle `$U_{f}$' which transforms the state $\ket{\Psi} \rightarrow \dfrac{1}{2}\big((-1)^{f(00)}\ket{00}+(-1)^{f(01)}\ket{01}+(-1)^{f(10)}\ket{10}+(-1)^{f(11)}\ket{11}\big)$.
+    \item Apply Hadamard to the first two qubits. Now, if $f(x)$ is constant, the first two qubits end up in the state $\ket{00}$ but if $f(x)$ is balanced, the first two qubits are in the state $\ket{01}$, $\ket{10}$ or $\ket{11}$.
+    \item Measuring the first two qubits reveals the nature of $f(x)$.
+    \end{enumerate}
+\end{tcolorbox}
+
+The circuit diagram for Deutsch-Jozsa algorithm for a general n-qubit case looks like:
+
+\begin{equation*}
+\Qcircuit @C=2.14em @R=1.25em
+{\lstick{\ket{0}} & \gate{H} & \multigate{5}{U_f} & \gate{H} & \meter \\
+\lstick{\ket{0}} & \gate{H} & \ghost{U_f} & \gate{H} & \meter \\ 
+& \dot{} & & \dot{} \\
+& \dot{} & & \dot{} \\
+& \dot{} & & \dot{} \\
+\lstick{\ket{0}} & \gate{H} & \ghost{U_f} & \gate{H} & \meter \\}
+\end{equation*}
+
+\end{comment}
+%%%%%%%%%%%%%
+%%%%%%%%%%%%%
+%%%%%%%%%%%%%
+%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\textcolor{magenta}{Implementing Deutsch's Algorithm. I think we should address this in the main body (Andres). My arguments below. }}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\epigraph{The oracle in the Deutsch-Jozsa module is not implemented in such a way that calling Deutsch\_Jozsa.is\_constant() will yield an exponential speedup over classical implementations.}{Rigetti's Docs \footnote{\url{https://grove-docs.readthedocs.io/en/latest/deutsch\_jozsa.html##implementation-notes}} }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textcolor{magenta}{Reasons:\footnote{You should install Linux}}
+\begin{itemize}
+    \item \textcolor{magenta}{It is the very first Q algorithm ever invented}
+    \item \textcolor{magenta}{I think this is the easiest (to understand) Q algorithms, so for pedagogical reasons, it should be one of the first algorithms to be addressed}
+    \item \textcolor{magenta}{Taking into account that Shor's algorithm is not gonna be working for some of the libraries/languages that we are considering, we will be having 1.5 algorithms in the main body (Grovers and 0.5 of Shor's) which I think is not enough. So Deutsch will fill this gap.}
+\end{itemize}
+
+\textcolor{orange}{Oli
+\begin{enumerate}
+    \item Testing the colour package
+    \item thing 1
+    \item thing 2
+    \item see the implementation notes \url{https://grove-docs.readthedocs.io/en/latest/deutsch_jozsa.html#implementation-notes}
+\end{enumerate}
+}
+
+\textcolor{blue}{Counter arguments: (Lana and Friki)}
+\begin{itemize}
+    \item \textcolor{blue}{Initially we were only going to code Shor's but we have also added Grover's. We shouldn't overcrowd this section - the Python codes will become repetitive and the Q\# code is very long.}
+    \item \textcolor{blue}{Deutsch's algorithm is not very useful.}
+    \item \textcolor{blue}{The fact that it is one of the easiest algorithms to understand should make it a good initial example for the readers to code, especially if we walk them through it step by step.}
+    \item \textcolor{blue}{Grover's is not too hard to understand and code, Shor's is much harder to understand and code so we have a good balance at the moment.}
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Deutsch's Algorithm with pyQuil} 
+\epigraph{The oracle in the Deutsch-Jozsa module is not implemented in such a way that calling Deutsch\_Jozsa.is\_constant() will yield an exponential speedup over classical implementations.}{Rigetti's Docs \footnote{\url{https://grove-docs.readthedocs.io/en/latest/deutsch_jozsa.html##implementation-notes}} }
+
+\subsubsection{Deutsch's Algorithm with pyQuil (general $n$)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{lstlisting}[language=Python,caption={Deutsch's algorithm with pyQuil (general n)},label={lst:DAqvm},frame=single]
+import numpy as np
+from pyquil.quil  import Program
+from pyquil.api   import QVMConnection 
+from pyquil.gates import X,Z,Y,H,I 
+# Asking for inputs
+input("This is the Deutsch-Jozsa Algorithm. Please press Enter to continue...")
+n = int(input('Please enter the value n (n>5 for DJintro takes ages):'))
+# Give the user the list of functions
+#f=DJintro(n) # This function goes from a set with 2**n elements to {0,1}
+f=input("Please input function (as a string of 2^n bits):") # either constant or balanced
+tn=len(f) #2^n
+print('Now the DJ algorithm will determine whether the input function is Balanced or Constant\n')
+input("We are now going to run the DJ algorithm. Press Enter to continue...")
+# Invoking and renaming
+qvm=QVMConnection()
+p=Program() 
+# Applying first round of n Hadamards
+for ii in range(0, n, 1):
+    p.inst(H(ii))
+# Defining the Oracle matrix
+vec=np.ones((2**n,), dtype=np.int)
+for i in range(tn):
+    vec[i]=vec[i]*(-1)**int(f[i])
+Ufmaa=np.diag(vec)
+# Adding the Oracle matrix as a gate
+p.defgate("Uf",Ufmaa)
+# Applying Oracle gate
+p.inst(("Uf",)+tuple(range(n)))
+# Applying second run of n Hadamards
+for ii in range(0, n, 1):
+    p.inst(H(ii))
+# Measurements 
+for ii in range(0, n, 1):
+    p.measure(ii,ii)
+# Running the program
+cr=[] 
+results=qvm.run(p,cr,4) 
+check=results[0]
+if 1 in results[0]: # checking from a single shot measurement
+    print("The function that you entered is a Balanced function")
+else:
+    print("The function that you entered is a Constant function")
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{TODO Deutsch's Algorithm in Qiskit}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The Deutsch-Jozsa algorithm can be coded on this language as well. We begin by setting the bits in the register 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{TODO Deutsch's Algorithm in Project Q}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{TODO Deutsch's Algorithm in Q\#}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
